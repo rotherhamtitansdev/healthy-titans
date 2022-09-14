@@ -6,11 +6,11 @@ import { MenuCardProps } from "../../models/MenuCardProps";
 import Card from "./Card";
 import Image from "./Image";
 import FirebaseAPI from "../../api/FirebaseAPI";
+import openInNewTab from "../../functions/Navigate";
 
 /*
  * This component represents a card used in a menu screen
  * */
-
 const MenuCard = (props: MenuCardProps) => {
   const [getImageURL, setImageURL] = useState<string | undefined>();
 
@@ -28,13 +28,9 @@ const MenuCard = (props: MenuCardProps) => {
     }
   }, []);
 
-  const openInNewTab = () => {
-    window.open(props.path, "_blank", "noopener,noreferrer");
-  };
-
   const handleOnClick = () => {
     if (!props.disableOnClick) {
-      return props.externalPath ? () => openInNewTab() : () => navigateToPath();
+      return props.externalPath ? () => openInNewTab(props.path) : () => navigateToPath();
     }
     return () => undefined;
   };
@@ -47,7 +43,7 @@ const MenuCard = (props: MenuCardProps) => {
         onClick: handleOnClick(),
       }}
     >
-      <div className="py-[1.75rem] md:py-[3.625rem] ">
+      <div className="py-[1.75rem] md:py-[3.625rem]">
         {getImageURL ? (
           <Image
             img={getImageURL}
@@ -56,7 +52,7 @@ const MenuCard = (props: MenuCardProps) => {
         ) : (
           <ClipLoader size={180} color="#DC476D" className="mx-12" />
         )}
-        <div className="md:text-xl text-[#252948] font-semibold font-quicksand text-center">
+        <div className="md:text-xl text-homepageHeaderText font-semibold font-quicksand text-center">
           {props.name}
         </div>
       </div>
