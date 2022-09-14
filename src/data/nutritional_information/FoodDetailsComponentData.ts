@@ -39,6 +39,12 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/Meat/Food/CookedMeats.svg",
     category: "Meat",
   },
+  Turkey: {
+    name: "Turkey",
+    description: "Turkey Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.",
+    firebaseName: "FoodCategories/Meat/Food/Turkey.svg",
+    category: "Turkey",
+  },
   Cod: {
     name: "Cod",
     description: "Cod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
