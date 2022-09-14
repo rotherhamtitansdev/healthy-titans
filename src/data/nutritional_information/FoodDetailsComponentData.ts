@@ -9,7 +9,6 @@
 import { NutritionDetailsAPIModel } from "../../models/NutritionDetailsAPIModel";
 
 const FoodDetailsComponentData = {
-  // Meat Data
   Beef: {
     name: "Beef",
     description: "Beef is a very good source of protein and can be bought and cooked in many different ways...",
@@ -40,7 +39,6 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/Meat/Food/CookedMeats.svg",
     category: "Meat",
   },
-  // Fish Data
   Cod: {
     name: "Cod",
     description: "Cod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -59,7 +57,6 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/Fish/Food/Tuna.svg",
     category: "Fish",
   },
-  // Fruit Data
   Apples: {
     name: "Apples",
     description: "Apples Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -96,7 +93,6 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/Fruits/Food/Strawberry.svg",
     category: "Fruit",
   },
-  // Vegetables Data
   BellPeppers: {
     name: "Bell Peppers",
     description: "Bell Peppers Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -151,7 +147,6 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/Vegetables/Food/Spinach.svg",
     category: "Veg",
   },
-  // Dairy And Eggs
   Butter: {
     name: "Butter",
     description: "Butter Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -195,7 +190,6 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/JunkFood/Food/Chips.svg",
     category: "Fast Food",
   },
-  // It wasn't finding any information for Fizzy drinks. Ammended to Coke
   FizzyDrinks: {
     name: "Coke",
     description: "Coke Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.",
@@ -226,7 +220,6 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/JunkFood/Food/Pizza.svg",
     category: "Fast Food",
   },
-  // Sweets
   Chocolate: {
     name: "Chocolate",
     description: "Chocolate Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.",
