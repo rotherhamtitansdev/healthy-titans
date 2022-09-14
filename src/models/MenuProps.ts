@@ -3,7 +3,7 @@ import { MenuCardProps } from "./MenuCardProps";
 import { MenuTitleProps } from "./MenuTitleProps";
 
 export interface MenuProps {
-  header?: HeaderProps;
+  header: HeaderProps;
   cards: MenuCardProps[];
   title?: MenuTitleProps;
 }
