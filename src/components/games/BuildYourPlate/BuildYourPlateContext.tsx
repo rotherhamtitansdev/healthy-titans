@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import BuildYourPlate from "./BuildYourPlate";
 
 /* eslint-disable */
-
+//context
 export type IsFYPStartedContext = {
   getIsFYPStarted: boolean
   setIsFYPStarted:(c: boolean) => void
