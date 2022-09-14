@@ -5,13 +5,10 @@ import GamesSubHeader from "../GamesSubHeader";
 import BuildYourPlateStartScreen from "./BuildYourPlateStartScreen";
 import { useFYPStartedContext } from "./BuildYourPlateContext";
 import BuildYourPlateGameScreen from "./BuildYourPlateGameScreen";
-import { writeUserData } from "../../../functions/db";
-
-/* eslint-disable */
 
 const BuildYourPlate = () => {
   const { getIsFYPStarted } = useFYPStartedContext();
-  writeUserData()
+
   return (
     <>
       <AppHeader>
