@@ -1,0 +1,58 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ChallengeDetailsComponentData from "../../../data/ChallengeDetailsComponentData";
+import { ChallengeDetailsProps } from "../../../models/ChallengeDetailsProps";
+import Card from "../../shared/Card";
+import DetailsCard from "../../shared/DetailsCard";
+
+const ChallengeDetailsComponent = () => {
+  // eslint-disable-next-line max-len
+  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<ChallengeDetailsProps | undefined>();
+
+  const { challengeName } = useParams();
+
+  useEffect(() => {
+    setChallengeDetailsComponentData(
+      ChallengeDetailsComponentData[
+      challengeName as unknown as keyof typeof ChallengeDetailsComponentData
+      ],
+    );
+  });
+
+  return (
+    <div>
+      {getChallengeDetailsComponentData ? (
+        <div
+          className="flex flex-wrap lg:flex-nowrap justify-evenly gap-y-5 gap-x-2 mx-6 md:mx-2"
+          data-testid={getChallengeDetailsComponentData.name}
+        >
+          <div className="grid grid-cols-2 gap-4">
+            <DetailsCard
+              name={getChallengeDetailsComponentData.name}
+              description={getChallengeDetailsComponentData.description}
+              img={getChallengeDetailsComponentData.img}
+            />
+            <Card card={{ name: getChallengeDetailsComponentData.name, additionalStyling: "h-content" }}>
+              <div className="pl-4 pr-4">
+                <div className="pt-4 pb-3 tracking-wide text-lg text-black font-bold">
+                  Rules
+                </div>
+                <p className="pl-4 block mt-1 text-lg leading-tight font-semibold text-gray-900">
+                  <ol className="list-decimal">
+                    {getChallengeDetailsComponentData.rules.map((rule) => (
+                      <li className="pb-4">{rule}</li>
+                    ))}
+                  </ol>
+                </p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      ) : (
+        <h1>loading</h1>
+      )}
+    </div>
+  );
+};
+
+export default ChallengeDetailsComponent;
