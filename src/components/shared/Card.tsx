@@ -15,7 +15,7 @@ const Card = (props: {
   }
 
   function getClassName(): string {
-    const baseStyling = "bg-white text-gray-700 rounded ";
+    const baseStyling = "bg-white table align-middle rounded-3xl shadow-lg ";
     return baseStyling + (props.card.additionalStyling || "") + getHoverStyling(!!props.card.onClick);
   }
 
