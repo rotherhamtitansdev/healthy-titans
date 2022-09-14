@@ -8,6 +8,18 @@
 
 import { NutritionDetailsAPIModel } from "../../models/NutritionDetailsAPIModel";
 
+export interface FoodDetailsComponentData {
+  name: string
+  description: string
+  firebaseName: string
+  category: string
+  score: number
+}
+
+export interface FoodDetailsComponentDataFile{
+  [key: string]: FoodDetailsComponentData
+}
+
 const FoodDetailsComponentData = {
   Beef: {
     name: "Beef",
