@@ -8,14 +8,25 @@ import MenuTitle from "./MenuTitle";
 const Menu = (props: MenuProps) => {
   const smallMenu: boolean = props.cards.length < 3;
 
+  function getStylingForCard(index: number) {
+    if (!smallMenu) {
+      let styling = "lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem]";
+      if ((index === props.cards.length - 1) && props.cards.length % 2 !== 0) {
+        styling += " col-span-2 mx-[25%] lg:col-span-1 lg:mx-0";
+      }
+      return styling;
+    }
+    return "";
+  }
+
   function getStyling() {
     if (smallMenu) {
       return "px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6";
     }
-    return "grid grid-cols-2 p-4 lg:grid-cols-auto lg:px-20 2xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]";
+    return "grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-20 2xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]";
   }
 
-  const cardList = props.cards.map((item) => (
+  const cardList = props.cards.map((item, index) => (
     <MenuCard
       key={item.key}
       name={item.name}
@@ -23,7 +34,7 @@ const Menu = (props: MenuProps) => {
       img={item.img}
       path={item.path}
       externalPath={item.externalPath}
-      additionalStyling={smallMenu ? "" : "lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem]"}
+      additionalStyling={getStylingForCard(index)}
       firebaseName={item.firebaseName}
     />
   ));
