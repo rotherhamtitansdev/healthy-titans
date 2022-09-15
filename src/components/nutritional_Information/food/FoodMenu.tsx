@@ -1,14 +1,19 @@
 import React from "react";
-import { useParams } from "react-router";
-import { MenuCardProps } from "../../../models/MenuCardProps";
-import Menu from "../../shared/Menu";
+import { useLocation, useParams } from "react-router";
 import FoodCategoryData from "../../../data/nutritional_information/FoodCategoryData";
 import FoodCategories from "../../../data/nutritional_information/FoodTextData";
+import { MenuCardProps } from "../../../models/MenuCardProps";
+import Menu from "../../shared/Menu";
 
 const FoodCategory = () => {
-  const { foodCategory } = useParams();
+  let { foodCategory } = useParams();
+  const location = useLocation();
 
   function getFoodData() {
+    // If params isn't passed from router (e.g for FruitsAndVegetables), get path from URL
+    if (!foodCategory) {
+      foodCategory = location.pathname.slice(location.pathname.lastIndexOf("/") + 1, location.pathname.length);
+    }
     const category = FoodCategories.find(
       (element) => element.category === foodCategory,
     );
