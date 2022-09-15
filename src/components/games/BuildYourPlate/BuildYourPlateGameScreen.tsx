@@ -22,7 +22,7 @@ const newBYPTableData:BYPTableRowFamily[] = [
 
 const BuildYourPlateGameScreen = () => {
 
-  const { getPlateItemCount, setPlateItemCount } = useFYPStartedContext();
+  const { setModalContent , getModal, setModal } = useFYPStartedContext();
   const [getBYPTableData, setBYPTableData] = useState<BYPTableRowFamily[]>(newBYPTableData);
   const [getBYPPlateData, setBYPPlateData] = useState<BYPItem[]>([])
   const [getTableDataVisibility, setTableDataVisibility] = useState<boolean[]>(Array(7).fill(false));
@@ -56,32 +56,32 @@ const BuildYourPlateGameScreen = () => {
         {newBYPTableData[categoryIndex].items[tableIndex].icon}
         <div className={"absolute top-1/4 left-1/4"}>{getTickImage}</div>
       </div>
-      setPlateItemCount(getPlateItemCount + 1)
       setBYPPlateData(newBYPPlateData)
       setBYPTableData(newBYPTableData)
     }
     else{
-      removeFromPlate(item)
+      removeFromPlate([item])
     }
   }
 
-  const removeFromPlate = (item: BYPItem) => {
+  const removeFromPlate = (item: BYPItem[]) => {
 
     let newBYPTableData = [...getBYPTableData]
     let newBYPPlateData = [...getBYPPlateData]
-    const categoryIndex = newBYPTableData.findIndex(row => row.family === item.family)
-    const tableIndex = newBYPTableData[categoryIndex].items.findIndex(element => element.name === item.name)
-    const plateIndex = newBYPPlateData.findIndex(plateItem => plateItem.name === item.name)
 
-    newBYPTableData[categoryIndex].items[tableIndex].selected = false
-    newBYPTableData[categoryIndex].items[tableIndex].icon = newBYPPlateData[plateIndex].icon
-    newBYPPlateData.splice(plateIndex, 1)
-    setPlateItemCount(getPlateItemCount - 1)
+    item.forEach(plateItem => {
+      const categoryIndex = newBYPTableData.findIndex(row => row.family === plateItem.family)
+      const tableIndex = newBYPTableData[categoryIndex].items.findIndex(element => element.name === plateItem.name)
+      const plateIndex = newBYPPlateData.findIndex(currentPlateItem => currentPlateItem.name === plateItem.name)
+
+      newBYPTableData[categoryIndex].items[tableIndex].selected = false
+      newBYPTableData[categoryIndex].items[tableIndex].icon = newBYPPlateData[plateIndex].icon
+      newBYPPlateData.splice(plateIndex, 1)
+    })
+
     setBYPPlateData(newBYPPlateData)
     setBYPTableData(newBYPTableData)
   }
-
-
 
   const constructHeaders = (URLs: string[]) => URLs.map((URL, index) => (
     <tr>
@@ -101,8 +101,7 @@ const BuildYourPlateGameScreen = () => {
         <tr className={(getTableDataVisibility[index]) ? "slide-in-row visible" : "invisible"}>
           {item.items.map((cell) => (<td onClick={() => {toggleItemToPlate(cell)}} className="md:p-1">{cell.icon}</td>))}
         </tr>
-      )
-    );
+      ));
 
   useEffect(() => {
     BuildYourPlateProcessor.fetchAllUrls().then(async (res) => {
@@ -132,8 +131,18 @@ const BuildYourPlateGameScreen = () => {
   }, []);
 
   useEffect(() => {
-    getPlateItemCount !== 5 ? setButtonColor("bg-titansDarkGrey") : setButtonColor("bg-titansBrightPink")
-  },[getPlateItemCount])
+    getBYPPlateData.length !== 5 ? setButtonColor("bg-titansDarkGrey") : setButtonColor("bg-titansBrightPink")
+  },[getBYPPlateData])
+
+  useEffect(() => {
+    setModalContent({
+      buttonFunc: () => {setModal(!getModal)},
+      buttonText: "Play",
+      title: "How to play",
+      text: "Open a food category and select a food. You must select 5 foods to score your plate. The aim of the game is to build a healthy plate."
+    })
+    setModal(true)
+  },[])
 
   return (
     <div className="font-quicksand bg-white h-full rounded-xl shadow-lg my-10 px-5 pt-5 pb-2 1.5xl:pb-10">
@@ -152,21 +161,37 @@ const BuildYourPlateGameScreen = () => {
             <img src={getPlateImage} alt={"plate image"}/>
             <div>{getBYPPlateData.map((plateItem, index) => {
 
-              return <div className={"absolute " + PlateItemPositions[index]} onClick={() => {removeFromPlate(plateItem)}}>
-                {plateItem.icon}
-              </div>
-            })}</div>
+              return <div className={"absolute " + PlateItemPositions[index]} onClick={() => {
+                console.log(plateItem.name)
+                removeFromPlate([plateItem])
+              }}>
+                      {plateItem.icon}
+                    </div>
+              })}
+            </div>
           </div>
 
           <div className="font-quicksand text-titansDarkBlue text-center mt-10 1.5xl:-mt-10 flex w-full justify-between 1.5xl:block align-middle">
             <div>
-              <p className={"font-bold text-[16px] 1.5xl:text-[39px]"}>{getPlateItemCount + " / 5"}</p>
+              <p className={"font-bold text-[16px] 1.5xl:text-[39px]"}>{getBYPPlateData.length + " / 5"}</p>
               <p className={"font-semibold text-[12px] 1.5xl:text-[16px] mb-4"}>Items</p>
             </div>
             <button type="button"
                     className={"text-[12px] text-white font-bold w-44 h-11 rounded-full " + getButtonColor}
-                    disabled={getPlateItemCount !== 5}
-                    onClick={() => {BuildYourPlateProcessor.calculateScore(getBYPPlateData)}}
+                    disabled={getBYPPlateData.length !== 5}
+                    onClick={() => {
+                      const score = BuildYourPlateProcessor.calculateScore(getBYPPlateData)
+                      setModal(true)
+                      setModalContent({
+                        buttonFunc:() => {
+                          setModal(false)
+                          removeFromPlate(getBYPPlateData)
+                        },
+                        buttonText: "Play again",
+                        text: BuildYourPlateProcessor.constructScoreModalText(score),
+                        title: BuildYourPlateProcessor.constructScoreModalTitle(score)
+                      })
+                    }}
             >
               Score my plate
             </button>

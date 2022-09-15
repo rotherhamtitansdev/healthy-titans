@@ -13,8 +13,6 @@ export interface BYPModalContentInterface {
 export type IsFYPStartedContext = {
   getIsFYPStarted: boolean
   setIsFYPStarted:(c: boolean) => void
-  getPlateItemCount: number
-  setPlateItemCount: (c: number) => void
   getModal: boolean
   setModal: (c: boolean) => void
   getModalContent: BYPModalContentInterface
@@ -23,9 +21,7 @@ export type IsFYPStartedContext = {
 export const FYPStartedContext = createContext<IsFYPStartedContext>({
   getIsFYPStarted: false,
   setIsFYPStarted: () => {},
-  getPlateItemCount: 0,
-  setPlateItemCount: () => {},
-  getModal: true,
+  getModal: false,
   setModal: () => {},
   getModalContent: {title: "", text: "", buttonText: "", buttonFunc: () => {} },
   setModalContent: () => {}
@@ -35,15 +31,12 @@ export const useFYPStartedContext = () => useContext(FYPStartedContext);
 
 const FYPStartedContextWrapper  = ({ children }:any) => {
   const [getIsFYPStarted, setIsFYPStarted] = useState<boolean>(false);
-  const [getScore, setScore] = useState<number>(0)
   const [getModal, setModal] = useState<boolean>(true)
   const [getModalContent, setModalContent] = useState<BYPModalContentInterface>({title: "", text: "", buttonText: "", buttonFunc: () => {} })
 
   return (
     <FYPStartedContext.Provider value={{
       getIsFYPStarted, setIsFYPStarted,
-      getPlateItemCount: getScore,
-      setPlateItemCount: setScore,
       getModal, setModal,
       getModalContent: getModalContent,
       setModalContent: setModalContent
