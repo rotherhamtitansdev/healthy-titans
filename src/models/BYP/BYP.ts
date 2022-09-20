@@ -5,6 +5,7 @@ export interface BYPItem {
   name: string
   icon: React.ReactNode
   family: string
+  selected: boolean
 }
 
 export interface BYPTableRowFamily {

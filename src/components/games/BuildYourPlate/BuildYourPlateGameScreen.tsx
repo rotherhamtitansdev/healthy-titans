@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
-import TableHeaderImagesLinks from "../../../data/BYPData/BYPData";
+import TableHeaderImagesLinks, {
+  imageSize,
+  PlateItemPositions,
+} from "../../../data/BYPData/BYPData";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
 import { useFYPStartedContext } from "./BuildYourPlateContext";
+import BuildYourPlateModalScreen from "./BuildYourPlateModalScreen";
 
 /* eslint-disable */
 const newBYPTableData:BYPTableRowFamily[] = [
@@ -19,13 +23,65 @@ const newBYPTableData:BYPTableRowFamily[] = [
 const BuildYourPlateGameScreen = () => {
 
   const { getScore, setScore } = useFYPStartedContext();
-
   const [getBYPTableData, setBYPTableData] = useState<BYPTableRowFamily[]>(newBYPTableData);
+  const [getBYPPlateData, setBYPPlateData] = useState<BYPItem[]>([])
   const [getTableDataVisibility, setTableDataVisibility] = useState<boolean[]>(Array(7).fill(false));
   const [getBYPTableHeaders, setBYPTableHeaders] = useState<React.ReactNode>();
   const [getPlateImage, setPlateImage] = useState<string>();
+  const [getTickImage, setTickImage] = useState<React.ReactNode>()
   const [getButtonColor, setButtonColor] = useState<string>()
   const [getLoading, setLoading] = useState<boolean>(true);
+
+  const toggleItemToPlate = (item: BYPItem) => {
+    if (!getBYPTableData) return
+
+    let newBYPTableData = [...getBYPTableData]
+    let newBYPPlateData = [...getBYPPlateData]
+    let categoryIndex:number
+    let tableIndex:number
+
+    categoryIndex = newBYPTableData.findIndex(row => row.family === item.family)
+    tableIndex = newBYPTableData[categoryIndex].items.findIndex(element => element.name === item.name)
+
+    if(!newBYPTableData[categoryIndex].items[tableIndex].selected) {
+
+      if(getBYPPlateData.length === 5) return
+
+      newBYPTableData[categoryIndex].items[tableIndex].selected = true
+
+      newBYPPlateData.push({...newBYPTableData[categoryIndex].items[tableIndex]})
+
+      newBYPTableData[categoryIndex].items[tableIndex].icon =
+      <div className="relative">
+        {newBYPTableData[categoryIndex].items[tableIndex].icon}
+        <div className={"absolute top-1/4 left-1/4"}>{getTickImage}</div>
+      </div>
+      setScore(getScore + 1)
+      setBYPPlateData(newBYPPlateData)
+      setBYPTableData(newBYPTableData)
+    }
+    else{
+      removeFromPlate(item)
+    }
+  }
+
+  const removeFromPlate = (item: BYPItem) => {
+
+    let newBYPTableData = [...getBYPTableData]
+    let newBYPPlateData = [...getBYPPlateData]
+    const categoryIndex = newBYPTableData.findIndex(row => row.family === item.family)
+    const tableIndex = newBYPTableData[categoryIndex].items.findIndex(element => element.name === item.name)
+    const plateIndex = newBYPPlateData.findIndex(plateItem => plateItem.name === item.name)
+
+    newBYPTableData[categoryIndex].items[tableIndex].selected = false
+    newBYPTableData[categoryIndex].items[tableIndex].icon = newBYPPlateData[plateIndex].icon
+    newBYPPlateData.splice(plateIndex, 1)
+    setScore(getScore - 1)
+    setBYPPlateData(newBYPPlateData)
+    setBYPTableData(newBYPTableData)
+  }
+
+
 
   const constructHeaders = (URLs: string[]) => URLs.map((URL, index) => (
     <tr>
@@ -33,7 +89,7 @@ const BuildYourPlateGameScreen = () => {
         <img
           src={URL}
           alt="x"
-          className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] xl:w-[70px] xl:h-[70px]"
+          className={imageSize}
           onClick={() => {
             setTableDataVisibility((newTableDataVisibility) => newTableDataVisibility.map((item, idx) => (idx === index ? !item : item)));
           }}
@@ -43,7 +99,7 @@ const BuildYourPlateGameScreen = () => {
   ));
   const constructRows = (BYPTableData: BYPTableRowFamily[]) => BYPTableData.map((item, index) => (
         <tr className={(getTableDataVisibility[index]) ? "slide-in-row visible" : "invisible"}>
-          {item.items.map((cell) => (<td className="md:p-1">{cell.icon}</td>))}
+          {item.items.map((cell) => (<td onClick={() => {toggleItemToPlate(cell)}} className="md:p-1">{cell.icon}</td>))}
         </tr>
       )
     );
@@ -53,16 +109,21 @@ const BuildYourPlateGameScreen = () => {
       FirebaseAPI.fetchAllImages(TableHeaderImagesLinks).then((headers) => {
         const BYPItems: BYPItem[] = res.map((item) => (
           {
-            icon: <img src={item.URL} alt="x" className="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] xl:w-[70px] xl:h-[70px]"
+            icon: <img src={item.URL} alt="x"
+                       className={imageSize}
                        key={item.key} />,
             family: item.icon,
             key: item.key,
             name: item.name,
+            selected: false
           }
         ));
         setBYPTableHeaders(constructHeaders(headers));
         setBYPTableData(BuildYourPlateProcessor.processRows(BYPItems));
         FirebaseAPI.fetchImages("Games/BigPlate.png").then((res) => setPlateImage(res))
+        FirebaseAPI.fetchImages("Games/tick.png").then((res) => {
+          setTickImage(<img src={res}/>)
+        })
         setLoading(false);
       });
     });
@@ -73,7 +134,8 @@ const BuildYourPlateGameScreen = () => {
   },[getScore])
 
   return (
-    <div className="font-quicksand bg-white h-full rounded-xl shadow-lg my-10 px-5 pt-5 pb-2">
+    <div className="font-quicksand bg-white h-full rounded-xl shadow-lg my-10 px-5 pt-5 pb-2 1.5xl:pb-10">
+      <BuildYourPlateModalScreen/>
       <p className="font-bold text-[22px] pb-4 text-titansDarkBlue">Food Families</p>
       <div className="flex flex-wrap 1.5xl:flex-nowrap w-full">
 
@@ -84,7 +146,15 @@ const BuildYourPlateGameScreen = () => {
         </table>
 
         <div className={"flex flex-col items-start 1.5xl:items-center basis-full 1.5xl:basis-auto 1.5xl:ml-auto 1.5xl:-mt-16"}>
-          <img src={getPlateImage} alt={"plate image"} className={"hidden 1.5xl:block w-full h-full"}/>
+          <div className={"hidden 1.5xl:block w-full h-full relative"}>
+            <img src={getPlateImage} alt={"plate image"}/>
+            <div>{getBYPPlateData.map((plateItem, index) => {
+
+              return <div className={"absolute " + PlateItemPositions[index]} onClick={() => {removeFromPlate(plateItem)}}>
+                {plateItem.icon}
+              </div>
+            })}</div>
+          </div>
 
           <div className="font-quicksand text-titansDarkBlue text-center mt-10 1.5xl:-mt-10 flex w-full justify-between 1.5xl:block align-middle">
             <div>
