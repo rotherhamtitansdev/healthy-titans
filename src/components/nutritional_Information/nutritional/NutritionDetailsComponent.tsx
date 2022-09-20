@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { DetailsCardProps } from "../../../models/DetailsCardProps";
 import NutritionDetailsComponentData from "../../../models/NutritionDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
 
-const NutritionDetailsComponent = () => {
-  const [getNutritionData, setNutritionData] = useState<DetailsCardProps | undefined>();
-  const { nutritionName } = useParams();
+const NutritionDetailsComponent = (props: { nutritionName: string }) => {
+  const [getNutritionData, setNutritionData] = useState<
+    DetailsCardProps | undefined
+  >();
   useEffect(() => {
     setNutritionData(
       NutritionDetailsComponentData[
-        nutritionName as unknown as keyof typeof NutritionDetailsComponentData
+        props.nutritionName as unknown as keyof typeof NutritionDetailsComponentData
       ],
     );
   });

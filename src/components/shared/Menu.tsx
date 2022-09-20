@@ -30,9 +30,11 @@ const Menu = (props: MenuProps) => {
 
   return (
     <>
-      <AppHeader>
-        <MenuHeader title={props.header.title} body={props.header.body} />
-      </AppHeader>
+      {props.header ? (
+        <AppHeader>
+          <MenuHeader title={props.header.title} body={props.header.body} />
+        </AppHeader>
+      ) : null}
       <div className="p-5 md:p-10 pb-20">
         {props.title ? (
           <MenuTitle

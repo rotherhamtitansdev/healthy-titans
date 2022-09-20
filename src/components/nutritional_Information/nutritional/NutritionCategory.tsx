@@ -4,10 +4,11 @@ import { MenuCardProps } from "../../../models/MenuCardProps";
 import NutritionCategoryData from "../../../data/nutritional_information/NutritionCategoryData";
 import {
   FatTextData,
-  SaltTextData,
-  SugarTextData,
+  SaltAndSugarTextData,
+  WaterTextData,
   ProteinTextData,
   CarbsTextData,
+  MacroAndMicroTextData,
 } from "../../../data/nutritional_information/NutritionCategoryTextData";
 import Menu from "../../shared/Menu";
 
@@ -18,14 +19,16 @@ const NutritionCategory = () => {
     switch (nutritionCategory) {
       case "Fat":
         return FatTextData;
-      case "Salt":
-        return SaltTextData;
-      case "Sugar":
-        return SugarTextData;
+      case "SaltAndSugar":
+        return SaltAndSugarTextData;
+      case "Water":
+        return WaterTextData;
       case "Protein":
         return ProteinTextData;
       case "Carbs":
         return CarbsTextData;
+      case "MacroAndMicroNutrients":
+        return MacroAndMicroTextData;
       default:
         return NutritionCategoryData;
     }
@@ -34,7 +37,14 @@ const NutritionCategory = () => {
   const nutritionData: MenuCardProps[] = getNutritionData();
 
   return (
-    <Menu header={{ title: "", body: "" }} cards={nutritionData} />
+    <Menu
+      title={{
+        title: "Explore nutrition",
+        subtitle:
+          "Click on the type of nutritional information you want to learn about",
+      }}
+      cards={nutritionData}
+    />
   );
 };
 
