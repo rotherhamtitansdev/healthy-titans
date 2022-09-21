@@ -185,9 +185,9 @@ const FoodCategories = [
     options: [
       {
         key: 0,
-        name: "Burger",
-        firebaseName: "FoodCategories/JunkFood/Food/Burger.svg",
-        path: "Burger",
+        name: "Pizza",
+        firebaseName: "FoodCategories/JunkFood/Food/Pizza.svg",
+        path: "Pizza",
       },
       {
         key: 1,
@@ -197,9 +197,9 @@ const FoodCategories = [
       },
       {
         key: 2,
-        name: "Fizzy Drinks",
-        firebaseName: "FoodCategories/JunkFood/Food/FizzyDrinks.svg",
-        path: "FizzyDrinks",
+        name: "Burger",
+        firebaseName: "FoodCategories/JunkFood/Food/Burger.svg",
+        path: "Burger",
       },
       {
         key: 3,
@@ -215,15 +215,9 @@ const FoodCategories = [
       },
       {
         key: 5,
-        name: "Milkshakes",
-        firebaseName: "FoodCategories/DairyAndEggs/Food/Milkshakes.svg",
-        path: "Milkshakes",
-      },
-      {
-        key: 6,
-        name: "Pizza",
-        firebaseName: "FoodCategories/JunkFood/Food/Pizza.svg",
-        path: "Pizza",
+        name: "Fizzy Drinks",
+        firebaseName: "FoodCategories/JunkFood/Food/FizzyDrinks.svg",
+        path: "FizzyDrinks",
       },
     ],
   },
