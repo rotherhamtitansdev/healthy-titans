@@ -44,10 +44,10 @@ const FoodCategories = [
     options: [
       {
         key: 0,
-        name: "Cod",
-        description: "Information about Cod!",
-        path: "Cod",
-        firebaseName: "FoodCategories/Fish/Food/Cod.svg",
+        name: "Tuna",
+        description: "Information about Tuna!",
+        path: "Tuna",
+        firebaseName: "FoodCategories/Fish/Food/Tuna.svg",
       },
       {
         key: 1,
@@ -58,10 +58,10 @@ const FoodCategories = [
       },
       {
         key: 2,
-        name: "Tuna",
-        description: "Information about Tuna!",
-        path: "Tuna",
-        firebaseName: "FoodCategories/Fish/Food/Tuna.svg",
+        name: "Cod",
+        description: "Information about Cod!",
+        path: "Cod",
+        firebaseName: "FoodCategories/Fish/Food/Cod.svg",
       },
     ],
   },
