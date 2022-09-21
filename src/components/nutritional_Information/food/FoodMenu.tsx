@@ -10,7 +10,7 @@ const FoodCategory = () => {
 
   function getFoodData() {
     const category = FoodCategories.find(
-      (element) => element.category === foodCategory
+      (element) => element.category === foodCategory,
     );
     return category ? category.options : FoodCategoryData;
   }
@@ -24,8 +24,8 @@ const FoodCategory = () => {
         body: "Food is important, we all need food to be strong and healthy. From here we can learn about the nutritional values in the foods we eat. This will show you the different types of goodness we can get from the different types of food. We will be able to explore what we need to have a healthy, well-balanced diet including carbohydrates, protein as well as vitamins and minerals.",
       }}
       title={{
-        subtitle: "Food & Nutrition > Fruit & Vegetables > Fruit",
-        title: "Fruit",
+        title: "Explore food families",
+        subtitle: "Click on a picture to learn more",
       }}
       cards={foodData}
     />

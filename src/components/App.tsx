@@ -5,7 +5,6 @@ import HomePageComponents from "./HomePageComponents";
 import NutritionalInformation from "./nutritional_Information/NutritionalInformation";
 import FoodCategory from "./nutritional_Information/food/FoodMenu";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
-import NutritionCategory from "./nutritional_Information/nutritional/NutritionCategory";
 import Challenges from "./fitness_Challenges/ChallengesMenu";
 import SignIn from "./auth/SignIn";
 import AuthRoute from "./auth/AuthRoute";
@@ -15,13 +14,13 @@ import Test from "./Test";
 import ForgotPassword from "./ForgotPassword";
 import VideosComponent from "./videos/VideosComponent";
 import ChallengeDetailsComponent from "./fitness_Challenges/challenge_details/ChallengeDetailsComponent";
-import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
 import DND from "./DND";
 import QuizMenu from "./games/quiz/QuizMenu";
 import Quiz from "./games/quiz/Quiz";
 import Footer from "./Footer/Footer";
 import Navbar from "./app_header/Navbar/Navbar";
 import BuildYourPlateContext from "./games/BuildYourPlate/BuildYourPlateContext";
+import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
 
 const App: React.FC = () => (
   <div className="layout-container">
@@ -31,19 +30,19 @@ const App: React.FC = () => (
       <Route index element={<HomePageComponents />} />
       <Route path="NutritionalInformation">
         <Route index element={<NutritionalInformation />} />
-        <Route path="NutritionCategory">
-          <Route index element={<NutritionCategory />} />
-          <Route
-            path=":nutritionName"
-            element={<NutritionDetailsComponent />}
-          />
-        </Route>
-        <Route path="FoodCategory">
+        {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
+          (nutritionCategory) => (
+            <Route
+              path={nutritionCategory}
+              element={
+                <NutritionDetailsComponent nutritionName={nutritionCategory} />
+              }
+            />
+          ),
+        )}
+        <Route path=":foodCategory">
           <Route index element={<FoodCategory />} />
-          <Route path=":foodCategory">
-            <Route index element={<FoodCategory />} />
-            <Route path=":foodName" element={<FoodDetailsComponent />} />
-          </Route>
+          <Route path=":foodName" element={<FoodDetailsComponent />} />
         </Route>
       </Route>
       <Route path="FitnessChallenges">
