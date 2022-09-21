@@ -2,17 +2,22 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import useBreadcrumbs from "use-react-router-breadcrumbs";
 
-const Breadcrumbs = () => {
+interface BreadcrumbsProps {
+  styling: string;
+}
+
+const Breadcrumbs = (props: BreadcrumbsProps) => {
   const routes = [
     { path: "/", breadcrumb: null },
     { path: "/NutritionalInformation", breadcrumb: "Food & Nutrition" },
     { path: "NutritionalInformation/FruitsAndVegetables", breadcrumb: "Fruit & Vegetables" },
+    { path: "NutritionalInformation/DairyAndEggs", breadcrumb: "Dairy & Eggs" },
   ];
 
   const breadcrumbs = useBreadcrumbs(routes);
 
   return (
-    <div className="font-medium font-quicksand text-[#243A73] md:text-xl lg:text-xl md:pb-5 flex">
+    <div className={`font-quicksand text-[#243A73] flex ${props.styling}`}>
       {breadcrumbs.map(({
         match,
         breadcrumb,

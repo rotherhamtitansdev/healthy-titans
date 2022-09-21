@@ -6,7 +6,7 @@ const MenuTitle = (props: MenuTitleProps) => (
   <div className="px-5">
     <div className="font-semibold font-quicksand text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5">{props.title}</div>
     {props.subtitle ? <div className="font-medium font-quicksand text-[#243A73] md:text-xl lg:text-xl md:pb-5">{props.subtitle}</div>
-      : <Breadcrumbs />}
+      : <Breadcrumbs styling="font-medium md:text-xl lg:text-xl md:pb-5" />}
   </div>
 );
 export default MenuTitle;
