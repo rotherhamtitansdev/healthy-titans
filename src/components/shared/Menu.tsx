@@ -44,9 +44,11 @@ const Menu = (props: MenuProps) => {
         ) : null}
         <div className={getStyling()}>
           {cardList}
-          <div className="grid col-span-2 lg:col-span-3 ">
-            {props.children}
-          </div>
+          {!smallMenu ? (
+            <div className="grid col-span-2 lg:col-span-3 ">
+              {props.children}
+            </div>
+          ) : null}
         </div>
       </div>
     </>
