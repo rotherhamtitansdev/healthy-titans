@@ -26,7 +26,7 @@ const FoodCategory = () => {
   });
 
   function getFoodData() {
-    // If params isn't passed from router (e.g for FruitsAndVegetables), get path from URL
+    // If params isn't passed from router (e.g for FruitAndVegetables), get path from URL
     if (!foodCategory) {
       foodCategory = location.pathname.slice(location.pathname.lastIndexOf("/") + 1, location.pathname.length);
     }

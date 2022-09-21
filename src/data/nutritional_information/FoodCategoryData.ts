@@ -19,7 +19,7 @@ const FoodCategoryData: MenuCardProps[] = [
     key: 2,
     name: "Fruit & Vegetables",
     description: "Information about Fruits!",
-    path: "FruitsAndVegetables",
+    path: "FruitAndVegetables",
     firebaseName: "FoodCategories/Fruits/FruitAndVeg.svg",
   },
   {
