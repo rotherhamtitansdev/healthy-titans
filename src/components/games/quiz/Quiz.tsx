@@ -5,6 +5,7 @@ import QuizData from "../../../data/QuizData";
 import { AnswerProps } from "../../../models/Quiz/AnswerProps";
 import { QuestionProps } from "../../../models/Quiz/QuestionProps";
 import { QuizProps } from "../../../models/Quiz/QuizProps";
+import MenuTitle from "../../shared/MenuTitle";
 import QuestionCard from "./QuestionCard";
 import QuizFinish from "./QuizFinish";
 
@@ -54,6 +55,7 @@ const Quiz = () => {
 
   return (
     <div>
+      <MenuTitle title="Quiz" />
       {(getQuizData) ? (
         (currentQuestion && !quizFinished) ? (
           <div className="pl-4 pr-4 mt-4">

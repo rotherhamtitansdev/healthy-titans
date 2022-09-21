@@ -66,7 +66,7 @@ const FoodCategories = [
     ],
   },
   {
-    category: "FruitsAndVegetables",
+    category: "FruitAndVegetables",
     options: [
       {
         key: 0,
