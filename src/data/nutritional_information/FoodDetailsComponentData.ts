@@ -184,6 +184,34 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/Vegetables/Food/Spinach.svg",
     category: "Veg",
   },
+  Sweetcorn: {
+    name: "Sweetcorn",
+    description:
+      "Sweetcorn Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    firebaseName: "FoodCategories/Vegetables/Food/Sweetcorn.svg",
+    category: "Veg",
+  },
+  Asparagus: {
+    name: "Asparagus",
+    description:
+      "Asparagus Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    firebaseName: "FoodCategories/Vegetables/Food/Asparagus.svg",
+    category: "Veg",
+  },
+  SweetPotato: {
+    name: "Sweet Potato",
+    description:
+      "Sweet Potato Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    firebaseName: "FoodCategories/Vegetables/Food/SweetPotato.svg",
+    category: "Veg",
+  },
+  Kale: {
+    name: "Kale",
+    description:
+      "Kale Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    firebaseName: "FoodCategories/Vegetables/Food/Kale.svg",
+    category: "Veg",
+  },
   Butter: {
     name: "Butter",
     description:
@@ -214,7 +242,8 @@ const FoodDetailsComponentData = {
   },
   Yoghurt: {
     name: "Yoghurt",
-    description: "Yoghurt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.",
+    description:
+      "Yoghurt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.",
     firebaseName: "FoodCategories/DairyAndEggs/Food/Yoghurt.svg",
     category: "Dairy & Eggs",
   },
