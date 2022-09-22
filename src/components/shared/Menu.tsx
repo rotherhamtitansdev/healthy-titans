@@ -30,7 +30,6 @@ const Menu = (props: MenuProps) => {
     <MenuCard
       key={item.key}
       name={item.name}
-      description={item.description}
       img={item.img}
       path={item.path}
       externalPath={item.externalPath}
