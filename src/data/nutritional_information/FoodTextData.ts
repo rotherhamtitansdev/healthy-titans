@@ -181,7 +181,7 @@ const FoodCategories = [
     ],
   },
   {
-    category: "JunkFood",
+    category: "FastFood",
     options: [
       {
         key: 0,
