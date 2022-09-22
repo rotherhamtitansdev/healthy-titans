@@ -40,7 +40,7 @@ const App: React.FC = () => (
             />
           ),
         )}
-        <Route path="FruitsAndVegetables">
+        <Route path="FruitAndVegetables">
           <Route index element={<FoodCategory />} />
           <Route path=":foodCategory">
             <Route index element={<FoodCategory />} />

@@ -5,6 +5,7 @@ import FoodDetailsComponentData from "../../../data/nutritional_information/Food
 import DetailsCard from "../../shared/DetailsCard";
 import { DetailsCardProps } from "../../../models/DetailsCardProps";
 import FirebaseAPI from "../../../api/FirebaseAPI";
+import DetailsComponent from "../../shared/DetailsComponent";
 
 /* eslint-disable */
 
@@ -31,10 +32,7 @@ const FoodDetailsComponent = () => {
   return (
     <div>
       {getFoodDetailsComponentData ? (
-        <div
-          className="flex flex-wrap lg:flex-nowrap justify-evenly gap-y-5 gap-x-2 mx-6 md:mx-2"
-          data-testid={`${getFoodDetailsComponentData.name}-nutrition-details`}
-        >
+        <DetailsComponent>
           <DetailsCard
             name={getFoodDetailsComponentData.name}
             description={getFoodDetailsComponentData.description}
@@ -43,8 +41,7 @@ const FoodDetailsComponent = () => {
             hideTitle
           />
           <NutritionBreakdownChart name={getFoodDetailsComponentData.name} />
-
-        </div>
+        </DetailsComponent>
       ) : (
         <h1>loading</h1>
       )}
