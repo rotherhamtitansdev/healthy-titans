@@ -232,24 +232,33 @@ const FoodCategories = [
       },
       {
         key: 1,
+        name: "Lamb",
+        description: "Information about Lamb!",
+        path: "Lamb",
+        firebaseName: "FoodCategories/Meat/Food/Lamb.svg",
+      },
+      {
+        key: 2,
         name: "Chicken",
         path: "Chicken",
         firebaseName: "FoodCategories/Meat/Food/Chicken.svg",
       },
       {
-        key: 2,
+        key: 3,
         name: "Pork",
         path: "Pork",
         firebaseName: "FoodCategories/Meat/Food/Pork.svg",
       },
-      {
-        key: 3,
-        name: "Lamb",
-        path: "Lamb",
-        firebaseName: "FoodCategories/Meat/Food/Lamb.svg",
-      },
+
       {
         key: 4,
+        name: "Turkey",
+        description: "Information about Turkey!",
+        path: "Turkey",
+        firebaseName: "FoodCategories/Meat/Food/Turkey.svg",
+      },
+      {
+        key: 5,
         name: "Cooked Meats",
         path: "CookedMeats",
         firebaseName: "FoodCategories/Meat/Food/CookedMeats.svg",
