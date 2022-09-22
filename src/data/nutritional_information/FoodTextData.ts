@@ -32,6 +32,12 @@ const FoodCategories = [
         firebaseName: "FoodCategories/DairyAndEggs/Food/Yoghurt.svg",
         path: "Yoghurt",
       },
+      {
+        key: 6,
+        name: "Milkshakes",
+        firebaseName: "FoodCategories/DairyAndEggs/Food/Milkshakes.svg",
+        path: "Milkshakes",
+      },
     ],
   },
   {
