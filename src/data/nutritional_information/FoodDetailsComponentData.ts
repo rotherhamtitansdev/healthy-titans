@@ -177,9 +177,9 @@ const FoodDetailsComponentData = {
     firebaseName: "FoodCategories/DairyAndEggs/Food/Milk.svg",
     category: "Dairy & Eggs",
   },
-  Yogurt: {
-    name: "Yogurt",
-    description: "Yogurt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.",
+  Yoghurt: {
+    name: "Yoghurt",
+    description: "Yoghurt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.",
     firebaseName: "FoodCategories/DairyAndEggs/Food/Yoghurt.svg",
     category: "Dairy & Eggs",
   },
