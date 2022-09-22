@@ -28,7 +28,7 @@ const FoodCategoryData: MenuCardProps[] = [
   {
     key: 4,
     name: "Fast Food",
-    path: "JunkFood",
+    path: "FastFood",
     firebaseName: "FoodCategories/JunkFood/FastFood.svg",
   },
   {
