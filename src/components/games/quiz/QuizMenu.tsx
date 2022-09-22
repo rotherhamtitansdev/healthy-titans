@@ -8,7 +8,6 @@ const QuizMenu = () => {
     {
       key: 0,
       name: "Nutrition",
-      description: "Test your knowledge of nutrition!",
       img: nutrition,
       path: "Nutrition",
     },

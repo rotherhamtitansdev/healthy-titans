@@ -4,6 +4,7 @@ import ChallengeDetailsComponentData from "../../../data/ChallengeDetailsCompone
 import { ChallengeDetailsProps } from "../../../models/ChallengeDetailsProps";
 import Card from "../../shared/Card";
 import DetailsCard from "../../shared/DetailsCard";
+import DetailsComponent from "../../shared/DetailsComponent";
 
 const ChallengeDetailsComponent = () => {
   // eslint-disable-next-line max-len
@@ -22,10 +23,7 @@ const ChallengeDetailsComponent = () => {
   return (
     <div>
       {getChallengeDetailsComponentData ? (
-        <div
-          className="flex flex-wrap lg:flex-nowrap justify-evenly gap-y-5 gap-x-2 mx-6 md:mx-2"
-          data-testid={getChallengeDetailsComponentData.name}
-        >
+        <DetailsComponent>
           <div className="grid grid-cols-2 gap-4">
             <DetailsCard
               name={getChallengeDetailsComponentData.name}
@@ -47,7 +45,7 @@ const ChallengeDetailsComponent = () => {
               </div>
             </Card>
           </div>
-        </div>
+        </DetailsComponent>
       ) : (
         <h1>loading</h1>
       )}

@@ -22,7 +22,8 @@ at build-time and cater to multiple environments, deployment types and adjust se
 ### What's a dotenv?
 In the project source code, a file named `.env.example` exists to demonstrate the current configuration
 set up. Colloquially we refer to this as a "dotenv" file. It does not include the values, because
-this would expose sensitive information.
+this would expose sensitive information. These files are commonly used to programatically configure
+applications for different environments by providing different values at runtime in different environmental settings.
 
 ### Env var setup
 First we need to create two files so that the project will run without issue. Technically, you only
@@ -54,27 +55,27 @@ for between builds.
 
 ## Setting up Firebase CLI
 Install Firebase CLI Tools. There are multiple ways to do this but for this project we use the
-npm package by running `npm install -g firebase-tools`.\
+npm package by running `npm install -g firebase-tools`.
 
 Once installed, run `firebase login`. This should redirect you to your web browser and ask you to
-authenticate. Once logged in, you can continue.\
+authenticate. Once logged in, you can continue.
 
-If you haven't already, run `npm run build` to create the necessary objects needed for firebase.\
+If you haven't already, run `npm run build` to create the necessary objects needed for firebase.
 
 Enter `firebase init` to initialise and setup this project. The command-line interface will take
-over the terminal while we configure.\
+over the terminal while we configure.
 
 Use the arrow keys to select `Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys`.
-Press Space bar to select and press enter to confirm.\
+Press Space bar to select and press enter to confirm.
 
 Next, enter `build` as our public directory, this is the default location of our build output and
-code generation.\
+code generation.
 
-At `Configure as a single-age app (rewrite all urls to /index.html)?` select 'Yes' by entering `y` and pressing enter.\
+At `Configure as a single-age app (rewrite all urls to /index.html)?` select 'Yes' by entering `y` and pressing enter.
 
-At `Set up automatic builds and deploys with GitHub?` select 'No' by entering `N` and pressing enter.\
+At `Set up automatic builds and deploys with GitHub?` select 'No' by entering `N` and pressing enter.
 
-When it asks to overwrite `build/index.html` select 'No' by entering `N` and pressing enter.\
+When it asks to overwrite `build/index.html` select 'No' by entering `N` and pressing enter.
 
 Congrats, you're done! To deploy the app manually, enter `firebase deploy`.
 
