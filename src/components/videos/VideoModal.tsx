@@ -11,7 +11,7 @@ const VideoModal = (props: VideoModalProps) => (
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none p-[1.3rem]">
               <div className="flex items-start justify-between pb-3 border-b border-solid border-slate-200 rounded-t">
                 <h3 className="text-2xl font-semibold font-quicksand text-homepageHeaderSubTitle">
-                  {props.video.user?.name}
+                  {props.video.title}
                 </h3>
                 <button
                   className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"

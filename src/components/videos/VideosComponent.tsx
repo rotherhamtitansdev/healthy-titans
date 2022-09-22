@@ -9,7 +9,7 @@ const VideosComponent = () => {
   const [modalClickedVideoData, setModalClickedVideoData] = useState<Video | undefined>();
 
   const Videos = VideoData.map((item, index) => (
-    <VideoCard key={index} Actions={{ setHidden, setModalClickedVideoData }} Video={item} />
+    <VideoCard key={index} Actions={{ setHidden, setModalClickedVideoData }} video={item} />
   ));
 
   return (

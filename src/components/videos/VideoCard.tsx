@@ -1,31 +1,41 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import FirebaseAPI from "../../api/FirebaseAPI";
 import "../../App.css";
 import { DrilledVideoProps, Video } from "../../models/Video";
-import InfoWithHeader from "../shared/InfoWithHeader";
+import Card from "../shared/Card";
 
 // This displays the video and its details
-const VideoCard = (props: {Video: Video, Actions: DrilledVideoProps}) => {
+const VideoCard = (props: { video: Video, Actions: DrilledVideoProps }) => {
+  const [getVideoURL, setVideoURL] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (props.video.firebaseName !== undefined) {
+      FirebaseAPI.fetchImages(props.video.firebaseName).then((URI) => setVideoURL(URI));
+    }
+  }, []);
+
   const handleClick = useCallback(() => {
     props.Actions.setHidden(false);
-    props.Actions.setModalClickedVideoData(props.Video);
+    props.Actions.setModalClickedVideoData(props.video);
   }, []);
 
   return (
-    <div className=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab" onClick={handleClick} role="presentation">
+    <Card card={{ name: props.video.title, onClick: handleClick }}>
       <div className="grid grid-cols-2 gap-2">
-        <div className="pl-5 pt-5 pb-3">
-          <img src={props.Video.url} alt="video" />
-        </div>
+        {getVideoURL && props.video.description ? (
+          // eslint-disable-next-line jsx-a11y/media-has-caption
+          <video width="400">
+            <source src={getVideoURL} />
+          </video>
+        )
+          : null}
         <div className="pt-5 pb-3">
-          <InfoWithHeader info={props.Video.user?.name} header="Name" />
-          <InfoWithHeader info={props.Video.user?.position} header="Position" />
-          <InfoWithHeader info={props.Video.dateUploaded} header="Date Uploaded" />
           <div className="block mt-1 text-md leading-tight text-gray-900">
-            {props.Video.description}
+            {props.video.description}
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
