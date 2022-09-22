@@ -152,12 +152,6 @@ const FoodCategories = [
     category: "Vegetables",
     options: [
       {
-        key: 7,
-        name: "Potato",
-        firebaseName: "FoodCategories/Vegetables/Food/Potato.svg",
-        path: "Potato",
-      },
-      {
         key: 1,
         name: "Carrot",
         firebaseName: "FoodCategories/Vegetables/Food/Carrot.svg",
@@ -171,9 +165,51 @@ const FoodCategories = [
       },
       {
         key: 3,
+        name: "Potato",
+        firebaseName: "FoodCategories/Vegetables/Food/Potato.svg",
+        path: "Potato",
+      },
+      {
+        key: 4,
         name: "Broccoli",
         firebaseName: "FoodCategories/Vegetables/Food/Broccoli.svg",
         path: "Broccoli",
+      },
+      {
+        key: 5,
+        name: "Sweetcorn",
+        firebaseName: "FoodCategories/Vegetables/Food/Sweetcorn.svg",
+        path: "Sweetcorn",
+      },
+      {
+        key: 7,
+        name: "Spinach",
+        firebaseName: "FoodCategories/Vegetables/Food/Spinach.svg",
+        path: "Spinach",
+      },
+      {
+        key: 7,
+        name: "Sweet Potato",
+        firebaseName: "FoodCategories/Vegetables/Food/SweetPotato.svg",
+        path: "SweetPotato",
+      },
+      {
+        key: 7,
+        name: "Asparagus",
+        firebaseName: "FoodCategories/Vegetables/Food/Asparagus.svg",
+        path: "Asparagus",
+      },
+      {
+        key: 6,
+        name: "Mushrooms",
+        firebaseName: "FoodCategories/Vegetables/Food/Mushroom.svg",
+        path: "Mushrooms",
+      },
+      {
+        key: 5,
+        name: "Bell Peppers",
+        firebaseName: "FoodCategories/Vegetables/Food/BellPepper.svg",
+        path: "BellPeppers",
       },
       {
         key: 4,
@@ -183,21 +219,9 @@ const FoodCategories = [
       },
       {
         key: 5,
-        name: "Bell Peppers",
-        firebaseName: "FoodCategories/Vegetables/Food/BellPepper.svg",
-        path: "BellPeppers",
-      },
-      {
-        key: 6,
-        name: "Mushrooms",
-        firebaseName: "FoodCategories/Vegetables/Food/Mushroom.svg",
-        path: "Mushrooms",
-      },
-      {
-        key: 7,
-        name: "Spinach",
-        firebaseName: "FoodCategories/Vegetables/Food/Spinach.svg",
-        path: "Spinach",
+        name: "Kale",
+        firebaseName: "FoodCategories/Vegetables/Food/Kale.svg",
+        path: "Kale",
       },
     ],
   },
