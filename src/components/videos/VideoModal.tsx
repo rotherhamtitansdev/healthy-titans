@@ -24,7 +24,7 @@ const VideoModal = (props: VideoModalProps) => (
                 </button>
               </div>
 
-              <VideoPlayer />
+              <VideoPlayer video={props.video} />
 
               <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b mx-auto">
                 <button

@@ -9,9 +9,7 @@ class FirebaseAPI {
   static fetchImages = async (firebaseName: string): Promise<string> => {
     const storage = getStorage();
     const starsRef = ref(storage, firebaseName);
-    const download = getDownloadURL(starsRef);
-    download.then((i) => console.warn(i));
-    return download;
+    return getDownloadURL(starsRef);
   };
 
   static fetchAllImages = async (firebaseNames: string[]) => Promise.all(firebaseNames.map((firebaseName) => FirebaseAPI.fetchImages(firebaseName)));

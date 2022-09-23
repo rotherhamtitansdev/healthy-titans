@@ -15,9 +15,15 @@ const VideoCard = (props: { video: Video, Actions: DrilledVideoProps }) => {
   }, []);
 
   const handleClick = useCallback(() => {
+    const video = {
+      title: props.video.title,
+      description: props.video.description,
+      url: getVideoURL,
+    } as Video;
+
     props.Actions.setHidden(false);
-    props.Actions.setModalClickedVideoData(props.video);
-  }, []);
+    props.Actions.setModalClickedVideoData(video);
+  }, [getVideoURL]);
 
   return (
     <Card card={{ name: props.video.title, onClick: handleClick }}>

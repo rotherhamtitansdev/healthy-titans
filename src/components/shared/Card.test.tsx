@@ -9,13 +9,13 @@ describe("Card component", () => {
     const additionalClasses = "my-class my-other-class";
     const cardProps: CardProps = {
       name: "TestCard",
-      additionalStyling: additionalClasses
+      additionalStyling: additionalClasses,
     };
 
     const { container } = render(
       <Card card={cardProps}>
         <p>My Test Card Contents</p>
-      </Card>
+      </Card>,
     );
 
     expect(screen.getByText("My Test Card Contents")).toBeVisible();
@@ -27,13 +27,13 @@ describe("Card component", () => {
     const mockOnClick = jest.fn();
     const cardProps: CardProps = {
       name: "Clickable Test Card",
-      onClick: mockOnClick
+      onClick: mockOnClick,
     };
 
     render(
       <Card card={cardProps}>
         <p>My Clickable Test Card Contents</p>
-      </Card>
+      </Card>,
     );
 
     screen.getByRole("button").click();
