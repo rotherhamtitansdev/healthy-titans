@@ -23,7 +23,7 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
   }
 
   return (
-    <div className={`font-quicksand text-[#243A73] flex ${props.styling}`}>
+    <div data-testid="breadcrumbs" className={`font-quicksand text-[#243A73] flex ${props.styling}`}>
       {breadcrumbs.map(({
         match,
         breadcrumb,
