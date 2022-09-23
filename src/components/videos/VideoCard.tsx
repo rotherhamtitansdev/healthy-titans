@@ -26,17 +26,20 @@ const VideoCard = (props: { video: Video, Actions: DrilledVideoProps }) => {
   }, [getVideoURL]);
 
   return (
-    <Card card={{ name: props.video.title, onClick: handleClick }}>
-      <div className="grid grid-cols-2 gap-2">
+    <Card card={{ name: props.video.title, additionalStyling: "w-[30rem]", onClick: handleClick }}>
+      <div className="p-5">
         {getVideoURL && props.video.description ? (
           // eslint-disable-next-line jsx-a11y/media-has-caption
-          <video width="400">
+          <video className="rounded-3xl">
             <source src={getVideoURL} />
           </video>
         )
           : null}
         <div className="pt-5 pb-3">
-          <div className="block mt-1 text-md leading-tight text-gray-900">
+          <div className="font-semibold text-2xl  text-homepageHeaderText">
+            {props.video.title}
+          </div>
+          <div className="font-md text-xl  text-homepageHeaderText">
             {props.video.description}
           </div>
         </div>
