@@ -27,7 +27,6 @@ export const FatTextData = [
     key: 2,
     name: "Fat",
     description: "Information about Fat!",
-    img: fat,
     path: "Fat",
   },
 ];
