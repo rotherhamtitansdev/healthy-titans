@@ -34,7 +34,7 @@ Open up your terminal, navigate to the root directory of the project where `pack
 enter the following commands:
 ```
 $ touch .env.local .env.production.local .env.test.local
-$ cp .env.example .env.local .evn.test.local
+$ cp .env.example .env.local .env.test.local
 ```
 This will create three empty files and then copy the content from the example file into the first
 file. To obtain the values, speak to a member of the team who will provide you with them.
