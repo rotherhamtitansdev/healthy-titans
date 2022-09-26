@@ -4,7 +4,6 @@ const ChallengesData: MenuCardProps[] = [
   {
     key: 0,
     name: "Rugby Netball",
-    description: "This game involves football and using your memory skills!",
     firebaseName: "FitnessChallengesImages/rugbyNetball.svg",
     path: "Challenge1",
   },

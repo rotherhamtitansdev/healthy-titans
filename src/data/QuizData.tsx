@@ -2,7 +2,7 @@
  * This file is a basic data storing file.
  * All the data about different challenges is stored here.
  */
-import football from "../img/football.svg";
+import football from "../img/football.jpg";
 
 const QuizData = {
   Nutrition: {

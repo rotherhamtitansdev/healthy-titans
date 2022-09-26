@@ -1,7 +1,6 @@
 export interface MenuCardProps {
   key: number;
   name: string;
-  description?: string;
   img?: string;
   path: string;
   externalPath?: boolean;

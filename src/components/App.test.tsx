@@ -47,10 +47,6 @@ test("navigate to beef nutritional endpoint", () => {
   expect(nutritionalInformation).toBeInTheDocument();
   fireEvent.click(nutritionalInformation);
 
-  const food = screen.getByTestId("Food");
-  expect(food).toBeInTheDocument();
-  fireEvent.click(food);
-
   const meat = screen.getByTestId("Meat");
   expect(meat).toBeInTheDocument();
   fireEvent.click(meat);
@@ -75,17 +71,9 @@ test("navigate to  nutritional endpoint", () => {
   expect(nutritionalInformation).toBeInTheDocument();
   fireEvent.click(nutritionalInformation);
 
-  const food = screen.getByTestId("Food");
-  expect(food).toBeInTheDocument();
-  fireEvent.click(food);
-
   const fish = screen.getByTestId("Fish");
   expect(fish).toBeInTheDocument();
   fireEvent.click(fish);
-
-  const cod = screen.getByTestId("Cod");
-  expect(cod).toBeInTheDocument();
-  fireEvent.click(cod);
 
   const finalBeef = screen.getByTestId("Cod");
   expect(finalBeef).toBeInTheDocument();
