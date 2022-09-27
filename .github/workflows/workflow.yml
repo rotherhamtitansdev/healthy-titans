@@ -8,7 +8,8 @@ on:
       - main
 
 jobs: 
-  unit-test:
+  lint-unit-test:
+    name: Lint and Unit Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,7 +35,7 @@ jobs:
         uses: phoenix-actions/test-reporting@v8
         if: success() || failure()
         with:
-          name: Unit Tests            
+          name: Unit Test Results            
           reporter: jest-junit
           path: junit.xml
           list-suites: all
