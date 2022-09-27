@@ -27,12 +27,24 @@ jobs:
         run: npm run lint
 
       - name: Unit Tests
-        if: ${{ success() || failure() }}
-        run: npm run test:nowatch -- --coverage
+        if: success() || failure()
+        run: npm run test:nowatch
+
+      - name: Unit Test Report
+        uses: phoenix-actions/test-reporting@v8
+        if: success() || failure()
+        with:
+          name: Unit Tests            
+          reporter: jest-junit
+          path: junit.xml
+          list-suites: all
+          list-tests: all
+          fail-on-error: false
+          max-annotations: '10'
 
       - name: Code Coverage Report
         uses: irongut/CodeCoverageSummary@v1.3.0
-        if: ${{ always() }}
+        if: always()
         with:
           filename: coverage/cobertura-coverage.xml
           badge: true

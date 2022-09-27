@@ -38,7 +38,7 @@
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test a",
-    "test:nowatch": "react-scripts test --watchAll=false --coverage",
+    "test:nowatch": "react-scripts test --watchAll=false --coverage --reporters=default --reporters=jest-junit",
     "eject": "react-scripts eject",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "deploy": "sh ./deploy.sh"
