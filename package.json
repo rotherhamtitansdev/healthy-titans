@@ -38,7 +38,7 @@
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test a",
-    "test:nowatch": "react-scripts test --watchAll=false",
+    "test:nowatch": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "lint": "eslint \"**/*.{ts,tsx}\"",
     "deploy": "sh ./deploy.sh"
@@ -71,5 +71,16 @@
     "postcss": "^8.4.14",
     "prettier": "2.7.1",
     "tailwindcss": "^3.1.4"
+  },
+  "jest": {
+    "coverageReporters": [
+      [
+        "text",
+        {
+          "skipFull": true
+        }
+      ],
+      "cobertura"
+    ]
   }
 }

@@ -8,7 +8,7 @@ on:
       - main
 
 jobs: 
-  test:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,13 +20,50 @@ jobs:
           node-version: 16 # check this
           cache: npm
         
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci 
 
       - name: Lint
         run: npm run lint
+        continue-on-error: true
 
-      - name: Unit test
-        run: npm run test:unit
+      - name: Unit Tests
+        run: npm run test:nowatch -- --coverage
 
+      - name: Code Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        if: always()
+        with:
+          filename: coverage/cobertura-coverage.xml
+          badge: true
+          fail_below_min: false # to be determined
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: '60 80' # to be determined
+
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-results.md
+
+
+  # build:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Build
+  #       run: npm run build
+      
+  #     - name: Start
+  #       run: |
+  #         npm i serve
+  #         serve -s build
+
+  #     - name: Integration/E2E tests
+  #       run: npm run test:cypress
+      
       
