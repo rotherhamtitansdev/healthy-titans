@@ -1,6 +1,5 @@
 import "@testing-library/jest-dom";
 import {
-  act,
   cleanup,
   fireEvent, render, screen, within,
 } from "@testing-library/react";
@@ -24,10 +23,8 @@ function clickIncorrectAnswer() {
   fireEvent.click(screen.getByText("A wrong answer"));
 }
 
-function skipWait() {
-  act(() => {
-    jest.runAllTimers(); // trigger setTimeout
-  });
+function clickNext() {
+  fireEvent.click(screen.getByTestId("next-button"));
 }
 
 describe("Quiz", () => {
@@ -59,7 +56,6 @@ describe("Quiz", () => {
 
   describe("Quiz functionality", () => {
     beforeEach(() => {
-      jest.useFakeTimers();
       const quizRoute = "/Games/Quiz";
 
       render(
@@ -84,7 +80,7 @@ describe("Quiz", () => {
     test("should alert whether answer was correct", () => {
       clickCorrectAnswer();
       expect(screen.getByText("Well done, you got the right answer!")).toBeInTheDocument();
-      skipWait();
+      clickNext();
 
       clickIncorrectAnswer();
       expect(screen.getByText("Better luck next time!")).toBeInTheDocument();
@@ -92,16 +88,16 @@ describe("Quiz", () => {
 
     test("should score 2 out of 4", () => {
       clickCorrectAnswer();
-      skipWait();
+      clickNext();
 
       clickIncorrectAnswer();
-      skipWait();
+      clickNext();
 
       clickIncorrectAnswer();
-      skipWait();
+      clickNext();
 
       clickCorrectAnswer();
-      skipWait();
+      clickNext();
 
       const quizEnd = within(screen.getByTestId("quiz-end"));
 

@@ -34,11 +34,6 @@ const QuizGameScreen = () => {
     if (answer.isCorrect) {
       setScore(getScore + 1);
     }
-    // eslint-disable-next-line no-promise-executor-return
-    await new Promise<void>((done) => setTimeout(() => {
-      nextQuestion();
-      return done();
-    }, 1000));
   };
 
   return (
@@ -57,9 +52,19 @@ const QuizGameScreen = () => {
         <div className="px-10 text-xl font-semibold text-homepageHeaderText">
           <QuestionCard question={currentQuestion} onAnswerClick={selectAnswer} />
           {selectedAnswer ? (
-            <Card card={{ name: "Answer feedback", additionalStyling: "bg-mobileNavbarBackgroundColor p-6 w-2/3 mx-auto" }}>
-              {selectedAnswer.isCorrect ? "Well done, you got the right answer!" : "Better luck next time!"}
-            </Card>
+            <div className="flex flex-col items-center">
+              <Card card={{ name: "Answer feedback", additionalStyling: "bg-mobileNavbarBackgroundColor p-6 w-2/3 mx-auto" }}>
+                {selectedAnswer.isCorrect ? "Well done, you got the right answer!" : "Better luck next time!"}
+              </Card>
+              <button
+                className="font-bold bg-titansBrightPink text-white py-2 px-8 rounded-full"
+                type="button"
+                onClick={nextQuestion}
+                data-testid="next-button"
+              >
+                Next
+              </button>
+            </div>
           ) : null}
         </div>
       </Card>
