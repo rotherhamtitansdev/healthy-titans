@@ -39,10 +39,10 @@ const VideoCard = (props: {
         )
           : null}
         <div className="pt-5 pb-3">
-          <div className="font-quicksand font-semibold text-2xl  text-homepageHeaderText">
+          <div className="font-semibold text-2xl  text-homepageHeaderText">
             {props.video.title}
           </div>
-          <div className="font-quicksand font-md text-xl  text-homepageHeaderText">
+          <div className="font-md text-xl  text-homepageHeaderText">
             {props.video.description}
           </div>
         </div>

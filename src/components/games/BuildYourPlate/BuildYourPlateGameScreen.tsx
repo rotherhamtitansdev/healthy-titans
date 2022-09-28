@@ -12,7 +12,7 @@ import useWindowDimensions from "../../../functions/ScreenWidth";
 import BuildYourPlatePlatePreviewScreen from "./BuildYourPlatePlatePreviewScreen";
 import BuildYourPlateIcon from "./BuildYourPlateIcon";
 /* eslint-disable */
-const newBYPTableData:BYPTableRowFamily[] = [
+const newBYPTableData: BYPTableRowFamily[] = [
   { family: "Meat", items: [] },
   { family: "Fish", items: [] },
   { family: "Fruit", items: [] },
@@ -41,29 +41,29 @@ const BuildYourPlateGameScreen = () => {
 
     let newBYPTableData = [...getBYPTableData]
     let newBYPPlateData = [...getBYPPlateData]
-    let categoryIndex:number
-    let tableIndex:number
+    let categoryIndex: number
+    let tableIndex: number
 
     categoryIndex = newBYPTableData.findIndex(row => row.family === item.family)
     tableIndex = newBYPTableData[categoryIndex].items.findIndex(element => element.name === item.name)
 
-    if(!newBYPTableData[categoryIndex].items[tableIndex].selected) {
+    if (!newBYPTableData[categoryIndex].items[tableIndex].selected) {
 
-      if(getBYPPlateData.length === 5) return
+      if (getBYPPlateData.length === 5) return
 
       newBYPTableData[categoryIndex].items[tableIndex].selected = true
 
-      newBYPPlateData.push({...newBYPTableData[categoryIndex].items[tableIndex]})
+      newBYPPlateData.push({ ...newBYPTableData[categoryIndex].items[tableIndex] })
 
       newBYPTableData[categoryIndex].items[tableIndex].icon =
-      <div className="relative">
-        {newBYPTableData[categoryIndex].items[tableIndex].icon}
-        <div className={"absolute top-1/4 left-1/4"}>{getTickImage}</div>
-      </div>
+        <div className="relative">
+          {newBYPTableData[categoryIndex].items[tableIndex].icon}
+          <div className={"absolute top-1/4 left-1/4"}>{getTickImage}</div>
+        </div>
       setBYPPlateData(newBYPPlateData)
       setBYPTableData(newBYPTableData)
     }
-    else{
+    else {
       removeFromPlate([item])
     }
   }
@@ -116,7 +116,7 @@ const BuildYourPlateGameScreen = () => {
     </tr>
   ));
   const constructRows = (BYPTableData: BYPTableRowFamily[]) => BYPTableData.map((item, index) => (
-        <tr className={(getTableDataVisibility[index]) ? "slide-in-row visible" : "invisible"}>
+    <tr className={(getTableDataVisibility[index]) ? "slide-in-row visible" : "invisible"}>
           {item.items.map((cell) => (<td onClick={() => {toggleItemToPlate(cell)}} className="md:p-1">{cell.icon}</td>))}
         </tr>
       ));
@@ -139,7 +139,7 @@ const BuildYourPlateGameScreen = () => {
         setBYPTableData(BuildYourPlateProcessor.processRows(BYPItems));
         FirebaseAPI.fetchImages("Games/BigPlate.png").then((res) => setPlateImage(res))
         FirebaseAPI.fetchImages("Games/tick.png").then((res) => {
-          setTickImage(<img src={res}/>)
+          setTickImage(<img src={res} />)
         })
         setLoading(false);
       });
@@ -161,7 +161,7 @@ const BuildYourPlateGameScreen = () => {
   },[])
 
   return (
-    <div className="font-quicksand bg-white h-full rounded-xl shadow-lg my-10 px-5 pt-5 pb-2 1.5xl:pb-10">
+    <div className="bg-white h-full rounded-xl shadow-lg my-10 px-5 pt-5 pb-2 1.5xl:pb-10">
       {getMobilePreviewScreenFlag && getBYPPlateData.length === 5 ?
           <div><BuildYourPlatePlatePreviewScreen getPlateImage={getPlateImage!} getBYPPlateData={getBYPPlateData} removeFromPlate={removeFromPlate}/></div>
           :
@@ -170,12 +170,12 @@ const BuildYourPlateGameScreen = () => {
             <p className="font-bold text-[22px] pb-4 text-titansDarkBlue">Food Families</p>
             <div className="flex flex-wrap 1.5xl:flex-nowrap w-full">
 
-              <table className="flex">
-                <thead className="mr-3">{getBYPTableHeaders}</thead>
-                <thead className="w-[1px] h-full bg-titansDarkBlue"/>
-                <tbody
-                    className="ml-3 overflow-x-hidden">{(!getLoading && getBYPTableData) && constructRows(getBYPTableData)}</tbody>
-              </table>
+            <table className="flex">
+              <thead className="mr-3">{getBYPTableHeaders}</thead>
+              <thead className="w-[1px] h-full bg-titansDarkBlue" />
+              <tbody
+                className="ml-3 overflow-x-hidden">{(!getLoading && getBYPTableData) && constructRows(getBYPTableData)}</tbody>
+            </table>
 
               <div
                   className={"flex flex-col items-start 1.5xl:items-center basis-full 1.5xl:basis-auto 1.5xl:ml-auto 1.5xl:-mt-16"}>
@@ -193,7 +193,7 @@ const BuildYourPlateGameScreen = () => {
                 </div>
 
                 <div
-                    className="font-quicksand text-titansDarkBlue text-center mt-10 1.5xl:-mt-10 flex w-full justify-between 1.5xl:block align-middle">
+                    className="text-titansDarkBlue text-center mt-10 1.5xl:-mt-10 flex w-full justify-between 1.5xl:block align-middle">
                   <div>
                     <p className={"font-bold text-[16px] 1.5xl:text-[39px]"}>{getBYPPlateData.length + " / 5"}</p>
                     <p className={"font-semibold text-[12px] 1.5xl:text-[16px] mb-4"}>Items</p>

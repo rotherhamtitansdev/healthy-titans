@@ -64,13 +64,13 @@ const NutritionBreakdownChart = (props: { name: string }) => {
           <ClipLoader color="red" loading={getLoading} size={150} />
         ) : (
           <div>
-            <div className="mx-12 my-8 font-quicksand">
+            <div className="mx-12 my-8">
               <p className="text-[24px] text-nutritionInformationHeader font-semibold">
                 Nutrition Information
               </p>
               <p className="text-[20px] text-primaryGrey font-medium">*Based on serving of 100 g</p>
             </div>
-            <div className="mx-12 my-8 font-quicksand">
+            <div className="mx-12 my-8">
               <p className="text-[16px] text-primaryGrey font-medium">Calories</p>
               <p
                 data-testid="calorie-count"

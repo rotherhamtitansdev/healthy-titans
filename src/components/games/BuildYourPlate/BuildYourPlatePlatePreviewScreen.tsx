@@ -1,10 +1,10 @@
 import React from "react";
 import { BYPItem } from "../../../models/BYP/BYP";
-import { useFYPStartedContext } from "./BuildYourPlateContext";
+import { useGameStartedContext } from "../GameContext";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
 
 const BuildYourPlatePlatePreviewScreen = (props: {getPlateImage: string, getBYPPlateData: BYPItem[], removeFromPlate: (item: BYPItem[]) => void}) => {
-  const { setMobilePreviewScreenFlag, setModal, setModalContent } = useFYPStartedContext();
+  const { setMobilePreviewScreenFlag, setModal, setModalContent } = useGameStartedContext();
 
   return (
     <div className="w-full h-full">

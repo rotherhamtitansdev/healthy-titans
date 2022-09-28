@@ -18,12 +18,12 @@ Object {
             class="pt-5 pb-3"
           >
             <div
-              class="font-quicksand font-semibold text-2xl  text-homepageHeaderText"
+              class="font-semibold text-2xl  text-homepageHeaderText"
             >
               video title
             </div>
             <div
-              class="font-quicksand font-md text-xl  text-homepageHeaderText"
+              class="font-md text-xl  text-homepageHeaderText"
             >
               video description
             </div>
@@ -46,12 +46,12 @@ Object {
           class="pt-5 pb-3"
         >
           <div
-            class="font-quicksand font-semibold text-2xl  text-homepageHeaderText"
+            class="font-semibold text-2xl  text-homepageHeaderText"
           >
             video title
           </div>
           <div
-            class="font-quicksand font-md text-xl  text-homepageHeaderText"
+            class="font-md text-xl  text-homepageHeaderText"
           >
             video description
           </div>
@@ -128,12 +128,12 @@ Object {
             class="mx-auto pt-[3rem] md:pt-[2rem]"
           >
             <h1
-              class="text-titansDarkBlue font-quicksand font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+              class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
             >
               Videos
             </h1>
             <div
-              class="font-quicksand font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+              class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
             >
               Here you can watch a few short videos and hear from the Titans as you continue to learn and get to know even more about how to be strong and healthy.
             </div>
@@ -147,12 +147,12 @@ Object {
           class="md:px-5"
         >
           <div
-            class="font-semibold font-quicksand text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+            class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
           >
             Watch and learn with these short videos
           </div>
           <div
-            class="font-medium font-quicksand text-[#243A73] md:text-xl lg:text-xl md:pb-5"
+            class="font-medium text-[#243A73] md:text-xl lg:text-xl md:pb-5"
           >
             Click on whichever video you'd like to watch to learn more and hear from some Titans!
           </div>
@@ -180,12 +180,12 @@ Object {
           class="mx-auto pt-[3rem] md:pt-[2rem]"
         >
           <h1
-            class="text-titansDarkBlue font-quicksand font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+            class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
           >
             Videos
           </h1>
           <div
-            class="font-quicksand font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
           >
             Here you can watch a few short videos and hear from the Titans as you continue to learn and get to know even more about how to be strong and healthy.
           </div>
@@ -199,12 +199,12 @@ Object {
         class="md:px-5"
       >
         <div
-          class="font-semibold font-quicksand text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+          class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
         >
           Watch and learn with these short videos
         </div>
         <div
-          class="font-medium font-quicksand text-[#243A73] md:text-xl lg:text-xl md:pb-5"
+          class="font-medium text-[#243A73] md:text-xl lg:text-xl md:pb-5"
         >
           Click on whichever video you'd like to watch to learn more and hear from some Titans!
         </div>

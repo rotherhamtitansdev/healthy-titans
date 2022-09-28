@@ -57,7 +57,7 @@ const MenuCard = (props: MenuCardProps) => {
         <div className="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8">
           {getImage || <ClipLoader size={100} color="#DC476D" className="" />}
         </div>
-        <div className="md:text-xl text-homepageHeaderText font-semibold font-quicksand text-center mt-auto">
+        <div className="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto">
           {props.name}
         </div>
       </div>
