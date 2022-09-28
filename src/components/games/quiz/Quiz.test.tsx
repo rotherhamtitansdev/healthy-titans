@@ -9,6 +9,7 @@ import { MemoryRouter, Route } from "react-router";
 import QuizData from "../../../data/QuizData";
 import RoutingTestWrapper from "../../../tests/RoutingTestWrapper";
 import App from "../../App";
+import GameContext from "../GameContext";
 import Quiz from "./Quiz";
 
 afterEach(() => {
@@ -29,7 +30,7 @@ function skipWait() {
   });
 }
 
-describe("Nutrition quiz", () => {
+describe("Quiz", () => {
   test("navigate to quiz", () => {
     // Define width so carousel on homepage loads
     Object.defineProperties(window.HTMLElement.prototype, {
@@ -52,25 +53,32 @@ describe("Nutrition quiz", () => {
     expect(quiz).toBeInTheDocument();
     fireEvent.click(quiz);
 
-    const nutritionQuiz = screen.getByTestId("Nutrition");
-    expect(nutritionQuiz).toBeInTheDocument();
-    fireEvent.click(nutritionQuiz);
+    const begin = screen.getByTestId("game-begin");
+    expect(begin).toBeInTheDocument();
   });
 
   describe("Quiz functionality", () => {
     beforeEach(() => {
       jest.useFakeTimers();
-      const nutritionQuizRoute = "/Games/Quiz/Nutrition";
+      const quizRoute = "/Games/Quiz";
 
       render(
-        <RoutingTestWrapper path={nutritionQuizRoute}>
-          <Route path="/Games/Quiz/:quizName" element={<Quiz />} />
+        <RoutingTestWrapper path={quizRoute}>
+          <Route
+            path="/Games/Quiz"
+            element={(
+              <GameContext>
+                <Quiz />
+              </GameContext>
+            )}
+          />
         </RoutingTestWrapper>,
       );
+      fireEvent.click(screen.getByTestId("game-begin"));
     });
 
     test("First question renders", () => {
-      expect(screen.getByText(QuizData.Nutrition.questions[0].question)).toBeInTheDocument();
+      expect(screen.getByText(QuizData.questions[0].question)).toBeInTheDocument();
     });
 
     test("should alert whether answer was correct", () => {

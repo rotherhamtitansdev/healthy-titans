@@ -1,8 +1,8 @@
 import React from "react";
-import { useFYPStartedContext } from "./BuildYourPlateContext";
+import { useGameStartedContext } from "../GameContext";
 
 const BuildYourPlateModalScreen = () => {
-  const { getModal, getModalContent } = useFYPStartedContext();
+  const { getModal, getModalContent } = useGameStartedContext();
 
   return (
     <div>

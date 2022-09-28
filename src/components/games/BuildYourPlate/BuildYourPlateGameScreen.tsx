@@ -6,7 +6,7 @@ import TableHeaderImagesLinks, {
   PlateItemPositions,
 } from "../../../data/BYPData/BYPData";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
-import { useFYPStartedContext } from "./BuildYourPlateContext";
+import { useGameStartedContext } from "../GameContext";
 import BuildYourPlateModalScreen from "./BuildYourPlateModalScreen";
 import useWindowDimensions from "../../../functions/ScreenWidth";
 import BuildYourPlatePlatePreviewScreen from "./BuildYourPlatePlatePreviewScreen";
@@ -24,7 +24,7 @@ const newBYPTableData:BYPTableRowFamily[] = [
 
 const BuildYourPlateGameScreen = () => {
 
-  const { setModalContent , getModal, setModal, getMobilePreviewScreenFlag,setMobilePreviewScreenFlag } = useFYPStartedContext();
+  const { setModalContent , getModal, setModal, getMobilePreviewScreenFlag,setMobilePreviewScreenFlag } = useGameStartedContext();
   const [getBYPTableData, setBYPTableData] = useState<BYPTableRowFamily[]>(newBYPTableData);
   const [getBYPPlateData, setBYPPlateData] = useState<BYPItem[]>([])
   const [getTableDataVisibility, setTableDataVisibility] = useState<boolean[]>(Array(7).fill(false));
