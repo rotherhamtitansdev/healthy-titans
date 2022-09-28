@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import QuizData from "../../../data/QuizData";
 import { AnswerProps } from "../../../models/Quiz/AnswerProps";
 import { QuestionProps } from "../../../models/Quiz/QuestionProps";
+import Card from "../../shared/Card";
 import { useGameStartedContext } from "../GameContext";
 import QuestionCard from "./QuestionCard";
 import QuizFinish from "./QuizFinish";
@@ -11,17 +12,17 @@ const QuizGameScreen = () => {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<AnswerProps | undefined>();
-  const getQuizData = QuizData;
+  const quizData = QuizData;
 
-  let currentQuestion: QuestionProps | undefined = getQuizData.questions[questionNumber];
+  let currentQuestion: QuestionProps | undefined = quizData.questions[questionNumber];
 
   useEffect(() => {
-    currentQuestion = getQuizData?.questions[questionNumber];
+    currentQuestion = quizData?.questions[questionNumber];
     setSelectedAnswer(undefined);
   }, [questionNumber]);
 
   const nextQuestion = () => {
-    if (getQuizData && questionNumber < getQuizData.questions.length - 1) {
+    if (quizData && questionNumber < quizData.questions.length - 1) {
       setQuestionNumber(questionNumber + 1);
     } else {
       setQuizFinished(true);
@@ -42,15 +43,27 @@ const QuizGameScreen = () => {
 
   return (
     (currentQuestion && !quizFinished) ? (
-      <div className="pl-4 pr-4 mt-4">
-        <QuestionCard question={currentQuestion} onAnswerClick={selectAnswer} />
-        {selectedAnswer ? (
-          <div className="bg-white p-10 mt-10 rounded-3xl font-bold text-6xl">
-            {selectedAnswer.isCorrect ? "Well done!" : "Better luck next time!"}
+      <Card card={{ name: quizData.name, additionalStyling: "h-[40rem] w-full" }}>
+        <div className="font-bold flex flex-row py-5 px-10">
+          <div className="text-2xl">{quizData.name}</div>
+          <div className="ml-auto">
+            {questionNumber + 1}
+            {" "}
+            out of
+            {" "}
+            {quizData.questions.length}
           </div>
-        ) : null}
-      </div>
-    ) : <QuizFinish totalQuestions={getQuizData.questions.length} />
+        </div>
+        <div className="px-10 text-xl font-semibold text-homepageHeaderText">
+          <QuestionCard question={currentQuestion} onAnswerClick={selectAnswer} />
+          {selectedAnswer ? (
+            <Card card={{ name: "Answer feedback", additionalStyling: "bg-mobileNavbarBackgroundColor p-6 w-2/3 mx-auto" }}>
+              {selectedAnswer.isCorrect ? "Well done, you got the right answer!" : "Better luck next time!"}
+            </Card>
+          ) : null}
+        </div>
+      </Card>
+    ) : <QuizFinish totalQuestions={quizData.questions.length} />
   );
 };
 

@@ -83,7 +83,7 @@ describe("Quiz", () => {
 
     test("should alert whether answer was correct", () => {
       clickCorrectAnswer();
-      expect(screen.getByText("Well done!")).toBeInTheDocument();
+      expect(screen.getByText("Well done, you got the right answer!")).toBeInTheDocument();
       skipWait();
 
       clickIncorrectAnswer();

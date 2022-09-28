@@ -1,34 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { AnswerProps } from "../../../models/Quiz/AnswerProps";
+import Card from "../../shared/Card";
 /*
  * This component represents a details card
  * */
 const AnswerCard = (props: { answer: AnswerProps, onClick: (answer: AnswerProps) => void }) => {
-  const [backgroundColour, setBackgroundColour] = useState("bg-white");
+  const [backgroundColour, setBackgroundColour] = useState("bg-mobileNavbarBackgroundColor");
 
   useEffect(() => {
-    setBackgroundColour("bg-white");
+    setBackgroundColour("bg-mobileNavbarBackgroundColor");
   }, [props.answer]);
 
   const selectAnswer = () => {
     if (props.answer.isCorrect) {
-      setBackgroundColour("bg-green-600");
+      setBackgroundColour("bg-[#8DED8E]");
     } else {
-      setBackgroundColour("bg-red-600");
+      setBackgroundColour("bg-[#FA5555]");
     }
     props.onClick(props.answer);
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div
-      onClick={selectAnswer}
-      role="button"
-      tabIndex={0}
-      className={`${backgroundColour} text-6xl rounded-3xl p-3`}
-    >
+    <Card card={{ name: props.answer.answer, additionalStyling: `${backgroundColour} p-8`, onClick: selectAnswer }}>
       {props.answer.answer}
-    </div>
+    </Card>
   );
 };
 
