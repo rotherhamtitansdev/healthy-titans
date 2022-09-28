@@ -1,6 +1,7 @@
 import {
-  cleanup, fireEvent, render, screen,
+  cleanup, render, screen,
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Route } from "react-router";
 import { Video } from "../../models/Video";
@@ -48,7 +49,8 @@ describe("Videos page: Render", () => {
     );
     expect(snapshot).toMatchSnapshot();
   });
-  it("should unhide video player when video clicked", () => {
+  it("should unhide video player when video clicked", async () => {
+    const user = userEvent.setup();
     const setHiddenMock = jest.fn();
     render(
       <VideoCard
@@ -60,7 +62,7 @@ describe("Videos page: Render", () => {
 
     const video = screen.getByTestId(VideoProps.title);
     expect(video).toBeInTheDocument();
-    fireEvent.click(video);
+    await user.click(video);
 
     expect(setHiddenMock).toHaveBeenCalledWith(false);
   });
