@@ -3,6 +3,7 @@ import React, {
 } from "react";
 import { DragDropContainer, DropTarget } from "react-drag-drop-container-typescript";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import FirebaseAPI from "../api/FirebaseAPI";
 
 interface DropContainerModel {
   name: string
@@ -54,7 +55,8 @@ const DND = () => {
 
   return (
     <div>
-
+      <button className="w-20 h-20 bg-titansBrightPink" type="submit" onClick={() => { FirebaseAPI.addFoodDetailsComponentsData(); }}>upload</button>
+      <button className="w-20 h-20 bg-titansBrightPink" type="submit" onClick={() => { FirebaseAPI.fetchFoodDetailsSingle("Apples"); }}>fetch</button>
       <img src={getImageURL} alt="AND LOGO" />
 
       {calculateIngredientsComponents()}
