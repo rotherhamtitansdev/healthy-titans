@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {
+  createContext, useContext, useEffect, useState,
+} from "react";
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 
@@ -46,6 +48,11 @@ const GameStartedContextWrapper = ({ children }: any) => {
     title: "", text: "", buttonText: "", buttonFunc: () => { },
   });
   const [getMobilePreviewScreenFlag, setMobilePreviewScreenFlag] = useState<boolean>(false);
+
+  useEffect(() => {
+    setScore(0);
+    setModal(false);
+  }, [getIsGameStarted]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values

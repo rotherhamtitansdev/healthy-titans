@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import {
   cleanup,
-  fireEvent, render, screen, within,
+  fireEvent, render, screen,
 } from "@testing-library/react";
 import React from "react";
 import { MemoryRouter, Route } from "react-router";
@@ -99,9 +99,8 @@ describe("Quiz", () => {
       clickCorrectAnswer();
       clickNext();
 
-      const quizEnd = within(screen.getByTestId("quiz-end"));
-
-      quizEnd.getByText((_content, node) => !!node?.textContent?.includes("you scored2out of4"));
+      const quizScore = screen.getByTestId("quiz-score");
+      expect(quizScore).toHaveTextContent("Score: 2 out of 4");
     });
 
     test("user can't select multiple answers", () => {

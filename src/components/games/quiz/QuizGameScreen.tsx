@@ -9,6 +9,7 @@ import QuizFinish from "./QuizFinish";
 
 const QuizGameScreen = () => {
   const { getScore, setScore } = useGameStartedContext();
+  const { setModal } = useGameStartedContext();
   const [questionNumber, setQuestionNumber] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState<AnswerProps | undefined>();
@@ -26,6 +27,7 @@ const QuizGameScreen = () => {
       setQuestionNumber(questionNumber + 1);
     } else {
       setQuizFinished(true);
+      setModal(true);
     }
   };
 
@@ -37,7 +39,11 @@ const QuizGameScreen = () => {
   };
 
   return (
-    (currentQuestion && !quizFinished) ? (
+    <>
+      {quizFinished
+        && (
+          <QuizFinish totalQuestions={quizData.questions.length} />
+        )}
       <Card card={{ name: quizData.name, additionalStyling: "h-[40rem] w-full" }}>
         <div className="font-bold flex flex-row py-5 px-10">
           <div className="text-2xl">{quizData.name}</div>
@@ -68,7 +74,7 @@ const QuizGameScreen = () => {
           ) : null}
         </div>
       </Card>
-    ) : <QuizFinish totalQuestions={quizData.questions.length} />
+    </>
   );
 };
 
