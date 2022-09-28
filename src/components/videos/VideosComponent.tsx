@@ -28,7 +28,7 @@ const VideosComponent = () => {
     tablet: {
       breakpoint: { max: 1200, min: 600 },
       items: 1,
-      partialVisibilityGutter: 100,
+      partialVisibilityGutter: 120,
     },
     mobile: {
       breakpoint: { max: 600, min: 464 },

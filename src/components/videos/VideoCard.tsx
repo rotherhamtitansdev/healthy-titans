@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import FirebaseAPI from "../../api/FirebaseAPI";
 import "../../App.css";
 import { DrilledVideoProps, Video } from "../../models/Video";
@@ -11,7 +11,7 @@ const VideoCard = (props: {
 }) => {
   const [getVideoURL, setVideoURL] = useState<string | undefined>();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (props.video.firebaseName !== undefined) {
       FirebaseAPI.fetchImages(props.video.firebaseName).then((URI) => setVideoURL(URI));
     }

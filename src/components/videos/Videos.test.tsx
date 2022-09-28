@@ -1,4 +1,12 @@
-import { cleanup } from "@testing-library/react";
+import {
+  cleanup, fireEvent, render, screen,
+} from "@testing-library/react";
+import React from "react";
+import { Route } from "react-router";
+import { Video } from "../../models/Video";
+import RoutingTestWrapper from "../../tests/RoutingTestWrapper";
+import VideoCard from "./VideoCard";
+import VideosComponent from "./VideosComponent";
 
 afterEach(() => {
   cleanup();
@@ -7,38 +15,53 @@ afterEach(() => {
 test("navigate to videos page", () => {
   const videosRoute = "/Videos";
 
-  // const snapshot = render(
-  //   <RoutingTestWrapper path={videosRoute}>
-  //     <Route path="/Videos" element={<VideosComponent />} />
-  //   </RoutingTestWrapper>,
-  // );
+  const snapshot = render(
+    <RoutingTestWrapper path={videosRoute}>
+      <Route path="/Videos" element={<VideosComponent />} />
+    </RoutingTestWrapper>,
+  );
 
-  // expect(snapshot).toMatchSnapshot();
+  expect(snapshot).toMatchSnapshot();
 });
 
-// describe("Videos page: Render", () => {
-//   jest.mock("react", () => ({
-//     ...jest.requireActual("react"),
-//     useState: jest.fn(),
-//   }));
-//
-// const VideoProps: Video = {
-//   url: "video url",
-//   user: {
-//     name: "user name",
-//     position: "user position",
-//   },
-//   dateUploaded: new Date(2022, 7, 1, 9).toLocaleString(),
-//   description: "video description",
-// };
+describe("Videos page: Render", () => {
+  jest.mock("react", () => ({
+    ...jest.requireActual("react"),
+    useState: jest.fn(),
+  }));
 
-// it("should render the video component", () => {
-//   const snapshot = render(
-//     <VideoCard
-//       Actions={{ setHidden: jest.fn(), setModalClickedVideoData: jest.fn() }}
-//       Video={VideoProps}
-//     />,
-//   );
-//   expect(snapshot).toMatchSnapshot();
-// });
-// });
+  jest.spyOn(React, "useEffect").mockImplementation((f) => f());
+
+  const VideoProps: Video = {
+    firebaseName: "firebase url",
+    title: "video title",
+    description: "video description",
+  };
+
+  it("should render the video component", () => {
+    const snapshot = render(
+      <VideoCard
+        Actions={{ setHidden: jest.fn(), setModalClickedVideoData: jest.fn() }}
+        video={VideoProps}
+        disableOnClick={false}
+      />,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
+  it("should unhide video player when video clicked", () => {
+    const setHiddenMock = jest.fn();
+    render(
+      <VideoCard
+        Actions={{ setHidden: setHiddenMock, setModalClickedVideoData: jest.fn() }}
+        video={VideoProps}
+        disableOnClick={false}
+      />,
+    );
+
+    const video = screen.getByTestId(VideoProps.title);
+    expect(video).toBeInTheDocument();
+    fireEvent.click(video);
+
+    expect(setHiddenMock).toHaveBeenCalledWith(false);
+  });
+});
