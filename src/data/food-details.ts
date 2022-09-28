@@ -112,6 +112,14 @@ const FoodDetailsComponentData = {
     category: "Fruit",
     score: 7,
   },
+  Tomato: {
+    name: "Tomato",
+    description:
+      "Tomato Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    firebaseName: "FoodCategories/Fruits/Food/Tomato.svg",
+    category: "Veg",
+    score: 8,
+  },
   BellPeppers: {
     name: "Bell Peppers",
     description:
@@ -131,57 +139,105 @@ const FoodDetailsComponentData = {
   Carrot: {
     name: "Carrots",
     description:
-      "Carrots Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      '"Carrots help you see in the dark." \n Fun fact: VITAMIN A is important our vision and can help us see in dim light conditions.',
     firebaseName: "FoodCategories/Vegetables/Food/Carrot.svg",
     category: "Veg",
+    facts: [
+      "Rich source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle.  Vitamin A also plays a role in having healthy skin and seeing in dim light conditions.",
+      "Contains FIBRE which is key for our digestive system and health.",
+    ],
     score: 7,
   },
   Cauliflower: {
     name: "Cauliflower",
-    description:
-      "Cauliflower Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "Cauliflower is related to Kale so is also super-healthy.",
     firebaseName: "FoodCategories/Vegetables/Food/Cauliflower.svg",
     category: "Veg",
+    facts: [
+      "Rich source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
+      "Contains FIBRE which is key for our digestive system and health.",
+      "Source of vitamin B9 which plays a role in brain function, DNA production and red blood cells production.",
+      "Source of MAGNESIUM which helps maintain blood pressure.",
+      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes.",
+      "Source of POTASSIUM which plays a role in hydration, heart health and bone health.",
+      "Source of VITAMIN B6 which is important for brain development and function plus keeping the immune system healthy.",
+      "Good source of VITAMIN K which is important in blood clotting and bone formation.",
+    ],
     score: 9,
   },
   Mushrooms: {
     name: "Mushrooms",
     description:
-      "Mushrooms Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Portobello, Button and White (Cremini) mushrooms are all the same - its just the different ages of them that makes them differ.",
     firebaseName: "FoodCategories/Vegetables/Food/Mushroom.svg",
     category: "Veg",
+    facts: [
+      "Source of some of the B- complex vitamins which help the body convert food into fuel. Vitamin B2, B3 & B5.",
+      "VITAMIN B2 works as an ANTIOXIDANT.",
+      "VITAMIN B5 contributes to the production of red blood cells and hormones.",
+      "Rich in antioxidants which help protect the body from damaging free radicals.",
+      "Source of POTASSIUM which plays a role in hydration, heart health and bone health.",
+      "Contains FIBRE which is key for our digestive system and health.",
+      "Source of COPPER which helps our body make red blood cells which transport oxygen round the body.",
+    ],
     score: 7,
   },
   Peas: {
     name: "Peas",
-    description:
-      "Peas Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "Peas were first frozen in the 1920s to keep them fresh.",
     firebaseName: "FoodCategories/Vegetables/Food/Peas.svg",
     category: "Veg",
+    facts: [
+      "Peas are great for growing minds by aiding the development of brain cells and improving memory.",
+      "Source of VITAMIN K which is important in blood clotting and bone formation.",
+      "Source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and sight.",
+      "Source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
+    ],
     score: 8,
   },
   Potato: {
     name: "Potato",
     description:
-      "Potato Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "The word 'potato' comes from the Spanish word 'patata' and there are thousands of different types available.",
     firebaseName: "FoodCategories/Vegetables/Food/Potato.svg",
     category: "Veg",
+    facts: [
+      "Contains FIBRE which is key for our digestive system and health.",
+      "Source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
+      "Moderate amount of CARBOHYDRATE which gives us energy.",
+    ],
     score: 7,
-  },
-  Tomato: {
-    name: "Tomato",
-    description:
-      "Tomato Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    firebaseName: "FoodCategories/Fruits/Food/Tomato.svg",
-    category: "Veg",
-    score: 8,
   },
   Spinach: {
     name: "Spinach",
     description:
-      "Spinach Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Spinach is arty! During medieval times the green pigment extracted from Spinach was used as ink in artwork.",
     firebaseName: "FoodCategories/Vegetables/Food/Spinach.svg",
     category: "Veg",
+    fact: [
+      "Great source of IRON helps make our red blood cells which carry oxygen round our body.",
+      "Source of vitamin B9 which is important for brain function.",
+      "Contains FIBRE which is key for our digestive system and health.",
+      "Source of POTASSIUM which plays a role in hydration, heart health and bone health.",
+      "Source of MAGNESIUM which helps maintain blood pressure.",
+    ],
+    score: 8,
+  },
+  Sweetcorn: {
+    name: "Sweetcorn",
+    description:
+      "Corn was first grown by Native Americans more than 7,000 years ago in Central America and is grown on every continent except Antarctica.",
+    firebaseName: "FoodCategories/Vegetables/Food/Sweetcorn.svg",
+    category: "Veg",
+    facts: [
+      "Source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B3,B5, B6 & B9.",
+      "VITAMIN B5 contributes to the production of red blood cells and hormones.",
+      "VITAMIN B6 plays a role in brain development and function plus making hormones.",
+      "VITAMIN B9 is important for brain function.",
+      "Source of POTASSIUM which plays a role in hydration, heart health and bone health.",
+      "Source of PROTEIN and CARBOHYDRATE.",
+      "Source of FIBRE which is key for our digestive system and health.",
+    ],
     score: 8,
   },
   Butter: {
