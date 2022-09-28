@@ -7,7 +7,8 @@ import AnswerCard from "./AnswerCard";
 /*
  * This component represents a details card
  * */
-const QuestionCard = (props: { question: QuestionProps, onAnswerClick: (answer: AnswerProps) => void }) => (
+// eslint-disable-next-line react/require-default-props
+const QuestionCard = (props: { question: QuestionProps, onAnswerClick?: (answer: AnswerProps) => void }) => (
   <div className="grid grid-row-2 gap-5 ">
     <Card card={{ name: props.question.question, additionalStyling: "bg-mobileNavbarBackgroundColor p-6" }}>
       {props.question.question}

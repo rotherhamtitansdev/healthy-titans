@@ -103,5 +103,13 @@ describe("Quiz", () => {
 
       quizEnd.getByText((_content, node) => !!node?.textContent?.includes("you scored2out of4"));
     });
+
+    test("user can't select multiple answers", () => {
+      clickIncorrectAnswer();
+      expect(screen.getByText("Better luck next time!")).toBeInTheDocument();
+
+      clickCorrectAnswer();
+      expect(screen.getByText("Better luck next time!")).toBeInTheDocument();
+    });
   });
 });

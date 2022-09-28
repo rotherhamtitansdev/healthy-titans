@@ -50,19 +50,19 @@ const QuizGameScreen = () => {
           </div>
         </div>
         <div className="px-10 text-xl font-semibold text-homepageHeaderText">
-          <QuestionCard question={currentQuestion} onAnswerClick={selectAnswer} />
+          <QuestionCard question={currentQuestion} onAnswerClick={!selectedAnswer ? selectAnswer : undefined} />
           {selectedAnswer ? (
-            <div className="flex flex-col items-center">
+            <div className="pt-8 flex flex-col items-center gap-10">
               <Card card={{ name: "Answer feedback", additionalStyling: "bg-mobileNavbarBackgroundColor p-6 w-2/3 mx-auto" }}>
                 {selectedAnswer.isCorrect ? "Well done, you got the right answer!" : "Better luck next time!"}
               </Card>
               <button
-                className="font-bold bg-titansBrightPink text-white py-2 px-8 rounded-full"
+                className=" bg-titansBrightPink text-white text-xs font-bold py-4 px-20 rounded-full"
                 type="button"
                 onClick={nextQuestion}
                 data-testid="next-button"
               >
-                Next
+                NEXT
               </button>
             </div>
           ) : null}

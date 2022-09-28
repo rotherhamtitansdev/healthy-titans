@@ -4,7 +4,8 @@ import Card from "../../shared/Card";
 /*
  * This component represents a details card
  * */
-const AnswerCard = (props: { answer: AnswerProps, onClick: (answer: AnswerProps) => void }) => {
+// eslint-disable-next-line react/require-default-props
+const AnswerCard = (props: { answer: AnswerProps, onClick?: (answer: AnswerProps) => void }) => {
   const [backgroundColour, setBackgroundColour] = useState("bg-mobileNavbarBackgroundColor");
 
   useEffect(() => {
@@ -12,12 +13,14 @@ const AnswerCard = (props: { answer: AnswerProps, onClick: (answer: AnswerProps)
   }, [props.answer]);
 
   const selectAnswer = () => {
-    if (props.answer.isCorrect) {
-      setBackgroundColour("bg-[#8DED8E]");
-    } else {
-      setBackgroundColour("bg-[#FA5555]");
+    if (props.onClick) {
+      if (props.answer.isCorrect) {
+        setBackgroundColour("bg-[#8DED8E]");
+      } else {
+        setBackgroundColour("bg-[#FA5555]");
+      }
+      props.onClick(props.answer);
     }
-    props.onClick(props.answer);
   };
 
   return (
