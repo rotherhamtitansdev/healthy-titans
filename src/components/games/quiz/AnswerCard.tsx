@@ -3,10 +3,7 @@ import { AnswerProps } from "../../../models/Quiz/AnswerProps";
 import Card from "../../shared/Card";
 import { useGameStartedContext } from "../GameContext";
 import { useQuizContext } from "./QuizContext";
-/*
- * This component represents a details card
- * */
-// eslint-disable-next-line react/require-default-props
+
 const AnswerCard = (props: { answer: AnswerProps }) => {
   const { getScore, setScore } = useGameStartedContext();
   const { selectedAnswer, setSelectedAnswer } = useQuizContext();
@@ -14,16 +11,22 @@ const AnswerCard = (props: { answer: AnswerProps }) => {
 
   useEffect(() => {
     setBackgroundColour("bg-mobileNavbarBackgroundColor");
-  }, [props.answer]);
+    if (selectedAnswer === props.answer) {
+      if (props.answer.isCorrect) {
+        setBackgroundColour("bg-[#8DED8E]");
+      } else {
+        setBackgroundColour("bg-[#FA5555]");
+      }
+    } else if (selectedAnswer && !selectedAnswer?.isCorrect && props.answer.isCorrect) {
+      setBackgroundColour("bg-[#8DED8E]");
+    }
+  }, [selectedAnswer]);
 
   const selectAnswer = () => {
     if (!selectedAnswer) {
       setSelectedAnswer(props.answer);
       if (props.answer.isCorrect) {
-        setBackgroundColour("bg-[#8DED8E]");
         setScore(getScore + 1);
-      } else {
-        setBackgroundColour("bg-[#FA5555]");
       }
     }
   };
