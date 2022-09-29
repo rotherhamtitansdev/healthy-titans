@@ -48,9 +48,9 @@ const QuizGameScreen = () => {
       {
         currentQuestion
         && (
-          <Card card={{ name: quizData.name, additionalStyling: "h-[40rem] w-full" }}>
-            <div className="font-bold flex flex-row py-5 px-10">
-              <div className="text-2xl">{quizData.name}</div>
+          <Card card={{ name: quizData.name, additionalStyling: "h-[30rem] lg:h-[40rem] w-full mb-10" }}>
+            <div className="font-bold flex flex-row pt-5 pb-8 px-10">
+              <div className="text-lg lg:text-2xl">{quizData.name}</div>
               <div className="ml-auto">
                 {questionNumber + 1}
                 {" "}
@@ -59,12 +59,12 @@ const QuizGameScreen = () => {
                 {quizData.questions.length}
               </div>
             </div>
-            <div className="px-10 text-xl font-semibold text-homepageHeaderText">
-              <div className="grid grid-row-2 gap-5 ">
-                <Card card={{ name: currentQuestion.question, additionalStyling: "bg-mobileNavbarBackgroundColor p-6" }}>
+            <div className="px-8 lg:px-10 lg:text-xl font-semibold text-homepageHeaderText">
+              <div className="grid grid-row-2 gap-3 lg:gap-5">
+                <Card card={{ name: currentQuestion.question, additionalStyling: "bg-mobileNavbarBackgroundColor p-4 lg:p-6" }}>
                   {currentQuestion.question}
                 </Card>
-                <div className="grid grid-cols-2 gap-8 p-5">
+                <div className="grid grid-cols-2 gap-4 lg:gap-8 p-2 lg:p-5">
                   {
                     currentQuestion.answers.map((answer, index) => (
                       <AnswerCard

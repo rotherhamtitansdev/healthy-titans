@@ -17,7 +17,7 @@ const BuildYourPlate = () => {
       </AppHeader>
       <div className="mx-7 xs:mx-8 sm:mx-12 md:mx-14">
         <MenuTitle title="Build your plate" />
-        {getIsGameStarted ? <BuildYourPlateGameScreen /> : <GameStartScreen name="Build your plate" background="bg-byp_background bg-contain md:bg-[center_bottom_3rem]" />}
+        {getIsGameStarted ? <BuildYourPlateGameScreen /> : <GameStartScreen name="Build your plate" background="bg-byp_background md:bg-[center_bottom_3rem]" />}
       </div>
     </>
   );

@@ -19,7 +19,7 @@ const Quiz = () => {
         <MenuTitle title="Quiz" />
         {getIsGameStarted
           ? <QuizGameScreen />
-          : <GameStartScreen name="Quiz" background="bg-quiz_background md:bg-[center_bottom_7rem]" />}
+          : <GameStartScreen name="Quiz" background="bg-quiz_background md:bg-auto md:bg-[center_bottom_7rem]" />}
       </div>
     </>
   );
