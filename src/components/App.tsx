@@ -12,6 +12,7 @@ import BuildYourPlate from "./games/BuildYourPlate/BuildYourPlate";
 import GameContext from "./games/GameContext";
 import Games from "./games/GamesMenu";
 import Quiz from "./games/quiz/Quiz";
+import QuizContext from "./games/quiz/QuizContext";
 import HomePageComponents from "./HomePageComponents";
 import FoodCategory from "./nutritional_Information/food/FoodMenu";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
@@ -64,7 +65,7 @@ const App: React.FC = () => (
       <Route path="Games">
         <Route index element={<Games />} />
         <Route path="Quiz">
-          <Route index element={<GameContext><Quiz /></GameContext>} />
+          <Route index element={<GameContext><QuizContext><Quiz /></QuizContext></GameContext>} />
         </Route>
         <Route path="BuildYourPlate">
           <Route index element={<GameContext><BuildYourPlate /></GameContext>} />

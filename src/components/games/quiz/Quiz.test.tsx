@@ -10,6 +10,7 @@ import RoutingTestWrapper from "../../../tests/RoutingTestWrapper";
 import App from "../../App";
 import GameContext from "../GameContext";
 import Quiz from "./Quiz";
+import QuizContext from "./QuizContext";
 
 afterEach(() => {
   cleanup();
@@ -64,7 +65,9 @@ describe("Quiz", () => {
             path="/Games/Quiz"
             element={(
               <GameContext>
-                <Quiz />
+                <QuizContext>
+                  <Quiz />
+                </QuizContext>
               </GameContext>
             )}
           />

@@ -1,26 +1,36 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { createContext, useContext, useState } from "react";
-import Quiz from "./Quiz";
+import { AnswerProps } from "../../../models/Quiz/AnswerProps";
+import { QuestionProps } from "../../../models/Quiz/QuestionProps";
 
-/* eslint-disable */
-
-export type IsQuizStartedContext = {
-  getIsQuizStarted: boolean
-  setIsQuizStarted: (c: boolean) => void
+export type QuizContextType = {
+  currentQuestion: QuestionProps | undefined
+  setCurrentQuestion: (c: QuestionProps | undefined) => void
+  selectedAnswer: AnswerProps | undefined
+  setSelectedAnswer: (c: AnswerProps | undefined) => void
 }
-export const QuizStartedContext = createContext<IsQuizStartedContext>({
-  getIsQuizStarted: false,
-  setIsQuizStarted: () => { },
+
+export const QuizContext = createContext<QuizContextType>({
+  currentQuestion: undefined,
+  setCurrentQuestion: () => { },
+  selectedAnswer: undefined,
+  setSelectedAnswer: () => { },
 });
 
-export const useQuizStartedContext = () => useContext(QuizStartedContext);
+export const useQuizContext = () => useContext(QuizContext);
 
 const QuizStartedContextWrapper = ({ children }: any) => {
-  const [getIsQuizStarted, setIsQuizStarted] = useState<boolean>(false);
+  const [currentQuestion, setCurrentQuestion] = useState<QuestionProps>();
+  const [selectedAnswer, setSelectedAnswer] = useState<AnswerProps>();
 
   return (
-    <QuizStartedContext.Provider value={{ getIsQuizStarted, setIsQuizStarted }}>
-      <Quiz />
-    </QuizStartedContext.Provider>
+    <QuizContext.Provider value={{
+      currentQuestion, setCurrentQuestion, selectedAnswer, setSelectedAnswer,
+    }}
+    >
+      {children}
+    </QuizContext.Provider>
   );
 };
 
