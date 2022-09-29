@@ -7,18 +7,20 @@ import { useQuizContext } from "./QuizContext";
 const AnswerCard = (props: { answer: AnswerProps }) => {
   const { getScore, setScore } = useGameStartedContext();
   const { selectedAnswer, setSelectedAnswer } = useQuizContext();
-  const [backgroundColour, setBackgroundColour] = useState("bg-mobileNavbarBackgroundColor");
+  const [background, setBackground] = useState("bg-mobileNavbarBackgroundColor");
+
+  const isSelectedAnswer = () => selectedAnswer === props.answer;
 
   useEffect(() => {
-    setBackgroundColour("bg-mobileNavbarBackgroundColor");
-    if (selectedAnswer === props.answer) {
+    setBackground("bg-mobileNavbarBackgroundColor");
+    if (isSelectedAnswer()) {
       if (props.answer.isCorrect) {
-        setBackgroundColour("bg-[#8DED8E]");
+        setBackground("bg-[#8DED8E] bg-quiz_correct_answer");
       } else {
-        setBackgroundColour("bg-[#FA5555]");
+        setBackground("bg-[#FA5555] bg-quiz_incorrect_answer");
       }
     } else if (selectedAnswer && !selectedAnswer?.isCorrect && props.answer.isCorrect) {
-      setBackgroundColour("bg-[#8DED8E]");
+      setBackground("bg-[#8DED8E] bg-quiz_tick");
     }
   }, [selectedAnswer]);
 
@@ -32,7 +34,7 @@ const AnswerCard = (props: { answer: AnswerProps }) => {
   };
 
   return (
-    <Card card={{ name: props.answer.answer, additionalStyling: `${backgroundColour} p-8`, onClick: selectAnswer }}>
+    <Card card={{ name: props.answer.answer, additionalStyling: `${background} bg-no-repeat bg-[center_right_1rem] p-8`, onClick: selectAnswer }}>
       {props.answer.answer}
     </Card>
   );
