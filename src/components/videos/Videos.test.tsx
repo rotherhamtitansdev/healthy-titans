@@ -1,10 +1,13 @@
-import { cleanup, render } from "@testing-library/react";
-import { Route } from "react-router";
+import {
+  cleanup, render, screen,
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
-import RoutingTestWrapper from "../../tests/RoutingTestWrapper";
-import VideosComponent from "./VideosComponent";
+import { Route } from "react-router";
 import { Video } from "../../models/Video";
+import RoutingTestWrapper from "../../tests/RoutingTestWrapper";
 import VideoCard from "./VideoCard";
+import VideosComponent from "./VideosComponent";
 
 afterEach(() => {
   cleanup();
@@ -28,13 +31,11 @@ describe("Videos page: Render", () => {
     useState: jest.fn(),
   }));
 
+  jest.spyOn(React, "useEffect").mockImplementation((f) => f());
+
   const VideoProps: Video = {
-    url: "video url",
-    user: {
-      name: "user name",
-      position: "user position",
-    },
-    dateUploaded: new Date(2022, 7, 1, 9).toLocaleString(),
+    firebaseName: "firebase url",
+    title: "video title",
     description: "video description",
   };
 
@@ -42,9 +43,27 @@ describe("Videos page: Render", () => {
     const snapshot = render(
       <VideoCard
         Actions={{ setHidden: jest.fn(), setModalClickedVideoData: jest.fn() }}
-        Video={VideoProps}
+        video={VideoProps}
+        disableOnClick={false}
       />,
     );
     expect(snapshot).toMatchSnapshot();
+  });
+  it("should unhide video player when video clicked", async () => {
+    const user = userEvent.setup();
+    const setHiddenMock = jest.fn();
+    render(
+      <VideoCard
+        Actions={{ setHidden: setHiddenMock, setModalClickedVideoData: jest.fn() }}
+        video={VideoProps}
+        disableOnClick={false}
+      />,
+    );
+
+    const video = screen.getByTestId(VideoProps.title);
+    expect(video).toBeInTheDocument();
+    await user.click(video);
+
+    expect(setHiddenMock).toHaveBeenCalledWith(false);
   });
 });

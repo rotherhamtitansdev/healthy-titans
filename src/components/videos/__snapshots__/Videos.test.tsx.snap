@@ -6,46 +6,24 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-        role="presentation"
+        class="bg-white table align-middle rounded-3xl shadow-lg w-[18rem] xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+        data-testid="video title"
+        role="button"
+        tabindex="0"
       >
         <div
-          class="grid grid-cols-2 gap-2"
+          class="p-5"
         >
-          <div
-            class="pl-5 pt-5 pb-3"
-          >
-            <img
-              alt="video"
-              src="video url"
-            />
-          </div>
           <div
             class="pt-5 pb-3"
           >
-            <div>
-              <strong>
-                Name
-                : 
-              </strong>
-              user name
-            </div>
-            <div>
-              <strong>
-                Position
-                : 
-              </strong>
-              user position
-            </div>
-            <div>
-              <strong>
-                Date Uploaded
-                : 
-              </strong>
-              8/1/2022, 9:00:00 AM
+            <div
+              class="font-quicksand font-semibold text-2xl  text-homepageHeaderText"
+            >
+              video title
             </div>
             <div
-              class="block mt-1 text-md leading-tight text-gray-900"
+              class="font-quicksand font-md text-xl  text-homepageHeaderText"
             >
               video description
             </div>
@@ -56,46 +34,24 @@ Object {
   </body>,
   "container": <div>
     <div
-      class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-      role="presentation"
+      class="bg-white table align-middle rounded-3xl shadow-lg w-[18rem] xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+      data-testid="video title"
+      role="button"
+      tabindex="0"
     >
       <div
-        class="grid grid-cols-2 gap-2"
+        class="p-5"
       >
-        <div
-          class="pl-5 pt-5 pb-3"
-        >
-          <img
-            alt="video"
-            src="video url"
-          />
-        </div>
         <div
           class="pt-5 pb-3"
         >
-          <div>
-            <strong>
-              Name
-              : 
-            </strong>
-            user name
-          </div>
-          <div>
-            <strong>
-              Position
-              : 
-            </strong>
-            user position
-          </div>
-          <div>
-            <strong>
-              Date Uploaded
-              : 
-            </strong>
-            8/1/2022, 9:00:00 AM
+          <div
+            class="font-quicksand font-semibold text-2xl  text-homepageHeaderText"
+          >
+            video title
           </div>
           <div
-            class="block mt-1 text-md leading-tight text-gray-900"
+            class="font-quicksand font-md text-xl  text-homepageHeaderText"
           >
             video description
           </div>
@@ -163,398 +119,104 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="my-6"
+        class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
       >
         <div
-          class="grid gap-4 place-items-center"
+          class="flex flex-wrap h-[22rem]"
         >
           <div
-            class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-            role="presentation"
+            class="mx-auto pt-[3rem] md:pt-[2rem]"
           >
-            <div
-              class="grid grid-cols-2 gap-2"
+            <h1
+              class="text-titansDarkBlue font-quicksand font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
             >
-              <div
-                class="pl-5 pt-5 pb-3"
-              >
-                <img
-                  alt="video"
-                  src="video-placeholder.jpg"
-                />
-              </div>
-              <div
-                class="pt-5 pb-3"
-              >
-                <div>
-                  <strong>
-                    Name
-                    : 
-                  </strong>
-                  Jamie Cooke
-                </div>
-                <div>
-                  <strong>
-                    Position
-                    : 
-                  </strong>
-                  Centre/Wing
-                </div>
-                <div>
-                  <strong>
-                    Date Uploaded
-                    : 
-                  </strong>
-                  28/07/2022, 09:00:00
-                </div>
-                <div
-                  class="block mt-1 text-md leading-tight text-gray-900"
-                >
-                  This is an introduction to the app, how to use it and what we are here to achieve!
-                </div>
-              </div>
+              Videos
+            </h1>
+            <div
+              class="font-quicksand font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            >
+              Here you can watch a few short videos and hear from the Titans as you continue to learn and get to know even more about how to be strong and healthy.
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pl-5 md:py-10 md:pl-10"
+      >
+        <div
+          class="md:px-5"
+        >
+          <div
+            class="font-semibold font-quicksand text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+          >
+            Watch and learn with these short videos
           </div>
           <div
-            class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-            role="presentation"
+            class="font-medium font-quicksand text-[#243A73] md:text-xl lg:text-xl md:pb-5"
           >
-            <div
-              class="grid grid-cols-2 gap-2"
-            >
-              <div
-                class="pl-5 pt-5 pb-3"
-              >
-                <img
-                  alt="video"
-                  src="video-placeholder.jpg"
-                />
-              </div>
-              <div
-                class="pt-5 pb-3"
-              >
-                <div>
-                  <strong>
-                    Name
-                    : 
-                  </strong>
-                  Manny Chopstick
-                </div>
-                <div>
-                  <strong>
-                    Position
-                    : 
-                  </strong>
-                  Centre/Back
-                </div>
-                <div>
-                  <strong>
-                    Date Uploaded
-                    : 
-                  </strong>
-                  03/08/2022, 12:00:00
-                </div>
-                <div
-                  class="block mt-1 text-md leading-tight text-gray-900"
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div>
-              </div>
-            </div>
+            Click on whichever video you'd like to watch to learn more and hear from some Titans!
           </div>
-          <div
-            class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-            role="presentation"
-          >
-            <div
-              class="grid grid-cols-2 gap-2"
-            >
-              <div
-                class="pl-5 pt-5 pb-3"
-              >
-                <img
-                  alt="video"
-                  src="video-placeholder.jpg"
-                />
-              </div>
-              <div
-                class="pt-5 pb-3"
-              >
-                <div>
-                  <strong>
-                    Name
-                    : 
-                  </strong>
-                  Ramona Avalancho
-                </div>
-                <div>
-                  <strong>
-                    Position
-                    : 
-                  </strong>
-                  Goalkeeper
-                </div>
-                <div>
-                  <strong>
-                    Date Uploaded
-                    : 
-                  </strong>
-                  03/08/2022, 12:00:00
-                </div>
-                <div
-                  class="block mt-1 text-md leading-tight text-gray-900"
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-            role="presentation"
-          >
-            <div
-              class="grid grid-cols-2 gap-2"
-            >
-              <div
-                class="pl-5 pt-5 pb-3"
-              >
-                <img
-                  alt="video"
-                  src="video-placeholder.jpg"
-                />
-              </div>
-              <div
-                class="pt-5 pb-3"
-              >
-                <div>
-                  <strong>
-                    Name
-                    : 
-                  </strong>
-                  Phil Foden
-                </div>
-                <div>
-                  <strong>
-                    Position
-                    : 
-                  </strong>
-                  Striker
-                </div>
-                <div>
-                  <strong>
-                    Date Uploaded
-                    : 
-                  </strong>
-                  03/08/2022, 12:00:00
-                </div>
-                <div
-                  class="block mt-1 text-md leading-tight text-gray-900"
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
+        <div
+          class="react-multi-carousel-list  "
+          dir="ltr"
+        >
+          <ul
+            class="react-multi-carousel-track "
+            style="transition: none; overflow: unset; transform: translate3d(0px,0,0);"
+          />
         </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div
-      class="my-6"
+      class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
     >
       <div
-        class="grid gap-4 place-items-center"
+        class="flex flex-wrap h-[22rem]"
       >
         <div
-          class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-          role="presentation"
+          class="mx-auto pt-[3rem] md:pt-[2rem]"
         >
-          <div
-            class="grid grid-cols-2 gap-2"
+          <h1
+            class="text-titansDarkBlue font-quicksand font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
           >
-            <div
-              class="pl-5 pt-5 pb-3"
-            >
-              <img
-                alt="video"
-                src="video-placeholder.jpg"
-              />
-            </div>
-            <div
-              class="pt-5 pb-3"
-            >
-              <div>
-                <strong>
-                  Name
-                  : 
-                </strong>
-                Jamie Cooke
-              </div>
-              <div>
-                <strong>
-                  Position
-                  : 
-                </strong>
-                Centre/Wing
-              </div>
-              <div>
-                <strong>
-                  Date Uploaded
-                  : 
-                </strong>
-                28/07/2022, 09:00:00
-              </div>
-              <div
-                class="block mt-1 text-md leading-tight text-gray-900"
-              >
-                This is an introduction to the app, how to use it and what we are here to achieve!
-              </div>
-            </div>
+            Videos
+          </h1>
+          <div
+            class="font-quicksand font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          >
+            Here you can watch a few short videos and hear from the Titans as you continue to learn and get to know even more about how to be strong and healthy.
           </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="pl-5 md:py-10 md:pl-10"
+    >
+      <div
+        class="md:px-5"
+      >
+        <div
+          class="font-semibold font-quicksand text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+        >
+          Watch and learn with these short videos
         </div>
         <div
-          class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-          role="presentation"
+          class="font-medium font-quicksand text-[#243A73] md:text-xl lg:text-xl md:pb-5"
         >
-          <div
-            class="grid grid-cols-2 gap-2"
-          >
-            <div
-              class="pl-5 pt-5 pb-3"
-            >
-              <img
-                alt="video"
-                src="video-placeholder.jpg"
-              />
-            </div>
-            <div
-              class="pt-5 pb-3"
-            >
-              <div>
-                <strong>
-                  Name
-                  : 
-                </strong>
-                Manny Chopstick
-              </div>
-              <div>
-                <strong>
-                  Position
-                  : 
-                </strong>
-                Centre/Back
-              </div>
-              <div>
-                <strong>
-                  Date Uploaded
-                  : 
-                </strong>
-                03/08/2022, 12:00:00
-              </div>
-              <div
-                class="block mt-1 text-md leading-tight text-gray-900"
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </div>
-            </div>
-          </div>
+          Click on whichever video you'd like to watch to learn more and hear from some Titans!
         </div>
-        <div
-          class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-          role="presentation"
-        >
-          <div
-            class="grid grid-cols-2 gap-2"
-          >
-            <div
-              class="pl-5 pt-5 pb-3"
-            >
-              <img
-                alt="video"
-                src="video-placeholder.jpg"
-              />
-            </div>
-            <div
-              class="pt-5 pb-3"
-            >
-              <div>
-                <strong>
-                  Name
-                  : 
-                </strong>
-                Ramona Avalancho
-              </div>
-              <div>
-                <strong>
-                  Position
-                  : 
-                </strong>
-                Goalkeeper
-              </div>
-              <div>
-                <strong>
-                  Date Uploaded
-                  : 
-                </strong>
-                03/08/2022, 12:00:00
-              </div>
-              <div
-                class="block mt-1 text-md leading-tight text-gray-900"
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab"
-          role="presentation"
-        >
-          <div
-            class="grid grid-cols-2 gap-2"
-          >
-            <div
-              class="pl-5 pt-5 pb-3"
-            >
-              <img
-                alt="video"
-                src="video-placeholder.jpg"
-              />
-            </div>
-            <div
-              class="pt-5 pb-3"
-            >
-              <div>
-                <strong>
-                  Name
-                  : 
-                </strong>
-                Phil Foden
-              </div>
-              <div>
-                <strong>
-                  Position
-                  : 
-                </strong>
-                Striker
-              </div>
-              <div>
-                <strong>
-                  Date Uploaded
-                  : 
-                </strong>
-                03/08/2022, 12:00:00
-              </div>
-              <div
-                class="block mt-1 text-md leading-tight text-gray-900"
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div
+        class="react-multi-carousel-list  "
+        dir="ltr"
+      >
+        <ul
+          class="react-multi-carousel-track "
+          style="transition: none; overflow: unset; transform: translate3d(0px,0,0);"
+        />
       </div>
     </div>
   </div>,
