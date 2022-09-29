@@ -90,6 +90,7 @@ const VideosComponent = () => {
           afterChange={() => setIsMoving(false)}
           itemClass="p-[1rem]"
           renderArrowsWhenDisabled
+          arrows={getHidden}
         >
           {getVideos()}
         </Carousel>

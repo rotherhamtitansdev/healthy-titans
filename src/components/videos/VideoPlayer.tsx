@@ -12,7 +12,6 @@ const VideoPlayer = (props: { video: Video }) => (
       className="react-player"
       url={props.video.url}
       controls
-      playing
     />
   </div>
 );
