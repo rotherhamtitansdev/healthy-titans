@@ -1,6 +1,5 @@
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
-import FoodDetailsComponentData
-  from "../../../data/nutritional_information/FoodDetailsComponentData";
+
 import FirebaseAPI from "../../../api/FirebaseAPI";
 
 class BuildYourPlateProcessor {
@@ -29,11 +28,28 @@ class BuildYourPlateProcessor {
     return newBYPTableData;
   };
 
-  static fetchAllUrls = async () => Promise.all(Object.values(FoodDetailsComponentData).map(async (item) => (
-    {
-      icon: item.category, name: item.name, URL: await FirebaseAPI.fetchImages(item.firebaseName), key: item.name,
-    }
-  )));
+  static fetchAllUrls = async () => {
+    const data = await FirebaseAPI.fetchFoodDetailsComponentsData();
+    if (!data) return undefined;
+    return Promise.all(Object.values(data).map(async (item) => (
+      {
+        icon: item.category, name: item.name, URL: await FirebaseAPI.fetchImages(item.firebaseName), key: item.name, score: item.score,
+      }
+    )));
+  };
+
+  static calculateScore = (items: BYPItem[]) => items.reduce((prev, curr) => prev + curr.score, 0);
+
+  static constructScoreModalText = (score: number):string => {
+    if (score >= 45) return "Fantastic!";
+    if (score >= 40 && score < 45) return "Great!";
+    if (score >= 30 && score < 50) return "Very good!";
+    if (score >= 20 && score < 30) return "Good!";
+    if (score >= 10 && score < 20) return "Could be better!";
+    return "Needs improvement!";
+  };
+
+  static constructScoreModalTitle = (score: number):string => `Score: ${String(score)} out of 50`;
 }
 
 export default BuildYourPlateProcessor;

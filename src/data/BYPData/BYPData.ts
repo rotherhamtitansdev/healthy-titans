@@ -17,5 +17,6 @@ export const PlateItemPositions:string[] = [
 ];
 
 export const imageSize = "w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[70px] lg:h-[70px]";
+export const previewImageSize = "w-[40px] h-[40px] sm:w-[58px] sm:h-[58px] md:w-[70px] md:h-[70px]";
 
 export default TableHeaderImagesLinks;
