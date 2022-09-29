@@ -3,4 +3,6 @@ export interface ChallengeDetailsProps {
   description: string;
   img: string;
   rules: string[];
+  equipment: string[];
+  howToPlay?: string[];
 }

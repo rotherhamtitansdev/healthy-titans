@@ -15,7 +15,7 @@ const ChallengeDetailsComponent = () => {
   useEffect(() => {
     setChallengeDetailsComponentData(
       ChallengeDetailsComponentData[
-      challengeName as unknown as keyof typeof ChallengeDetailsComponentData
+        challengeName as unknown as keyof typeof ChallengeDetailsComponentData
       ],
     );
   });
@@ -30,7 +30,12 @@ const ChallengeDetailsComponent = () => {
               description={getChallengeDetailsComponentData.description}
               img={getChallengeDetailsComponentData.img}
             />
-            <Card card={{ name: getChallengeDetailsComponentData.name, additionalStyling: "h-content" }}>
+            <Card
+              card={{
+                name: getChallengeDetailsComponentData.name,
+                additionalStyling: "h-content",
+              }}
+            >
               <div className="pl-4 pr-4">
                 <div className="pt-4 pb-3 tracking-wide text-lg text-black font-bold">
                   Rules

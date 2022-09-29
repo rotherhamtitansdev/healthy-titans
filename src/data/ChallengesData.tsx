@@ -5,37 +5,37 @@ const ChallengesData: MenuCardProps[] = [
     key: 0,
     name: "Rugby Netball",
     firebaseName: "FitnessChallengesImages/rugbyNetball.svg",
-    path: "Challenge1",
+    path: "RugbyNetball",
   },
   {
     key: 1,
     name: "Ball Rush",
     firebaseName: "FitnessChallengesImages/ballRush.svg",
-    path: "Challenge2",
+    path: "BallRush",
   },
   {
     key: 2,
     name: "Hungry Hippos",
     firebaseName: "FitnessChallengesImages/hungryHippos.svg",
-    path: "Challenge3",
+    path: "HungryHippos",
   },
   {
     key: 3,
     name: "Ball Balance",
     firebaseName: "FitnessChallengesImages/ballBalance.svg",
-    path: "Challenge4",
+    path: "BallBalance",
   },
   {
     key: 4,
     name: "Obstacle Course",
     firebaseName: "FitnessChallengesImages/obstacleCourse.svg",
-    path: "Challenge5",
+    path: "ObstacleCourse",
   },
   {
     key: 5,
     name: "Foxes & Farmers",
     firebaseName: "FitnessChallengesImages/foxFarmers.svg",
-    path: "Challenge6",
+    path: "FoxesFarmers",
   },
 ];
 
