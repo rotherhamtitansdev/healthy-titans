@@ -7,7 +7,7 @@ import TableHeaderImagesLinks, {
 } from "../../../data/BYPData/BYPData";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
 import { useGameStartedContext } from "../GameContext";
-import BuildYourPlateModalScreen from "./BuildYourPlateModalScreen";
+import GameModalScreen from "../GameModalScreen";
 import useWindowDimensions from "../../../functions/ScreenWidth";
 import BuildYourPlatePlatePreviewScreen from "./BuildYourPlatePlatePreviewScreen";
 import BuildYourPlateIcon from "./BuildYourPlateIcon";
@@ -24,7 +24,7 @@ const newBYPTableData: BYPTableRowFamily[] = [
 
 const BuildYourPlateGameScreen = () => {
 
-  const { setModalContent , getModal, setModal, getMobilePreviewScreenFlag,setMobilePreviewScreenFlag } = useGameStartedContext();
+  const { setModalContent, getModal, setModal, getMobilePreviewScreenFlag, setMobilePreviewScreenFlag, setIsGameStarted } = useGameStartedContext();
   const [getBYPTableData, setBYPTableData] = useState<BYPTableRowFamily[]>(newBYPTableData);
   const [getBYPPlateData, setBYPPlateData] = useState<BYPItem[]>([])
   const [getTableDataVisibility, setTableDataVisibility] = useState<boolean[]>(Array(7).fill(false));
@@ -91,8 +91,8 @@ const BuildYourPlateGameScreen = () => {
     const score = BuildYourPlateProcessor.calculateScore(getBYPPlateData)
     setModal(true)
     setModalContent({
-      buttonFunc:() => {
-        setModal(false)
+      buttonFunc: () => {
+        setIsGameStarted(false);
         removeFromPlate(getBYPPlateData)
       },
       buttonText: "Play again",
@@ -117,17 +117,17 @@ const BuildYourPlateGameScreen = () => {
   ));
   const constructRows = (BYPTableData: BYPTableRowFamily[]) => BYPTableData.map((item, index) => (
     <tr className={(getTableDataVisibility[index]) ? "slide-in-row visible" : "invisible"}>
-          {item.items.map((cell) => (<td onClick={() => {toggleItemToPlate(cell)}} className="md:p-1">{cell.icon}</td>))}
-        </tr>
-      ));
+      {item.items.map((cell) => (<td onClick={() => { toggleItemToPlate(cell) }} className="md:p-1">{cell.icon}</td>))}
+    </tr>
+  ));
 
   useEffect(() => {
     BuildYourPlateProcessor.fetchAllUrls().then(async (res) => {
-      if(!res) return
+      if (!res) return
       FirebaseAPI.fetchAllImages(TableHeaderImagesLinks).then((headers) => {
         const BYPItems: BYPItem[] = res.map((item) => (
           {
-            icon: <BuildYourPlateIcon URL={item.URL} key={item.key}/>,
+            icon: <BuildYourPlateIcon URL={item.URL} key={item.key} />,
             family: item.icon,
             key: item.key,
             name: item.name,
@@ -148,27 +148,27 @@ const BuildYourPlateGameScreen = () => {
 
   useEffect(() => {
     getBYPPlateData.length !== 5 ? setButtonColor("bg-titansDarkGrey") : setButtonColor("bg-titansBrightPink")
-  },[getBYPPlateData])
+  }, [getBYPPlateData])
 
   useEffect(() => {
     setModalContent({
-      buttonFunc: () => {setModal(!getModal)},
+      buttonFunc: () => { setModal(!getModal) },
       buttonText: "Play",
       title: "How to play",
       text: "Open a food category and select a food. You must select 5 foods to score your plate. The aim of the game is to build a healthy plate."
     })
     setModal(true)
-  },[])
+  }, [])
 
   return (
     <div className="bg-white h-full rounded-xl shadow-lg my-10 px-5 pt-5 pb-2 1.5xl:pb-10">
       {getMobilePreviewScreenFlag && getBYPPlateData.length === 5 ?
-          <div><BuildYourPlatePlatePreviewScreen getPlateImage={getPlateImage!} getBYPPlateData={getBYPPlateData} removeFromPlate={removeFromPlate}/></div>
-          :
-          <div>
-            <BuildYourPlateModalScreen/>
-            <p className="font-bold text-[22px] pb-4 text-titansDarkBlue">Food Families</p>
-            <div className="flex flex-wrap 1.5xl:flex-nowrap w-full">
+        <div><BuildYourPlatePlatePreviewScreen getPlateImage={getPlateImage!} getBYPPlateData={getBYPPlateData} removeFromPlate={removeFromPlate} /></div>
+        :
+        <div>
+          <GameModalScreen />
+          <p className="font-bold text-[22px] pb-4 text-titansDarkBlue">Food Families</p>
+          <div className="flex flex-wrap 1.5xl:flex-nowrap w-full">
 
             <table className="flex">
               <thead className="mr-3">{getBYPTableHeaders}</thead>
@@ -177,42 +177,42 @@ const BuildYourPlateGameScreen = () => {
                 className="ml-3 overflow-x-hidden">{(!getLoading && getBYPTableData) && constructRows(getBYPTableData)}</tbody>
             </table>
 
+            <div
+              className={"flex flex-col items-start 1.5xl:items-center basis-full 1.5xl:basis-auto 1.5xl:ml-auto 1.5xl:-mt-16"}>
+              <div className={"hidden 1.5xl:block w-full h-full relative"}>
+                <img src={getPlateImage} alt={"plate image"} />
+                <div>{getBYPPlateData.map((plateItem, index) => {
+
+                  return <div className={"absolute " + PlateItemPositions[index]} onClick={() => {
+                    removeFromPlate([plateItem])
+                  }}>
+                    {plateItem.icon}
+                  </div>
+                })}
+                </div>
+              </div>
+
               <div
-                  className={"flex flex-col items-start 1.5xl:items-center basis-full 1.5xl:basis-auto 1.5xl:ml-auto 1.5xl:-mt-16"}>
-                <div className={"hidden 1.5xl:block w-full h-full relative"}>
-                  <img src={getPlateImage} alt={"plate image"}/>
-                  <div>{getBYPPlateData.map((plateItem, index) => {
-
-                    return <div className={"absolute " + PlateItemPositions[index]} onClick={() => {
-                      removeFromPlate([plateItem])
-                    }}>
-                      {plateItem.icon}
-                    </div>
-                  })}
-                  </div>
+                className="text-titansDarkBlue text-center mt-10 1.5xl:-mt-10 flex w-full justify-between 1.5xl:block align-middle">
+                <div>
+                  <p className={"font-bold text-[16px] 1.5xl:text-[39px]"}>{getBYPPlateData.length + " / 5"}</p>
+                  <p className={"font-semibold text-[12px] 1.5xl:text-[16px] mb-4"}>Items</p>
                 </div>
-
-                <div
-                    className="text-titansDarkBlue text-center mt-10 1.5xl:-mt-10 flex w-full justify-between 1.5xl:block align-middle">
-                  <div>
-                    <p className={"font-bold text-[16px] 1.5xl:text-[39px]"}>{getBYPPlateData.length + " / 5"}</p>
-                    <p className={"font-semibold text-[12px] 1.5xl:text-[16px] mb-4"}>Items</p>
-                  </div>
-                  <button type="button"
-                          className={"text-[12px] text-white font-bold w-44 h-11 rounded-full " + getButtonColor}
-                          disabled={getBYPPlateData.length !== 5}
-                          onClick={() => {
-                            width >= 1450 ? setScoreModal() : setMobilePreviewScreenFlag(true)
-                          }}
-                  >
-                    Score my plate
-                  </button>
-                </div>
-
+                <button type="button"
+                  className={"text-[12px] text-white font-bold w-44 h-11 rounded-full " + getButtonColor}
+                  disabled={getBYPPlateData.length !== 5}
+                  onClick={() => {
+                    width >= 1450 ? setScoreModal() : setMobilePreviewScreenFlag(true)
+                  }}
+                >
+                  Score my plate
+                </button>
               </div>
 
             </div>
+
           </div>
+        </div>
       }
     </div>
   );

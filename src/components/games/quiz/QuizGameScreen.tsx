@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import QuizData from "../../../data/QuizData";
 import Card from "../../shared/Card";
 import { useGameStartedContext } from "../GameContext";
+import GameModalScreen from "../GameModalScreen";
 import AnswerCard from "./AnswerCard";
 import { useQuizContext } from "./QuizContext";
-import QuizFinish from "./QuizFinish";
 
 const QuizGameScreen = () => {
-  const { setModal } = useGameStartedContext();
+  const {
+    setModal, setModalContent, setIsGameStarted, getScore,
+  } = useGameStartedContext();
   const [questionNumber, setQuestionNumber] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
   const quizData = QuizData;
@@ -26,6 +28,14 @@ const QuizGameScreen = () => {
     } else {
       setQuizFinished(true);
       setModal(true);
+      setModalContent({
+        buttonFunc: () => {
+          setIsGameStarted(false);
+        },
+        buttonText: "Play again",
+        text: "Well done!",
+        title: `Score: ${getScore} out of ${quizData.questions.length}`,
+      });
     }
   };
 
@@ -33,7 +43,7 @@ const QuizGameScreen = () => {
     <>
       {quizFinished
         && (
-          <QuizFinish totalQuestions={quizData.questions.length} />
+          <GameModalScreen />
         )}
       {
         currentQuestion

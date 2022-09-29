@@ -102,7 +102,7 @@ describe("Quiz", () => {
       clickCorrectAnswer();
       clickNext();
 
-      const quizScore = screen.getByTestId("quiz-score");
+      const quizScore = screen.getByTestId("game-score");
       expect(quizScore).toHaveTextContent("Score: 2 out of 4");
     });
 
