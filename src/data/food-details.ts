@@ -332,7 +332,7 @@ const FoodDetailsComponentData = {
   Carrot: {
     name: "Carrots",
     description:
-      '"Carrots help you see in the dark." \n Fun fact: VITAMIN A is important our vision and can help us see in dim light conditions.',
+      "Carrots help you see in the dark. Fun fact: VITAMIN A is important our vision and can help us see in dim light conditions.",
     firebaseName: "FoodCategories/Vegetables/Food/Carrot.svg",
     category: "Veg",
     facts: [
