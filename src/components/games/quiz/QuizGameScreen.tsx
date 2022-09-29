@@ -49,7 +49,7 @@ const QuizGameScreen = () => {
         currentQuestion
         && (
           <Card card={{ name: quizData.name, additionalStyling: "h-[30rem] lg:h-[40rem] w-full mb-10" }}>
-            <div className="font-bold flex flex-row pt-5 pb-8 px-10">
+            <div className="hidden font-bold sm:flex flex-row pt-5 pb-8 px-10">
               <div className="text-lg lg:text-2xl">{quizData.name}</div>
               <div className="ml-auto">
                 {questionNumber + 1}
@@ -59,12 +59,12 @@ const QuizGameScreen = () => {
                 {quizData.questions.length}
               </div>
             </div>
-            <div className="px-8 lg:px-10 lg:text-xl font-semibold text-homepageHeaderText">
-              <div className="grid grid-row-2 gap-3 lg:gap-5">
+            <div className="py-6 px-4 sm:py-0 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-xl font-semibold text-homepageHeaderText">
+              <div className="grid gap-3 lg:gap-5">
                 <Card card={{ name: currentQuestion.question, additionalStyling: "bg-mobileNavbarBackgroundColor p-4 lg:p-6" }}>
                   {currentQuestion.question}
                 </Card>
-                <div className="grid grid-cols-2 gap-4 lg:gap-8 p-2 lg:p-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8 p-4 sm:p-2 lg:p-5">
                   {
                     currentQuestion.answers.map((answer, index) => (
                       <AnswerCard
@@ -75,13 +75,13 @@ const QuizGameScreen = () => {
                   }
                 </div>
               </div>
-              {selectedAnswer ? (
-                <div className="pt-8 flex flex-col items-center gap-10">
-                  <Card card={{ name: "Answer feedback", additionalStyling: "bg-mobileNavbarBackgroundColor p-6 w-2/3 mx-auto" }}>
+              {selectedAnswer && (
+                <div className="pt-4 sm:py-8 flex flex-col items-center gap-6 sm:gap-10">
+                  <Card card={{ name: "Answer feedback", additionalStyling: "bg-mobileNavbarBackgroundColor text-center text-xs sm:text-base lg:text-xl p-3 sm:p-4 w-[80%] lg:p-6 lg:w-2/3" }}>
                     {selectedAnswer.isCorrect ? "Well done, you got the right answer!" : "Better luck next time!"}
                   </Card>
                   <button
-                    className=" bg-titansBrightPink text-white text-xs font-bold py-4 px-20 rounded-full"
+                    className=" bg-titansBrightPink text-white text-xs font-bold py-2 sm:py-4 px-14 sm:px-20 rounded-full"
                     type="button"
                     onClick={nextQuestion}
                     data-testid="next-button"
@@ -89,7 +89,7 @@ const QuizGameScreen = () => {
                     NEXT
                   </button>
                 </div>
-              ) : null}
+              )}
             </div>
           </Card>
         )
