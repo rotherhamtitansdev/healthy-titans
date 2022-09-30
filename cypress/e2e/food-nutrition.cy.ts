@@ -1,9 +1,11 @@
 import foodNutrition from "../fixtures/food-nutrition.json";
 
 describe("Food & Nutrition", () => {
-  it("Can view fried chicken information ", () => {
+  beforeEach(() => {
     cy.visit("http://localhost:3000");
+  });
 
+  it("Can view fried chicken information ", () => {
     cy.get('button[aria-label="menu toggle"]').click();
     cy.get('[data-testid="mobile-menu"] [href="/NutritionalInformation"]').click();
     cy.get('[data-testid="Fast Food"]').click();
@@ -20,8 +22,6 @@ describe("Food & Nutrition", () => {
   });
 
   it("Can view Carbs information", () => {
-    cy.visit("http://localhost:3000");
-
     cy.get('[data-testid="Food & Nutrition"]').click();
     cy.get('[data-testid="Carbs"]').click();
 
