@@ -14,7 +14,6 @@ import Test from "./Test";
 import ForgotPassword from "./ForgotPassword";
 import VideosComponent from "./videos/VideosComponent";
 import ChallengeDetailsComponent from "./fitness_Challenges/challenge_details/ChallengeDetailsComponent";
-import DND from "./DND";
 import QuizMenu from "./games/quiz/QuizMenu";
 import Quiz from "./games/quiz/Quiz";
 import Footer from "./Footer/Footer";
@@ -82,7 +81,6 @@ const App: React.FC = () => (
       />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
-      <Route path="/dnd" element={<DND />} />
     </Routes>
     <Footer />
   </div>
