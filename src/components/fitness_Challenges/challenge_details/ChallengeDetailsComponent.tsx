@@ -11,7 +11,6 @@ const ChallengeDetailsComponent = () => {
   const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<ChallengeDetailsProps | undefined>();
 
   const { challengeName } = useParams();
-
   useEffect(() => {
     setChallengeDetailsComponentData(
       ChallengeDetailsComponentData[

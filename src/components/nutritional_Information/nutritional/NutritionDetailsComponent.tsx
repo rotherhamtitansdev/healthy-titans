@@ -11,7 +11,7 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   useEffect(() => {
     setNutritionData(
       NutritionDetailsComponentData[
-      props.nutritionName as unknown as keyof typeof NutritionDetailsComponentData
+        props.nutritionName as unknown as keyof typeof NutritionDetailsComponentData
       ],
     );
   });
