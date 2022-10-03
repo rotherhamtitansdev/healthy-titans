@@ -17,7 +17,7 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   });
   return (
     <div>
-      {getNutritionData ? (
+      {getNutritionData && (
         <DetailsComponent>
           <DetailsCard
             name={getNutritionData.name}
@@ -26,8 +26,6 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
             additionalStyling="lg:w-5/12"
           />
         </DetailsComponent>
-      ) : (
-        <h1>loading</h1>
       )}
     </div>
   );

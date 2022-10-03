@@ -31,7 +31,7 @@ const FoodDetailsComponent = () => {
 
   return (
     <div>
-      {getFoodDetailsComponentData ? (
+      {getFoodDetailsComponentData && (
         <DetailsComponent>
           <DetailsCard
             name={getFoodDetailsComponentData.name}
@@ -42,8 +42,6 @@ const FoodDetailsComponent = () => {
           />
           <NutritionBreakdownChart name={getFoodDetailsComponentData.name} />
         </DetailsComponent>
-      ) : (
-        <h1>loading</h1>
       )}
     </div>
   );

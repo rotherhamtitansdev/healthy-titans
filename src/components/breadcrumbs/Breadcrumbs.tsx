@@ -29,15 +29,15 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
         breadcrumb,
       }, index) => (
         <>
-          {index !== 0 ? (
+          {index !== 0 && (
             <p className="text text-titansBrightPink">
             &nbsp;
               {">"}
             &nbsp;
             </p>
-          ) : null}
+          )}
           <NavLink to={match.pathname}>
-            {breadcrumb ? getBreadcrumbName(breadcrumb) : null}
+            {breadcrumb && getBreadcrumbName(breadcrumb)}
           </NavLink>
         </>
       ))}
