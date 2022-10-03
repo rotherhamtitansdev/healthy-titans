@@ -49,6 +49,7 @@ const CarouselMenu = (props: { cards: MenuCardProps[] }) => {
       externalPath={item.externalPath}
       disableOnClick={isMoving}
       firebaseName={item.firebaseName}
+      additionalStyling="w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96"
     />
   ));
 
