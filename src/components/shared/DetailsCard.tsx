@@ -1,29 +1,21 @@
 import React from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
-import Card from "./Card";
 import CheckMarkButton from "../../img/CheckMarkButton.svg";
 
 /*
  * This component represents a details card
  * */
 const DetailsCard = (props: DetailsCardProps) => (
-  <Card
-    card={{
-      name: props.name,
-      additionalStyling: `rounded-3xl flex-initial ${
-        props.additionalStyling || ""
-      }`,
-    }}
-  >
+  <div data-testId={props.name} className="pl-5 font-quicksand basis-1/2 ">
     {props.img && (
       <img
-        className="absolute top-[5rem] left-[3rem]"
+        className="absolute top-[8rem] "
         src={props.img}
         alt={props.name}
       />
     )}
-    <div className="pl-4 pr-4 pt-[8rem]">
+    <div className="pl-6 pr-4 pt-[5rem]">
       {!props.hideTitle ? (
         <div className="tracking-wide text-4xl text-black font-bold py-5">
           {props.name}
@@ -46,7 +38,7 @@ const DetailsCard = (props: DetailsCardProps) => (
         </p>
       )}
     </div>
-  </Card>
+  </div>
 );
 
 export default DetailsCard;

@@ -16,7 +16,7 @@ const FoodDetailsComponent = () => {
   >();
 
   const [getImageURL, setImageURL] = useState<string>();
-    const { foodName } = useParams();
+  const { foodName } = useParams();
 
   useEffect(() => {
     // @ts-ignore
