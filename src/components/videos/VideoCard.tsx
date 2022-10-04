@@ -1,31 +1,53 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
+import FirebaseAPI from "../../api/FirebaseAPI";
 import "../../App.css";
 import { DrilledVideoProps, Video } from "../../models/Video";
-import InfoWithHeader from "../shared/InfoWithHeader";
+import Card from "../shared/Card";
 
 // This displays the video and its details
-const VideoCard = (props: {Video: Video, Actions: DrilledVideoProps}) => {
-  const handleClick = useCallback(() => {
-    props.Actions.setHidden(false);
-    props.Actions.setModalClickedVideoData(props.Video);
+const VideoCard = (props: {
+  video: Video, disableOnClick: boolean,
+  Actions: DrilledVideoProps
+}) => {
+  const [getVideoURL, setVideoURL] = useState<string | undefined>();
+
+  React.useEffect(() => {
+    if (props.video.firebaseName !== undefined) {
+      FirebaseAPI.fetchImages(props.video.firebaseName).then((URI) => setVideoURL(URI));
+    }
   }, []);
 
+  const handleClick = useCallback(() => {
+    const video = {
+      title: props.video.title,
+      description: props.video.description,
+      url: getVideoURL,
+    } as Video;
+
+    props.Actions.setHidden(false);
+    props.Actions.setModalClickedVideoData(video);
+  }, [getVideoURL]);
+
   return (
-    <div className=" text-gray-700 rounded bg-white sm:w-2/3 lg:w-1/2 hover:cursor-grab" onClick={handleClick} role="presentation">
-      <div className="grid grid-cols-2 gap-2">
-        <div className="pl-5 pt-5 pb-3">
-          <img src={props.Video.url} alt="video" />
-        </div>
+    <Card card={{ name: props.video.title, additionalStyling: "w-[18rem] xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem]", onClick: props.disableOnClick ? () => undefined : handleClick }}>
+      <div className="p-5">
+        {getVideoURL && props.video.description ? (
+          // eslint-disable-next-line jsx-a11y/media-has-caption
+          <video className="rounded-3xl">
+            <source src={getVideoURL} />
+          </video>
+        )
+          : null}
         <div className="pt-5 pb-3">
-          <InfoWithHeader info={props.Video.user?.name} header="Name" />
-          <InfoWithHeader info={props.Video.user?.position} header="Position" />
-          <InfoWithHeader info={props.Video.dateUploaded} header="Date Uploaded" />
-          <div className="block mt-1 text-md leading-tight text-gray-900">
-            {props.Video.description}
+          <div className="font-quicksand font-semibold text-2xl  text-homepageHeaderText">
+            {props.video.title}
+          </div>
+          <div className="font-quicksand font-md text-xl  text-homepageHeaderText">
+            {props.video.description}
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

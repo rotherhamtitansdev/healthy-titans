@@ -12,7 +12,7 @@ import openInNewTab from "../../functions/Navigate";
  * This component represents a card used in a menu screen
  * */
 const MenuCard = (props: MenuCardProps) => {
-  const [getImageURL, setImageURL] = useState<string | undefined>();
+  const [getImage, setImage] = useState<React.ReactNode | undefined>();
 
   const navigate = useNavigate();
   const navigateToPath = useCallback(
@@ -22,9 +22,19 @@ const MenuCard = (props: MenuCardProps) => {
 
   useEffect(() => {
     if (props.firebaseName !== undefined) {
-      FirebaseAPI.fetchImages(props.firebaseName).then((URI) => setImageURL(URI));
+      FirebaseAPI.fetchImages(props.firebaseName).then((URI) => setImage(
+        <Image
+          img={URI}
+          alt={props.name}
+        />,
+      ));
     } else if (props.img !== undefined) {
-      setImageURL(props.img);
+      setImage(
+        <Image
+          img={props.img}
+          alt={props.name}
+        />,
+      );
     }
   }, []);
 
@@ -39,20 +49,15 @@ const MenuCard = (props: MenuCardProps) => {
     <Card
       card={{
         name: props.name,
-        additionalStyling: `table align-middle rounded-3xl shadow-lg ${props.additionalStyling}`,
+        additionalStyling: `${props.additionalStyling}`,
         onClick: handleOnClick(),
       }}
     >
-      <div className="py-[1.75rem] md:py-[3.625rem]">
-        {getImageURL ? (
-          <Image
-            img={getImageURL}
-            alt={props.name}
-          />
-        ) : (
-          <ClipLoader size={180} color="#DC476D" className="mx-12" />
-        )}
-        <div className="md:text-xl text-homepageHeaderText font-semibold font-quicksand text-center">
+      <div className="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex">
+        <div className="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8">
+          {getImage || <ClipLoader size={100} color="#DC476D" className="" />}
+        </div>
+        <div className="md:text-xl text-homepageHeaderText font-semibold font-quicksand text-center mt-auto">
           {props.name}
         </div>
       </div>

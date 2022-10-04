@@ -8,6 +8,7 @@
 # testing
 /coverage
 junit.xml
+.nyc_output
 
 # production
 /build

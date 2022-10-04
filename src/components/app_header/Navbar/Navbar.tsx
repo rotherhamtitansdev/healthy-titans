@@ -18,9 +18,11 @@ const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen } = useGlobalMenuOpenContext();
 
   const [currentUser, setUser] = useState<Auth["currentUser"] | null>(null);
-  useEffect(() => auth.onAuthStateChanged((user) => {
-    setUser(user);
-  }));
+  useEffect(() =>
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+    })
+  );
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -45,7 +47,10 @@ const Navbar = () => {
               <img src={require("../../../img/navy_logo.png")} alt="Rotherham Titan" />
             </Link>
 
-            <div className="hidden xl:flex justify-evenly w-7/12 font-navigation-items">
+            <div
+              data-testid="menu"
+              className="hidden xl:flex justify-evenly w-7/12 font-navigation-items"
+            >
               <Link
                 to="/NutritionalInformation"
                 className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
@@ -114,6 +119,7 @@ const Navbar = () => {
                   <button
                     type="button"
                     className="flex flex-col h-12 w-12 justify-center items-center font-navigation-items"
+                    aria-label="menu toggle"
                     aria-expanded="false"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                   >
@@ -129,9 +135,7 @@ const Navbar = () => {
                     />
                     <div
                       className={`h-1 w-6 rounded-full transition ease transform duration-300 bg-titansDarkBlue ${
-                        isMenuOpen
-                          ? "-rotate-45 -translate-y-3 opacity-100 my-1"
-                          : "my-0.5"
+                        isMenuOpen ? "-rotate-45 -translate-y-3 opacity-100 my-1" : "my-0.5"
                       }`}
                     />
                   </button>
@@ -141,7 +145,10 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="origin-top-right right-0 w-full bg-mobileNavbarBackgroundColor absolute ">
+      <div
+        data-testid="mobile-menu"
+        className="origin-top-right right-0 w-full bg-mobileNavbarBackgroundColor absolute "
+      >
         {isMenuOpen && (
           <ul className=" xl:hidden flex flex-col mt-8 mb-14 items-center overscroll-none">
             <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
