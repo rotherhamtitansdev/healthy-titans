@@ -1,5 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
+import React, {
+  useCallback, useEffect, useMemo, useState,
+} from "react";
+import {
+  VictoryChart, VictoryBar, VictoryLabel, VictoryAxis,
+} from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
 import getNutritionalDetailsSingular from "../../../../api/NutritionApi";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
@@ -58,7 +62,8 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   }, []);
 
   return (
-    <div>
+    <div className="basis-1/2">
+
       <div className="bg-white rounded-3xl md:w-[36rem] md:h-[58rem]">
         {getLoading ? (
           <ClipLoader color="red" loading={getLoading} size={150} />
