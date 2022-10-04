@@ -15,9 +15,9 @@ const AnswerCard = (props: { answer: AnswerProps }) => {
     setBackground("bg-mobileNavbarBackgroundColor");
     if (isSelectedAnswer()) {
       if (props.answer.isCorrect) {
-        setBackground("bg-[#8DED8E] bg-quiz_correct_answer");
+        setBackground("bg-[#8DED8E] bg-quiz_correct_answer bg-[length:2rem]");
       } else {
-        setBackground("bg-[#FA5555] bg-quiz_incorrect_answer");
+        setBackground("bg-[#FA5555] bg-quiz_incorrect_answer  bg-[length:2rem]");
       }
     } else if (selectedAnswer && !selectedAnswer?.isCorrect && props.answer.isCorrect) {
       setBackground("bg-[#8DED8E] bg-quiz_tick");
@@ -34,7 +34,7 @@ const AnswerCard = (props: { answer: AnswerProps }) => {
   };
 
   return (
-    <Card card={{ name: props.answer.answer, additionalStyling: `${background} bg-no-repeat bg-[center_right_1rem] py-2 px-4 lg:p-8`, onClick: selectAnswer }}>
+    <Card card={{ name: props.answer.answer, additionalStyling: `${background} sm:bg-auto bg-no-repeat bg-[center_right_1rem] py-3 sm:py-2 px-4 lg:p-8`, onClick: selectAnswer }}>
       {props.answer.answer}
     </Card>
   );

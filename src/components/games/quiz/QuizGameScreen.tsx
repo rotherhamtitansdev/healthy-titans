@@ -64,7 +64,7 @@ const QuizGameScreen = () => {
                 <Card card={{ name: currentQuestion.question, additionalStyling: "bg-mobileNavbarBackgroundColor p-4 lg:p-6" }}>
                   {currentQuestion.question}
                 </Card>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-8 p-4 sm:p-2 lg:p-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-8 p-4 sm:p-2 lg:p-5">
                   {
                     currentQuestion.answers.map((answer, index) => (
                       <AnswerCard
@@ -76,7 +76,7 @@ const QuizGameScreen = () => {
                 </div>
               </div>
               {selectedAnswer && (
-                <div className="pt-4 sm:py-8 flex flex-col items-center gap-6 sm:gap-10">
+                <div className="pt-3 sm:py-8 flex flex-col items-center gap-6 sm:gap-10">
                   <Card card={{ name: "Answer feedback", additionalStyling: "bg-mobileNavbarBackgroundColor text-center text-xs sm:text-base lg:text-xl p-3 sm:p-4 w-[80%] lg:p-6 lg:w-2/3" }}>
                     {selectedAnswer.isCorrect ? "Well done, you got the right answer!" : "Better luck next time!"}
                   </Card>
