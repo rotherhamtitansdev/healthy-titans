@@ -42,8 +42,8 @@ const ChallengeDetailsComponent = () => {
                 </div>
                 <p className="pl-4 block mt-1 text-lg leading-tight font-semibold text-gray-900">
                   <ol className="list-decimal">
-                    {getChallengeDetailsComponentData.rules.map((rule) => (
-                      <li className="pb-4">{rule}</li>
+                    {getChallengeDetailsComponentData.rules.map((rule, index) => (
+                      <li key={index} className="pb-4">{rule}</li>
                     ))}
                   </ol>
                 </p>
