@@ -58,6 +58,7 @@ const ChallengeDetailsComponent = () => {
                 <ul className="list-decimal">
                   {getChallengeDetailsComponentData.howToPlay?.map(
                     (howToPlay) => (
+                      // eslint-disable-next-line react/jsx-key
                       <li className="pb-6">{howToPlay}</li>
                     ),
                   )}
@@ -69,6 +70,7 @@ const ChallengeDetailsComponent = () => {
               <p className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
                 <ul className="list-disc">
                   {getChallengeDetailsComponentData.rules.map((rule) => (
+                    // eslint-disable-next-line react/jsx-key
                     <li className="pb-6">{rule}</li>
                   ))}
                 </ul>

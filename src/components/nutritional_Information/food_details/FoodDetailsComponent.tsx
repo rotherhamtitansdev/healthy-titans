@@ -14,7 +14,6 @@ const FoodDetailsComponent = () => {
   >();
 
   const [getImageURL, setImageURL] = useState<string>();
-  // const [getFacts, setFacts] = useState<string[]>();
   const { foodName } = useParams();
 
   useEffect(() => {
