@@ -2,7 +2,12 @@ import React from "react";
 import { useGameStartedContext } from "./GameContext";
 
 const GameModalScreen = () => {
-  const { getModal, getModalContent } = useGameStartedContext();
+  const { getModal, setModal, getModalContent } = useGameStartedContext();
+
+  const handleOnClick = () => {
+    setModal(false);
+    if (getModalContent.buttonFunc) getModalContent.buttonFunc();
+  }
 
   return (
     <div>
@@ -16,7 +21,7 @@ const GameModalScreen = () => {
               <button
                 type="button"
                 className="text-xs sm:text-base lg:text-xl text-white font-bold w-44 h-11 rounded-full bg-titansBrightPink mb-6"
-                onClick={getModalContent.buttonFunc}
+                onClick={handleOnClick}
               >
                 {getModalContent.buttonText}
               </button>

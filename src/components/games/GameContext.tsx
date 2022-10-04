@@ -8,7 +8,7 @@ export interface GameModalContentInterface {
   title: string
   text: string
   buttonText: string
-  buttonFunc: () => void
+  buttonFunc?: () => void
 }
 
 export type IsGameStartedContext = {
@@ -43,7 +43,7 @@ export const useGameStartedContext = () => useContext(GameStartedContext);
 const GameStartedContextWrapper = ({ children }: any) => {
   const [getIsGameStarted, setIsGameStarted] = useState<boolean>(false);
   const [getScore, setScore] = useState<number>(0);
-  const [getModal, setModal] = useState<boolean>(true);
+  const [getModal, setModal] = useState<boolean>(false);
   const [getModalContent, setModalContent] = useState<GameModalContentInterface>({
     title: "", text: "", buttonText: "", buttonFunc: () => { },
   });
@@ -51,8 +51,12 @@ const GameStartedContextWrapper = ({ children }: any) => {
 
   useEffect(() => {
     setScore(0);
-    setModal(false);
   }, [getIsGameStarted]);
+
+  useEffect(() => {
+    // Stop scrolling while modal is open
+    document.body.style.overflow = getModal ? "hidden": "unset";
+  }, [getModal]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values

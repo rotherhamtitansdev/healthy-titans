@@ -152,7 +152,6 @@ const BuildYourPlateGameScreen = () => {
 
   useEffect(() => {
     setModalContent({
-      buttonFunc: () => { setModal(!getModal) },
       buttonText: "Play",
       title: "How to play",
       text: "Open a food category and select a food. You must select 5 foods to score your plate. The aim of the game is to build a healthy plate."
