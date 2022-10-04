@@ -23,7 +23,7 @@ const Menu = (props: MenuProps) => {
     if (smallMenu) {
       return "px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6";
     }
-    return "grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-20 2xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]";
+    return "grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]";
   }
 
   const cardList = props.cards.map((item, index) => (

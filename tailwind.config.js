@@ -17,6 +17,7 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
       "1.5xl": "1450px",
       "2xl": "1536px",
+      "3xl": "1800px"
     },
     extend: {
       colors: {
