@@ -17,7 +17,7 @@ const DetailsCard = (props: DetailsCardProps) => (
     )}
     <div className="pl-6 pr-4 pt-[5rem]">
       {!props.hideTitle ? (
-        <div className="tracking-wide text-4xl text-black font-bold py-5">
+        <div className="tracking-wide text-4xl text-homepageHeaderSubTitle font-bold py-5">
           {props.name}
         </div>
       ) : null}
