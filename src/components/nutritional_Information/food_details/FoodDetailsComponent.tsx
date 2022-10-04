@@ -42,6 +42,7 @@ const FoodDetailsComponent = () => {
             setImageURL(URI)
           );
           console.log(res);
+          //@ts-ignore
           setFoodDetailsComponentData(res);
         }
       }
@@ -64,7 +65,6 @@ const FoodDetailsComponent = () => {
               }
             }
           />
-          console.log(getFoodDetailsComponentData.firebaseName)
           <NutritionBreakdownChart name={getFoodDetailsComponentData.name} />
         </DetailsComponent>
       ) : (
