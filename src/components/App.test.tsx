@@ -54,10 +54,6 @@ test("navigate to beef nutritional endpoint", () => {
   const beef = screen.getByTestId("Beef");
   expect(beef).toBeInTheDocument();
   fireEvent.click(beef);
-
-  const finalBeef = screen.getByTestId("Beef");
-  expect(finalBeef).toBeInTheDocument();
-  fireEvent.click(finalBeef);
 });
 
 test("navigate to  nutritional endpoint", () => {

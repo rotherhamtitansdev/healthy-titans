@@ -54,7 +54,7 @@ const ChallengeDetailsComponent = () => {
               <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold pb-[2rem]">
                 How to play
               </div>
-              <p className="pl-4 block mt-1 text-lg leading-tight font-semibold font-quicksand">
+              <p className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
                 <ul className="list-decimal">
                   {getChallengeDetailsComponentData.howToPlay?.map(
                     (howToPlay) => (
@@ -66,7 +66,7 @@ const ChallengeDetailsComponent = () => {
               <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold">
                 Rules
               </div>
-              <p className="pl-4 block mt-1 text-lg leading-tight font-semibold font-quicksand">
+              <p className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
                 <ul className="list-disc">
                   {getChallengeDetailsComponentData.rules.map((rule) => (
                     <li className="pb-6">{rule}</li>
