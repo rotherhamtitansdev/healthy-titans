@@ -31,7 +31,7 @@ module.exports = {
         primaryGrey: "#5C5C5C",
         titansDarkBlue: "#243A73",
         titansBrightPink: "#D14267",
-        titansDarkGrey: "#545454"
+        titansDarkGrey: "#545454",
       },
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
@@ -39,7 +39,7 @@ module.exports = {
       backgroundImage: {
         wave: "url('/src/img/wave.png')",
         wavesvg: "url('/src/img/wavesvg.svg')",
-        byp_background:"url('/src/img/byp_background.png')",
+        byp_background: "url('/src/img/byp_background.png')",
         mbfooterwave: "url('/src/img/mbfooter_wave.png')",
         tbfooterwave: "url('/src/img/tbfooter_wave.png')",
         footerwave: "url('/src/img/footer_wave.png')",
