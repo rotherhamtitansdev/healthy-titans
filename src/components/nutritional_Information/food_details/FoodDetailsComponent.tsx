@@ -7,6 +7,8 @@ import FoodDetailsComponentData, {
 import DetailsCard from "../../shared/DetailsCard";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 import DetailsComponent from "../../shared/DetailsComponent";
+import { ListProps } from "../../../models/DetailsCardProps";
+import { firebaseApp } from "../../../config/firebase-config";
 
 /* eslint-disable */
 
@@ -16,20 +18,34 @@ const FoodDetailsComponent = () => {
   >();
 
   const [getImageURL, setImageURL] = useState<string>();
+  // const [getFacts, setFacts] = useState<string[]>();
   const { foodName } = useParams();
 
   useEffect(() => {
     // @ts-ignore
-    const data = FoodDetailsComponentData[foodName];
-    if (data.firebaseName) {
-      FirebaseAPI.fetchImages(data.firebaseName).then((res) =>
-        setImageURL(res)
-      );
-    } else if (data.img) {
-      setImageURL(data.img);
-    }
-
-    setFoodDetailsComponentData(data);
+    // const data = FoodDetailsComponentData[foodName];
+    // if (data.firebaseName) {
+    //   FirebaseAPI.fetchImages(data.firebaseName).then((res) =>
+    //     setImageURL(res)
+    //   );
+    // } else if (data.img) {
+    //   setImageURL(data.img);
+    // }
+    // // setFoodDetailsComponentData(data);
+    // if (data.facts) {
+    //   FirebaseAPI.fetchFoodDetailsSingle(data.facts).then((res) => setFacts(res));
+    // }
+    FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
+      if (res) {
+        if (res.firebaseName) {
+          FirebaseAPI.fetchImages(res.firebaseName).then((URI) =>
+            setImageURL(URI)
+          );
+          console.log(res);
+          setFoodDetailsComponentData(res);
+        }
+      }
+    });
   }, []);
 
   return (
@@ -48,6 +64,7 @@ const FoodDetailsComponent = () => {
               }
             }
           />
+          console.log(getFoodDetailsComponentData.firebaseName)
           <NutritionBreakdownChart name={getFoodDetailsComponentData.name} />
         </DetailsComponent>
       ) : (
