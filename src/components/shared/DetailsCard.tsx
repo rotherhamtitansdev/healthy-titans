@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import React from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
@@ -9,19 +10,21 @@ import CheckMarkButton from "../../img/CheckMarkButton.svg";
 const DetailsCard = (props: DetailsCardProps) => (
   <div data-testId={props.name} className="pl-5 font-quicksand basis-1/2 ">
     {props.img && (
-      <img
-        className="absolute top-[8rem] "
-        src={props.img}
-        alt={props.name}
-      />
+      <img className="absolute top-[8rem] " src={props.img} alt={props.name} />
     )}
     <div className="pl-6 pr-4 pt-[5rem]">
       {!props.hideTitle ? (
-        <div className="tracking-wide text-4xl text-black font-bold py-5">
+        <div
+          data-testid="details-title"
+          className="tracking-wide text-4xl text-black font-bold py-5"
+        >
           {props.name}
         </div>
       ) : null}
-      <p className="block mt-1 text-xl leading-tight font-medium text-gray-900">
+      <p
+        data-testid="details-description"
+        className="block mt-1 text-xl leading-tight font-medium text-gray-900"
+      >
         {props.description}
       </p>
       {props.list && (
