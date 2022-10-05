@@ -59,6 +59,7 @@ jobs:
 
   integration-test:
     name: Cypress Tests
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -85,7 +86,6 @@ jobs:
           if-no-files-found: error
           path: results
       
-
   publish-results:
     name: Publish Results
     runs-on: ubuntu-latest
@@ -97,27 +97,27 @@ jobs:
           name: results
           path: results
     
-    - name: Unit Test Report
-        uses: phoenix-actions/test-reporting@v8
-        with:
-            name: Unit Test Results            
-            reporter: jest-junit
-            path: reports/unit/unit-test-junit.xml
-            list-suites: all
-            list-tests: all
-            fail-on-error: false
-            max-annotations: '10'
-    
-    - name: Cypress Test Report
-        uses: phoenix-actions/test-reporting@v8
-        with:
-            name: Cypress Test Results            
-            reporter: jest-junit
-            path: reports/e2e/e2e-junit.xml
-            list-suites: all
-            list-tests: all
-            fail-on-error: false
-            max-annotations: '10'
+      - name: Unit Test Report
+          uses: phoenix-actions/test-reporting@v8
+          with:
+              name: Unit Test Results            
+              reporter: jest-junit
+              path: reports/unit/unit-test-junit.xml
+              list-suites: all
+              list-tests: all
+              fail-on-error: false
+              max-annotations: '10'
+      
+      - name: Cypress Test Report
+          uses: phoenix-actions/test-reporting@v8
+          with:
+              name: Cypress Test Results            
+              reporter: jest-junit
+              path: reports/e2e/e2e-junit.xml
+              list-suites: all
+              list-tests: all
+              fail-on-error: false
+              max-annotations: '10'
 
       - name: Combine coverage results
         run: |
