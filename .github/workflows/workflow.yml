@@ -7,7 +7,7 @@ on:
     branches:
       - main
 
-jobs: 
+jobs:
   env:
     REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
     REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
@@ -23,15 +23,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
+
       - name: Setup node
         uses: actions/setup-node@v3
-        with: 
+        with:
           node-version: 16 # check this
           cache: npm
-        
+
       - name: Install Dependencies
-        run: npm ci 
+        run: npm ci
 
       - name: Lint
         run: npm run lint
@@ -69,7 +69,7 @@ jobs:
         with:
           name: build
           path: build
-        
+
       - name: Start Application
         run: npm run start:ci
 
@@ -85,7 +85,7 @@ jobs:
           name: results
           if-no-files-found: error
           path: results
-      
+
   publish-results:
     name: Publish Results
     runs-on: ubuntu-latest
@@ -96,28 +96,28 @@ jobs:
         with:
           name: results
           path: results
-    
+
       - name: Unit Test Report
-          uses: phoenix-actions/test-reporting@v8
-          with:
-              name: Unit Test Results            
-              reporter: jest-junit
-              path: reports/unit/unit-test-junit.xml
-              list-suites: all
-              list-tests: all
-              fail-on-error: false
-              max-annotations: '10'
-      
+        uses: phoenix-actions/test-reporting@v8
+        with:
+          name: Unit Test Results
+          reporter: jest-junit
+          path: reports/unit/unit-test-junit.xml
+          list-suites: all
+          list-tests: all
+          fail-on-error: false
+          max-annotations: "10"
+
       - name: Cypress Test Report
-          uses: phoenix-actions/test-reporting@v8
-          with:
-              name: Cypress Test Results            
-              reporter: jest-junit
-              path: reports/e2e/e2e-junit.xml
-              list-suites: all
-              list-tests: all
-              fail-on-error: false
-              max-annotations: '10'
+        uses: phoenix-actions/test-reporting@v8
+        with:
+          name: Cypress Test Results
+          reporter: jest-junit
+          path: reports/e2e/e2e-junit.xml
+          list-suites: all
+          list-tests: all
+          fail-on-error: false
+          max-annotations: "10"
 
       - name: Combine coverage results
         run: |
@@ -138,7 +138,7 @@ jobs:
           hide_complexity: true
           indicators: true
           output: both
-          thresholds: '60 80' # to be determined
+          thresholds: "60 80" # to be determined
 
       - name: Add Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@v2
