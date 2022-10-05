@@ -41,7 +41,7 @@
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test a",
-    "test:ci": "react-scripts test --watchAll=false --coverage --coverageDirectory='results/unit/unit-test-coverage' --reporters=default --reporters=jest-junit",
+    "test:ci": "react-scripts test --watchAll=false --coverage --coverageDirectory='results/unit/unit-test-coverage' --reporters=default --reporters=jest-junit --detectOpenHandles",
     "reports:prepare": "mkdir results/coverage_merge && mkdir coverage && mkdir .nyc_output",
     "reports:cypress:merge": "jrm results/e2e/e2e-junit.xml \"results/e2e/e2e-test-junit-*.xml\"",
     "coverage:copy": "cp results/unit/unit-test-coverage/coverage-final.json results/coverage_merge/junit-coverage.json && cp results/e2e/e2e-test-coverage/coverage-final.json results/coverage_merge/cypress-coverage.json",
