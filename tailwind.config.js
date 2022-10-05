@@ -40,7 +40,11 @@ module.exports = {
       backgroundImage: {
         wave: "url('/src/img/wave.png')",
         wavesvg: "url('/src/img/wavesvg.svg')",
-        byp_background:"url('/src/img/byp_background.png')",
+        byp_background: "url('/src/img/byp_background.png')",
+        quiz_background: "url('/src/img/quiz_background.svg')",
+        quiz_correct_answer: "url('/src/img/smile.svg')",
+        quiz_incorrect_answer: "url('/src/img/sad.svg')",
+        quiz_tick: "url('/src/img/tick.svg')",
         mbfooterwave: "url('/src/img/mbfooter_wave.png')",
         tbfooterwave: "url('/src/img/tbfooter_wave.png')",
         footerwave: "url('/src/img/footer_wave.png')",

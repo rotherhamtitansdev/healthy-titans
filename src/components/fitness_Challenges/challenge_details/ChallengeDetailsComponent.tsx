@@ -21,7 +21,7 @@ const ChallengeDetailsComponent = () => {
 
   return (
     <div>
-      {getChallengeDetailsComponentData ? (
+      {getChallengeDetailsComponentData && (
         <DetailsComponent>
           <div className="grid grid-cols-2 gap-4">
             <DetailsCard
@@ -41,8 +41,8 @@ const ChallengeDetailsComponent = () => {
                 </div>
                 <p className="pl-4 block mt-1 text-lg leading-tight font-semibold text-gray-900">
                   <ol className="list-decimal">
-                    {getChallengeDetailsComponentData.rules.map((rule) => (
-                      <li className="pb-4">{rule}</li>
+                    {getChallengeDetailsComponentData.rules.map((rule, index) => (
+                      <li key={index} className="pb-4">{rule}</li>
                     ))}
                   </ol>
                 </p>
@@ -50,8 +50,6 @@ const ChallengeDetailsComponent = () => {
             </Card>
           </div>
         </DetailsComponent>
-      ) : (
-        <h1>loading</h1>
       )}
     </div>
   );

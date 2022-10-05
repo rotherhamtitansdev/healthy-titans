@@ -31,7 +31,7 @@ const Recipes = () => {
     <Menu header={headerData} cards={recipes} title={titleData}>
 
       <Card card={{ name: "More recipes", onClick: () => openInNewTab(moreRecipesLink) }}>
-        <div className="my-[1rem] md:my-[2rem] md:text-2xl text-homepageHeaderText font-semibold font-quicksand text-center">
+        <div className="my-[1rem] md:my-[2rem] md:text-2xl text-homepageHeaderText font-semibold text-center">
           More recipes
         </div>
       </Card>

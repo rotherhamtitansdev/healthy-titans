@@ -3,15 +3,13 @@ import { writeUserData } from "../../../functions/db";
 import AppHeader from "../../app_header/AppHeader";
 import MenuHeader from "../../app_header/header/MenuHeader";
 import MenuTitle from "../../shared/MenuTitle";
-import { useFYPStartedContext } from "./BuildYourPlateContext";
+import { useGameStartedContext } from "../GameContext";
 import BuildYourPlateGameScreen from "./BuildYourPlateGameScreen";
-import BuildYourPlateStartScreen from "./BuildYourPlateStartScreen";
-
-/* eslint-disable */
+import GameStartScreen from "../GameStartScreen";
 
 const BuildYourPlate = () => {
-  const { getIsFYPStarted } = useFYPStartedContext();
-  writeUserData()
+  const { getIsGameStarted } = useGameStartedContext();
+  writeUserData();
   return (
     <>
       <AppHeader>
@@ -19,7 +17,7 @@ const BuildYourPlate = () => {
       </AppHeader>
       <div className="mx-7 xs:mx-8 sm:mx-12 md:mx-14">
         <MenuTitle title="Build your plate" />
-        { getIsFYPStarted ? <BuildYourPlateGameScreen /> : <BuildYourPlateStartScreen />}
+        {getIsGameStarted ? <BuildYourPlateGameScreen /> : <GameStartScreen name="Build your plate" background="bg-byp_background md:bg-[center_bottom_3rem]" />}
       </div>
     </>
   );
