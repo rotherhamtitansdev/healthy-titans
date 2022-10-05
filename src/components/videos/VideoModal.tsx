@@ -18,7 +18,7 @@ const VideoModal = (props: VideoModalProps) => (
               }}
             >
               <div className="flex items-start justify-between pb-3 border-b border-solid border-slate-200 rounded-t">
-                <h3 className="text-2xl font-semibold font-quicksand text-homepageHeaderSubTitle">
+                <h3 className="text-2xl font-semibold text-homepageHeaderSubTitle">
                   {props.video.title}
                 </h3>
                 <button
@@ -36,7 +36,7 @@ const VideoModal = (props: VideoModalProps) => (
 
               <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b mx-auto">
                 <button
-                  className="font-quicksand font-bold bg-titansBrightPink text-white font-bold font-quicksand py-2 px-8 rounded-full"
+                  className="font-bold bg-titansBrightPink text-white font-bold py-2 px-8 rounded-full"
                   type="button"
                   onClick={() => props.setHidden(true)}
                 >

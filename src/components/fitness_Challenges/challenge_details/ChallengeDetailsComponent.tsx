@@ -13,7 +13,6 @@ const ChallengeDetailsComponent = () => {
   >();
 
   const { challengeName } = useParams();
-
   useEffect(() => {
     setChallengeDetailsComponentData(
       ChallengeDetailsComponentData[
@@ -24,7 +23,7 @@ const ChallengeDetailsComponent = () => {
 
   return (
     <div>
-      {getChallengeDetailsComponentData ? (
+      {getChallengeDetailsComponentData && (
         <DetailsComponent>
           <div className="grid grid-cols-2 gap-4">
             <DetailsCard
@@ -53,8 +52,6 @@ const ChallengeDetailsComponent = () => {
             </Card>
           </div>
         </DetailsComponent>
-      ) : (
-        <h1>loading</h1>
       )}
     </div>
   );

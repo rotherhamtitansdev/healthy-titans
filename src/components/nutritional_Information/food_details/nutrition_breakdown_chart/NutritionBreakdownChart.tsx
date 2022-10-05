@@ -1,5 +1,9 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
+import React, {
+  useCallback, useEffect, useMemo, useState,
+} from "react";
+import {
+  VictoryChart, VictoryBar, VictoryLabel, VictoryAxis,
+} from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
 import getNutritionalDetailsSingular from "../../../../api/NutritionApi";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
@@ -58,19 +62,20 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   }, []);
 
   return (
-    <div>
+    <div className="basis-1/2">
+
       <div className="bg-white rounded-3xl md:w-[36rem] md:h-[58rem]">
         {getLoading ? (
           <ClipLoader color="red" loading={getLoading} size={150} />
         ) : (
           <div>
-            <div className="mx-12 my-8 font-quicksand">
+            <div className="mx-12 my-8">
               <p className="text-[24px] text-nutritionInformationHeader font-semibold">
                 Nutrition Information
               </p>
               <p className="text-[20px] text-primaryGrey font-medium">*Based on serving of 100 g</p>
             </div>
-            <div className="mx-12 my-8 font-quicksand">
+            <div className="mx-12 my-8">
               <p className="text-[16px] text-primaryGrey font-medium">Calories</p>
               <p
                 data-testid="calorie-count"
