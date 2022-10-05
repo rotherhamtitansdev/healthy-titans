@@ -8,7 +8,9 @@ import DetailsComponent from "../../shared/DetailsComponent";
 
 const ChallengeDetailsComponent = () => {
   // eslint-disable-next-line max-len
-  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<ChallengeDetailsProps | undefined>();
+  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<
+    ChallengeDetailsProps | undefined
+  >();
 
   const { challengeName } = useParams();
 
@@ -16,7 +18,7 @@ const ChallengeDetailsComponent = () => {
     setChallengeDetailsComponentData(
       ChallengeDetailsComponentData[
         challengeName as unknown as keyof typeof ChallengeDetailsComponentData
-      ],
+      ]
     );
   });
 
@@ -33,17 +35,17 @@ const ChallengeDetailsComponent = () => {
             <Card
               card={{
                 name: getChallengeDetailsComponentData.name,
-                additionalStyling: "h-content",
+                additionalStyling: "h-content"
               }}
             >
               <div className="pl-4 pr-4">
-                <div className="pt-4 pb-3 tracking-wide text-lg text-black font-bold">
-                  Rules
-                </div>
+                <div className="pt-4 pb-3 tracking-wide text-lg text-black font-bold">Rules</div>
                 <p className="pl-4 block mt-1 text-lg leading-tight font-semibold text-gray-900">
                   <ol className="list-decimal">
                     {getChallengeDetailsComponentData.rules.map((rule) => (
-                      <li className="pb-4">{rule}</li>
+                      <li key={rule} className="pb-4">
+                        {rule}
+                      </li>
                     ))}
                   </ol>
                 </p>

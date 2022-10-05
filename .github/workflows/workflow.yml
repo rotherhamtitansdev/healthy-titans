@@ -8,7 +8,16 @@ on:
       - main
 
 jobs: 
-  lint-unit-test:
+  env:
+    REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+    REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+    REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
+    REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+    REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+    REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
+    REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
+    REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
+  lint-test-build:
     name: Lint and Unit Test
     runs-on: ubuntu-latest
     steps:
@@ -29,28 +38,93 @@ jobs:
 
       - name: Unit Tests
         if: success() || failure()
-        env:
-          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
-          REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
-          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
-          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
-          REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
-          REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
-          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
         run: npm run test:nowatch
 
-      - name: Unit Test Report
-        uses: phoenix-actions/test-reporting@v8
-        if: success() || failure()
+      - name: Build
+        run: npm run build
+
+      - name: Save results folder
+        uses: actions/upload-artifact@v3
         with:
-          name: Unit Test Results            
-          reporter: jest-junit
-          path: junit.xml
-          list-suites: all
-          list-tests: all
-          fail-on-error: false
-          max-annotations: '10'
+          name: results
+          if-no-files-found: error
+          path: results
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
+  integration-test:
+    name: Cypress Tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download the build folders
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+        
+      - name: Start Application
+        run: npm run start:ci
+
+      - name: Cypress Tests
+        run: npm run cypress:run
+
+      - name: Merge cypress junit results
+        run: npm run reports:cypress:merge
+
+      - name: Save results folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: results
+          if-no-files-found: error
+          path: results
+      
+
+  publish-results:
+    name: Publish Results
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download test results
+        uses: actions/download-artifact@v3
+        with:
+          name: results
+          path: results
+    
+    - name: Unit Test Report
+        uses: phoenix-actions/test-reporting@v8
+        with:
+            name: Unit Test Results            
+            reporter: jest-junit
+            path: reports/unit/unit-test-junit.xml
+            list-suites: all
+            list-tests: all
+            fail-on-error: false
+            max-annotations: '10'
+    
+    - name: Cypress Test Report
+        uses: phoenix-actions/test-reporting@v8
+        with:
+            name: Cypress Test Results            
+            reporter: jest-junit
+            path: reports/e2e/e2e-junit.xml
+            list-suites: all
+            list-tests: all
+            fail-on-error: false
+            max-annotations: '10'
+
+      - name: Combine coverage results
+        run: |
+          npm run reports:prepare
+          npm run coverage:copy
+          npm run coverage:merge
+          npm run coverage:report
 
       - name: Code Coverage Report
         uses: irongut/CodeCoverageSummary@v1.3.0
@@ -72,20 +146,3 @@ jobs:
         with:
           recreate: true
           path: code-coverage-results.md
-
-
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Build
-  #       run: npm run build
-      
-  #     - name: Start
-  #       run: |
-  #         npm i serve
-  #         serve -s build
-
-  #     - name: Integration/E2E tests
-  #       run: npm run test:cypress
-      
-      
