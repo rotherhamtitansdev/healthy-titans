@@ -37,13 +37,14 @@ jobs:
         run: npm run lint
 
       - name: Unit Tests
-        if: success() || failure()
+        if: always()
         run: npm run test:ci
 
       - name: Build
         run: npm run build
 
       - name: Save results folder
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: results
@@ -80,9 +81,11 @@ jobs:
         run: npm run ci:e2e
 
       - name: Merge cypress junit results
+        if: always()
         run: npm run reports:cypress:merge
 
       - name: Save results folder
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: results
