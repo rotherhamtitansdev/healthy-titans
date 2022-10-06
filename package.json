@@ -38,7 +38,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts -r @cypress/instrument-cra start",
+    "start": "react-scripts start",
+    "start:ci": "DISABLE_ESLINT_PLUGIN=true react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test a",
     "test:ci": "react-scripts test --watchAll=false --coverage --coverageDirectory='results/unit/unit-test-coverage' --reporters=default --reporters=jest-junit --forceExit",
@@ -50,9 +51,9 @@
     "cypress:cobertura": "nyc -r cobertura --report-dir results/e2e/e2e-test-coverage",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "ci:e2e": "start-server-and-test start 3000 cypress:run",
+    "ci:e2e": "start-server-and-test start:ci 3000 cypress:run",
     "eject": "react-scripts eject",
-    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "lint": "eslint \"**/*.{ts,tsx}\" --max-warnings=0",
     "deploy": "sh ./deploy.sh"
   },
   "browserslist": {
