@@ -1,6 +1,6 @@
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import {
-  doc, getDoc, collection, addDoc, getDocs,
+  doc, getDoc, collection, getDocs, setDoc
 } from "firebase/firestore";
 import FoodDetailsComponentData, { FoodDetailsComponentDataFile } from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
@@ -15,33 +15,29 @@ class FirebaseAPI {
   static fetchAllImages = async (firebaseNames: string[]) => Promise.all(firebaseNames.map((firebaseName) => FirebaseAPI.fetchImages(firebaseName)));
 
   static fetchFoodDetailsComponentsData = async ():Promise<FoodDetailsComponentDataFile | undefined> => {
-    const docRef = doc(fStore, "FYPData", "Data");
-    const docSnap = await getDoc(docRef);
 
-    if (!docSnap) return undefined;
-    return docSnap.data();
+    const querySnapshot = await getDocs(collection(fStore, "FYPData"));
+
+    if (!querySnapshot) return undefined;
+    return querySnapshot.docs.map((doc) => doc.data())
   };
 
   static addFoodDetailsComponentsData = async () => {
-    const docRef = doc(fStore, "FYPData", "Data");
-
     for (const [key, value] of Object.entries(FoodDetailsComponentData)) {
-      const colRef = collection(docRef, value.name);
-      await addDoc(colRef, value);
+      await setDoc(doc(fStore, "FYPData", key), value);
     }
-
-  };
+  }
 
   static fetchFoodDetailsSingle = async (name: string) => {
-    const docRef = doc(fStore, "FYPData", "Data");
-    const colRef = collection(docRef, name);
-    const docs = await getDocs(colRef);
-
-    if (docs.docs[0].exists()) {
-      return docs.docs[0].data();
-    }
+    const docRef = doc(fStore, "FYPData", name);
+    const docSnap = await getDoc(docRef);
+    if (docSnap) return docSnap.data()
     return undefined;
   };
+
+  static fetchFoodDetailsSeeNext = async (category: string) => {
+    const docRef = doc(fStore, "FYPData", "Data");
+  }
 }
 
 export default FirebaseAPI;

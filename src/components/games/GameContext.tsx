@@ -59,7 +59,6 @@ const GameStartedContextWrapper = ({ children }: any) => {
   }, [getModal]);
 
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <GameStartedContext.Provider value={{
       getIsGameStarted,
       setIsGameStarted,
