@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from "react";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import React from "react";
+
 import HomePageHeaderImages from "./HomePageHeaderImages";
 import { useGlobalMenuOpenContext } from "../AppHeaderContext";
 
-const HomePageHeaderImagesNames = [
-  "HomePageImages/Red apple.png",
-  "HomePageImages/Bell pepper.png",
-  "HomePageImages/Avocado.png",
-  "HomePageImages/Broccoli.png",
-  "HomePageImages/Blueberries.png",
-  "HomePageImages/Carrot.png",
-];
-
 const HomepageHeader = () => {
-  const [getImageURLs, setImageURLs] = useState<string[]>();
 
   const { isMenuOpen } = useGlobalMenuOpenContext();
-
-  useEffect(() => {
-    Promise.all(HomePageHeaderImagesNames.map((value) => FirebaseAPI.fetchImages(value))).then((value) => setImageURLs(value));
-  }, []);
 
   return (
     <div className="flex flex-wrap h-[30rem]">

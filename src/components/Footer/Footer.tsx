@@ -1,24 +1,24 @@
 /* eslint-disable global-require */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { initializeApp } from "firebase/app";
-import { Auth, getAuth } from "firebase/auth";
-import { config } from "../../config/firebase-config";
+// import { initializeApp } from "firebase/app";
+// import { Auth, getAuth } from "firebase/auth";
+// import { config } from "../../config/firebase-config";
 import FacebookLogo from "../../img/Facebook.svg";
 import YoutubeLogo from "../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../img/TwitterLogo.svg";
 
-initializeApp(config.firebaseConfig);
+// initializeApp(config.firebaseConfig);
 
-const auth = getAuth();
+// const auth = getAuth();
 
-const Footer = () => {
-  const [currentUser, setUser] = useState<Auth["currentUser"] | null>(null);
-  useEffect(() => auth.onAuthStateChanged((user) => {
-    setUser(user);
-  }));
+const Footer = () => 
+  // const [currentUser, setUser] = useState<Auth["currentUser"] | null>(null);
+  // useEffect(() => auth.onAuthStateChanged((user) => {
+  //   setUser(user);
+  // }));
 
-  return (
+ (
     <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-medium">
       <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
         <Link to="/" className="w-32">
@@ -136,6 +136,5 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
 
 export default Footer;

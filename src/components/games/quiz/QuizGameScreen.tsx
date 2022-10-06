@@ -66,10 +66,10 @@ const QuizGameScreen = () => {
                 </Card>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-8 p-4 sm:p-2 lg:p-5">
                   {
-                    currentQuestion.answers.map((answer, index) => (
+                    currentQuestion.answers.map((answer) => (
                       <AnswerCard
                         answer={answer}
-                        key={index}
+                        key={answer.answer}
                       />
                     ))
                   }
