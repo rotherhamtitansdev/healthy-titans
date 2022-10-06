@@ -115,7 +115,7 @@ jobs:
         with:
           name: Unit Test Results
           reporter: jest-junit
-          path: reports/unit/unit-test-junit.xml
+          path: results/unit/unit-test-junit.xml
           list-suites: all
           list-tests: all
           fail-on-error: false
@@ -126,7 +126,7 @@ jobs:
         with:
           name: Cypress Test Results
           reporter: jest-junit
-          path: reports/e2e/e2e-junit.xml
+          path: results/e2e/e2e-junit.xml
           list-suites: all
           list-tests: all
           fail-on-error: false
