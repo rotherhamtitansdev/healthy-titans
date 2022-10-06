@@ -8,7 +8,9 @@ import DetailsComponent from "../../shared/DetailsComponent";
 
 const ChallengeDetailsComponent = () => {
   // eslint-disable-next-line max-len
-  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<ChallengeDetailsProps | undefined>();
+  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<
+    ChallengeDetailsProps | undefined
+  >();
 
   const [getImageURL, setImageURL] = useState<string>();
   const { challengeName } = useParams();
@@ -30,7 +32,7 @@ const ChallengeDetailsComponent = () => {
     setChallengeDetailsComponentData(
       ChallengeDetailsComponentData[
         challengeName as unknown as keyof typeof ChallengeDetailsComponentData
-      ],
+      ]
     );
   });
 
@@ -45,7 +47,7 @@ const ChallengeDetailsComponent = () => {
             list={
               getChallengeDetailsComponentData.equipment && {
                 title: "Equipment",
-                items: getChallengeDetailsComponentData.equipment,
+                items: getChallengeDetailsComponentData.equipment
               }
             }
           />
@@ -56,12 +58,10 @@ const ChallengeDetailsComponent = () => {
               </div>
               <p className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
                 <ul className="list-decimal">
-                  {getChallengeDetailsComponentData.howToPlay?.map(
-                    (howToPlay) => (
-                      // eslint-disable-next-line react/jsx-key
-                      <li className="pb-6">{howToPlay}</li>
-                    ),
-                  )}
+                  {getChallengeDetailsComponentData.howToPlay?.map((howToPlay) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <li className="pb-6">{howToPlay}</li>
+                  ))}
                 </ul>
               </p>
               <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold">

@@ -6,6 +6,7 @@ describe("Food & Nutrition", () => {
   });
 
   it("Can view fried chicken information ", () => {
+    // TODO: update this test for non-mobile views
     cy.get('button[aria-label="menu toggle"]').click();
     cy.get('[data-testid="mobile-menu"] [href="/NutritionalInformation"]').click();
     cy.get('[data-testid="Fast Food"]').click();

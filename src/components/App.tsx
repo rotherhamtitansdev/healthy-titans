@@ -33,13 +33,11 @@ const App: React.FC = () => (
         {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
           (nutritionCategory, index) => (
             <Route
-            key={index}
+              key={nutritionCategory}
               path={nutritionCategory}
-              element={
-                <NutritionDetailsComponent nutritionName={nutritionCategory} />
-              }
+              element={<NutritionDetailsComponent nutritionName={nutritionCategory} />}
             />
-          ),
+          )
         )}
         <Route path="FruitAndVegetables">
           <Route index element={<FoodCategory />} />
@@ -66,19 +64,35 @@ const App: React.FC = () => (
       <Route path="Games">
         <Route index element={<Games />} />
         <Route path="Quiz">
-          <Route index element={<GameContext><QuizContext><Quiz /></QuizContext></GameContext>} />
+          <Route
+            index
+            element={
+              <GameContext>
+                <QuizContext>
+                  <Quiz />
+                </QuizContext>
+              </GameContext>
+            }
+          />
         </Route>
         <Route path="BuildYourPlate">
-          <Route index element={<GameContext><BuildYourPlate /></GameContext>} />
+          <Route
+            index
+            element={
+              <GameContext>
+                <BuildYourPlate />
+              </GameContext>
+            }
+          />
         </Route>
       </Route>
       <Route
         path="test"
-        element={(
+        element={
           <AuthRoute>
             <Test />
           </AuthRoute>
-        )}
+        }
       />
       <Route path="/signin" element={<SignIn />} />
       <Route path="/forgotPassword" element={<ForgotPassword />} />
