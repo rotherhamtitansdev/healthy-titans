@@ -124,6 +124,78 @@ const mockContent = {
         },
       ],
     },
+    {
+      question: "Seventh question",
+      answers: [
+        {
+          answer: "A wrong answer",
+        },
+        {
+          answer: "Correct answer",
+          isCorrect: true,
+        },
+        {
+          answer: "Another wrong answer",
+        },
+        {
+          answer: "Yet another wrong answer",
+        },
+      ],
+    },
+    {
+      question: "Eighth question",
+      answers: [
+        {
+          answer: "A wrong answer",
+        },
+        {
+          answer: "Correct answer",
+          isCorrect: true,
+        },
+        {
+          answer: "Another wrong answer",
+        },
+        {
+          answer: "And another wrong answer",
+        },
+      ],
+    },
+    {
+      question: "Ninth question",
+      answers: [
+        {
+          answer: "A wrong answer",
+        },
+        {
+          answer: "Another wrong answer",
+        },
+        {
+          answer: "Yet Another wrong answer",
+        },
+        {
+          answer: "Correct answer",
+          isCorrect: true,
+        },
+      ],
+    },
+    {
+      question: "Tenth question",
+      answers: [
+        {
+          answer: "A wrong answer",
+        },
+        {
+          answer: "Another wrong answer",
+        },
+        {
+          answer: "Yet Another wrong answer",
+        },
+        {
+          answer: "Correct answer",
+          isCorrect: true,
+        },
+      ],
+    },
   ],
 };
 
@@ -145,6 +217,17 @@ function clickIncorrectAnswer() {
 
 function clickNext() {
   fireEvent.click(screen.getByTestId("next-button"));
+}
+
+function playQuizWithScore(score: number) {
+  for (let index = 0; index < score; index++) {
+    clickCorrectAnswer();
+    clickNext();
+  }
+  for (let index = score; index < mockContent.questions.length; index++) {
+    clickIncorrectAnswer();
+    clickNext();
+  }
 }
 
 describe("Quiz", () => {
@@ -210,29 +293,36 @@ describe("Quiz", () => {
       expect(screen.getByText("Better luck next time!")).toBeInTheDocument();
     });
 
-    test("should score 2 out of 6", () => {
-      clickCorrectAnswer();
-      clickNext();
+    test("should score 3 out of 10", () => {
+      playQuizWithScore(3);
 
-      clickIncorrectAnswer();
-      clickNext();
+      const quizScore = screen.getByTestId("modal-title");
+      expect(quizScore).toHaveTextContent("Score: 3 out of 10");
 
-      clickIncorrectAnswer();
-      clickNext();
-
-      clickCorrectAnswer();
-      clickNext();
-
-
-      clickIncorrectAnswer();
-      clickNext();
-
-      clickIncorrectAnswer();
-      clickNext();
-
-      const quizScore = screen.getByTestId("game-score");
-      expect(quizScore).toHaveTextContent("Score: 2 out of 6");
+      const scoreFeedback = screen.getByTestId("modal-text");
+      expect(scoreFeedback).toHaveTextContent("Good effort, keep learning!");
     });
+
+    test("should score 4 out of 10", () => {
+      playQuizWithScore(4);
+
+      const quizScore = screen.getByTestId("modal-title");
+      expect(quizScore).toHaveTextContent("Score: 4 out of 10");
+
+      const scoreFeedback = screen.getByTestId("modal-text");
+      expect(scoreFeedback).toHaveTextContent("Well done!");
+    });
+
+    test("should score 10 out of 10", () => {
+      playQuizWithScore(10);
+
+      const quizScore = screen.getByTestId("modal-title");
+      expect(quizScore).toHaveTextContent("Score: 10 out of 10");
+
+      const scoreFeedback = screen.getByTestId("modal-text");
+      expect(scoreFeedback).toHaveTextContent("Excellent!");
+    });
+
 
     test("user can't select multiple answers", () => {
       clickIncorrectAnswer();

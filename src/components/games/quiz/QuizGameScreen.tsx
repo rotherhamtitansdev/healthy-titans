@@ -22,6 +22,16 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
     setSelectedAnswer(undefined);
   }, [questionNumber]);
 
+  const getScoreFeedback = () => {
+    if (getScore <= 3) {
+      return "Good effort, keep learning!";
+    }
+    if (getScore >= 7) {
+      return "Excellent!";
+    }
+    return "Well done!";
+  }
+
   const nextQuestion = () => {
     if (quizData) {
       if (questionNumber < quizData.questions.length - 1) {
@@ -34,7 +44,7 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
             setIsGameStarted(false);
           },
           buttonText: "Play again",
-          text: "Well done!",
+          text: getScoreFeedback(),
           title: `Score: ${getScore} out of ${quizData.questions.length}`,
         });
       }
