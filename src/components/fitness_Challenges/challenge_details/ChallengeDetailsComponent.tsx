@@ -36,7 +36,7 @@ const ChallengeDetailsComponent = () => {
 
   return (
     <div>
-      {getChallengeDetailsComponentData ? (
+      {getChallengeDetailsComponentData && (
         <DetailsComponent>
           <DetailsCard
             name={getChallengeDetailsComponentData.name}
@@ -78,8 +78,6 @@ const ChallengeDetailsComponent = () => {
             </div>
           </div>
         </DetailsComponent>
-      ) : (
-        <h1>loading</h1>
       )}
     </div>
   );

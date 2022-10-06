@@ -19,7 +19,7 @@ const Footer = () => {
   }));
 
   return (
-    <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
+    <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-medium">
       <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
         <Link to="/" className="w-32">
           <img src={require("../../img/pink_logo.png")} alt="Rotherham Titan" />

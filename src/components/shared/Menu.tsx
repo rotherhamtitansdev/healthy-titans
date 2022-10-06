@@ -40,25 +40,25 @@ const Menu = (props: MenuProps) => {
 
   return (
     <>
-      {props.header ? (
+      {props.header && (
         <AppHeader>
           <MenuHeader title={props.header.title} body={props.header.body} />
         </AppHeader>
-      ) : null}
+      )}
       <div className="p-5 md:p-10 pb-20">
-        {props.title ? (
+        {props.title && (
           <MenuTitle
             title={props.title.title}
             subtitle={props.title.subtitle}
           />
-        ) : null}
+        )}
         <div className={getStyling()}>
           {cardList}
-          {!smallMenu ? (
+          {!smallMenu && (
             <div className="grid col-span-2 lg:col-span-3 ">
               {props.children}
             </div>
-          ) : null}
+          )}
         </div>
       </div>
     </>
