@@ -80,10 +80,6 @@ jobs:
       - name: Start and Test
         run: npm run ci:e2e
 
-      - name: Merge cypress junit results
-        if: always()
-        run: npm run reports:cypress:merge
-
       - name: Save results folder
         if: always()
         uses: actions/upload-artifact@v3
@@ -126,7 +122,7 @@ jobs:
         with:
           name: Cypress Test Results
           reporter: jest-junit
-          path: results/e2e/e2e-junit.xml
+          path: results/e2e/e2e-test-junit-*.xml
           list-suites: all
           list-tests: all
           fail-on-error: false
