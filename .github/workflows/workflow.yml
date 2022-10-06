@@ -110,21 +110,21 @@ jobs:
           name: results
           path: results
 
-      - name: Unit Test Report
-        uses: phoenix-actions/test-reporting@v8
-        with:
-          name: Unit Test Results
-          reporter: jest-junit
-          path: results/unit/unit-test-junit.xml
-          list-suites: all
-          list-tests: all
-          fail-on-error: false
-          max-annotations: "10"
-
-      - name: JUnit Report Action
+      - name: Unit Test Results
         uses: mikepenz/action-junit-report@v3.5.1
+        check_name: Unit Test Results
+        with:
+          report_paths: "**/results/unit/unit-test-junit.xml"
+          include_passed: true
+          detailed_summary: true
+
+      - name: Cypress Results
+        uses: mikepenz/action-junit-report@v3.5.1
+        check_name: Cypress Results
         with:
           report_paths: "**/results/e2e/e2e-junit.xml"
+          include_passed: true
+          detailed_summary: true
 
       - name: Combine coverage results
         run: |
@@ -137,7 +137,7 @@ jobs:
         uses: irongut/CodeCoverageSummary@v1.3.0
         if: always()
         with:
-          filename: coverage/cobertura-coverage.xml
+          filename: results/coverage/cobertura-coverage.xml
           badge: true
           fail_below_min: false # to be determined
           format: markdown
