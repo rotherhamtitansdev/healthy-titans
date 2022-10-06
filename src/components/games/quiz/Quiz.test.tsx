@@ -1,9 +1,12 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable import/no-unresolved */
 import "@testing-library/jest-dom";
 import {
   act,
-  cleanup,
-  fireEvent, render, screen
+  cleanup, render, screen
 } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import React from "react";
 import { MemoryRouter, Route } from "react-router";
 import FirebaseAPI from "../../../api/FirebaseAPI";
@@ -198,6 +201,7 @@ const mockContent = {
     },
   ],
 };
+let user : UserEvent;
 
 beforeEach(() => {
   jest.spyOn(FirebaseAPI, "fetchQuizData").mockImplementation(() => Promise.resolve(mockContent));
@@ -207,31 +211,30 @@ afterEach(() => {
   cleanup();
 });
 
-function clickCorrectAnswer() {
-  fireEvent.click(screen.getByText("Correct answer"));
+async function clickCorrectAnswer() {
+  await user.click(screen.getByText("Correct answer"));
 }
 
-function clickIncorrectAnswer() {
-  fireEvent.click(screen.getByText("A wrong answer"));
+async function clickIncorrectAnswer() {
+  await user.click(screen.getByText("A wrong answer"));
 }
 
-function clickNext() {
-  fireEvent.click(screen.getByTestId("next-button"));
+async function clickNext() {
+  await user.click(screen.getByTestId("next-button"));
 }
 
-function playQuizWithScore(score: number) {
+async function playQuizWithScore(score: number) {
   for (let index = 0; index < score; index++) {
-    clickCorrectAnswer();
-    clickNext();
+    await clickCorrectAnswer().then(() => clickNext());
   }
   for (let index = score; index < mockContent.questions.length; index++) {
-    clickIncorrectAnswer();
-    clickNext();
+    await clickIncorrectAnswer().then(() => clickNext());
   }
 }
 
 describe("Quiz", () => {
-  test("navigate to quiz", () => {
+  test("navigate to quiz", async() => {
+    user = userEvent.setup();
     // Define width so carousel on homepage loads
     Object.defineProperties(window.HTMLElement.prototype, {
       offsetWidth: {
@@ -247,11 +250,11 @@ describe("Quiz", () => {
 
     const games = home.getByTestId("Games");
     expect(games).toBeInTheDocument();
-    fireEvent.click(games);
+    await user.click(games);
 
     const quiz = screen.getByTestId("Quiz");
     expect(quiz).toBeInTheDocument();
-    fireEvent.click(quiz);
+    await user.click(quiz);
 
     const begin = screen.getByTestId("game-begin");
     expect(begin).toBeInTheDocument();
@@ -259,6 +262,7 @@ describe("Quiz", () => {
 
   describe("Quiz functionality", () => {
     beforeEach(async () => {
+      user = userEvent.setup();
       const quizRoute = "/Games/Quiz";
 
       await act(async () => {
@@ -277,24 +281,24 @@ describe("Quiz", () => {
           </RoutingTestWrapper>,
         );
       });
-      fireEvent.click(screen.getByTestId("game-begin"));
+      await user.click(screen.getByTestId("game-begin"));
     });
 
     test("First question renders", () => {
       expect(screen.getByText("First question")).toBeInTheDocument();
     });
 
-    test("should alert whether answer was correct", () => {
-      clickCorrectAnswer();
+    test("should alert whether answer was correct", async() => {
+      await clickCorrectAnswer();
       expect(screen.getByText("Well done, you got the right answer!")).toBeInTheDocument();
-      clickNext();
+      await clickNext();
 
-      clickIncorrectAnswer();
+      await clickIncorrectAnswer();
       expect(screen.getByText("Better luck next time!")).toBeInTheDocument();
     });
 
-    test("should score 3 out of 10", () => {
-      playQuizWithScore(3);
+    test("should score 3 out of 10", async() => {
+      await playQuizWithScore(3);
 
       const quizScore = screen.getByTestId("modal-title");
       expect(quizScore).toHaveTextContent("Score: 3 out of 10");
@@ -303,8 +307,8 @@ describe("Quiz", () => {
       expect(scoreFeedback).toHaveTextContent("Good effort, keep learning!");
     });
 
-    test("should score 4 out of 10", () => {
-      playQuizWithScore(4);
+    test("should score 4 out of 10", async() => {
+      await playQuizWithScore(4);
 
       const quizScore = screen.getByTestId("modal-title");
       expect(quizScore).toHaveTextContent("Score: 4 out of 10");
@@ -313,8 +317,8 @@ describe("Quiz", () => {
       expect(scoreFeedback).toHaveTextContent("Well done!");
     });
 
-    test("should score 10 out of 10", () => {
-      playQuizWithScore(10);
+    test("should score 10 out of 10", async() => {
+      await playQuizWithScore(10);
 
       const quizScore = screen.getByTestId("modal-title");
       expect(quizScore).toHaveTextContent("Score: 10 out of 10");
@@ -324,8 +328,8 @@ describe("Quiz", () => {
     });
 
 
-    test("user can't select multiple answers", () => {
-      clickIncorrectAnswer();
+    test("user can't select multiple answers", async() => {
+      await clickIncorrectAnswer();
       expect(screen.getByText("Better luck next time!")).toBeInTheDocument();
 
       clickCorrectAnswer();
