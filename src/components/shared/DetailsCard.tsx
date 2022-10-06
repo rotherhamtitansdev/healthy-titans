@@ -8,7 +8,7 @@ import CheckMarkButton from "../../img/CheckMarkButton.svg";
  * This component represents a details card
  * */
 const DetailsCard = (props: DetailsCardProps) => (
-  <div data-testId={props.name} className="pl-5 font-quicksand basis-1/2">
+  <div data-testid={props.name} className="pl-5 font-quicksand basis-1/2">
     {props.img && (
       <img className="absolute top-[8rem] " src={props.img} alt={props.name} />
     )}
