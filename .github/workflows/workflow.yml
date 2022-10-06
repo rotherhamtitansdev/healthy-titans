@@ -1,0 +1,155 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-test-build:
+    name: Lint and Unit Test
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+      REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+      REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
+      REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+      REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+      REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
+      REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
+      REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16 # check this
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit Tests
+        if: always()
+        run: npm run test:ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Save results folder
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: results
+          if-no-files-found: error
+          path: results
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
+
+  integration-test:
+    name: Cypress Tests
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+      REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+      REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
+      REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+      REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+      REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
+      REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
+      REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Start and Test
+        run: npm run ci:e2e
+
+      - name: Merge cypress junit results
+        if: always()
+        run: npm run reports:cypress:merge
+
+      - name: Save results folder
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: results
+          if-no-files-found: error
+          path: results
+
+  publish-results:
+    name: Publish Results
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [lint-test-build, integration-test]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm i -D nyc junit-report-merger
+
+      - name: Download test results
+        uses: actions/download-artifact@v3
+        with:
+          name: results
+          path: results
+
+      - name: Unit Test Results
+        uses: mikepenz/action-junit-report@v3.5.1
+        with:
+          check_name: Unit Test Results
+          report_paths: "**/results/unit/unit-test-junit.xml"
+          include_passed: true
+          detailed_summary: true
+
+      - name: Cypress Results
+        uses: mikepenz/action-junit-report@v3.5.1
+        with:
+          check_name: Cypress Results
+          report_paths: "**/results/e2e/e2e-junit.xml"
+          include_passed: true
+          detailed_summary: true
+
+      - name: Combine coverage results
+        run: |
+          npm run reports:prepare
+          npm run coverage:copy
+          npm run coverage:merge
+          npm run coverage:generatereport
+
+      - name: Code Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.3.0
+        if: always()
+        with:
+          filename: results/coverage/cobertura-coverage.xml
+          badge: true
+          fail_below_min: false # to be determined
+          format: markdown
+          hide_branch_rate: false
+          hide_complexity: true
+          indicators: true
+          output: both
+          thresholds: "60 80" # to be determined
+
+      - name: Add Coverage PR Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: ${{ github.event_name == 'pull_request' && always() }}
+        with:
+          recreate: true
+          path: code-coverage-results.md
