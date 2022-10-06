@@ -17,7 +17,7 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
       "1.5xl": "1450px",
       "2xl": "1536px",
-      "3xl": "1800px"
+      "3xl": "1800px",
     },
     extend: {
       colors: {
@@ -32,7 +32,7 @@ module.exports = {
         primaryGrey: "#5C5C5C",
         titansDarkBlue: "#243A73",
         titansBrightPink: "#D14267",
-        titansDarkGrey: "#545454"
+        titansDarkGrey: "#545454",
       },
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],

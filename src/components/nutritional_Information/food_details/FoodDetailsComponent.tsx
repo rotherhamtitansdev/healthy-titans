@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
-import FoodDetailsComponentData, { FoodDetailsProps,} from "../../../data/nutritional_information/FoodDetailsComponentData";
+import { FoodDetailsProps,} from "../../../data/nutritional_information/FoodDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 import DetailsComponent from "../../shared/DetailsComponent";
@@ -14,7 +14,6 @@ const FoodDetailsComponent = () => {
   >();
 
   const [getImageURL, setImageURL] = useState<string>();
-  // const [getFacts, setFacts] = useState<string[]>();
   const { foodName } = useParams();
 
   useEffect(() => {
