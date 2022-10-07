@@ -28,7 +28,7 @@ const DetailsCard = (props: DetailsCardProps) => (
         {props.description}
       </p>
       {props.list && (
-        <p className="block mt-1 text-lg leading-tight font-semibold text-gray-900">
+        <div className="block mt-1 text-lg leading-tight font-semibold text-gray-900">
           <h2 className="py-5 text-2xl ">{props.list.title}</h2>
           <ul className="list-none px-5">
             {props.list.items.map((item) => (
@@ -38,7 +38,7 @@ const DetailsCard = (props: DetailsCardProps) => (
               </li>
             ))}
           </ul>
-        </p>
+        </div>
       )}
     </div>
   </div>

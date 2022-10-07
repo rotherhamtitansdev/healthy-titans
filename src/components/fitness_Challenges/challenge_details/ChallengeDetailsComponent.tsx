@@ -7,7 +7,6 @@ import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
 
 const ChallengeDetailsComponent = () => {
-  // eslint-disable-next-line max-len
   const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<
     ChallengeDetailsProps | undefined
   >();
@@ -16,23 +15,21 @@ const ChallengeDetailsComponent = () => {
   const { challengeName } = useParams();
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const data = ChallengeDetailsComponentData[challengeName];
-    if (data.firebaseName) {
-      FirebaseAPI.fetchImages(data.firebaseName).then((res) => setImageURL(res));
-    } else if (data.img) {
-      setImageURL(data.img);
+    if (challengeName) {
+      const data =
+        ChallengeDetailsComponentData[challengeName as keyof typeof ChallengeDetailsComponentData];
+      if (data.firebaseName) {
+        FirebaseAPI.fetchImages(data.firebaseName).then((res) => setImageURL(res));
+      } else if (data.img) {
+        setImageURL(data.img);
+      }
+      setChallengeDetailsComponentData(data);
     }
-
-    setChallengeDetailsComponentData(data);
   }, []);
 
   useEffect(() => {
     setChallengeDetailsComponentData(
-      ChallengeDetailsComponentData[
-        challengeName as unknown as keyof typeof ChallengeDetailsComponentData
-      ]
+      ChallengeDetailsComponentData[challengeName as keyof typeof ChallengeDetailsComponentData]
     );
   });
 
@@ -59,8 +56,7 @@ const ChallengeDetailsComponent = () => {
               <p className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
                 <ul className="list-decimal">
                   {getChallengeDetailsComponentData.howToPlay?.map((howToPlay) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <li className="pb-6">{howToPlay}</li>
+                    <li className="pb-6" key={howToPlay}>{howToPlay}</li>
                   ))}
                 </ul>
               </p>
