@@ -59,40 +59,6 @@
 /*  margin-right: 20px;*/
 /*}*/
 
-.signIn_btn {
-  align-items: center;
-  background-color: rgba(61, 121, 255, 255);
-  border-radius: 6px;
-  border-style: none;
-  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  flex-shrink: 0;
-  font-family: "RM Neue", sans-serif;
-  font-size: 100%;
-  line-height: 1.15;
-  margin: 0;
-  padding: 10px 45px;
-  text-align: center;
-  text-transform: none;
-  transition: color 0.13s ease-in-out, background 0.13s ease-in-out,
-    opacity 0.13s ease-in-out, box-shadow 0.13s ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.signIn_btn:active {
-  background-color: #006ae8;
-}
-
-.signIn_btn:hover {
-  background-color: #1c84ff;
-}
-
 .player-wrapper {
   position: relative;
   padding-top: 56.25%; /* 720 / 1280 = 0.5625 */

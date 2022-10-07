@@ -6,12 +6,8 @@ import NutritionalInformation from "./nutritional_Information/NutritionalInforma
 import FoodCategory from "./nutritional_Information/food/FoodMenu";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
 import Challenges from "./fitness_Challenges/ChallengesMenu";
-import SignIn from "./auth/SignIn";
-import AuthRoute from "./auth/AuthRoute";
 import Recipes from "./recipes/RecipesMenu";
 import Games from "./games/GamesMenu";
-import Test from "./Test";
-import ForgotPassword from "./ForgotPassword";
 import VideosComponent from "./videos/VideosComponent";
 import ChallengeDetailsComponent from "./fitness_Challenges/challenge_details/ChallengeDetailsComponent";
 import QuizMenu from "./games/quiz/QuizMenu";
@@ -33,11 +29,9 @@ const App: React.FC = () => (
           (nutritionCategory) => (
             <Route
               path={nutritionCategory}
-              element={
-                <NutritionDetailsComponent nutritionName={nutritionCategory} />
-              }
+              element={<NutritionDetailsComponent nutritionName={nutritionCategory} />}
             />
-          ),
+          )
         )}
         <Route path="FruitAndVegetables">
           <Route index element={<FoodCategory />} />
@@ -71,16 +65,6 @@ const App: React.FC = () => (
           <Route index element={<BuildYourPlateContext />} />
         </Route>
       </Route>
-      <Route
-        path="test"
-        element={(
-          <AuthRoute>
-            <Test />
-          </AuthRoute>
-        )}
-      />
-      <Route path="/signin" element={<SignIn />} />
-      <Route path="/forgotPassword" element={<ForgotPassword />} />
     </Routes>
     <Footer />
   </div>
