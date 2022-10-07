@@ -62,9 +62,8 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   }, []);
 
   return (
-    <div className="basis-1/2">
-
-      <div className="bg-white rounded-3xl md:w-[36rem] md:h-[58rem]">
+    <div className="md:basis-1/2">
+      <div className="bg-white rounded-3xl w-fit md:w-full lg:w-full xl:w-[40rem] mx-auto">
         {getLoading ? (
           <ClipLoader color="red" loading={getLoading} size={150} />
         ) : (
