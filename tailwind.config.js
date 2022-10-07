@@ -23,11 +23,9 @@ module.exports = {
       colors: {
         navbarBackgroundColor: "#EEEEEE",
         mobileNavbarBackgroundColor: "#F4F7FD",
-        navbarSignUpButtonBackgroundColor: "#DC476D",
         homepageGradientDark: "#ACCDF6",
         homepageHeaderSubTitle: "#252948",
         homepageHeaderText: "#252948",
-        signUpButtonTextColor: "#FFFFFF",
         nutritionInformationHeader: "#252948",
         primaryGrey: "#5C5C5C",
         titansDarkBlue: "#243A73",
