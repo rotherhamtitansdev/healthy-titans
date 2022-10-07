@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import React from "react";
 import AppHeader from "../../app_header/AppHeader";
 import MenuHeader from "../../app_header/header/MenuHeader";
