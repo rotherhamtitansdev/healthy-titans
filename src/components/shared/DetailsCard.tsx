@@ -1,26 +1,47 @@
+/* eslint-disable react/jsx-key */
 import React from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
-import Card from "./Card";
-import Image from "./Image";
+import CheckMarkButton from "../../img/CheckMarkButton.svg";
 
 /*
  * This component represents a details card
  * */
 const DetailsCard = (props: DetailsCardProps) => (
-  <Card card={{ name: props.name, additionalStyling: `rounded-3xl flex-initial ${props.additionalStyling || ""}` }}>
-    {props.img && <Image img={props.img} alt={props.name} />}
-    <div className="pl-4 pr-4">
+  <div data-testid={props.name} className="pl-5 font-quicksand basis-1/2">
+    {props.img && (
+      <img className="absolute top-[8rem] " src={props.img} alt={props.name} />
+    )}
+    <div className="pl-6 pr-4 pt-[5rem]">
       {!props.hideTitle ? (
-        <div className="tracking-wide text-lg text-black font-bold">
+        <div
+          data-testid="details-title"
+          className="tracking-wide text-4xl text-black font-bold py-5 text-homepageHeaderSubTitle"
+        >
           {props.name}
         </div>
-      ) : (null)}
-      <p className="block mt-1 text-lg leading-tight font-semibold text-gray-900">
+      ) : null}
+      <p
+        data-testid="details-description"
+        className="block mt-1 text-xl leading-tight font-medium text-gray-900"
+      >
         {props.description}
       </p>
+      {props.list && (
+        <p className="block mt-1 text-lg leading-tight font-semibold text-gray-900">
+          <h2 className="py-5 text-2xl ">{props.list.title}</h2>
+          <ul className="list-none px-5">
+            {props.list.items.map((item) => (
+              <li className="pb-4 flex font-medium">
+                <img src={CheckMarkButton} alt="checkmark" className="pr-5" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </p>
+      )}
     </div>
-  </Card>
+  </div>
 );
 
 export default DetailsCard;

@@ -7,6 +7,11 @@
 .idea
 # testing
 /coverage
+junit.xml
+.nyc_output
+results
+cypress/videos
+cypress/screenshots
 
 # production
 /build

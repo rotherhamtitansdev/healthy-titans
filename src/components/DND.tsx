@@ -31,7 +31,7 @@ const DND = () => {
     const storage = getStorage();
     const starsRef = ref(storage, "AND - Red.png");
     /// map() array of the imageRef.getDownloadURL() promises
-    const URI:string = await getDownloadURL(starsRef);
+    const URI: string = await getDownloadURL(starsRef);
     setImageURL(URI);
   };
 
@@ -39,8 +39,9 @@ const DND = () => {
     fetchImages();
   }, []);
 
-  const calculateIngredientsComponents = useCallback(():ReactNode[] => getIngredientsData.map((item) => (
+  const calculateIngredientsComponents = useCallback((): ReactNode[] => getIngredientsData.map((item, index) => (
     <DragDropContainer
+      key={index}
       targetKey="foo"
       onDrop={(e) => { onDrop(e.detail.dragData); }}
       dragData={{ name: item.name }}
@@ -49,8 +50,8 @@ const DND = () => {
     </DragDropContainer>
   )), [getIngredientsData]);
 
-  const calculatePlateComponents = useCallback((): ReactNode[] => getPlateData.map((item) => (
-    <div className="hover:cursor-grab w-20 h-20 bg-amber-300">{item.name}</div>
+  const calculatePlateComponents = useCallback((): ReactNode[] => getPlateData.map((item, index) => (
+    <div key={index} className="hover:cursor-grab w-20 h-20 bg-amber-300">{item.name}</div>
   )), [getPlateData]);
 
   return (

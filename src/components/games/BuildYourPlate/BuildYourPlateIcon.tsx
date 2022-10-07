@@ -1,9 +1,9 @@
 import React from "react";
 import { imageSize, previewImageSize } from "../../../data/BYPData/BYPData";
-import { useFYPStartedContext } from "./BuildYourPlateContext";
+import { useGameStartedContext } from "../GameContext";
 
 const BuildYourPlateIcon = (props: {URL: string, key: string}) => {
-  const { getMobilePreviewScreenFlag } = useFYPStartedContext();
+  const { getMobilePreviewScreenFlag } = useGameStartedContext();
 
   return (
     <img

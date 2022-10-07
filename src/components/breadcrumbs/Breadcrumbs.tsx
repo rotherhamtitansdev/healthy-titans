@@ -23,21 +23,21 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
   }
 
   return (
-    <div data-testid="breadcrumbs" className={`font-quicksand text-[#243A73] flex ${props.styling}`}>
+    <div data-testid="breadcrumbs" className={`text-[#243A73] flex ${props.styling}`}>
       {breadcrumbs.map(({
         match,
         breadcrumb,
       }, index) => (
         <>
-          {index !== 0 ? (
+          {index !== 0 && (
             <p className="text text-titansBrightPink">
             &nbsp;
               {">"}
             &nbsp;
             </p>
-          ) : null}
+          )}
           <NavLink to={match.pathname}>
-            {breadcrumb ? getBreadcrumbName(breadcrumb) : null}
+            {breadcrumb && getBreadcrumbName(breadcrumb)}
           </NavLink>
         </>
       ))}

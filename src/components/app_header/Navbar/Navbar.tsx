@@ -98,7 +98,10 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="origin-top-right right-0 w-full bg-mobileNavbarBackgroundColor absolute ">
+      <div
+        data-testid="mobile-menu"
+        className="origin-top-right right-0 w-full bg-mobileNavbarBackgroundColor absolute "
+      >
         {isMenuOpen && (
           <ul className=" xl:hidden flex flex-col mt-8 mb-14 items-center overscroll-none">
             <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">

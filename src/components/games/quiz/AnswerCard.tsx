@@ -1,34 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { AnswerProps } from "../../../models/Quiz/AnswerProps";
-/*
- * This component represents a details card
- * */
-const AnswerCard = (props: { answer: AnswerProps, onClick: (answer: AnswerProps) => void }) => {
-  const [backgroundColour, setBackgroundColour] = useState("bg-white");
+import Card from "../../shared/Card";
+import { useGameStartedContext } from "../GameContext";
+import { useQuizContext } from "./QuizContext";
+
+const AnswerCard = (props: { answer: AnswerProps }) => {
+  const { getScore, setScore } = useGameStartedContext();
+  const { selectedAnswer, setSelectedAnswer } = useQuizContext();
+  const [background, setBackground] = useState("bg-mobileNavbarBackgroundColor");
+
+  const isSelectedAnswer = () => selectedAnswer === props.answer;
 
   useEffect(() => {
-    setBackgroundColour("bg-white");
-  }, [props.answer]);
+    setBackground("bg-mobileNavbarBackgroundColor");
+    if (isSelectedAnswer()) {
+      if (props.answer.isCorrect) {
+        setBackground("bg-[#8DED8E] bg-quiz_correct_answer bg-[length:2rem]");
+      } else {
+        setBackground("bg-[#FA5555] bg-quiz_incorrect_answer  bg-[length:2rem]");
+      }
+    } else if (selectedAnswer && !selectedAnswer?.isCorrect && props.answer.isCorrect) {
+      setBackground("bg-[#8DED8E] bg-quiz_tick");
+    }
+  }, [selectedAnswer]);
 
   const selectAnswer = () => {
-    if (props.answer.isCorrect) {
-      setBackgroundColour("bg-green-600");
-    } else {
-      setBackgroundColour("bg-red-600");
+    if (!selectedAnswer) {
+      setSelectedAnswer(props.answer);
+      if (props.answer.isCorrect) {
+        setScore(getScore + 1);
+      }
     }
-    props.onClick(props.answer);
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div
-      onClick={selectAnswer}
-      role="button"
-      tabIndex={0}
-      className={`${backgroundColour} text-6xl rounded-3xl p-3`}
-    >
+    <Card card={{ name: props.answer.answer, additionalStyling: `${background} sm:bg-auto bg-no-repeat bg-[center_right_1rem] py-3 sm:py-2 px-4 lg:p-8`, onClick: selectAnswer }}>
       {props.answer.answer}
-    </div>
+    </Card>
   );
 };
 

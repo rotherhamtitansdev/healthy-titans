@@ -1,21 +1,22 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "../App.css";
-import { Routes, Route } from "react-router-dom";
+import Navbar from "./app_header/Navbar/Navbar";
+import Challenges from "./fitness_Challenges/ChallengesMenu";
+import ChallengeDetailsComponent from "./fitness_Challenges/challenge_details/ChallengeDetailsComponent";
+import Footer from "./Footer/Footer";
+import BuildYourPlate from "./games/BuildYourPlate/BuildYourPlate";
+import GameContext from "./games/GameContext";
+import Games from "./games/GamesMenu";
+import Quiz from "./games/quiz/Quiz";
+import QuizContext from "./games/quiz/QuizContext";
 import HomePageComponents from "./HomePageComponents";
-import NutritionalInformation from "./nutritional_Information/NutritionalInformation";
 import FoodCategory from "./nutritional_Information/food/FoodMenu";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
-import Challenges from "./fitness_Challenges/ChallengesMenu";
 import Recipes from "./recipes/RecipesMenu";
-import Games from "./games/GamesMenu";
-import VideosComponent from "./videos/VideosComponent";
-import ChallengeDetailsComponent from "./fitness_Challenges/challenge_details/ChallengeDetailsComponent";
-import QuizMenu from "./games/quiz/QuizMenu";
-import Quiz from "./games/quiz/Quiz";
-import Footer from "./Footer/Footer";
-import Navbar from "./app_header/Navbar/Navbar";
-import BuildYourPlateContext from "./games/BuildYourPlate/BuildYourPlateContext";
 import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
+import NutritionalInformation from "./nutritional_Information/NutritionalInformation";
+import VideosComponent from "./videos/VideosComponent";
 
 const App: React.FC = () => (
   <div className="layout-container">
@@ -26,8 +27,9 @@ const App: React.FC = () => (
       <Route path="NutritionalInformation">
         <Route index element={<NutritionalInformation />} />
         {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
-          (nutritionCategory) => (
+          (nutritionCategory, index) => (
             <Route
+              key={nutritionCategory}
               path={nutritionCategory}
               element={<NutritionDetailsComponent nutritionName={nutritionCategory} />}
             />
@@ -58,11 +60,26 @@ const App: React.FC = () => (
       <Route path="Games">
         <Route index element={<Games />} />
         <Route path="Quiz">
-          <Route index element={<QuizMenu />} />
-          <Route path=":quizName" element={<Quiz />} />
+          <Route
+            index
+            element={
+              <GameContext>
+                <QuizContext>
+                  <Quiz />
+                </QuizContext>
+              </GameContext>
+            }
+          />
         </Route>
         <Route path="BuildYourPlate">
-          <Route index element={<BuildYourPlateContext />} />
+          <Route
+            index
+            element={
+              <GameContext>
+                <BuildYourPlate />
+              </GameContext>
+            }
+          />
         </Route>
       </Route>
     </Routes>

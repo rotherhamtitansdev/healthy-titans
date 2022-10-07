@@ -31,18 +31,17 @@ const VideoCard = (props: {
   return (
     <Card card={{ name: props.video.title, additionalStyling: "w-[18rem] xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem]", onClick: props.disableOnClick ? () => undefined : handleClick }}>
       <div className="p-5">
-        {getVideoURL && props.video.description ? (
+        {getVideoURL && props.video.description && (
           // eslint-disable-next-line jsx-a11y/media-has-caption
           <video className="rounded-3xl">
             <source src={getVideoURL} />
           </video>
-        )
-          : null}
+        )}
         <div className="pt-5 pb-3">
-          <div className="font-quicksand font-semibold text-2xl  text-homepageHeaderText">
+          <div className="font-semibold text-2xl  text-homepageHeaderText">
             {props.video.title}
           </div>
-          <div className="font-quicksand font-md text-xl  text-homepageHeaderText">
+          <div className="font-md text-xl  text-homepageHeaderText">
             {props.video.description}
           </div>
         </div>

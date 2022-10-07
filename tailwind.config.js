@@ -17,6 +17,7 @@ module.exports = {
       // => @media (min-width: 1280px) { ... }
       "1.5xl": "1450px",
       "2xl": "1536px",
+      "3xl": "1800px",
     },
     extend: {
       colors: {
@@ -29,7 +30,7 @@ module.exports = {
         primaryGrey: "#5C5C5C",
         titansDarkBlue: "#243A73",
         titansBrightPink: "#D14267",
-        titansDarkGrey: "#545454"
+        titansDarkGrey: "#545454",
       },
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
@@ -37,7 +38,11 @@ module.exports = {
       backgroundImage: {
         wave: "url('/src/img/wave.png')",
         wavesvg: "url('/src/img/wavesvg.svg')",
-        byp_background:"url('/src/img/byp_background.png')",
+        byp_background: "url('/src/img/byp_background.png')",
+        quiz_background: "url('/src/img/quiz_background.svg')",
+        quiz_correct_answer: "url('/src/img/smile.svg')",
+        quiz_incorrect_answer: "url('/src/img/sad.svg')",
+        quiz_tick: "url('/src/img/tick.svg')",
         mbfooterwave: "url('/src/img/mbfooter_wave.png')",
         tbfooterwave: "url('/src/img/tbfooter_wave.png')",
         footerwave: "url('/src/img/footer_wave.png')",
