@@ -8,9 +8,8 @@ import DetailsComponent from "../../shared/DetailsComponent";
 
 const ChallengeDetailsComponent = () => {
   // eslint-disable-next-line max-len
-  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<
-    ChallengeDetailsProps | undefined
-  >();
+  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] =
+    useState<ChallengeDetailsProps | undefined>();
 
   const [getImageURL, setImageURL] = useState<string>();
   const { challengeName } = useParams();
@@ -20,7 +19,9 @@ const ChallengeDetailsComponent = () => {
     // @ts-ignore
     const data = ChallengeDetailsComponentData[challengeName];
     if (data.firebaseName) {
-      FirebaseAPI.fetchImages(data.firebaseName).then((res) => setImageURL(res));
+      FirebaseAPI.fetchImages(data.firebaseName).then((res) =>
+        setImageURL(res)
+      );
     } else if (data.img) {
       setImageURL(data.img);
     }
@@ -47,31 +48,33 @@ const ChallengeDetailsComponent = () => {
             list={
               getChallengeDetailsComponentData.equipment && {
                 title: "Equipment",
-                items: getChallengeDetailsComponentData.equipment
+                items: getChallengeDetailsComponentData.equipment,
               }
             }
           />
-          <div className="basis-1/2">
-            <div className="pl-[8rem] pr-[10rem]">
-              <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold pb-[2rem]">
+          <div className="md:basis-1/2 ">
+            <div className="pr-[2rem] md:pr-[3rem] lg:pr-[5rem] pt-[2rem]">
+              <div className="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] font-quicksand text-homepageHeaderSubTitle font-semibold pb-[2rem]">
                 How to play
               </div>
-              <p className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
+              <p className="lg:pl-4 pl-10  block text-[16px] lg:text-[20px] leading-tight font-medium font-quicksand">
                 <ul className="list-decimal">
-                  {getChallengeDetailsComponentData.howToPlay?.map((howToPlay) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <li className="pb-6">{howToPlay}</li>
-                  ))}
+                  {getChallengeDetailsComponentData.howToPlay?.map(
+                    (howToPlay) => (
+                      // eslint-disable-next-line react/jsx-key
+                      <li className="pb-3">{howToPlay}</li>
+                    )
+                  )}
                 </ul>
               </p>
-              <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold">
+              <div className="pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[16px] lg:text-[20px] font-quicksand text-homepageHeaderSubTitle font-semibold">
                 Rules
               </div>
-              <p className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
-                <ul className="list-disc">
+              <p className="lg:pl-4 pl-10 block mt-1 text-[16px] lg:text-[20px] leading-tight font-medium font-quicksand">
+                <ul className="list-disc ">
                   {getChallengeDetailsComponentData.rules.map((rule) => (
                     // eslint-disable-next-line react/jsx-key
-                    <li className="pb-6">{rule}</li>
+                    <li className="pb-6  ">{rule}</li>
                   ))}
                 </ul>
               </p>
