@@ -29,7 +29,7 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
         match,
         breadcrumb,
       }, index) => (
-        <>
+        <React.Fragment  key={match.pathname}>
           {index !== 0 && (
             <p className="text text-titansBrightPink">
             &nbsp;
@@ -37,10 +37,10 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
             &nbsp;
             </p>
           )}
-          <NavLink to={match.pathname} key={match.pathname}>
+          <NavLink to={match.pathname}>
             {breadcrumb && getBreadcrumbName(breadcrumb)}
           </NavLink>
-        </>
+        </React.Fragment>
       ))}
     </div>
   );

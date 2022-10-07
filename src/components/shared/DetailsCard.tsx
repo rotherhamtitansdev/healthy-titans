@@ -32,7 +32,7 @@ const DetailsCard = (props: DetailsCardProps) => (
           <h2 className="py-5 text-2xl ">{props.list.title}</h2>
           <ul className="list-none px-5">
             {props.list.items.map((item) => (
-              <li className="pb-4 flex font-medium">
+              <li className="pb-4 flex font-medium" key={item}>
                 <img src={CheckMarkButton} alt="checkmark" className="pr-5" />
                 {item}
               </li>
