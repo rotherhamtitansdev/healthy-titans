@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import QuizData from "../../../data/QuizData";
+import { QuizProps } from "../../../models/Quiz/QuizProps";
 import Card from "../../shared/Card";
 import { useGameStartedContext } from "../GameContext";
 import GameModalScreen from "../GameModalScreen";
 import AnswerCard from "./AnswerCard";
 import { useQuizContext } from "./QuizContext";
 
-const QuizGameScreen = () => {
+const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
   const {
     setModal, setModalContent, setIsGameStarted, getScore,
   } = useGameStartedContext();
   const [questionNumber, setQuestionNumber] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
-  const quizData = QuizData;
+  const { quizData } = props;
 
   const { currentQuestion, setCurrentQuestion } = useQuizContext();
   const { selectedAnswer, setSelectedAnswer } = useQuizContext();
@@ -22,20 +22,32 @@ const QuizGameScreen = () => {
     setSelectedAnswer(undefined);
   }, [questionNumber]);
 
+  const getScoreFeedback = () => {
+    if (getScore <= 3) {
+      return "Good effort, keep learning!";
+    }
+    if (getScore >= 7) {
+      return "Excellent!";
+    }
+    return "Well done!";
+  }
+
   const nextQuestion = () => {
-    if (quizData && questionNumber < quizData.questions.length - 1) {
-      setQuestionNumber(questionNumber + 1);
-    } else {
-      setQuizFinished(true);
-      setModal(true);
-      setModalContent({
-        buttonFunc: () => {
-          setIsGameStarted(false);
-        },
-        buttonText: "Play again",
-        text: "Well done!",
-        title: `Score: ${getScore} out of ${quizData.questions.length}`,
-      });
+    if (quizData) {
+      if (questionNumber < quizData.questions.length - 1) {
+        setQuestionNumber(questionNumber + 1);
+      } else {
+        setQuizFinished(true);
+        setModal(true);
+        setModalContent({
+          buttonFunc: () => {
+            setIsGameStarted(false);
+          },
+          buttonText: "Play again",
+          text: getScoreFeedback(),
+          title: `Score: ${getScore} out of ${quizData.questions.length}`,
+        });
+      }
     }
   };
 
@@ -46,7 +58,7 @@ const QuizGameScreen = () => {
           <GameModalScreen />
         )}
       {
-        currentQuestion
+        quizData && currentQuestion
         && (
           <Card card={{ name: quizData.name, additionalStyling: "h-[30rem] lg:h-[40rem] w-full mb-10" }}>
             <div className="hidden font-bold sm:flex flex-row pt-5 pb-8 px-10">

@@ -1,15 +1,20 @@
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
 import {FoodDetailsProps,} from "../../../data/nutritional_information/FoodDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
 import FirebaseAPI from "../../../api/FirebaseAPI";
+import { FoodDetailsProps } from "../../../data/nutritional_information/FoodDetailsComponentData";
+import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
 import {MenuCardProps} from "../../../models/MenuCardProps";
 import CarouselMenu from "../../shared/CarouselMenu";
 
 
 /* eslint-disable */
+import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
 
 const FoodDetailsComponent = () => {
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<
@@ -55,7 +60,7 @@ const FoodDetailsComponent = () => {
             name={getFoodDetailsComponentData.name}
             description={getFoodDetailsComponentData.description}
             img={getImageURL}
-            additionalStyling="lg:w-5/12"
+            additionalStyling=""
             list={
               getFoodDetailsComponentData.facts && {
                 title: "More Facts",
