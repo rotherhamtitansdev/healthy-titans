@@ -38,19 +38,26 @@ class FirebaseAPI {
     return undefined;
   };
 
-  static fetchFoodDetailsSeeNext = async (category: string):Promise<FoodDetailsProps[]> => {
+  static fetchFoodDetailsSeeNext = async (category: string):Promise<{cardData: FoodDetailsProps[], paths:string[]}> => {
     const q = query(collection(fStore, "FYPData"), where("category", "==", category))
     const docSnap = await getDocs(q)
-    const docs = docSnap.docs.map((doc) =>  doc.data())
-    const shuffled = docs.sort(() => 0.5 - Math.random())
-    return shuffled.slice(0, 3).map(value => ({
-      name: value.name,
-      description: value.description,
-      firebaseName: value.firebaseName,
-      category: value.category,
-      score: value.score,
-      facts: value.facts
-    }))
+    const docs = docSnap.docs.map((doc) => {
+      let newDoc = doc.data()
+      newDoc.path = doc.id
+      return newDoc
+    })
+    const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0,3)
+    return {
+      cardData: shuffled.map(value => ({
+        name: value.name,
+        description: value.description,
+        firebaseName: value.firebaseName,
+        category: value.category,
+        score: value.score,
+        facts: value.facts
+      })),
+      paths: shuffled.map(value => value.path)
+    }
   }
 
   static fetchQuizData = async () => {
