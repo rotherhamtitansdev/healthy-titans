@@ -16,29 +16,33 @@ const FoodDetailsComponent = () => {
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<FoodDetailsProps | undefined>();
   const { width } = useWindowDimensions();
   const [getImageURL, setImageURL] = useState<string>();
-  const [getSeeNext, setSeeNext] = useState<MenuCardProps[]>()
+  const [getSeeNext, setSeeNext] = useState<MenuCardProps[] | undefined>()
   const { foodName } = useParams();
   const location = useLocation();
 
   const fetchSeeNext = async (res: FoodDetailsProps) => {
 
-    const docs = await FirebaseAPI.fetchFoodDetailsSeeNext(res.category)
+    const docs = await FirebaseAPI.fetchFoodDetailsSeeNext(res.category, res.name)
 
     return Promise.all(docs.cardData.map(async (doc, index) => {
 
       const URI = await FirebaseAPI.fetchImages(doc.firebaseName)
       let path: string = ""
       if (foodName) { path = location.pathname.replace(foodName,docs.paths[index]) }
+
       return {key: index, name: doc.name, path: path, img: URI}
     }))
   }
 
   useEffect(() => {
+    setSeeNext(undefined)
     // @ts-ignore
     FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
       if (res) {
         // @ts-ignore
-        fetchSeeNext(res).then(r => setSeeNext(r))
+        fetchSeeNext(res).then(r => {
+          setSeeNext(r)
+        })
 
         if (res.firebaseName) {
           FirebaseAPI.fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
@@ -47,7 +51,7 @@ const FoodDetailsComponent = () => {
         }
       }
     });
-  }, [location]);
+  }, [foodName]);
 
   return (
     <div className={""}>

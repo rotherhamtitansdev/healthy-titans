@@ -38,8 +38,8 @@ class FirebaseAPI {
     return undefined;
   };
 
-  static fetchFoodDetailsSeeNext = async (category: string):Promise<{cardData: FoodDetailsProps[], paths:string[]}> => {
-    const q = query(collection(fStore, "FYPData"), where("category", "==", category))
+  static fetchFoodDetailsSeeNext = async (category: string, currentName: string):Promise<{cardData: FoodDetailsProps[], paths:string[]}> => {
+    const q = query(collection(fStore, "FYPData"), where("category", "==", category), where("name", "!=", currentName ))
     const docSnap = await getDocs(q)
     const docs = docSnap.docs.map((doc) => {
       let newDoc = doc.data()
@@ -47,6 +47,7 @@ class FirebaseAPI {
       return newDoc
     })
     const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0,3)
+
     return {
       cardData: shuffled.map(value => ({
         name: value.name,
