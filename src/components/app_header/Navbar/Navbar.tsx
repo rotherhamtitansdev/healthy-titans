@@ -123,7 +123,7 @@ const Navbar = () => {
               <a href="/Recipes">Recipes</a>
             </li>
             <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
-              <a href="/About">About us</a>
+              <a href="/AboutUs">About us</a>
             </li>
             <li className="border-gray-400 my-2">
               <img src={MenuLine} alt="MenuLine" />
