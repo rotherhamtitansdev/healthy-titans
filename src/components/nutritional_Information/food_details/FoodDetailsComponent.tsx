@@ -6,7 +6,7 @@ import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
 
-const FoodDetailsComponent = () => {
+
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<
     FoodDetailsProps | undefined
   >();

@@ -48,6 +48,17 @@ class FirebaseAPI {
     }
     return undefined;
   };
+
+  static fetchAboutUsData = async () => {
+    const docRef = doc(fStore, "AboutUsData", "Data");
+    const aboutUsDoc = await getDoc(docRef);
+
+    if (aboutUsDoc.exists()) {
+      return aboutUsDoc.data();
+    }
+    return undefined;
+  };
+
 }
 
 export default FirebaseAPI;
