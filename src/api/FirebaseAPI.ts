@@ -38,6 +38,16 @@ class FirebaseAPI {
   static fetchFoodDetailsSeeNext = async (category: string) => {
     const docRef = doc(fStore, "FYPData", "Data");
   }
+
+  static fetchQuizData = async () => {
+    const docRef = doc(fStore, "QuizData", "Quiz");
+    const quizDoc = await getDoc(docRef);
+
+    if (quizDoc.exists()) {
+      return quizDoc.data();
+    }
+    return undefined;
+  };
 }
 
 export default FirebaseAPI;

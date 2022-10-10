@@ -17,7 +17,7 @@ const AnswerCard = (props: { answer: AnswerProps }) => {
       if (props.answer.isCorrect) {
         setBackground("bg-[#8DED8E] bg-quiz_correct_answer bg-[length:2rem]");
       } else {
-        setBackground("bg-[#FA5555] bg-quiz_incorrect_answer  bg-[length:2rem]");
+        setBackground("bg-[#FA5555] bg-quiz_incorrect_answer bg-[length:2rem] text-white");
       }
     } else if (selectedAnswer && !selectedAnswer?.isCorrect && props.answer.isCorrect) {
       setBackground("bg-[#8DED8E] bg-quiz_tick");
