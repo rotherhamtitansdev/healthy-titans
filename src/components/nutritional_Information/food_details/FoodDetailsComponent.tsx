@@ -40,7 +40,7 @@ const FoodDetailsComponent = () => {
             name={getFoodDetailsComponentData.name}
             description={getFoodDetailsComponentData.description}
             img={getImageURL}
-            additionalStyling="lg:w-5/12"
+            additionalStyling=""
             list={
               getFoodDetailsComponentData.facts && {
                 title: "More Facts",
