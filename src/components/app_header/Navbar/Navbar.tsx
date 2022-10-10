@@ -63,7 +63,7 @@ const Navbar = () => {
                   Recipes
                 </Link>
                 <Link
-                  to="/About"
+                  to="/AboutUs"
                   className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
                 >
                   About us
