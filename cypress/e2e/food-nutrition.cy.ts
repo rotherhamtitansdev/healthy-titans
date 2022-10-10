@@ -1,4 +1,5 @@
 import foodNutrition from "../fixtures/food-nutrition.json";
+import terminalLog from "../support/terminal-log";
 
 describe("Food & Nutrition", () => {
   beforeEach(() => {
@@ -8,13 +9,13 @@ describe("Food & Nutrition", () => {
   it("check a11y category page", () => {
     cy.visit("http://localhost:3000/NutritionalInformation");
     cy.injectAxe();
-    cy.checkA11y(null, null, null, true);
+    cy.checkA11y(null, null, terminalLog, true);
   });
 
   it("check a11y food page", () => {
     cy.visit("http://localhost:3000/NutritionalInformation/Fish/Salmon");
     cy.injectAxe();
-    cy.checkA11y(null, null, null, true);
+    cy.checkA11y(null, null, terminalLog, true);
   });
 
   it("Can view fried chicken information ", () => {
