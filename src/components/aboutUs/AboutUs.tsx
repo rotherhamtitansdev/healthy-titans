@@ -90,7 +90,7 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-          <div className="h-[100px]"></div>
+          <div className="h-[100px] bg-gradient-to-b from-white to-transparent"></div>
         </div>
       )}
     </>
