@@ -47,6 +47,7 @@ class FirebaseAPI {
       newDoc.path = doc.id
       return newDoc
     })
+
     const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0,3)
 
     return {

@@ -13,7 +13,7 @@ const HomePageComponents = () => (
     </AppHeader>
     <div className="pl-5 md:py-10 md:pl-10">
       <MenuTitle title="Learn with Cookie&apos;s Healthy Titans" subtitle="Click on what you feel like exploring today!" />
-      <CarouselMenu cards={HomePageComponentsData} config={HomePageCarouselResponsiveConfig} renderArrowsWhenDisabled={true}/>
+      <CarouselMenu cards={HomePageComponentsData} config={HomePageCarouselResponsiveConfig} renderArrowsWhenDisabled/>
     </div>
   </>
 );
