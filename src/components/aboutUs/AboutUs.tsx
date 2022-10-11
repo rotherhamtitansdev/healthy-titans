@@ -1,3 +1,5 @@
+// empty div at bottom for layout issue
+/* eslint-disable react/self-closing-comp */
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import FirebaseAPI from "../../api/FirebaseAPI";
@@ -22,10 +24,8 @@ const AboutUs = () => {
     );
   }, []);
 
-  console.log(AboutUsData);
-
   return (
-    <div className="bg-white">
+    <>
       <AppHeader>
         <MenuHeader
           title="About Us"
@@ -33,66 +33,67 @@ const AboutUs = () => {
         />
       </AppHeader>
       {AboutUsData && (
-        <>
-          <div id="section1" className="grid grid-cols-2 justify-center">
-            <div id="textArea1" className="flex flex-col gap-4">
-              <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5">
+        <div className="font-semibold text-titansDarkGrey text-sm md:text-base lg:text-xl">
+          <div id="section1" className="grid grid-cols-2 py-14">
+            <div id="textArea1" className="flex flex-col gap-4 mx-24">
+              <h2 className="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5">
                 {AboutUsData.section_1[0]}
               </h2>
-              <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_1[1]}</p>
-              <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_1[2]}</p>
+              <p>{AboutUsData.section_1[1]}</p>
+              <p>{AboutUsData.section_1[2]}</p>
             </div>
-            <div id="imgArea1">
+            <div id="imgArea1" className="flex justify-center">
               <img
                 src={imgUrl}
                 alt="fruit and veg"
-                className="h-[200px] w-[200px] md:h-[200px] md:w-[200px] lg:h-[400px] lg:w-[400px] xl:h-[400px] xl:w-[400px]"
+                className="h-[200px] w-[200px] lg:h-[400px] lg:w-[400px]"
               />
             </div>
           </div>
-          <div id="section2" className="grid grid-cols-2 bg-[#F4F7FD]">
-            <div id="imgArea2">
+          <div id="section2" className="grid grid-cols-2 bg-white py-14">
+            <div id="imgArea2" className="flex justify-center">
               <img
                 src={RTLogo}
                 alt="RT Logo"
                 className="h-[265px] w-[228px] md:h-[265px] md:w-[228px] lg:h-[388px] lg:w-[331px] xl:h-[388px] xl:w-[331px]"
               />
             </div>
-            <div id="textArea2" className="flex flex-col gap-4">
+            <div id="textArea2" className="flex flex-col gap-4 mx-24">
               <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5">
                 {AboutUsData.section_2[0]}
               </h2>
-              <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_2[1]}</p>
-              <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_2[2]}</p>
+              <p>{AboutUsData.section_2[1]}</p>
+              <p>{AboutUsData.section_2[2]}</p>
             </div>
           </div>
-          <div id="section3">
-            <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5">
+          <div id="section3" className="py-14">
+            <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5 mx-24">
               {AboutUsData.section_3[0]}
             </h2>
             <div className="grid grid-cols-2">
-              <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_3[1]}</p>
-              <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_3[2]}</p>
+              <p className="mx-24">{AboutUsData.section_3[1]}</p>
+              <p className="mx-24">{AboutUsData.section_3[2]}</p>
             </div>
           </div>
-          <div id="section4" className="bg-[#F4F7FD]">
-            <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5">
+          <div id="section4" className="bg-white py-14">
+          <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5 mx-24">
               {AboutUsData.section_4[0]}
             </h2>
             <div className="grid grid-cols-2">
-              <div className="flex flex-col gap-4">
-                <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_4[1]}</p>
-                <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_4[2]}</p>
+              <div className="flex flex-col gap-4 mx-24">
+                <p>{AboutUsData.section_4[1]}</p>
+                <p>{AboutUsData.section_4[2]}</p>
               </div>
-              <div className="flex flex-col gap-4">
-                <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_4[3]}</p>
-                <p className="w-[307px] lg:w-[512px]">{AboutUsData.section_4[4]}</p>
+              <div className="flex flex-col gap-4 mx-24">
+                <p>{AboutUsData.section_4[3]}</p>
+                <p>{AboutUsData.section_4[4]}</p>
               </div>
             </div>
           </div>
-        </>
+          <div className="h-[100px]"></div>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 export default AboutUs;
