@@ -1,6 +1,7 @@
-import React, { FC, createContext, useContext, useEffect, useState, useMemo } from "react";
-
+// empty functions expected for context
 /* eslint-disable @typescript-eslint/no-empty-function */
+
+import React, { FC, createContext, useContext, useEffect, useState, useMemo } from "react";
 
 export interface GameModalContentInterface {
   title: string;

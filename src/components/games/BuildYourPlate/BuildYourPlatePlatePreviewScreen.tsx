@@ -4,7 +4,7 @@ import { useGameStartedContext } from "../GameContext";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
 
 const BuildYourPlatePlatePreviewScreen = (props: {
-  getPlateImage: string;
+  getPlateImage: string | undefined;
   getBYPPlateData: BYPItem[];
   removeFromPlate: (item: BYPItem[]) => void;
 }) => {

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
-import { FoodDetailsProps,} from "../../../data/nutritional_information/FoodDetailsComponentData";
+import { FoodDetailsProps } from "../../../data/nutritional_information/FoodDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 import DetailsComponent from "../../shared/DetailsComponent";
-
-/* eslint-disable */
 
 const FoodDetailsComponent = () => {
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<
@@ -17,19 +15,16 @@ const FoodDetailsComponent = () => {
   const { foodName } = useParams();
 
   useEffect(() => {
-    // @ts-ignore
-    FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
-      if (res) {
-        if (res.firebaseName) {
-          FirebaseAPI.fetchImages(res.firebaseName).then((URI) =>
-            setImageURL(URI)
-          );
-          console.log(res);
-          //@ts-ignore
-          setFoodDetailsComponentData(res);
+    if (foodName) {
+      FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
+         if (res) {
+          if (res.firebaseName) {
+            FirebaseAPI.fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
+            setFoodDetailsComponentData(res);
+          }
         }
-      }
-    });
+      });
+    }
   }, []);
 
   return (
@@ -44,7 +39,7 @@ const FoodDetailsComponent = () => {
             list={
               getFoodDetailsComponentData.facts && {
                 title: "More Facts",
-                items: getFoodDetailsComponentData.facts,
+                items: getFoodDetailsComponentData.facts
               }
             }
           />

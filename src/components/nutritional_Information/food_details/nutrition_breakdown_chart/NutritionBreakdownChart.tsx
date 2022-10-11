@@ -37,14 +37,13 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   }, []);
 
   const chartCircleRadius = useMemo(() => chartSizing.barWidth / 2, []);
+  let ChartData: {
+    name: string;
+    data: NutritionDetailsAPIModel;
+  } | undefined
 
   useEffect(() => {
-    // eslint-disable-next-line array-callback-return,consistent-return
-    const ChartData = NutritionalBreakdownChartData.find((object) => {
-      if (object.name === name) {
-        return object.data;
-      }
-    });
+    ChartData = NutritionalBreakdownChartData.find((object) => object.name === name);
 
     if (ChartData !== undefined) {
       processChart(ChartData.data);
@@ -53,7 +52,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
         processChart(unparsed);
       });
     }
-  }, []);
+  })
 
   return (
     <div className="basis-1/2">

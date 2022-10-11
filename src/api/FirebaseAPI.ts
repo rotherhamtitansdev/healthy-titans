@@ -1,7 +1,7 @@
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { doc, getDoc, collection, getDocs, setDoc } from "firebase/firestore";
 import FoodDetailsComponentData, {
-  FoodDetailsComponentDataFile
+  FoodDetailsComponentDataFile, FoodDetailsProps
 } from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
 
@@ -35,7 +35,7 @@ class FirebaseAPI {
   static fetchFoodDetailsSingle = async (name: string) => {
     const docRef = doc(fStore, "FYPData", name);
     const docSnap = await getDoc(docRef);
-    if (docSnap) return docSnap.data();
+    if (docSnap) return docSnap.data() as FoodDetailsProps;
     return undefined;
   };
 
