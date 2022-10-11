@@ -8,6 +8,7 @@ import FoodDetailsComponentData, {
 } from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
 /* eslint-disable */
+
 class FirebaseAPI {
   static fetchImages = async (firebaseName: string): Promise<string> => {
     const storage = getStorage();

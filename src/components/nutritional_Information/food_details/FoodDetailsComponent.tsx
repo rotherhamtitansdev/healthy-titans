@@ -74,7 +74,7 @@ const FoodDetailsComponent = () => {
       )}
       { getSeeNext && (
           <div className="-mt-10 w-full lg:container mx-auto px-2 sm:px-6 lg:px-6">
-            <p className="text-titansDarkBlue text-[36px] pl-4 sm:pl-0 font-semibold pb-6">See next</p>
+            <p className="text-titansDarkBlue text-[24px] sm:text-[36px] pl-4 sm:pl-0 font-semibold pb-6">See next</p>
             <CarouselMenu cards={getSeeNext} config={FoodDetailsCarouselResponsiveConfig} renderArrowsWhenDisabled={width < 1025}/>
           </div>
       ) }

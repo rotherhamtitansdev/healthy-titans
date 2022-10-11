@@ -3,6 +3,7 @@ import React, {
 } from "react";
 
 /* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable */
 
 export interface GameModalContentInterface {
   title: string
