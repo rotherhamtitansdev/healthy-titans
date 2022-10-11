@@ -10,7 +10,7 @@ import CheckMarkButton from "../../img/CheckMarkButton.svg";
 const DetailsCard = (props: DetailsCardProps) => (
   <div data-testid={`${props.name}-details`} className="pl-5 md:basis-1/2">
     {props.img && (
-      <img className="absolute top-[8rem] " src={props.img} alt={props.name} />
+      <img className="absolute top-[13rem] " src={props.img} alt={props.name} />
     )}
     <div className="pl-2 pr-4 pt-[5rem]">
       {!props.hideTitle ? (

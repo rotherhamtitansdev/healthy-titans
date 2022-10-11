@@ -11,9 +11,11 @@ import CarouselMenu from "../../shared/CarouselMenu";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
 import {FoodDetailsCarouselResponsiveConfig} from "../../../config/CarouselConfig";
 import useWindowDimensions from "../../../functions/ScreenWidth";
+import {useGlobalMenuOpenContext} from "../../app_header/AppHeaderContext";
 
 const FoodDetailsComponent = () => {
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<FoodDetailsProps | undefined>();
+  const { setAdditionalStyling } = useGlobalMenuOpenContext();
   const { width } = useWindowDimensions();
   const [getImageURL, setImageURL] = useState<string>();
   const [getSeeNext, setSeeNext] = useState<MenuCardProps[] | undefined>()
@@ -35,6 +37,7 @@ const FoodDetailsComponent = () => {
   }
 
   useEffect(() => {
+    setAdditionalStyling("bg-white mb-10")
     setSeeNext(undefined)
     // @ts-ignore
     FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
@@ -51,6 +54,10 @@ const FoodDetailsComponent = () => {
         }
       }
     });
+
+    return function cleanup(){
+      setAdditionalStyling("")
+    }
   }, [foodName]);
 
   return (
