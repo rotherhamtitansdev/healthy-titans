@@ -1,13 +1,26 @@
 import foodNutrition from "../fixtures/food-nutrition.json";
+import terminalLog from "../support/terminal-log";
 
 describe("Food & Nutrition", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000");
   });
 
+  it("check a11y category page", () => {
+    cy.visit("http://localhost:3000/NutritionalInformation");
+    cy.injectAxe();
+    cy.checkA11y(null, null, terminalLog, true);
+  });
+
+  it("check a11y food page", () => {
+    cy.visit("http://localhost:3000/NutritionalInformation/Fish/Salmon");
+    cy.injectAxe();
+    cy.checkA11y(null, null, terminalLog, true);
+  });
+
   it("Can view fried chicken information ", () => {
     // TODO: update this test for non-mobile views
-    cy.get('button[aria-label="menu toggle"]').click();
+    cy.findByRole("button", { name: /menu-toggle/i }).click();
     cy.get('[data-testid="mobile-menu"] [href="/NutritionalInformation"]').click();
     cy.get('[data-testid="Fast Food"]').click();
     cy.get('[data-testid="Fried Chicken"]').click();

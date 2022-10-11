@@ -72,6 +72,7 @@ const Navbar = () => {
 
               <div className="ml-6 -my-2 xl:hidden">
                 <button
+                  aria-label="menu-toggle"
                   type="button"
                   className="flex flex-col h-12 w-12 justify-center items-center font-navigation-items"
                   aria-expanded="false"

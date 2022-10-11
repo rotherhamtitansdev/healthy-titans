@@ -1,41 +1,42 @@
-import React, {
-  createContext, useContext, useEffect, useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 
 export interface GameModalContentInterface {
-  title: string
-  text: string
-  buttonText: string
-  buttonFunc?: () => void
+  title: string;
+  text: string;
+  buttonText: string;
+  buttonFunc?: () => void;
 }
 
 export type IsGameStartedContext = {
-  getIsGameStarted: boolean
-  setIsGameStarted: (c: boolean) => void
-  getScore: number
-  setScore: (c: number) => void
-  getModal: boolean
-  setModal: (c: boolean) => void
-  getModalContent: GameModalContentInterface
-  setModalContent: (c: GameModalContentInterface) => void
-  getMobilePreviewScreenFlag: boolean
-  setMobilePreviewScreenFlag: (c: boolean) => void
-}
+  getIsGameStarted: boolean;
+  setIsGameStarted: (c: boolean) => void;
+  getScore: number;
+  setScore: (c: number) => void;
+  getModal: boolean;
+  setModal: (c: boolean) => void;
+  getModalContent: GameModalContentInterface;
+  setModalContent: (c: GameModalContentInterface) => void;
+  getMobilePreviewScreenFlag: boolean;
+  setMobilePreviewScreenFlag: (c: boolean) => void;
+};
 export const GameStartedContext = createContext<IsGameStartedContext>({
   getIsGameStarted: false,
-  setIsGameStarted: () => { },
+  setIsGameStarted: () => {},
   getScore: 0,
-  setScore: () => { },
+  setScore: () => {},
   getModal: true,
-  setModal: () => { },
+  setModal: () => {},
   getModalContent: {
-    title: "", text: "", buttonText: "", buttonFunc: () => { },
+    title: "",
+    text: "",
+    buttonText: "",
+    buttonFunc: () => {}
   },
-  setModalContent: () => { },
+  setModalContent: () => {},
   getMobilePreviewScreenFlag: false,
-  setMobilePreviewScreenFlag: () => { },
+  setMobilePreviewScreenFlag: () => {}
 });
 
 export const useGameStartedContext = () => useContext(GameStartedContext);
@@ -45,7 +46,10 @@ const GameStartedContextWrapper = ({ children }: any) => {
   const [getScore, setScore] = useState<number>(0);
   const [getModal, setModal] = useState<boolean>(false);
   const [getModalContent, setModalContent] = useState<GameModalContentInterface>({
-    title: "", text: "", buttonText: "", buttonFunc: () => { },
+    title: "",
+    text: "",
+    buttonText: "",
+    buttonFunc: () => {}
   });
   const [getMobilePreviewScreenFlag, setMobilePreviewScreenFlag] = useState<boolean>(false);
 
@@ -55,22 +59,24 @@ const GameStartedContextWrapper = ({ children }: any) => {
 
   useEffect(() => {
     // Stop scrolling while modal is open
-    document.body.style.overflow = getModal ? "hidden": "unset";
+    document.body.style.overflow = getModal ? "hidden" : "unset";
   }, [getModal]);
 
   return (
-    <GameStartedContext.Provider value={{
-      getIsGameStarted,
-      setIsGameStarted,
-      getScore,
-      setScore,
-      getModal,
-      setModal,
-      getModalContent,
-      setModalContent,
-      getMobilePreviewScreenFlag,
-      setMobilePreviewScreenFlag,
-    }}
+    <GameStartedContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
+      value={{
+        getIsGameStarted,
+        setIsGameStarted,
+        getScore,
+        setScore,
+        getModal,
+        setModal,
+        getModalContent,
+        setModalContent,
+        getMobilePreviewScreenFlag,
+        setMobilePreviewScreenFlag
+      }}
     >
       {children}
     </GameStartedContext.Provider>
