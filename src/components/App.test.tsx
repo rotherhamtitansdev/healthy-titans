@@ -1,14 +1,17 @@
-import React from "react";
-import {
-  cleanup,
-  fireEvent, render, screen,
-} from "@testing-library/react";
 import "@testing-library/jest-dom";
+import {
+  act,
+  cleanup, render, screen
+} from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import React from "react";
 import { MemoryRouter, Route } from "react-router";
-import HomePageComponents from "./HomePageComponents";
-import TestWrapper from "../tests/TestWrapper";
+import FirebaseAPI from "../api/FirebaseAPI";
 import HomePageComponentsData from "../data/HomePageComponentsData";
+import TestWrapper from "../tests/TestWrapper";
 import App from "./App";
+import HomePageComponents from "./HomePageComponents";
+
 
 afterEach(() => {
   cleanup();
@@ -21,57 +24,72 @@ beforeEach(() => {
       get: () => 100,
     },
   });
+
+  jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementation(() => Promise.resolve({ name: "Beef" }));
 });
 
-test("home page renders", () => {
+test("home page renders", async () => {
   render(
     <TestWrapper>
       <Route path="/" element={<HomePageComponents />} />
     </TestWrapper>,
   );
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const element of HomePageComponentsData) {
+  HomePageComponentsData.forEach(element =>  {
     expect(screen.getByText(element.name)).toBeInTheDocument();
-  }
+  });
 });
 
-test("navigate to beef nutritional endpoint", () => {
-  const home = render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>,
-  );
+test.skip("navigate to beef nutritional endpoint", async () => {
+  const user = userEvent.setup();
+  await act(async () => {
+    await render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+  });
 
-  const nutritionalInformation = home.getByTestId("Food & Nutrition");
+  const nutritionalInformation = screen.getByTestId("Food & Nutrition");
   expect(nutritionalInformation).toBeInTheDocument();
-  fireEvent.click(nutritionalInformation);
+  await user.click(nutritionalInformation);
 
   const meat = screen.getByTestId("Meat");
   expect(meat).toBeInTheDocument();
-  fireEvent.click(meat);
+  await user.click(meat);
 
   const beef = screen.getByTestId("Beef");
   expect(beef).toBeInTheDocument();
-  fireEvent.click(beef);
+  await user.click(beef);
+
+  const beefDetails = screen.getByTestId("Beef-details");
+  expect(beefDetails).toBeInTheDocument();
 });
 
-test("navigate to  nutritional endpoint", () => {
-  const home = render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>,
-  );
+test.skip("navigate to cod nutritional endpoint", async () => {
+  jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementation(() => Promise.resolve({ name: "Cod" }));
+  const user = userEvent.setup();
+  await act(async () => {
+    await render(
 
-  const nutritionalInformation = home.getByTestId("Food & Nutrition");
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
+  });
+
+  const nutritionalInformation = screen.getByTestId("Food & Nutrition");
   expect(nutritionalInformation).toBeInTheDocument();
-  fireEvent.click(nutritionalInformation);
+  await user.click(nutritionalInformation);
 
   const fish = screen.getByTestId("Fish");
   expect(fish).toBeInTheDocument();
-  fireEvent.click(fish);
+  await user.click(fish);
 
-  const finalBeef = screen.getByTestId("Cod");
-  expect(finalBeef).toBeInTheDocument();
-  fireEvent.click(finalBeef);
+  const cod = screen.getByTestId("Cod");
+  expect(cod).toBeInTheDocument();
+  await user.click(cod);
+
+  const codDetails = screen.getByTestId("Cod-details");
+  expect(codDetails).toBeInTheDocument();
 });

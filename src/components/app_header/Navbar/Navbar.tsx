@@ -8,7 +8,7 @@ import { useGlobalMenuOpenContext } from "../AppHeaderContext";
 import NavyLogo from "../../../img/navy_logo.png";
 
 const Navbar = () => {
-  const { isMenuOpen, setIsMenuOpen } = useGlobalMenuOpenContext();
+  const { isMenuOpen, setIsMenuOpen, getAdditionalStyling } = useGlobalMenuOpenContext();
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
@@ -16,9 +16,9 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="relative">
-        <div className="px-4 sm:px-6">
-          <div className="flex w-full items-center py-4">
+      <div className={`relative px-4 sm:px-6 ${getAdditionalStyling}`}>
+        <div className="">
+          <div className="flex w-full items-center py-4 h-20">
             <div className="flex absolute">
               <Link
                 onClick={() => {
@@ -31,40 +31,34 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="flex justify-end xl:justify-center w-full">
-              <div className="hidden xl:flex justify-evenly w-7/12 font-navigation-items">
+              <div className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px] hover:text-gray-900">
                 <Link
                   to="/NutritionalInformation"
-                  className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
                 >
                   Food & Nutrition
                 </Link>
                 <Link
                   to="/FitnessChallenges"
-                  className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
                 >
                   Fitness Challenges
                 </Link>
                 <Link
                   to="/Games"
-                  className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
                 >
                   Games
                 </Link>
                 <Link
                   to="/Videos"
-                  className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
                 >
                   Videos
                 </Link>
                 <Link
                   to="/Recipes"
-                  className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
                 >
                   Recipes
                 </Link>
                 <Link
                   to="/About"
-                  className="text-sm font-medium text-titansDarkBlue hover:text-gray-900"
                 >
                   About us
                 </Link>
@@ -72,6 +66,7 @@ const Navbar = () => {
 
               <div className="ml-6 -my-2 xl:hidden">
                 <button
+                  aria-label="menu-toggle"
                   type="button"
                   className="flex flex-col h-12 w-12 justify-center items-center font-navigation-items"
                   aria-expanded="false"

@@ -1,5 +1,6 @@
 // empty functions expected for context
 /* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable */
 
 import React, { FC, createContext, useContext, useEffect, useState, useMemo } from "react";
 

@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import QuizData from "../../../data/QuizData";
+import { QuizProps } from "../../../models/Quiz/QuizProps";
 import Card from "../../shared/Card";
 import { useGameStartedContext } from "../GameContext";
 import GameModalScreen from "../GameModalScreen";
-import AnswerCard from "./AnswerCard";
 import { useQuizContext } from "./QuizContext";
 
-const QuizGameScreen = () => {
-  const { setModal, setModalContent, setIsGameStarted, getScore } = useGameStartedContext();
+const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
+  const {
+    setModal, setModalContent, setIsGameStarted, getScore,
+  } = useGameStartedContext();
   const [questionNumber, setQuestionNumber] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
-  const quizData = QuizData;
+  const { quizData } = props;
 
   const { currentQuestion, setCurrentQuestion } = useQuizContext();
   const { selectedAnswer, setSelectedAnswer } = useQuizContext();
@@ -20,50 +21,53 @@ const QuizGameScreen = () => {
     setSelectedAnswer(undefined);
   }, [questionNumber]);
 
+  const getScoreFeedback = () => {
+    if (getScore <= 3) {
+      return "Good effort, keep learning!";
+    }
+    if (getScore >= 7) {
+      return "Excellent!";
+    }
+    return "Well done!";
+  }
+
   const nextQuestion = () => {
-    if (quizData && questionNumber < quizData.questions.length - 1) {
-      setQuestionNumber(questionNumber + 1);
-    } else {
-      setQuizFinished(true);
-      setModal(true);
-      setModalContent({
-        buttonFunc: () => {
-          setIsGameStarted(false);
-        },
-        buttonText: "Play again",
-        text: "Well done!",
-        title: `Score: ${getScore} out of ${quizData.questions.length}`
-      });
+    if (quizData) {
+      if (questionNumber < quizData.questions.length - 1) {
+        setQuestionNumber(questionNumber + 1);
+      } else {
+        setQuizFinished(true);
+        setModal(true);
+        setModalContent({
+          buttonFunc: () => {
+            setIsGameStarted(false);
+          },
+          buttonText: "Play again",
+          text: getScoreFeedback(),
+          title: `Score: ${getScore} out of ${quizData.questions.length}`,
+        });
+      }
     }
   };
 
   return (
     <>
-      {quizFinished && <GameModalScreen />}
-      {currentQuestion && (
-        <Card
-          card={{ name: quizData.name, additionalStyling: "h-[30rem] lg:h-[40rem] w-full mb-10" }}
-        >
-          <div className="hidden font-bold sm:flex flex-row pt-5 pb-8 px-10">
-            <div className="text-lg lg:text-2xl">{quizData.name}</div>
-            <div className="ml-auto">
-              {questionNumber + 1} out of {quizData.questions.length}
-            </div>
-          </div>
-          <div className="py-6 px-4 sm:py-0 sm:px-8 lg:px-10 text-sm sm:text-base lg:text-xl font-semibold text-homepageHeaderText">
-            <div className="grid gap-3 lg:gap-5">
-              <Card
-                card={{
-                  name: currentQuestion.question,
-                  additionalStyling: "bg-mobileNavbarBackgroundColor p-4 lg:p-6"
-                }}
-              >
-                {currentQuestion.question}
-              </Card>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-8 p-4 sm:p-2 lg:p-5">
-                {currentQuestion.answers.map((answer) => (
-                  <AnswerCard answer={answer} key={answer.answer} />
-                ))}
+      {quizFinished
+        && (
+          <GameModalScreen />
+        )}
+      {
+        quizData && currentQuestion
+        && (
+          <Card card={{ name: quizData.name, additionalStyling: "h-[30rem] lg:h-[40rem] w-full mb-10" }}>
+            <div className="hidden font-bold sm:flex flex-row pt-5 pb-8 px-10">
+              <div className="text-lg lg:text-2xl">{quizData.name}</div>
+              <div className="ml-auto">
+                {questionNumber + 1}
+                {" "}
+                out of
+                {" "}
+                {quizData.questions.length}
               </div>
             </div>
             {selectedAnswer && (
@@ -89,7 +93,6 @@ const QuizGameScreen = () => {
                 </button>
               </div>
             )}
-          </div>
         </Card>
       )}
     </>
