@@ -1,10 +1,14 @@
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import {
-  doc, getDoc, collection, getDocs, setDoc
+  doc, getDoc, collection, getDocs, setDoc, query, where
 } from "firebase/firestore";
-import FoodDetailsComponentData, { FoodDetailsComponentDataFile } from "../data/nutritional_information/FoodDetailsComponentData";
+import FoodDetailsComponentData, {
+  FoodDetailsComponentDataFile,
+  FoodDetailsProps
+} from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
 /* eslint-disable */
+
 class FirebaseAPI {
   static fetchImages = async (firebaseName: string): Promise<string> => {
     const storage = getStorage();
@@ -35,8 +39,28 @@ class FirebaseAPI {
     return undefined;
   };
 
-  static fetchFoodDetailsSeeNext = async (category: string) => {
-    const docRef = doc(fStore, "FYPData", "Data");
+  static fetchFoodDetailsSeeNext = async (category: string, currentName: string):Promise<{cardData: FoodDetailsProps[], paths:string[]}> => {
+    const q = query(collection(fStore, "FYPData"), where("category", "==", category), where("name", "!=", currentName ))
+    const docSnap = await getDocs(q)
+    const docs = docSnap.docs.map((doc) => {
+      let newDoc = doc.data()
+      newDoc.path = doc.id
+      return newDoc
+    })
+
+    const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0,3)
+
+    return {
+      cardData: shuffled.map(value => ({
+        name: value.name,
+        description: value.description,
+        firebaseName: value.firebaseName,
+        category: value.category,
+        score: value.score,
+        facts: value.facts
+      })),
+      paths: shuffled.map(value => value.path)
+    }
   }
 
   static fetchQuizData = async () => {

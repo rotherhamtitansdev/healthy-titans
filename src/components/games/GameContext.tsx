@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 /* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable */
 
 export interface GameModalContentInterface {
   title: string;

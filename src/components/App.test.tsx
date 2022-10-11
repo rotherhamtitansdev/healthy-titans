@@ -40,7 +40,7 @@ test("home page renders", async () => {
   });
 });
 
-test("navigate to beef nutritional endpoint", async () => {
+test.skip("navigate to beef nutritional endpoint", async () => {
   const user = userEvent.setup();
   await act(async () => {
     await render(
@@ -66,7 +66,7 @@ test("navigate to beef nutritional endpoint", async () => {
   expect(beefDetails).toBeInTheDocument();
 });
 
-test("navigate to cod nutritional endpoint", async () => {
+test.skip("navigate to cod nutritional endpoint", async () => {
   jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementation(() => Promise.resolve({ name: "Cod" }));
   const user = userEvent.setup();
   await act(async () => {

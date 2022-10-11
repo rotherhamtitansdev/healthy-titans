@@ -5,18 +5,23 @@ import ChallengeDetailsComponentData from "../../../data/ChallengeDetailsCompone
 import { ChallengeDetailsProps } from "../../../models/ChallengeDetailsProps";
 import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
+import {useGlobalMenuOpenContext} from "../../app_header/AppHeaderContext";
 
 const ChallengeDetailsComponent = () => {
   // eslint-disable-next-line max-len
   const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] =
     useState<ChallengeDetailsProps | undefined>();
 
+  const { setAdditionalStyling } = useGlobalMenuOpenContext();
+
   const [getImageURL, setImageURL] = useState<string>();
   const { challengeName } = useParams();
 
   useEffect(() => {
+    setAdditionalStyling("bg-white mb-10")
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
+
     const data = ChallengeDetailsComponentData[challengeName];
     if (data.firebaseName) {
       FirebaseAPI.fetchImages(data.firebaseName).then((res) =>
@@ -27,6 +32,9 @@ const ChallengeDetailsComponent = () => {
     }
 
     setChallengeDetailsComponentData(data);
+    return function cleanup(){
+      setAdditionalStyling("")
+    }
   }, []);
 
   useEffect(() => {
