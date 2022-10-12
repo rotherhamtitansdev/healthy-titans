@@ -34,7 +34,7 @@ const AppHeaderContextWrapper: FC<AppHeaderContextWrapperProps> = ({ children })
       getAdditionalStyling,
       setAdditionalStyling
     }),
-    [isMenuOpen]
+    [isMenuOpen, getAdditionalStyling]
   );
 
   return <GlobalMenuOpenContext.Provider value={value}>{children}</GlobalMenuOpenContext.Provider>;
