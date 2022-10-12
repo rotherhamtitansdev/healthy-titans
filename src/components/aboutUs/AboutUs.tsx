@@ -71,8 +71,8 @@ const AboutUs = () => {
               {AboutUsData.section_3[0]}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <p className="mx-8 md:mx-16 lg:mx-24">{AboutUsData.section_3[1]}</p>
-              <p className="mx-8 md:mx-16 lg:mx-24">{AboutUsData.section_3[2]}</p>
+                <p className="mx-8 md:mx-16 lg:mx-24  mb-4 md:mb-0">{AboutUsData.section_3[1]}</p>
+                <p className="mx-8 md:mx-16 lg:mx-24">{AboutUsData.section_3[2]}</p>
             </div>
           </div>
           <div id="section4" className="bg-white py-6 md:py-14">
@@ -80,7 +80,7 @@ const AboutUs = () => {
               {AboutUsData.section_4[0]}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="flex flex-col gap-4 mx-8 md:mx-16 lg:mx-24">
+              <div className="flex flex-col gap-4 mx-8 md:mx-16 lg:mx-24 mb-4 md:mb-0">
                 <p>{AboutUsData.section_4[1]}</p>
                 <p>{AboutUsData.section_4[2]}</p>
               </div>
