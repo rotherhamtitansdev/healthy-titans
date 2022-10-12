@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 import FacebookLogo from "../../img/Facebook.svg";
 import YoutubeLogo from "../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../img/TwitterLogo.svg";
+import RTLogo from "../../img/RT_Logo.png";
+import ANDLogo from "../../img/AND-icon.png"
+import CookiesKhawLogo from "../../img/cookies_khaw.svg";
 
 const Footer = () => (
   <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
     <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
       <Link to="/" className="w-32">
-        <img src={require("../../img/pink_logo.png")} alt="Rotherham Titan" />
+        <img src={CookiesKhawLogo} alt="Cookie's Khaw" />
       </Link>
     </div>
 
@@ -29,7 +32,7 @@ const Footer = () => (
               Powered by
             </h6>
             <img
-              src={require("../../img/RT_Logo.png")}
+              src={RTLogo}
               alt="Rotherham Titan"
               className="w-16 mx-auto md:mx-0"
             />
@@ -40,7 +43,7 @@ const Footer = () => (
               In collaboration with
             </h6>
             <img
-              src={require("../../img/AND-icon.png")}
+              src={ANDLogo}
               alt="Rotherham Titan"
               className="w-16 justify-center"
             />

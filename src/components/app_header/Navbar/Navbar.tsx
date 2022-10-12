@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import FacebookLogo from "../../../img/Facebook.svg";
@@ -6,6 +5,7 @@ import MenuLine from "../../../img/MenuLine.png";
 import YoutubeLogo from "../../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../../img/TwitterLogo.svg";
 import { useGlobalMenuOpenContext } from "../AppHeaderContext";
+import CookiesKhawLogo from "../../../img/cookies_khaw.svg";
 
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, getAdditionalStyling } = useGlobalMenuOpenContext();
@@ -25,9 +25,9 @@ const Navbar = () => {
                   setIsMenuOpen(false);
                 }}
                 to="/"
-                className="w-32"
+                className="w-36 md:w-52 md:pt-2"
               >
-                <img src={require("../../../img/navy_logo.png")} alt="Rotherham Titan" />
+                <img src={CookiesKhawLogo} alt="Cookie's Khaw" />
               </Link>
             </div>
             <div className="flex justify-end xl:justify-center w-full">
