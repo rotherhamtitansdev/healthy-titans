@@ -42,9 +42,9 @@ const VideosComponent = () => {
     },
   };
 
-  const videoData = VideoData.map((item, index) => (
+  const videoData = VideoData.map((item) => (
     <VideoCard
-      key={index}
+      key={item.title}
       Actions={{ setHidden, setModalClickedVideoData }}
       video={item}
       disableOnClick={isMoving}

@@ -1,6 +1,13 @@
-import { NHSNutritionalDataModel, NHSNutritionalDataModelChart } from "../models/NHSNutritionalDataModel";
+import {
+  NHSNutritionalDataModel,
+  NHSNutritionalDataModelChart
+} from "../models/NHSNutritionalDataModel";
 import { ChartLabel, Colour, NHSNutritionalBoundaries } from "../models/AnalyticsChartConfig";
-import { Nutrient, NutritionDetailsAPIModel, TotalNutrients } from "../models/NutritionDetailsAPIModel";
+import {
+  Nutrient,
+  NutritionDetailsAPIModel,
+  TotalNutrients
+} from "../models/NutritionDetailsAPIModel";
 
 export class ChartDataProcessor {
   /* This reads in the entire response from the food api, and outputs an array of the needed
@@ -28,7 +35,7 @@ export class ChartDataProcessor {
     const sortedNutrients: Nutrient[] = [];
 
     // The following lines sort the nutrients in order they are seen on NHS food labels
-    // If a nutrient doesn't exist, it means its weight was 0, so add the nutrient with a weight of 0
+    // If a nutrient doesn't exist it means its weight was 0, so add the nutrient with a weight of 0
     Object.keys(ChartLabel).forEach((label) => {
       const nutrient = parsedNutrients.find((element) => element.label === label);
 
@@ -41,20 +48,19 @@ export class ChartDataProcessor {
   // For each of the nutrients, this calculates whether it is green, yellow, or red
   // Returns the chart data, aswell as the labels.
   // labels contain the nutrient name and its weight (ie 5g)
-  static calculateNutritionalBoundariesAll = (analyticsData: Nutrient[]):
-    {
-      chartData:
-        {
-          names: string[],
-          labels: string[],
-          data: NHSNutritionalDataModelChart[]
-        },
-      calories:
-        {
-          label: string,
-          data: NHSNutritionalDataModelChart
-        }
-    } => {
+  static calculateNutritionalBoundariesAll = (
+    analyticsData: Nutrient[]
+  ): {
+    chartData: {
+      names: string[];
+      labels: string[];
+      data: NHSNutritionalDataModelChart[];
+    };
+    calories: {
+      label: string;
+      data: NHSNutritionalDataModelChart;
+    };
+  } => {
     const newChartLabels: string[] = [];
 
     const calories = String(analyticsData[0].quantity);
@@ -65,35 +71,50 @@ export class ChartDataProcessor {
       newChartLabels.push(`${element.quantity}g${uniqueIdentifier}`);
     });
 
-    const deluminatedChartData = [{
-      x: 1, y: 3, color: "#ACCDF6", deluminatedColor: "#ACCDF6",
-    }];
+    const deluminatedChartData = [
+      {
+        x: 1,
+        y: 3,
+        color: "#ACCDF6",
+        deluminatedColor: "#ACCDF6"
+      }
+    ];
 
     for (let i = 1; i < 5; i++) {
       const boundary = ChartDataProcessor.calculateNutritionalBoundary(
         NHSNutritionalBoundaries[i - 1],
-        analyticsData[i].quantity,
+        analyticsData[i].quantity
       );
       const colors = ChartDataProcessor.calculateColor(boundary);
       deluminatedChartData.push({
-        x: i + 1, y: boundary, color: colors[0], deluminatedColor: colors[1],
+        x: i + 1,
+        y: boundary,
+        color: colors[0],
+        deluminatedColor: colors[1]
       });
     }
 
     return {
-      chartData: { names: analyticsData.map((item) => `${item.label}\n\n\n\n`), labels: newChartLabels, data: deluminatedChartData },
+      chartData: {
+        names: analyticsData.map((item) => `${item.label}\n\n\n\n`),
+        labels: newChartLabels,
+        data: deluminatedChartData
+      },
       calories: {
         label: calories,
         data: {
-          x: 1, y: 3, color: "#ACCDF6", deluminatedColor: "#ACCDF6",
-        },
-      },
+          x: 1,
+          y: 3,
+          color: "#ACCDF6",
+          deluminatedColor: "#ACCDF6"
+        }
+      }
     };
   };
 
   static calculateNutritionalBoundary = (
     NHSBoundaries: NHSNutritionalDataModel,
-    actual: number,
+    actual: number
   ): number => {
     if (actual > NHSBoundaries.high) return Colour.Red;
     if (actual < NHSBoundaries.low) return Colour.Green;
@@ -110,8 +131,8 @@ export class ChartDataProcessor {
     return ["#8ded8e", "#d1f7d2"];
   };
 
-  static constructRecommendedDailyArray = ():string[] => {
-    const arr:string[] = [];
+  static constructRecommendedDailyArray = (): string[] => {
+    const arr: string[] = [];
 
     for (let i = 0; i < 5; i++) {
       arr.push(`Recommended daily${" ".repeat(i)}`);

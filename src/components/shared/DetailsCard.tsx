@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import React from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
@@ -33,17 +32,17 @@ const DetailsCard = (props: DetailsCardProps) => {
                 {props.description}
             </p>
             {props.list && (
-                <p className="block mt-1 text-lg leading-tight font-semibold text-gray-900">
+                <div className="block mt-1 text-lg leading-tight font-semibold text-gray-900">
                     <h2 className="py-5 text-[20px] lg:text-[24px] ">{props.list.title}</h2>
                     <ul className="list-none px-0 lg:px-5 text-[16px] lg:text-[20px]">
                         {props.list.items.map((item) => (
-                            <li className="pb-4 md:pb-8 flex font-medium">
+                            <li className="pb-4 md:pb-8 flex font-medium" key={item}>
                                 <img src={CheckMarkButton} alt="checkmark" className="pr-5"/>
                                 {item}
                             </li>
                         ))}
                     </ul>
-                </p>
+                </div>
             )}
         </div>
     </div>)

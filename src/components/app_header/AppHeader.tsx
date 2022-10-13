@@ -1,10 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 
-// eslint-disable-next-line react/require-default-props
-const AppHeader = (props: { children?: React.ReactNode }) => (
-  <div className="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span">
-    {props.children}
-  </div>
+interface AppHeaderProps {
+  children: React.ReactElement;
+}
+
+const AppHeader: FC<AppHeaderProps> = ({ children }) => (
+  <div className="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span">{children}</div>
 );
 
 export default AppHeader;
