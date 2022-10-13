@@ -5,6 +5,13 @@ export interface NutritionDetailsProps {
   firebaseName: string;
 }
 
+export type NutritionalDetailsFirebaseProps = NutritionDetailProcessed[][]
+
+export interface NutritionDetailProcessed{
+  key: string
+  value: string
+}
+
 const NutritionDetailsComponentData = {
   MacroAndMicroNutrients: {
     name: "Macronutrients & Micronutrients",

@@ -1,16 +1,13 @@
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
-import {
-  doc, getDoc, collection, getDocs, setDoc, query, where
-} from "firebase/firestore";
+import {getDownloadURL, getStorage, ref} from "firebase/storage";
+
+import {collection, doc, getDoc, getDocs, query, setDoc, where} from "firebase/firestore";
 import FoodDetailsComponentData, {
   FoodDetailsComponentDataFile,
-  FoodDetailsProps
+  FoodDetailsProps,
 } from "../data/nutritional_information/FoodDetailsComponentData";
-import {doc, getDoc, collection, getDocs, setDoc, DocumentData} from "firebase/firestore";
-import FoodDetailsComponentData, {
-  FoodDetailsComponentDataFile,
-} from "../data/nutritional_information/FoodDetailsComponentData";
-import { fStore } from "../config/firebase-config";
+import {fStore} from "../config/firebase-config";
+import {NutritionalDetailsFirebaseProps} from "../models/NutritionDetailsComponentData";
+
 /* eslint-disable */
 
 class FirebaseAPI {
@@ -36,10 +33,21 @@ class FirebaseAPI {
     }
   };
 
-  static fetchNutritionData = async (name: string):Promise<DocumentData[]> => {
-    const querySnapshot = await getDocs(collection(fStore, "NutritionData", name , "data"));
+  static fetchNutritionData = async (name: string):Promise<NutritionalDetailsFirebaseProps> => {
+    const querySnapshot = await getDocs(collection(fStore, "NutritionData", name , "Content"));
 
-    return querySnapshot.docs.map((doc) => doc.data())
+    // @ts-ignore
+    const sorted = querySnapshot.docs.sort((a,b) => (a.data().order > b.data().order) ? 1 : ((b.data().order > a.data().order) ? -1 : 0))
+
+    // @ts-ignore
+    return sorted.map(doc => {
+      const data = doc.data()
+      let arr = []
+      for (const [key, value] of Object.entries(data)) {
+        arr.push({key: key, value: value})
+      }
+      return arr
+    })
   };
 
   static fetchFoodDetailsSingle = async (name: string) => {
