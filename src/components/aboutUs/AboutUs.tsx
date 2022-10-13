@@ -8,6 +8,13 @@ import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
 import RTLogo from "../../img/RT_Logo.png";
 
+const gridStyles = "grid grid-cols-1 md:grid-cols-2";
+const sectionPaddingStyles = "py-6 md:py-14";
+const sectionHeaderStyles = "font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5"
+const imgContainerStyles = "flex justify-center items-center my-6 md:my-0"
+const textMarginStyles = "mx-8 md:mx-16 lg:mx-24";
+const textAreaStyles = `${textMarginStyles} flex flex-col gap-4`;
+
 const AboutUs = () => {
   const [AboutUsData, setAboutUsData] = useState<AboutUsProps | undefined>();
   const [imgUrl, setImgUrl] = useState<string | undefined>("");
@@ -34,15 +41,15 @@ const AboutUs = () => {
       </AppHeader>
       {AboutUsData && (
         <div className="font-semibold text-titansDarkGrey text-sm md:text-base lg:text-xl">
-          <div id="section1" className="grid grid-cols-2 py-14">
-            <div id="textArea1" className="flex flex-col gap-4 mx-24">
-              <h2 className="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5">
+          <div id="section1" className={`${gridStyles} ${sectionPaddingStyles}`}>
+            <div id="textArea1" className={textAreaStyles}>
+              <h2 className={sectionHeaderStyles}>
                 {AboutUsData.section_1[0]}
               </h2>
               <p>{AboutUsData.section_1[1]}</p>
               <p>{AboutUsData.section_1[2]}</p>
             </div>
-            <div id="imgArea1" className="flex justify-center">
+            <div id="imgArea1" className={imgContainerStyles}>
               <img
                 src={imgUrl}
                 alt="fruit and veg"
@@ -50,47 +57,47 @@ const AboutUs = () => {
               />
             </div>
           </div>
-          <div id="section2" className="grid grid-cols-2 bg-white py-14">
-            <div id="imgArea2" className="flex justify-center">
+          <div id="section2" className={`${gridStyles} ${sectionPaddingStyles} bg-white`}>
+            <div id="imgArea2" className={`${imgContainerStyles} order-last md:order-first`}>
               <img
                 src={RTLogo}
                 alt="RT Logo"
                 className="h-[265px] w-[228px] md:h-[265px] md:w-[228px] lg:h-[388px] lg:w-[331px] xl:h-[388px] xl:w-[331px]"
-              />
+                />
             </div>
-            <div id="textArea2" className="flex flex-col gap-4 mx-24">
-              <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5">
+            <div id="textArea2" className={textAreaStyles}>
+              <h2 className={sectionHeaderStyles}>
                 {AboutUsData.section_2[0]}
               </h2>
               <p>{AboutUsData.section_2[1]}</p>
               <p>{AboutUsData.section_2[2]}</p>
             </div>
           </div>
-          <div id="section3" className="py-14">
-            <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5 mx-24">
+          <div id="section3" className={sectionPaddingStyles}>
+            <h2 className={`${sectionHeaderStyles} ${textMarginStyles} md:max-w-[40%]`}>
               {AboutUsData.section_3[0]}
             </h2>
-            <div className="grid grid-cols-2">
-              <p className="mx-24">{AboutUsData.section_3[1]}</p>
-              <p className="mx-24">{AboutUsData.section_3[2]}</p>
+            <div className={gridStyles}>
+                <p className={`${textMarginStyles}  mb-4 md:mb-0`}>{AboutUsData.section_3[1]}</p>
+                <p className={textMarginStyles}>{AboutUsData.section_3[2]}</p>
             </div>
           </div>
-          <div id="section4" className="bg-white py-14">
-          <h2 className="font-semibold text-[#252948] text-2xl md:text-3xl lg:text-4xl py-5 mx-24">
+          <div id="section4" className={`${sectionPaddingStyles} bg-white`}>
+          <h2 className={`${sectionHeaderStyles} ${textMarginStyles}`}>
               {AboutUsData.section_4[0]}
             </h2>
-            <div className="grid grid-cols-2">
-              <div className="flex flex-col gap-4 mx-24">
+            <div className={gridStyles}>
+              <div className={`${textAreaStyles} mb-4 md:mb-0`}>
                 <p>{AboutUsData.section_4[1]}</p>
                 <p>{AboutUsData.section_4[2]}</p>
               </div>
-              <div className="flex flex-col gap-4 mx-24">
+              <div className={textAreaStyles}>
                 <p>{AboutUsData.section_4[3]}</p>
                 <p>{AboutUsData.section_4[4]}</p>
               </div>
             </div>
           </div>
-          <div className="h-[100px] bg-gradient-to-b from-white to-transparent"></div>
+          <div className="h-[50px] bg-gradient-to-b from-white to-transparent"></div>
         </div>
       )}
     </>
