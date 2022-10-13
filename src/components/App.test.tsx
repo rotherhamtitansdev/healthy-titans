@@ -1,10 +1,9 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import { Route } from "react-router";
+import { MemoryRouter } from "react-router";
 import HomePageComponentsData from "../data/HomePageComponentsData";
-import TestWrapper from "../tests/TestWrapper";
-import HomePageComponents from "./HomePageComponents";
+import App from "./App";
 
 test("home page renders", async () => {
   // Define width so carousel on homepage loads
@@ -14,13 +13,11 @@ test("home page renders", async () => {
     }
   });
 
-  render(
-    <TestWrapper>
-      <Route path="/" element={<HomePageComponents />} />
-    </TestWrapper>
-  );
+  render(<App />, { wrapper: MemoryRouter });
+
+  expect(screen.getByRole("button", { name: "Get started" })).toBeVisible();
 
   HomePageComponentsData.forEach((element) => {
-    expect(screen.getByText(element.name)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: element.name, hidden: true })).toBeInTheDocument();
   });
 });

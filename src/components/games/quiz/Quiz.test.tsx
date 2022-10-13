@@ -215,7 +215,7 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: /begin/i }));
+      await user.click(screen.getByRole("button", { name: "BEGIN" }));
       expect(screen.getByText(/first question/i)).toBeVisible();
       expect(screen.getByText(/1 out of 10/)).toBeVisible();
 
@@ -235,7 +235,7 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: /begin/i }));
+      await user.click(screen.getByRole("button", { name: "BEGIN" }));
       expect(screen.getByText(/first question/i)).toBeVisible();
       expect(screen.getByText(/1 out of 10/)).toBeVisible();
 
@@ -255,7 +255,7 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: /begin/i }));
+      await user.click(screen.getByRole("button", { name: "BEGIN" }));
       await user.click(screen.getByRole("button", { name: /^a wrong answer/i }));
       expect(screen.getByText(/^better luck next time/i)).toBeVisible();
 
@@ -279,7 +279,7 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: /begin/i }));
+      await user.click(screen.getByRole("button", { name: "BEGIN" }));
 
       for (let question = 1; question <= mockContent.questions.length; question++) {
         if (question <= score) {
