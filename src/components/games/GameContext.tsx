@@ -1,7 +1,8 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-
+// empty functions expected for context
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable */
+
+import React, { FC, createContext, useContext, useEffect, useState, useMemo } from "react";
 
 export interface GameModalContentInterface {
   title: string;
@@ -42,7 +43,11 @@ export const GameStartedContext = createContext<IsGameStartedContext>({
 
 export const useGameStartedContext = () => useContext(GameStartedContext);
 
-const GameStartedContextWrapper = ({ children }: any) => {
+interface GameStartedContextWrapperProps {
+  children: React.ReactElement;
+}
+
+const GameStartedContextWrapper: FC<GameStartedContextWrapperProps> = ({ children }) => {
   const [getIsGameStarted, setIsGameStarted] = useState<boolean>(false);
   const [getScore, setScore] = useState<number>(0);
   const [getModal, setModal] = useState<boolean>(false);
@@ -63,25 +68,23 @@ const GameStartedContextWrapper = ({ children }: any) => {
     document.body.style.overflow = getModal ? "hidden" : "unset";
   }, [getModal]);
 
-  return (
-    <GameStartedContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{
-        getIsGameStarted,
-        setIsGameStarted,
-        getScore,
-        setScore,
-        getModal,
-        setModal,
-        getModalContent,
-        setModalContent,
-        getMobilePreviewScreenFlag,
-        setMobilePreviewScreenFlag
-      }}
-    >
-      {children}
-    </GameStartedContext.Provider>
+  const value = useMemo(
+    () => ({
+      getIsGameStarted,
+      setIsGameStarted,
+      getScore,
+      setScore,
+      getModal,
+      setModal,
+      getModalContent,
+      setModalContent,
+      getMobilePreviewScreenFlag,
+      setMobilePreviewScreenFlag
+    }),
+    [getIsGameStarted, getScore, getModal, getModalContent, getMobilePreviewScreenFlag]
   );
+
+  return <GameStartedContext.Provider value={value}>{children}</GameStartedContext.Provider>;
 };
 
 export default GameStartedContextWrapper;

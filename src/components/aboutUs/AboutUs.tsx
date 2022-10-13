@@ -53,7 +53,7 @@ const AboutUs = () => {
               <img
                 src={imgUrl}
                 alt="fruit and veg"
-                className="h-[200px] w-[200px] lg:h-[400px] lg:w-[400px]"
+                className="h-[200px] w-[200px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px]"
               />
             </div>
           </div>
@@ -62,7 +62,7 @@ const AboutUs = () => {
               <img
                 src={RTLogo}
                 alt="RT Logo"
-                className="h-[265px] w-[228px] md:h-[265px] md:w-[228px] lg:h-[388px] lg:w-[331px] xl:h-[388px] xl:w-[331px]"
+                className="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
                 />
             </div>
             <div id="textArea2" className={textAreaStyles}>

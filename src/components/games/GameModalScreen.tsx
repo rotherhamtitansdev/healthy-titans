@@ -7,7 +7,7 @@ const GameModalScreen = () => {
   const handleOnClick = () => {
     setModal(false);
     if (getModalContent.buttonFunc) getModalContent.buttonFunc();
-  }
+  };
 
   return (
     <div>

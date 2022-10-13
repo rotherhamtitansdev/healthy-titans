@@ -34,7 +34,7 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
 
   const nextQuestion = () => {
     if (quizData) {
-      if (questionNumber < quizData.questions.length - 1) {
+        if (questionNumber < quizData.questions.length - 1) {
         setQuestionNumber(questionNumber + 1);
       } else {
         setQuizFinished(true);
@@ -78,10 +78,10 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
                 </Card>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-8 p-4 sm:p-2 lg:p-5">
                   {
-                    currentQuestion.answers.map((answer, index) => (
+                    currentQuestion.answers.map((answer) => (
                       <AnswerCard
                         answer={answer}
-                        key={index}
+                        key={answer.answer}
                       />
                     ))
                   }
@@ -104,8 +104,7 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
               )}
             </div>
           </Card>
-        )
-      }
+      )}
     </>
   );
 };

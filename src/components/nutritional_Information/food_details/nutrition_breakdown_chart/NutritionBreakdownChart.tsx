@@ -1,9 +1,5 @@
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from "react";
-import {
-  VictoryChart, VictoryBar, VictoryLabel, VictoryAxis,
-} from "victory";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
 import getNutritionalDetailsSingular from "../../../../api/NutritionApi";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
@@ -13,8 +9,6 @@ import { NutritionalBreakdownChartData } from "../../../../data/nutritional_info
 import { NutritionDetailsAPIModel } from "../../../../models/NutritionDetailsAPIModel";
 import "../../../../App.css";
 
-// eslint-disable no-promise-executor-return
-
 const NutritionBreakdownChart = (props: { name: string }) => {
   const { name } = props;
 
@@ -23,7 +17,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   const [getChartAmountLabels, setChartAmountLabels] = useState<string[]>();
   const [getChartNameLabels, setChartNameLabels] = useState<string[]>();
 
-  const [getChartData, setChartData] = useState<NHSNutritionalDataModelChart[]>();
+  const [getChartData, setChartData] = useState<NHSNutritionalDataModelChart[]>([]);
 
   const [getCalories, setCalories] = useState<string>();
 
@@ -34,7 +28,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
     setCalories(chartValues.calories.label);
     setChartNameLabels(chartValues.chartData.names);
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setChartAmountLabels(chartValues.chartData.labels);
     }, 1000);
 
@@ -43,14 +37,13 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   }, []);
 
   const chartCircleRadius = useMemo(() => chartSizing.barWidth / 2, []);
+  let ChartData: {
+    name: string;
+    data: NutritionDetailsAPIModel;
+  } | undefined
 
   useEffect(() => {
-    // eslint-disable-next-line array-callback-return,consistent-return
-    const ChartData = NutritionalBreakdownChartData.find((object) => {
-      if (object.name === name) {
-        return object.data;
-      }
-    });
+    ChartData = NutritionalBreakdownChartData.find((object) => object.name === name);
 
     if (ChartData !== undefined) {
       processChart(ChartData.data);
@@ -59,7 +52,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
         processChart(unparsed);
       });
     }
-  }, []);
+  })
 
   return (
     <div className="md:basis-1/2">
@@ -113,7 +106,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 horizontal
                 style={{
                   data: {
-                    fill: ({ datum }) => getChartData![datum.x - 1].deluminatedColor
+                    fill: ({ datum }) => getChartData[datum.x - 1].deluminatedColor
                   }
                 }}
                 barWidth={chartSizing.barWidth}
@@ -152,6 +145,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                       fontFamily: "Quicksand",
                       fontSize: 14,
                       textAlign: "center",
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       fill: ({ datum }: any) => {
                         if (datum.y <= 2 || datum.x === 1) return "black";
                         return "white";
@@ -212,6 +206,4 @@ const NutritionBreakdownChart = (props: { name: string }) => {
     </div>
   );
 };
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 export default NutritionBreakdownChart;
