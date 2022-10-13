@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About Us Test About Us Renders 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
+  >
+    <div
+      class="flex flex-wrap h-[22rem]"
+    >
+      <div
+        class="mx-auto pt-[3rem] md:pt-[2rem]"
+      >
+        <h1
+          class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+        >
+          About Us
+        </h1>
+        <div
+          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+        >
+          Here's a bit about this app, who we are and why we've done it.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="font-semibold text-titansDarkGrey text-sm md:text-base lg:text-xl"
+  >
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 py-6 md:py-14"
+      id="section1"
+    >
+      <div
+        class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
+        id="textArea1"
+      >
+        <h2
+          class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5"
+        >
+          section 1
+        </h2>
+        <p>
+          section 1 body
+        </p>
+        <p>
+          section 1 body 2
+        </p>
+      </div>
+      <div
+        class="flex justify-center items-center my-6 md:my-0"
+        id="imgArea1"
+      >
+        <img
+          alt="fruit and veg"
+          class="h-[200px] w-[200px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px]"
+          src="fruit.jpg"
+        />
+      </div>
+    </div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 py-6 md:py-14 bg-white"
+      id="section2"
+    >
+      <div
+        class="flex justify-center items-center my-6 md:my-0 order-last md:order-first"
+        id="imgArea2"
+      >
+        <img
+          alt="RT Logo"
+          class="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
+          src="RT_Logo.png"
+        />
+      </div>
+      <div
+        class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
+        id="textArea2"
+      >
+        <h2
+          class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5"
+        >
+          section 2
+        </h2>
+        <p>
+          section 2 body
+        </p>
+        <p>
+          section 2 body 2
+        </p>
+      </div>
+    </div>
+    <div
+      class="py-6 md:py-14"
+      id="section3"
+    >
+      <h2
+        class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5 mx-8 md:mx-16 lg:mx-24 md:max-w-[40%]"
+      >
+        section 3
+      </h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2"
+      >
+        <p
+          class="mx-8 md:mx-16 lg:mx-24  mb-4 md:mb-0"
+        >
+          section 3 body
+        </p>
+        <p
+          class="mx-8 md:mx-16 lg:mx-24"
+        >
+          section 3 body 2
+        </p>
+      </div>
+    </div>
+    <div
+      class="py-6 md:py-14 bg-white"
+      id="section4"
+    >
+      <h2
+        class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5 mx-8 md:mx-16 lg:mx-24"
+      >
+        section 4
+      </h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2"
+      >
+        <div
+          class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4 mb-4 md:mb-0"
+        >
+          <p>
+            section 4 body
+          </p>
+          <p>
+            section 4 body 2
+          </p>
+        </div>
+        <div
+          class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
+        >
+          <p>
+            section 4 body 3
+          </p>
+          <p>
+            section 4 body 4
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="h-[50px] bg-gradient-to-b from-white to-transparent"
+    />
+  </div>
+</DocumentFragment>
+`;
