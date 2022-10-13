@@ -16,15 +16,16 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   // const { nutritionName } = useParams();
 
   useEffect(() => {
-    FirebaseAPI.fetchN("CARBOHYDRATES").then(
-      (res) => {
+    FirebaseAPI.fetchNutritionData(props.nutritionName).then(
+      (res:any) => {
+
         if (res) {
-          if (res.firebaseName) {
-            FirebaseAPI.fetchImages(res.firebaseName).then((URI) =>
+          if (res[0].firebaseName) {
+            FirebaseAPI.fetchImages(res[0].firebaseName).then((URI) =>
               setImageURL(URI)
             );
           }
-          setNutritionData(res as NutritionDetailsProps);
+          setNutritionData(res[0] as NutritionDetailsProps);
         }
       }
     );
@@ -44,8 +45,7 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
           <DetailsCard
             name={getNutritionData.name}
             description={getNutritionData.description}
-            img={getNutritionData.firebaseName}
-            // img={getImageURL}
+            img={getImageURL}
             additionalStyling="lg:w-5/12"
           />
         </DetailsComponent>

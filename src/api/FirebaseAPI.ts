@@ -1,5 +1,5 @@
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
-import { doc, getDoc, collection, getDocs, setDoc } from "firebase/firestore";
+import {doc, getDoc, collection, getDocs, setDoc, DocumentData} from "firebase/firestore";
 import FoodDetailsComponentData, {
   FoodDetailsComponentDataFile,
 } from "../data/nutritional_information/FoodDetailsComponentData";
@@ -32,22 +32,20 @@ class FirebaseAPI {
     }
   };
 
-  static fetchNutritionData = async (category: string) => {
-    const docRef = doc(fStore, "Nutrition", "Data");
-    const nutriDoc = await getDoc(docRef);
+  // static fetchNutritionData = async (category: string) => {
+  //   const docRef = doc(fStore, "Nutrition", "Data");
+  //   const nutriDoc = await getDoc(docRef);
+  //
+  //   if (nutriDoc.exists()) {
+  //     return nutriDoc.data();
+  //   }
+  //   return undefined;
+  // };
 
-    if (nutriDoc.exists()) {
-      return nutriDoc.data();
-    }
-    return undefined;
-  };
-
-  static fetchN = async (name: string) => {
+  static fetchNutritionData = async (name: string):Promise<DocumentData[]> => {
     const querySnapshot = await getDocs(collection(fStore, "NutritionData", name , "data"));
-    querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data() , );
-    
-    });
+
+    return querySnapshot.docs.map((doc) => doc.data())
   };
 
   static fetchFoodDetailsSingle = async (name: string) => {
