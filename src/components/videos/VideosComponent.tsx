@@ -54,9 +54,10 @@ const VideosComponent = () => {
   function getVideos() {
     let videos = videoData;
     // Fill carousel with placeholders if there are fewer than 3 videos
+    let key = 0;
     while (videos.length < 3) {
       videos = videos.concat(
-        <Card card={{ name: "video placeholder", additionalStyling: "max-h-[20rem] md:max-h-[28rem] max-w-[22.5rem] sm:max-w-[37.5rem]" }}>
+        <Card key={key} card={{ name: "video placeholder", additionalStyling: "max-h-[20rem] md:max-h-[28rem] max-w-[22.5rem] sm:max-w-[37.5rem]" }}>
           <div className="text-center py-[4.5rem] px-[5rem] xs:py-[5.75rem] xs:px-[7.25rem] sm:py-[9.35rem] sm:px-[5rem] md:py-[9rem] md:px-[15rem] lg:py-[11.5rem] lg:px-[10rem]">
             <div className="font-semibold text-4xl font-quicksand text-homepageHeaderText">
               More videos coming soon!
@@ -64,6 +65,7 @@ const VideosComponent = () => {
           </div>
         </Card>,
       );
+      key += 1;
     }
     return videos;
   }
