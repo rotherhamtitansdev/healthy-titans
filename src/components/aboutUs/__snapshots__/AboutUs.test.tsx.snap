@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`About Us Test About Us Renders 1`] = `
+exports[`About Us component renders with sections and image 1`] = `
 <DocumentFragment>
   <div
     class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
