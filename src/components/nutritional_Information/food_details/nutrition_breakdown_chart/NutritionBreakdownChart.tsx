@@ -1,9 +1,5 @@
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from "react";
-import {
-  VictoryChart, VictoryBar, VictoryLabel, VictoryAxis,
-} from "victory";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
 import getNutritionalDetailsSingular from "../../../../api/NutritionApi";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
@@ -72,7 +68,9 @@ const NutritionBreakdownChart = (props: { name: string }) => {
               <p className="text-[20px] md:text-[24px] lg:text-[24px] text-nutritionInformationHeader font-semibold">
                 Nutrition Information
               </p>
-              <p className="text-[14px] md:text-[16px] lg:text-[20px] text-primaryGrey font-medium">*Based on serving of 100 g</p>
+              <p className="text-[14px] md:text-[16px] lg:text-[20px] text-primaryGrey font-medium">
+                *Based on serving of 100 g
+              </p>
             </div>
             <div className="lg:x-12 mx-8 my-8">
               <p className="text-[16px] text-primaryGrey font-medium">Calories</p>
@@ -89,32 +87,32 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 data={[
                   {
                     x: 1,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 2,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 3,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 4,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 5,
-                    y: 3
-                  }
+                    y: 3,
+                  },
                 ]}
                 x="x"
                 y="y"
                 horizontal
                 style={{
                   data: {
-                    fill: ({ datum }) => getChartData![datum.x - 1].deluminatedColor
-                  }
+                    fill: ({ datum }) => getChartData![datum.x - 1].deluminatedColor,
+                  },
                 }}
                 barWidth={chartSizing.barWidth}
                 cornerRadius={chartSizing.smallerRounded}
@@ -127,12 +125,12 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 horizontal
                 animate={{
                   duration: 2000,
-                  onLoad: { duration: 1000 }
+                  onLoad: { duration: 1000 },
                 }}
                 style={{
                   data: {
-                    fill: ({ datum }) => datum.color
-                  }
+                    fill: ({ datum }) => datum.color,
+                  },
                 }}
                 barWidth={chartSizing.barWidth}
                 cornerRadius={chartSizing.smallerRounded}
@@ -155,7 +153,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                       fill: ({ datum }: any) => {
                         if (datum.y <= 2 || datum.x === 1) return "black";
                         return "white";
-                      }
+                      },
                     }}
                   />
                 }
@@ -199,7 +197,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 tickValues={getChartNameLabels}
                 style={{
                   axis: { stroke: "transparent" },
-                  ticks: { stroke: "transparent" }
+                  ticks: { stroke: "transparent" },
                 }}
                 tickLabelComponent={
                   <VictoryLabel style={{ fontFamily: "Quicksand", fontSize: "14px" }} />

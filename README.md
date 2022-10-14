@@ -1,4 +1,5 @@
 #### Rotherham Titans x AND Digital presents...
+
 # Healthy Titans
 
 Healthy Titans is a web application with a focus on health, well-being & fitness aimed at children
@@ -8,7 +9,6 @@ fun and educational setting.
 
 The project is built with React & is hosted on Firebase.
 
-
 ## Getting Started
 
 1. To get started, first you must install Node and NPM.
@@ -16,26 +16,31 @@ The project is built with React & is hosted on Firebase.
 3. In your terminal window, enter `npm install` to begin installing dependencies needed for the project.
 
 ## Environmental variables
+
 This project makes use of env vars to abstract away app configuration such that it can be configured
 at build-time and cater to multiple environments, deployment types and adjust settings accordingly.
 
 ### What's a dotenv?
+
 In the project source code, a file named `.env.example` exists to demonstrate the current configuration
 set up. Colloquially we refer to this as a "dotenv" file. It does not include the values, because
 this would expose sensitive information. These files are commonly used to programatically configure
 applications for different environments by providing different values at runtime in different environmental settings.
 
 ### Env var setup
+
 First we need to create two files so that the project will run without issue. Technically, you only
 need one, but it's good practise to create both should you wish to build and deploy with the correct
 configuration locally.
 
 Open up your terminal, navigate to the root directory of the project where `package.json` lives and
 enter the following commands:
+
 ```
 $ touch .env.local .env.production.local .env.test.local
 $ cp .env.example .env.local .env.test.local
 ```
+
 This will create three empty files and then copy the content from the example file into the first
 file. To obtain the values, speak to a member of the team who will provide you with them.
 
@@ -43,6 +48,7 @@ By default, these files are ignored from git via `.gitignore` and **must not** b
 this public repository to avoid leaking sensitive information.
 
 ## Running and building the project
+
 With the above setup, we can now run the project without any config issues! Enter `npm start` to
 start the app locally in development mode. Your web browser should open a new tab with the site
 momentarily. If not, you can open [http://localhost:3000](http://localhost:3000) to view it in the
@@ -54,6 +60,7 @@ environmental variables and is valuable to understand for any differences that n
 for between builds.
 
 ## Setting up Firebase CLI
+
 Install Firebase CLI Tools. There are multiple ways to do this but for this project we use the
 npm package by running `npm install -g firebase-tools`.
 
@@ -79,12 +86,10 @@ When it asks to overwrite `build/index.html` select 'No' by entering `N` and pre
 
 Congrats, you're done! To deploy the app manually, enter `firebase deploy`.
 
-
-
-
 ## Tests
 
 ### `npm test`
+
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 

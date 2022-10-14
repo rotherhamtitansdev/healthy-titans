@@ -5,12 +5,13 @@ import ChallengeDetailsComponentData from "../../../data/ChallengeDetailsCompone
 import { ChallengeDetailsProps } from "../../../models/ChallengeDetailsProps";
 import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
-import {useGlobalMenuOpenContext} from "../../app_header/AppHeaderContext";
+import { useGlobalMenuOpenContext } from "../../app_header/AppHeaderContext";
 
 const ChallengeDetailsComponent = () => {
   // eslint-disable-next-line max-len
-  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] =
-    useState<ChallengeDetailsProps | undefined>();
+  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<
+    ChallengeDetailsProps | undefined
+  >();
 
   const { setAdditionalStyling } = useGlobalMenuOpenContext();
 
@@ -18,23 +19,21 @@ const ChallengeDetailsComponent = () => {
   const { challengeName } = useParams();
 
   useEffect(() => {
-    setAdditionalStyling("bg-white mb-10")
+    setAdditionalStyling("bg-white mb-10");
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
 
     const data = ChallengeDetailsComponentData[challengeName];
     if (data.firebaseName) {
-      FirebaseAPI.fetchImages(data.firebaseName).then((res) =>
-        setImageURL(res)
-      );
+      FirebaseAPI.fetchImages(data.firebaseName).then((res) => setImageURL(res));
     } else if (data.img) {
       setImageURL(data.img);
     }
 
     setChallengeDetailsComponentData(data);
-    return function cleanup(){
-      setAdditionalStyling("")
-    }
+    return function cleanup() {
+      setAdditionalStyling("");
+    };
   }, []);
 
   useEffect(() => {
@@ -67,12 +66,10 @@ const ChallengeDetailsComponent = () => {
               </div>
               <p className="lg:pl-4 pl-10  block text-[16px] lg:text-[20px] leading-tight font-medium font-quicksand">
                 <ul className="list-decimal">
-                  {getChallengeDetailsComponentData.howToPlay?.map(
-                    (howToPlay) => (
-                      // eslint-disable-next-line react/jsx-key
-                      <li className="pb-3">{howToPlay}</li>
-                    )
-                  )}
+                  {getChallengeDetailsComponentData.howToPlay?.map((howToPlay) => (
+                    // eslint-disable-next-line react/jsx-key
+                    <li className="pb-3">{howToPlay}</li>
+                  ))}
                 </ul>
               </p>
               <div className="pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[16px] lg:text-[20px] font-quicksand text-homepageHeaderSubTitle font-semibold">

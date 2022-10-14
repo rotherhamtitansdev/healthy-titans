@@ -40,8 +40,7 @@ const NutritionCategory = () => {
     <Menu
       title={{
         title: "Explore nutrition",
-        subtitle:
-          "Click on the type of nutritional information you want to learn about",
+        subtitle: "Click on the type of nutritional information you want to learn about",
       }}
       cards={nutritionData}
     />

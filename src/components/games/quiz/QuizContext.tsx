@@ -5,17 +5,17 @@ import { AnswerProps } from "../../../models/Quiz/AnswerProps";
 import { QuestionProps } from "../../../models/Quiz/QuestionProps";
 
 export type QuizContextType = {
-  currentQuestion: QuestionProps | undefined
-  setCurrentQuestion: (c: QuestionProps | undefined) => void
-  selectedAnswer: AnswerProps | undefined
-  setSelectedAnswer: (c: AnswerProps | undefined) => void
-}
+  currentQuestion: QuestionProps | undefined;
+  setCurrentQuestion: (c: QuestionProps | undefined) => void;
+  selectedAnswer: AnswerProps | undefined;
+  setSelectedAnswer: (c: AnswerProps | undefined) => void;
+};
 
 export const QuizContext = createContext<QuizContextType>({
   currentQuestion: undefined,
-  setCurrentQuestion: () => { },
+  setCurrentQuestion: () => {},
   selectedAnswer: undefined,
-  setSelectedAnswer: () => { },
+  setSelectedAnswer: () => {},
 });
 
 export const useQuizContext = () => useContext(QuizContext);
@@ -25,9 +25,13 @@ const QuizStartedContextWrapper = ({ children }: any) => {
   const [selectedAnswer, setSelectedAnswer] = useState<AnswerProps>();
 
   return (
-    <QuizContext.Provider value={{
-      currentQuestion, setCurrentQuestion, selectedAnswer, setSelectedAnswer,
-    }}
+    <QuizContext.Provider
+      value={{
+        currentQuestion,
+        setCurrentQuestion,
+        selectedAnswer,
+        setSelectedAnswer,
+      }}
     >
       {children}
     </QuizContext.Provider>

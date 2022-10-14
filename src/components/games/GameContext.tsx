@@ -33,11 +33,11 @@ export const GameStartedContext = createContext<IsGameStartedContext>({
     title: "",
     text: "",
     buttonText: "",
-    buttonFunc: () => {}
+    buttonFunc: () => {},
   },
   setModalContent: () => {},
   getMobilePreviewScreenFlag: false,
-  setMobilePreviewScreenFlag: () => {}
+  setMobilePreviewScreenFlag: () => {},
 });
 
 export const useGameStartedContext = () => useContext(GameStartedContext);
@@ -50,7 +50,7 @@ const GameStartedContextWrapper = ({ children }: any) => {
     title: "",
     text: "",
     buttonText: "",
-    buttonFunc: () => {}
+    buttonFunc: () => {},
   });
   const [getMobilePreviewScreenFlag, setMobilePreviewScreenFlag] = useState<boolean>(false);
 
@@ -76,7 +76,7 @@ const GameStartedContextWrapper = ({ children }: any) => {
         getModalContent,
         setModalContent,
         getMobilePreviewScreenFlag,
-        setMobilePreviewScreenFlag
+        setMobilePreviewScreenFlag,
       }}
     >
       {children}

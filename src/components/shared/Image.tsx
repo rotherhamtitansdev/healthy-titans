@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // eslint-disable-next-line react/require-default-props
-const Image = (props: {img: string; alt: string; additionalStyling?: string;}) => {
+const Image = (props: { img: string; alt: string; additionalStyling?: string }) => {
   const [getImageDidLoad, setImageDidLoad] = useState<boolean>(false);
 
   return (

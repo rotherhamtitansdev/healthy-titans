@@ -1,8 +1,5 @@
 import "@testing-library/jest-dom";
-import {
-  act,
-  cleanup, render, screen
-} from "@testing-library/react";
+import { act, cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { MemoryRouter, Route } from "react-router";
@@ -11,7 +8,6 @@ import HomePageComponentsData from "../data/HomePageComponentsData";
 import TestWrapper from "../tests/TestWrapper";
 import App from "./App";
 import HomePageComponents from "./HomePageComponents";
-
 
 afterEach(() => {
   cleanup();
@@ -25,17 +21,19 @@ beforeEach(() => {
     },
   });
 
-  jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementation(() => Promise.resolve({ name: "Beef" }));
+  jest
+    .spyOn(FirebaseAPI, "fetchFoodDetailsSingle")
+    .mockImplementation(() => Promise.resolve({ name: "Beef" }));
 });
 
 test("home page renders", async () => {
   render(
     <TestWrapper>
       <Route path="/" element={<HomePageComponents />} />
-    </TestWrapper>,
+    </TestWrapper>
   );
 
-  HomePageComponentsData.forEach(element =>  {
+  HomePageComponentsData.forEach((element) => {
     expect(screen.getByText(element.name)).toBeInTheDocument();
   });
 });
@@ -46,7 +44,7 @@ test.skip("navigate to beef nutritional endpoint", async () => {
     await render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>,
+      </MemoryRouter>
     );
   });
 
@@ -67,14 +65,15 @@ test.skip("navigate to beef nutritional endpoint", async () => {
 });
 
 test.skip("navigate to cod nutritional endpoint", async () => {
-  jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementation(() => Promise.resolve({ name: "Cod" }));
+  jest
+    .spyOn(FirebaseAPI, "fetchFoodDetailsSingle")
+    .mockImplementation(() => Promise.resolve({ name: "Cod" }));
   const user = userEvent.setup();
   await act(async () => {
     await render(
-
       <MemoryRouter>
         <App />
-      </MemoryRouter>,
+      </MemoryRouter>
     );
   });
 

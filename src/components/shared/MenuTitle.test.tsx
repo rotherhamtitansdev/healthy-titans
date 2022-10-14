@@ -11,7 +11,9 @@ describe("MenuTitle component", () => {
       title: "My Test Title",
     };
 
-    render(<MenuTitle title={menuTitleProps.title} />, { wrapper: MemoryRouter });
+    render(<MenuTitle title={menuTitleProps.title} />, {
+      wrapper: MemoryRouter,
+    });
 
     expect(screen.getByText(menuTitleProps.title)).toBeVisible();
     expect(screen.getByTestId("breadcrumbs")).toBeVisible();

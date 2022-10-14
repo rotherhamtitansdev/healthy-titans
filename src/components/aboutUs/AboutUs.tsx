@@ -10,8 +10,8 @@ import RTLogo from "../../img/RT_Logo.png";
 
 const gridStyles = "grid grid-cols-1 md:grid-cols-2";
 const sectionPaddingStyles = "py-6 md:py-14";
-const sectionHeaderStyles = "font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5"
-const imgContainerStyles = "flex justify-center items-center my-6 md:my-0"
+const sectionHeaderStyles = "font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5";
+const imgContainerStyles = "flex justify-center items-center my-6 md:my-0";
 const textMarginStyles = "mx-8 md:mx-16 lg:mx-24";
 const textAreaStyles = `${textMarginStyles} flex flex-col gap-4`;
 
@@ -43,9 +43,7 @@ const AboutUs = () => {
         <div className="font-semibold text-titansDarkGrey text-sm md:text-base lg:text-xl">
           <div id="section1" className={`${gridStyles} ${sectionPaddingStyles}`}>
             <div id="textArea1" className={textAreaStyles}>
-              <h2 className={sectionHeaderStyles}>
-                {AboutUsData.section_1[0]}
-              </h2>
+              <h2 className={sectionHeaderStyles}>{AboutUsData.section_1[0]}</h2>
               <p>{AboutUsData.section_1[1]}</p>
               <p>{AboutUsData.section_1[2]}</p>
             </div>
@@ -63,12 +61,10 @@ const AboutUs = () => {
                 src={RTLogo}
                 alt="RT Logo"
                 className="h-[265px] w-[228px] md:h-[265px] md:w-[228px] lg:h-[388px] lg:w-[331px] xl:h-[388px] xl:w-[331px]"
-                />
+              />
             </div>
             <div id="textArea2" className={textAreaStyles}>
-              <h2 className={sectionHeaderStyles}>
-                {AboutUsData.section_2[0]}
-              </h2>
+              <h2 className={sectionHeaderStyles}>{AboutUsData.section_2[0]}</h2>
               <p>{AboutUsData.section_2[1]}</p>
               <p>{AboutUsData.section_2[2]}</p>
             </div>
@@ -78,12 +74,12 @@ const AboutUs = () => {
               {AboutUsData.section_3[0]}
             </h2>
             <div className={gridStyles}>
-                <p className={`${textMarginStyles}  mb-4 md:mb-0`}>{AboutUsData.section_3[1]}</p>
-                <p className={textMarginStyles}>{AboutUsData.section_3[2]}</p>
+              <p className={`${textMarginStyles}  mb-4 md:mb-0`}>{AboutUsData.section_3[1]}</p>
+              <p className={textMarginStyles}>{AboutUsData.section_3[2]}</p>
             </div>
           </div>
           <div id="section4" className={`${sectionPaddingStyles} bg-white`}>
-          <h2 className={`${sectionHeaderStyles} ${textMarginStyles}`}>
+            <h2 className={`${sectionHeaderStyles} ${textMarginStyles}`}>
               {AboutUsData.section_4[0]}
             </h2>
             <div className={gridStyles}>
