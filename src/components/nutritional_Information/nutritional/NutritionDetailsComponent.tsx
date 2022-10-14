@@ -80,7 +80,7 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
     <div>
     {getNutritionData &&
       <DetailsComponent>
-      <div className=" lg:px-10 xs:px-6 px-4 md:px-5 pb-10">
+      <div className="pb-10 px-6 xs:px-8 lg:px-10">
       <DetailsCard
               img={getImageURL}
       />
