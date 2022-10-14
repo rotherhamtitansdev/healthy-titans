@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Card component renders an unclickable card 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+    data-testid="Food & Nutrition"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+    >
+      <div
+        class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+      >
+        <span
+          class=""
+          style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+        />
+      </div>
+      <div
+        class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+      >
+        Food & Nutrition
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Menu Card component renders and can click card 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+    data-testid="Food & Nutrition"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+    >
+      <div
+        class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+      >
+        <span
+          class=""
+          style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+        />
+      </div>
+      <div
+        class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+      >
+        Food & Nutrition
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Menu Card component renders with image 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+    data-testid="Food & Nutrition"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+    >
+      <div
+        class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+      >
+        <div
+          class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+        >
+          <img
+            alt="Food & Nutrition"
+            class="mx-auto undefined"
+            draggable="false"
+            src="fruit.jpg"
+          />
+        </div>
+      </div>
+      <div
+        class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+      >
+        Food & Nutrition
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
