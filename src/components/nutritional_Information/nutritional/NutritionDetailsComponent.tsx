@@ -22,20 +22,13 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
         }
 
         setNutritionData(res)
-        // if (res) {
-        //   if (res[0].firebaseName) {
-        //     FirebaseAPI.fetchImages(res[0].firebaseName).then((URI) =>
-        //       setImageURL(URI)
-        //     );
-        //   }
-        // }
-
       }
     );
   }, []);
 
   const processHeader = (data: NutritionDetailProcessed[], headerStyle: string) => {
     if(getNutritionData) {
+      console.log(data)
 
       const arr:ReactNode[] = []
       const titleString = data.find(p => p.key === "name")
@@ -43,7 +36,7 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
         arr.push(<h1 key={titleString.key} className={headerStyle}>{titleString.value}</h1>)
       }
 
-      const content = data.filter(value => value.key !== "order" && value.key !== "name")
+      const content = data.filter(value => value.key !== "order" && value.key !== "name" && value.key !== "firebaseName")
 
       const contentViews:ReactNode[] = content.map(value =>  <p key={value.key}>{value.value}</p> )
 
@@ -53,8 +46,9 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   }
 
   const processBody = (data: NutritionDetailProcessed[][], headerStyle: string) => {
-    data.shift()
-    return data.map(item => <li key={item[0].value}>{processHeader(item,headerStyle)}</li>)
+    const newArr = [...data]
+    newArr.shift()
+    return newArr.map(item => <li key={item[0].value}>{processHeader(item,headerStyle)}</li>)
   }
 
   return (
