@@ -5,7 +5,8 @@ import MenuLine from "../../../img/MenuLine.png";
 import YoutubeLogo from "../../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../../img/TwitterLogo.svg";
 import { useGlobalMenuOpenContext } from "../AppHeaderContext";
-import CookiesKhawLogo from "../../../img/cookies_khaw.svg";
+// import CookiesKhawLogo from "../../../img/cookies_khaw.svg";
+import Logo from "../../../img/Logo.svg"
 
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, getAdditionalStyling } = useGlobalMenuOpenContext();
@@ -25,9 +26,9 @@ const Navbar = () => {
                   setIsMenuOpen(false);
                 }}
                 to="/"
-                className="w-36 md:w-52 md:pt-2"
+                className="pl-2 md:pl-5 lg:pl-1"
               >
-                <img src={CookiesKhawLogo} alt="Cookie's Khaw" />
+                <img src={Logo} alt="Cookie's Khaw" />
               </Link>
             </div>
             <div className="flex justify-end xl:justify-center w-full">
