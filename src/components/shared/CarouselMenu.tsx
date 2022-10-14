@@ -1,10 +1,14 @@
-import React, {useState} from "react";
-import Carousel, {ResponsiveType} from "react-multi-carousel";
+import React, { useState } from "react";
+import Carousel, { ResponsiveType } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { MenuCardProps } from "../../models/MenuCardProps";
 import MenuCard from "./MenuCard";
 
-const CarouselMenu = (props: { cards: MenuCardProps[], config: ResponsiveType, renderArrowsWhenDisabled: boolean}) => {
+const CarouselMenu = (props: {
+  cards: MenuCardProps[];
+  config: ResponsiveType;
+  renderArrowsWhenDisabled: boolean;
+}) => {
   const [isMoving, setIsMoving] = useState(false);
 
   const cardList = props.cards.map((item) => (
@@ -27,7 +31,7 @@ const CarouselMenu = (props: { cards: MenuCardProps[], config: ResponsiveType, r
       beforeChange={() => setIsMoving(true)}
       afterChange={() => setIsMoving(false)}
       itemClass="p-[1rem]"
-      renderArrowsWhenDisabled = {props.renderArrowsWhenDisabled}
+      renderArrowsWhenDisabled={props.renderArrowsWhenDisabled}
     >
       {cardList}
     </Carousel>

@@ -37,7 +37,6 @@ const RecipesData: MenuCardProps[] = [
     path: "https://endchildfoodpoverty.org/recipe/hot-dog-pasta",
     firebaseName: "Recipes/HotDogPasta.svg",
   },
-
 ];
 
 export default RecipesData;

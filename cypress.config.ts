@@ -6,7 +6,7 @@ export default defineConfig({
     viewportWidth: 768,
     reporter: "junit",
     reporterOptions: {
-      mochaFile: "results/e2e/e2e-test-junit-[hash].xml"
+      mochaFile: "results/e2e/e2e-test-junit-[hash].xml",
     },
 
     setupNodeEvents(on, config) {
@@ -26,10 +26,10 @@ export default defineConfig({
           console.table(message);
 
           return null;
-        }
+        },
       });
 
       return config;
-    }
-  }
+    },
+  },
 });

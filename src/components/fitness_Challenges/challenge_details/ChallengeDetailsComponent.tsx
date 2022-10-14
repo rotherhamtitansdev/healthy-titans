@@ -5,12 +5,12 @@ import ChallengeDetailsComponentData from "../../../data/ChallengeDetailsCompone
 import { ChallengeDetailsProps } from "../../../models/ChallengeDetailsProps";
 import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
-import {useGlobalMenuOpenContext} from "../../app_header/AppHeaderContext";
+import { useGlobalMenuOpenContext } from "../../app_header/AppHeaderContext";
 
 const ChallengeDetailsComponent = () => {
-  // eslint-disable-next-line max-len
-  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] =
-    useState<ChallengeDetailsProps | undefined>();
+  const [getChallengeDetailsComponentData, setChallengeDetailsComponentData] = useState<
+    ChallengeDetailsProps | undefined
+  >();
 
   const { setAdditionalStyling } = useGlobalMenuOpenContext();
 
@@ -18,30 +18,25 @@ const ChallengeDetailsComponent = () => {
   const { challengeName } = useParams();
 
   useEffect(() => {
-    setAdditionalStyling("bg-white mb-10")
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    setAdditionalStyling("bg-white mb-10");
 
-    const data = ChallengeDetailsComponentData[challengeName];
+    const data =
+      ChallengeDetailsComponentData[challengeName as keyof typeof ChallengeDetailsComponentData];
     if (data.firebaseName) {
-      FirebaseAPI.fetchImages(data.firebaseName).then((res) =>
-        setImageURL(res)
-      );
+      FirebaseAPI.fetchImages(data.firebaseName).then((res) => setImageURL(res));
     } else if (data.img) {
       setImageURL(data.img);
     }
 
     setChallengeDetailsComponentData(data);
-    return function cleanup(){
-      setAdditionalStyling("")
-    }
+    return function cleanup() {
+      setAdditionalStyling("");
+    };
   }, []);
 
   useEffect(() => {
     setChallengeDetailsComponentData(
-      ChallengeDetailsComponentData[
-        challengeName as unknown as keyof typeof ChallengeDetailsComponentData
-      ]
+      ChallengeDetailsComponentData[challengeName as keyof typeof ChallengeDetailsComponentData]
     );
   });
 
@@ -65,27 +60,27 @@ const ChallengeDetailsComponent = () => {
               <div className="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] font-quicksand text-homepageHeaderSubTitle font-semibold pb-[2rem]">
                 How to play
               </div>
-              <p className="lg:pl-4 pl-10  block text-[16px] lg:text-[20px] leading-tight font-medium font-quicksand">
+              <div className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
                 <ul className="list-decimal">
-                  {getChallengeDetailsComponentData.howToPlay?.map(
-                    (howToPlay) => (
-                      // eslint-disable-next-line react/jsx-key
-                      <li className="pb-3">{howToPlay}</li>
-                    )
-                  )}
-                </ul>
-              </p>
-              <div className="pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[16px] lg:text-[20px] font-quicksand text-homepageHeaderSubTitle font-semibold">
-                Rules
-              </div>
-              <p className="lg:pl-4 pl-10 block mt-1 text-[16px] lg:text-[20px] leading-tight font-medium font-quicksand">
-                <ul className="list-disc ">
-                  {getChallengeDetailsComponentData.rules.map((rule) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <li className="pb-6  ">{rule}</li>
+                  {getChallengeDetailsComponentData.howToPlay?.map((howToPlay) => (
+                    <li className="pb-6" key={howToPlay}>
+                      {howToPlay}
+                    </li>
                   ))}
                 </ul>
-              </p>
+              </div>
+              <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold">
+                Rules
+              </div>
+              <div className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
+                <ul className="list-disc">
+                  {getChallengeDetailsComponentData.rules.map((rule) => (
+                    <li className="pb-6" key={rule}>
+                      {rule}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </DetailsComponent>

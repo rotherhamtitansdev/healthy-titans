@@ -14,6 +14,7 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
 
   const breadcrumbs = useBreadcrumbs(routes);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function getBreadcrumbName(breadcrumb: any) {
     const path = breadcrumb.props.children;
     // Replace pascal case with title case
@@ -24,22 +25,17 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
 
   return (
     <div data-testid="breadcrumbs" className={`text-[#243A73] flex ${props.styling}`}>
-      {breadcrumbs.map(({
-        match,
-        breadcrumb,
-      }, index) => (
-        <>
+      {breadcrumbs.map(({ match, breadcrumb }, index) => (
+        <React.Fragment key={match.pathname}>
           {index !== 0 && (
             <p className="text text-titansBrightPink">
-            &nbsp;
+              &nbsp;
               {">"}
-            &nbsp;
+              &nbsp;
             </p>
           )}
-          <NavLink to={match.pathname}>
-            {breadcrumb && getBreadcrumbName(breadcrumb)}
-          </NavLink>
-        </>
+          <NavLink to={match.pathname}>{breadcrumb && getBreadcrumbName(breadcrumb)}</NavLink>
+        </React.Fragment>
       ))}
     </div>
   );

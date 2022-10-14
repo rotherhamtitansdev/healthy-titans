@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import React from "react";
 import { Link } from "react-router-dom";
 import FacebookLogo from "../../img/Facebook.svg";

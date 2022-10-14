@@ -17,6 +17,7 @@ import Recipes from "./recipes/RecipesMenu";
 import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
 import NutritionalInformation from "./nutritional_Information/NutritionalInformation";
 import VideosComponent from "./videos/VideosComponent";
+import AboutUs from "./aboutUs/AboutUs";
 
 const App: React.FC = () => (
   <div className="layout-container">
@@ -27,7 +28,7 @@ const App: React.FC = () => (
       <Route path="NutritionalInformation">
         <Route index element={<NutritionalInformation />} />
         {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
-          (nutritionCategory, index) => (
+          (nutritionCategory) => (
             <Route
               key={nutritionCategory}
               path={nutritionCategory}
@@ -56,6 +57,9 @@ const App: React.FC = () => (
       </Route>
       <Route path="Recipes">
         <Route index element={<Recipes />} />
+      </Route>
+      <Route path="AboutUs">
+        <Route index element={<AboutUs />} />
       </Route>
       <Route path="Games">
         <Route index element={<Games />} />

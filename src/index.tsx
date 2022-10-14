@@ -6,17 +6,16 @@ import AppHeaderContextWrapper from "./components/app_header/AppHeaderContext";
 import reportWebVitals from "./config/reportWebVitals";
 import App from "./components/App";
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement,
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
   <BrowserRouter>
     <AppHeaderContextWrapper>
-      <div className="overflow-x-hidden"><App /></div>
+      <div className="overflow-x-hidden">
+        <App />
+      </div>
     </AppHeaderContextWrapper>
   </BrowserRouter>
-  ,
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -12,13 +12,9 @@ const FoodCategory = () => {
   const [getCategoryTitle, setCategoryTitle] = useState("");
 
   useEffect(() => {
-    let category = FoodCategoryData.find(
-      (element) => element.path === foodCategory,
-    )?.name;
+    let category = FoodCategoryData.find((element) => element.path === foodCategory)?.name;
     if (!category) {
-      category = FoodCategories.find(
-        (element) => element.category === foodCategory,
-      )?.category;
+      category = FoodCategories.find((element) => element.category === foodCategory)?.category;
     }
     if (category) {
       setCategoryTitle(category);
@@ -28,23 +24,24 @@ const FoodCategory = () => {
   function getFoodData() {
     // If params isn't passed from router (e.g for FruitAndVegetables), get path from URL
     if (!foodCategory) {
-      foodCategory = location.pathname.slice(location.pathname.lastIndexOf("/") + 1, location.pathname.length);
+      foodCategory = location.pathname.slice(
+        location.pathname.lastIndexOf("/") + 1,
+        location.pathname.length
+      );
     }
-    const category = FoodCategories.find(
-      (element) => element.category === foodCategory,
-    );
+    const category = FoodCategories.find((element) => element.category === foodCategory);
     return category ? category.options : FoodCategoryData;
   }
 
   function getTitle(): MenuTitleProps {
     return getCategoryTitle
       ? {
-        title: getCategoryTitle,
-      }
+          title: getCategoryTitle,
+        }
       : {
-        title: "Explore food families",
-        subtitle: "Click on a picture to learn more",
-      };
+          title: "Explore food families",
+          subtitle: "Click on a picture to learn more",
+        };
   }
 
   const foodData: MenuCardProps[] = getFoodData();

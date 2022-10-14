@@ -1,13 +1,10 @@
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
-import {
-  doc, getDoc, collection, getDocs, setDoc, query, where
-} from "firebase/firestore";
+import { doc, getDoc, collection, getDocs, setDoc, query, where } from "firebase/firestore";
 import FoodDetailsComponentData, {
   FoodDetailsComponentDataFile,
-  FoodDetailsProps
+  FoodDetailsProps,
 } from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
-/* eslint-disable */
 
 class FirebaseAPI {
   static fetchImages = async (firebaseName: string): Promise<string> => {
@@ -16,52 +13,63 @@ class FirebaseAPI {
     return getDownloadURL(starsRef);
   };
 
-  static fetchAllImages = async (firebaseNames: string[]) => Promise.all(firebaseNames.map((firebaseName) => FirebaseAPI.fetchImages(firebaseName)));
+  static fetchAllImages = async (firebaseNames: string[]) =>
+    Promise.all(firebaseNames.map((firebaseName) => FirebaseAPI.fetchImages(firebaseName)));
 
-  static fetchFoodDetailsComponentsData = async ():Promise<FoodDetailsComponentDataFile | undefined> => {
-
+  static fetchFoodDetailsComponentsData = async (): Promise<
+    FoodDetailsComponentDataFile | undefined
+  > => {
     const querySnapshot = await getDocs(collection(fStore, "FYPData"));
 
     if (!querySnapshot) return undefined;
-    return querySnapshot.docs.map((doc) => doc.data())
+    return querySnapshot.docs.map((each) => each.data());
   };
 
   static addFoodDetailsComponentsData = async () => {
-    for (const [key, value] of Object.entries(FoodDetailsComponentData)) {
-      await setDoc(doc(fStore, "FYPData", key), value);
-    }
-  }
+    Promise.all(
+      Object.entries(FoodDetailsComponentData).map(async (each) => {
+        await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
+      })
+    );
+  };
 
   static fetchFoodDetailsSingle = async (name: string) => {
     const docRef = doc(fStore, "FYPData", name);
     const docSnap = await getDoc(docRef);
-    if (docSnap) return docSnap.data()
+    if (docSnap) return docSnap.data() as FoodDetailsProps;
     return undefined;
   };
 
-  static fetchFoodDetailsSeeNext = async (category: string, currentName: string):Promise<{cardData: FoodDetailsProps[], paths:string[]}> => {
-    const q = query(collection(fStore, "FYPData"), where("category", "==", category), where("name", "!=", currentName ))
-    const docSnap = await getDocs(q)
-    const docs = docSnap.docs.map((doc) => {
-      let newDoc = doc.data()
-      newDoc.path = doc.id
-      return newDoc
-    })
+  static fetchFoodDetailsSeeNext = async (
+    category: string,
+    currentName: string
+  ): Promise<{ cardData: FoodDetailsProps[]; paths: string[] }> => {
+    const q = query(
+      collection(fStore, "FYPData"),
+      where("category", "==", category),
+      where("name", "!=", currentName)
+    );
+    const docSnap = await getDocs(q);
+    const docs = docSnap.docs.map((data) => {
+      const newDoc = data.data();
+      newDoc.path = data.id;
+      return newDoc;
+    });
 
-    const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0,3)
+    const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     return {
-      cardData: shuffled.map(value => ({
+      cardData: shuffled.map((value) => ({
         name: value.name,
         description: value.description,
         firebaseName: value.firebaseName,
         category: value.category,
         score: value.score,
-        facts: value.facts
+        facts: value.facts,
       })),
-      paths: shuffled.map(value => value.path)
-    }
-  }
+      paths: shuffled.map((value) => value.path),
+    };
+  };
 
   static fetchQuizData = async () => {
     const docRef = doc(fStore, "QuizData", "Quiz");
@@ -69,6 +77,16 @@ class FirebaseAPI {
 
     if (quizDoc.exists()) {
       return quizDoc.data();
+    }
+    return undefined;
+  };
+
+  static fetchAboutUsData = async () => {
+    const docRef = doc(fStore, "AboutUsData", "Data");
+    const aboutUsDoc = await getDoc(docRef);
+
+    if (aboutUsDoc.exists()) {
+      return aboutUsDoc.data();
     }
     return undefined;
   };
