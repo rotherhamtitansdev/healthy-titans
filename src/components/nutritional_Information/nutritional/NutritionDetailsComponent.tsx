@@ -6,6 +6,7 @@ import {
 } from "../../../models/NutritionDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
+import {useGlobalMenuOpenContext} from "../../app_header/AppHeaderContext";
 
 const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   const [getNutritionData, setNutritionData] = useState<
@@ -13,7 +14,11 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   >();
   const [getImageURL, setImageURL] = useState<string>();
 
+  const { setAdditionalStyling } = useGlobalMenuOpenContext();
+
+
   useEffect(() => {
+    setAdditionalStyling("bg-white mb-10")
     FirebaseAPI.fetchNutritionData(props.nutritionName).then((res) => {
       const firebaseName = res[0].find((value) => value.key === "firebaseName");
 
@@ -23,6 +28,10 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
 
       setNutritionData(res);
     });
+
+    return function cleanup(){
+      setAdditionalStyling("")
+    }
   }, []);
 
   const processHeader = (
@@ -70,9 +79,9 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   return (
     <div>
     {getNutritionData &&
-      <DetailsComponent> 
+      <DetailsComponent>
 
-      
+
       <div>
       <DetailsCard
               img={getImageURL}
@@ -80,9 +89,9 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
         {/* {getImageURL && <img src={getImageURL} alt={props.nutritionName}/>} */}
         {processHeader(getNutritionData[0],"text-[36px] lg:pt-4 lg:pl-0 pt-3 pb-3 font-quicksand  font-semibold ")}
         <ul>{processBody(getNutritionData, "text-[16px]  pt-4 block lg:text-[20px] font-medium font-semibold font-quicksand")}</ul>
-      
+
       </div>
-      
+
 
       </DetailsComponent>
       }
