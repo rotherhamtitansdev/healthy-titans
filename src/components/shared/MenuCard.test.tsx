@@ -3,33 +3,39 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import FirebaseAPI from "../../api/FirebaseAPI";
 import MenuCard from "./MenuCard";
-import HomePageComponentsData from "../../data/HomePageComponentsData";
 import { MenuCardProps } from "../../models/MenuCardProps";
 
-const MockMenuCards = HomePageComponentsData as MenuCardProps[];
+const MockMenuCard =
+  {
+    key: 0,
+    name: "Mock Card 1",
+    path: "/mock-path-1",
+    firebaseName: "MockImages/mock-card-1.jpg"
+  } as MenuCardProps;
+
+beforeEach(() => {
+  jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
+});
 
 describe("Menu Card", () => {
   test("component renders with image", async () => {
-    jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
-
-    const mockItem = MockMenuCards[0];
-
     const { asFragment } = render(
       <MenuCard
-        key={mockItem.key}
-        name={mockItem.name}
-        img={mockItem.img}
-        path={mockItem.path}
-        externalPath={mockItem.externalPath}
-        firebaseName={mockItem.firebaseName}
+        key={MockMenuCard.key}
+        name={MockMenuCard.name}
+        img={MockMenuCard.img}
+        path={MockMenuCard.path}
+        externalPath={MockMenuCard.externalPath}
+        firebaseName={MockMenuCard.firebaseName}
         additionalStyling=""
+        disableOnClick
       />,
       {
         wrapper: MemoryRouter
       }
     );
 
-    expect(await screen.findByRole("img", { name: "Food & Nutrition" })).toHaveAttribute(
+    expect(await screen.findByRole("img", { name: "Mock Card 1" })).toHaveAttribute(
       "src",
       "fruit.jpg"
     );
@@ -37,17 +43,16 @@ describe("Menu Card", () => {
   });
 
   test("component renders and can click card", async () => {
-    const mockItem = MockMenuCards[0];
     const onClick = jest.fn();
 
     render(
       <MenuCard
-        key={mockItem.key}
-        name={mockItem.name}
-        img={mockItem.img}
-        path={mockItem.path}
-        externalPath={mockItem.externalPath}
-        firebaseName={mockItem.firebaseName}
+        key={MockMenuCard.key}
+        name={MockMenuCard.name}
+        img={MockMenuCard.img}
+        path={MockMenuCard.path}
+        externalPath={MockMenuCard.externalPath}
+        firebaseName={MockMenuCard.firebaseName}
         additionalStyling=""
         onClick={onClick}
       />,
@@ -56,7 +61,7 @@ describe("Menu Card", () => {
       }
     );
 
-    const clickableButton = await screen.findByRole("button", { name: "Food & Nutrition" });
+    const clickableButton = await screen.findByRole("button", { name: "Mock Card 1" });
     clickableButton.click();
 
     expect(onClick).toHaveBeenCalledTimes(1);
