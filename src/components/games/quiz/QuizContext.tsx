@@ -15,7 +15,7 @@ export const QuizContext = createContext<QuizContextType>({
   currentQuestion: undefined,
   setCurrentQuestion: () => {},
   selectedAnswer: undefined,
-  setSelectedAnswer: () => {}
+  setSelectedAnswer: () => {},
 });
 
 interface QuizStartedContextWrapperProps {
@@ -33,7 +33,7 @@ const QuizStartedContextWrapper: FC<QuizStartedContextWrapperProps> = ({ childre
       currentQuestion,
       setCurrentQuestion,
       selectedAnswer,
-      setSelectedAnswer
+      setSelectedAnswer,
     }),
     [currentQuestion, selectedAnswer]
   );

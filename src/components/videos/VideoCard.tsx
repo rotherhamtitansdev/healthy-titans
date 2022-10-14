@@ -6,8 +6,9 @@ import Card from "../shared/Card";
 
 // This displays the video and its details
 const VideoCard = (props: {
-  video: Video, disableOnClick: boolean,
-  Actions: DrilledVideoProps
+  video: Video;
+  disableOnClick: boolean;
+  Actions: DrilledVideoProps;
 }) => {
   const [getVideoURL, setVideoURL] = useState<string | undefined>();
 
@@ -29,7 +30,13 @@ const VideoCard = (props: {
   }, [getVideoURL]);
 
   return (
-    <Card card={{ name: props.video.title, additionalStyling: "w-[18rem] xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem]", onClick: props.disableOnClick ? () => undefined : handleClick }}>
+    <Card
+      card={{
+        name: props.video.title,
+        additionalStyling: "w-[18rem] xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem]",
+        onClick: props.disableOnClick ? () => undefined : handleClick,
+      }}
+    >
       <div className="p-5">
         {getVideoURL && props.video.description && (
           // eslint-disable-next-line jsx-a11y/media-has-caption
@@ -38,12 +45,8 @@ const VideoCard = (props: {
           </video>
         )}
         <div className="pt-5 pb-3">
-          <div className="font-semibold text-2xl  text-homepageHeaderText">
-            {props.video.title}
-          </div>
-          <div className="font-md text-xl  text-homepageHeaderText">
-            {props.video.description}
-          </div>
+          <div className="font-semibold text-2xl  text-homepageHeaderText">{props.video.title}</div>
+          <div className="font-md text-xl  text-homepageHeaderText">{props.video.description}</div>
         </div>
       </div>
     </Card>

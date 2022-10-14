@@ -11,7 +11,7 @@ class BuildYourPlateProcessor {
       { family: "Veg", items: [] },
       { family: "Dairy & Eggs", items: [] },
       { family: "Fast Food", items: [] },
-      { family: "Sweets", items: [] }
+      { family: "Sweets", items: [] },
     ];
 
     BYPItems.forEach((item) => {
@@ -37,7 +37,7 @@ class BuildYourPlateProcessor {
         name: item.name,
         URL: await FirebaseAPI.fetchImages(item.firebaseName),
         key: item.name,
-        score: item.score
+        score: item.score,
       }))
     );
   };

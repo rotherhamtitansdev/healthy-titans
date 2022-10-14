@@ -34,7 +34,13 @@ const AnswerCard = (props: { answer: AnswerProps }) => {
   };
 
   return (
-    <Card card={{ name: props.answer.answer, additionalStyling: `${background} sm:bg-auto bg-no-repeat bg-[center_right_1rem] py-3 sm:py-2 px-4 lg:p-8`, onClick: selectAnswer }}>
+    <Card
+      card={{
+        name: props.answer.answer,
+        additionalStyling: `${background} sm:bg-auto bg-no-repeat bg-[center_right_1rem] py-3 sm:py-2 px-4 lg:p-8`,
+        onClick: selectAnswer,
+      }}
+    >
       {props.answer.answer}
     </Card>
   );

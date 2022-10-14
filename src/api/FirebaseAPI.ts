@@ -2,7 +2,7 @@ import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { doc, getDoc, collection, getDocs, setDoc, query, where } from "firebase/firestore";
 import FoodDetailsComponentData, {
   FoodDetailsComponentDataFile,
-  FoodDetailsProps
+  FoodDetailsProps,
 } from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
 
@@ -65,9 +65,9 @@ class FirebaseAPI {
         firebaseName: value.firebaseName,
         category: value.category,
         score: value.score,
-        facts: value.facts
+        facts: value.facts,
       })),
-      paths: shuffled.map((value) => value.path)
+      paths: shuffled.map((value) => value.path),
     };
   };
 
@@ -90,7 +90,6 @@ class FirebaseAPI {
     }
     return undefined;
   };
-
 }
 
 export default FirebaseAPI;

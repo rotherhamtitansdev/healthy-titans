@@ -25,21 +25,16 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
 
   return (
     <div data-testid="breadcrumbs" className={`text-[#243A73] flex ${props.styling}`}>
-      {breadcrumbs.map(({
-        match,
-        breadcrumb,
-      }, index) => (
-        <React.Fragment  key={match.pathname}>
+      {breadcrumbs.map(({ match, breadcrumb }, index) => (
+        <React.Fragment key={match.pathname}>
           {index !== 0 && (
             <p className="text text-titansBrightPink">
-            &nbsp;
+              &nbsp;
               {">"}
-            &nbsp;
+              &nbsp;
             </p>
           )}
-          <NavLink to={match.pathname}>
-            {breadcrumb && getBreadcrumbName(breadcrumb)}
-          </NavLink>
+          <NavLink to={match.pathname}>{breadcrumb && getBreadcrumbName(breadcrumb)}</NavLink>
         </React.Fragment>
       ))}
     </div>

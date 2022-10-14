@@ -10,7 +10,7 @@ function terminalLog(violations) {
     id,
     impact,
     description,
-    nodes: nodes.length
+    nodes: nodes.length,
   }));
 
   cy.task("table", violationData);

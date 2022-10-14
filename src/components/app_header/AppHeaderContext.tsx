@@ -3,16 +3,16 @@
 import React, { FC, useMemo, useState, createContext, useContext } from "react";
 
 export type GlobalMenuOpen = {
-  isMenuOpen: boolean
-  setIsMenuOpen:(c: boolean) => void
-  getAdditionalStyling: string
-  setAdditionalStyling: (c: string) => void
-}
+  isMenuOpen: boolean;
+  setIsMenuOpen: (c: boolean) => void;
+  getAdditionalStyling: string;
+  setAdditionalStyling: (c: string) => void;
+};
 export const GlobalMenuOpenContext = createContext<GlobalMenuOpen>({
   isMenuOpen: false,
   setIsMenuOpen: () => {},
   getAdditionalStyling: "",
-  setAdditionalStyling: () => {}
+  setAdditionalStyling: () => {},
 });
 
 export const useGlobalMenuOpenContext = () => useContext(GlobalMenuOpenContext);
@@ -23,16 +23,14 @@ interface AppHeaderContextWrapperProps {
 
 const AppHeaderContextWrapper: FC<AppHeaderContextWrapperProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const [getAdditionalStyling, setAdditionalStyling] = useState<string>("")
-
-
+  const [getAdditionalStyling, setAdditionalStyling] = useState<string>("");
 
   const value = useMemo(
     () => ({
       isMenuOpen,
       setIsMenuOpen,
       getAdditionalStyling,
-      setAdditionalStyling
+      setAdditionalStyling,
     }),
     [isMenuOpen, getAdditionalStyling]
   );

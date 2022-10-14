@@ -5,14 +5,12 @@ import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
 
 const NutritionDetailsComponent = (props: { nutritionName: string }) => {
-  const [getNutritionData, setNutritionData] = useState<
-    DetailsCardProps | undefined
-  >();
+  const [getNutritionData, setNutritionData] = useState<DetailsCardProps | undefined>();
   useEffect(() => {
     setNutritionData(
       NutritionDetailsComponentData[
         props.nutritionName as unknown as keyof typeof NutritionDetailsComponentData
-      ],
+      ]
     );
   });
   return (
