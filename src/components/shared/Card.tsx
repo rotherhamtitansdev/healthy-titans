@@ -5,18 +5,19 @@ import { CardProps } from "../../models/CardProps";
 /*
  * This is a shared card component for use throughout the application
  * */
-const Card = (props: {
-  card: CardProps,
-  children: React.ReactNode
-}) => {
+const Card = (props: { card: CardProps; children: React.ReactNode }) => {
   // Adds expand on hover to cards that do something on click
   function getHoverStyling(isButton: boolean): string {
-    return isButton ? " hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300" : " hover:cursor-default";
+    return isButton
+      ? " hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+      : " hover:cursor-default";
   }
 
   function getClassName(): string {
     const baseStyling = "bg-white font-quicksand table align-middle rounded-3xl shadow-lg ";
-    return baseStyling + (props.card.additionalStyling || "") + getHoverStyling(!!props.card.onClick);
+    return (
+      baseStyling + (props.card.additionalStyling || "") + getHoverStyling(!!props.card.onClick)
+    );
   }
 
   return (

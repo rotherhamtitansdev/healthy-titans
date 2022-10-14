@@ -47,10 +47,7 @@ const ChallengeDetailsComponentData = {
       "Harder - If you want to challenge yourselves then increase the size of the playing area and increase the number of players.",
       "Easier - Reduce the size of the playing area.",
     ],
-    equipment: [
-      "Bibs- tuck bib into shorts, trousers or skirt to make a tail.",
-      "Cones",
-    ],
+    equipment: ["Bibs- tuck bib into shorts, trousers or skirt to make a tail.", "Cones"],
   },
   HungryHippos: {
     name: "Hungry Hippos",
@@ -102,14 +99,7 @@ const ChallengeDetailsComponentData = {
       "Do ten jumping jacks.",
     ],
     rules: [],
-    equipment: [
-      "String",
-      "2 chairs",
-      "Hula-Hoop",
-      "Beanbags",
-      "Ring Toss",
-      "Jump Rope",
-    ],
+    equipment: ["String", "2 chairs", "Hula-Hoop", "Beanbags", "Ring Toss", "Jump Rope"],
   },
   FoxesFarmers: {
     name: "Foxes & Farmers",

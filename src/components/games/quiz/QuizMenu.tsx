@@ -9,8 +9,8 @@ const QuizMenu = () => {
       key: 0,
       name: "Nutrition",
       img: nutrition,
-      path: "Nutrition"
-    }
+      path: "Nutrition",
+    },
   ];
 
   return <Menu header={{ title: "", body: "" }} cards={quizzes} />;

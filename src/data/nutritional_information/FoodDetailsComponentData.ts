@@ -266,8 +266,7 @@ const FoodDetailsComponentData = {
   },
   Tomato: {
     name: "Tomato",
-    description:
-      "Yes, that's right a Tomato is a fruit and not a vegetable - did  you know that?",
+    description: "Yes, that's right a Tomato is a fruit and not a vegetable - did  you know that?",
     firebaseName: "FoodCategories/Fruits/Food/Tomato.svg",
     category: "Fruit",
     facts: [
@@ -301,8 +300,7 @@ const FoodDetailsComponentData = {
   },
   Asparagus: {
     name: "Asparagus",
-    description:
-      "It takes 3 years for Aparagus to get from being a seed to being harvested",
+    description: "It takes 3 years for Aparagus to get from being a seed to being harvested",
     firebaseName: "FoodCategories/Vegetables/Food/Asparagus.svg",
     category: "Veg",
     facts: [
@@ -412,8 +410,7 @@ const FoodDetailsComponentData = {
   },
   Kale: {
     name: "Kale",
-    description:
-      "Kale is right at the top of the nutrient density scale - you can't beat it!",
+    description: "Kale is right at the top of the nutrient density scale - you can't beat it!",
     firebaseName: "FoodCategories/Vegetables/Food/Kale.svg",
     category: "Veg",
     facts: [
@@ -522,8 +519,7 @@ const FoodDetailsComponentData = {
   },
   Milk: {
     name: "Milk",
-    description:
-      "Did you know CALCIUM deficiency can cause RICKETS in children?",
+    description: "Did you know CALCIUM deficiency can cause RICKETS in children?",
     firebaseName: "FoodCategories/DairyAndEggs/Food/Milk.svg",
     category: "Dairy & Eggs",
     facts: [
@@ -536,8 +532,7 @@ const FoodDetailsComponentData = {
   },
   Yogurt: {
     name: "Yogurt",
-    description:
-      "Did you know CALCIUM deficiency can cause RICKETS in children?",
+    description: "Did you know CALCIUM deficiency can cause RICKETS in children?",
     firebaseName: "FoodCategories/DairyAndEggs/Food/Yoghurt.svg",
     category: "Dairy & Eggs",
     facts: [
@@ -551,8 +546,7 @@ const FoodDetailsComponentData = {
   // Junk Food
   Burger: {
     name: "Hamburger",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/JunkFood/Food/Burger.svg",
     category: "Fast Food",
     facts: [
@@ -563,8 +557,7 @@ const FoodDetailsComponentData = {
   },
   Chips: {
     name: "French Fries",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/JunkFood/Food/Chips.svg",
     category: "Fast Food",
     facts: [
@@ -574,8 +567,7 @@ const FoodDetailsComponentData = {
   },
   FizzyDrinks: {
     name: "Coke",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/JunkFood/Food/FizzyDrinks.svg",
     category: "Fast Food",
     facts: [
@@ -585,8 +577,7 @@ const FoodDetailsComponentData = {
   },
   FriedChicken: {
     name: "Fried Chicken",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/JunkFood/Food/FriedChicken.svg",
     category: "Fast Food",
     facts: [
@@ -597,8 +588,7 @@ const FoodDetailsComponentData = {
   },
   Hotdogs: {
     name: "Hotdogs",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/JunkFood/Food/HotDog.svg",
     category: "Fast Food",
     facts: [
@@ -609,8 +599,7 @@ const FoodDetailsComponentData = {
   },
   Milkshakes: {
     name: "Chocolate Milkshakes",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/DairyAndEggs/Food/Milkshakes.svg",
     category: "Fast Food",
     facts: [
@@ -623,8 +612,7 @@ const FoodDetailsComponentData = {
   },
   Pizza: {
     name: "Pizza",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/JunkFood/Food/Pizza.svg",
     category: "Fast Food",
     facts: [
@@ -635,8 +623,7 @@ const FoodDetailsComponentData = {
   },
   Chocolate: {
     name: "Chocolate",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/Sweets/Food/Chocolate.svg",
     category: "Sweets",
     facts: [
@@ -647,8 +634,7 @@ const FoodDetailsComponentData = {
   },
   JellySweets: {
     name: "Jelly Sweets",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/Sweets/Food/JellySweets.svg",
     category: "Sweets",
     facts: [
@@ -659,8 +645,7 @@ const FoodDetailsComponentData = {
   },
   Cake: {
     name: "Cupcakes",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/Sweets/Food/Cake.svg",
     category: "Sweets",
     facts: [
@@ -671,8 +656,7 @@ const FoodDetailsComponentData = {
   },
   Biscuits: {
     name: "Biscuits",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/Sweets/Food/Biscuit.svg",
     category: "Sweets",
     facts: [
@@ -683,8 +667,7 @@ const FoodDetailsComponentData = {
   },
   Donuts: {
     name: "Donuts",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/Sweets/Food/Donut.svg",
     category: "Sweets",
     facts: [
@@ -695,8 +678,7 @@ const FoodDetailsComponentData = {
   },
   IceCream: {
     name: "Ice Cream",
-    description:
-      "It's okay to have these in moderation - little and not frequent.",
+    description: "It's okay to have these in moderation - little and not frequent.",
     firebaseName: "FoodCategories/Sweets/Food/IceCream.svg",
     category: "Sweets",
     facts: [

@@ -57,13 +57,19 @@ const VideosComponent = () => {
     let key = 0;
     while (videos.length < 3) {
       videos = videos.concat(
-        <Card key={key} card={{ name: "video placeholder", additionalStyling: "max-h-[20rem] md:max-h-[28rem] max-w-[22.5rem] sm:max-w-[37.5rem]" }}>
+        <Card
+          key={key}
+          card={{
+            name: "video placeholder",
+            additionalStyling: "max-h-[20rem] md:max-h-[28rem] max-w-[22.5rem] sm:max-w-[37.5rem]",
+          }}
+        >
           <div className="text-center py-[4.5rem] px-[5rem] xs:py-[5.75rem] xs:px-[7.25rem] sm:py-[9.35rem] sm:px-[5rem] md:py-[9rem] md:px-[15rem] lg:py-[11.5rem] lg:px-[10rem]">
             <div className="font-semibold text-4xl font-quicksand text-homepageHeaderText">
               More videos coming soon!
             </div>
           </div>
-        </Card>,
+        </Card>
       );
       key += 1;
     }
@@ -73,18 +79,19 @@ const VideosComponent = () => {
   return (
     <>
       <AppHeader>
-        <MenuHeader title="Videos" body="Here you can watch a few short videos and hear from the Titans as you continue to learn and get to know even more about how to be strong and healthy." />
+        <MenuHeader
+          title="Videos"
+          body="Here you can watch a few short videos and hear from the Titans as you continue to learn and get to know even more about how to be strong and healthy."
+        />
       </AppHeader>
-      {modalClickedVideoData
-        && (
-          <VideoModal
-            video={modalClickedVideoData}
-            getHidden={getHidden}
-            setHidden={setHidden}
-          />
-        )}
+      {modalClickedVideoData && (
+        <VideoModal video={modalClickedVideoData} getHidden={getHidden} setHidden={setHidden} />
+      )}
       <div className="pl-5 md:py-10 md:pl-10">
-        <MenuTitle title="Watch and learn with these short videos" subtitle="Click on whichever video you'd like to watch to learn more and hear from some Titans!" />
+        <MenuTitle
+          title="Watch and learn with these short videos"
+          subtitle="Click on whichever video you'd like to watch to learn more and hear from some Titans!"
+        />
         <Carousel
           responsive={responsive}
           partialVisible
