@@ -9,8 +9,8 @@ test("home page renders", async () => {
   // Define width so carousel on homepage loads
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
-      get: () => 100
-    }
+      get: () => 100,
+    },
   });
 
   render(<App />, { wrapper: MemoryRouter });

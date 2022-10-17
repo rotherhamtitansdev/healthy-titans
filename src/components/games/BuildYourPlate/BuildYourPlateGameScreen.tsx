@@ -7,7 +7,7 @@ import FirebaseAPI from "../../../api/FirebaseAPI";
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
 import TableHeaderImagesLinks, {
   imageSize,
-  PlateItemPositions
+  PlateItemPositions,
 } from "../../../data/BYPData/BYPData";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
 import { useGameStartedContext } from "../GameContext";
@@ -23,7 +23,7 @@ let newBYPTableData: BYPTableRowFamily[] = [
   { family: "Veg", items: [] },
   { family: "Dairy & Eggs", items: [] },
   { family: "Fast Food", items: [] },
-  { family: "Sweets", items: [] }
+  { family: "Sweets", items: [] },
 ];
 
 const BuildYourPlateGameScreen = () => {
@@ -32,7 +32,7 @@ const BuildYourPlateGameScreen = () => {
     setModal,
     getMobilePreviewScreenFlag,
     setMobilePreviewScreenFlag,
-    setIsGameStarted
+    setIsGameStarted,
   } = useGameStartedContext();
   const [getBYPTableData, setBYPTableData] = useState<BYPTableRowFamily[]>(newBYPTableData);
   const [getBYPPlateData, setBYPPlateData] = useState<BYPItem[]>([]);
@@ -110,7 +110,7 @@ const BuildYourPlateGameScreen = () => {
       },
       buttonText: "Play again",
       text: BuildYourPlateProcessor.constructScoreModalText(score),
-      title: BuildYourPlateProcessor.constructScoreModalTitle(score)
+      title: BuildYourPlateProcessor.constructScoreModalTitle(score),
     });
   };
 
@@ -164,7 +164,7 @@ const BuildYourPlateGameScreen = () => {
           key: item.key,
           name: item.name,
           selected: false,
-          score: item.score
+          score: item.score,
         }));
         setBYPTableHeaders(constructHeaders(headers));
         setBYPTableData(BuildYourPlateProcessor.processRows(BYPItems));
@@ -187,7 +187,7 @@ const BuildYourPlateGameScreen = () => {
     setModalContent({
       buttonText: "Play",
       title: "How to play",
-      text: "Open a food category and select a food. You must select 5 foods to score your plate. The aim of the game is to build a healthy plate."
+      text: "Open a food category and select a food. You must select 5 foods to score your plate. The aim of the game is to build a healthy plate.",
     });
     setModal(true);
   }, []);

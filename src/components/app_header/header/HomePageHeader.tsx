@@ -44,7 +44,7 @@ const HomepageHeader = () => {
             onClick={() => {
               window.scrollTo({
                 top: 400,
-                behavior: "smooth"
+                behavior: "smooth",
               });
             }}
           >

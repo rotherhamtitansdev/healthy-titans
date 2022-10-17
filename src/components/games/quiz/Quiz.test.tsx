@@ -16,183 +16,183 @@ const mockContent = {
       question: "First question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
+          isCorrect: true,
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "Yet another wrong answer"
-        }
-      ]
+          answer: "Yet another wrong answer",
+        },
+      ],
     },
     {
       question: "Second question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
+          isCorrect: true,
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "And another wrong answer"
-        }
-      ]
+          answer: "And another wrong answer",
+        },
+      ],
     },
     {
       question: "Third question",
       answers: [
         {
           answer: "Correct answer",
-          isCorrect: true
+          isCorrect: true,
         },
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "And another wrong answer"
-        }
-      ]
+          answer: "And another wrong answer",
+        },
+      ],
     },
     {
       question: "Fourth question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "Yet Another wrong answer"
+          answer: "Yet Another wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
-        }
-      ]
+          isCorrect: true,
+        },
+      ],
     },
     {
       question: "Fifth question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "Yet Another wrong answer"
+          answer: "Yet Another wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
-        }
-      ]
+          isCorrect: true,
+        },
+      ],
     },
     {
       question: "Sixth question",
       answers: [
         {
           answer: "Correct answer",
-          isCorrect: true
+          isCorrect: true,
         },
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "And another wrong answer"
-        }
-      ]
+          answer: "And another wrong answer",
+        },
+      ],
     },
     {
       question: "Seventh question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
+          isCorrect: true,
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "Yet another wrong answer"
-        }
-      ]
+          answer: "Yet another wrong answer",
+        },
+      ],
     },
     {
       question: "Eighth question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
+          isCorrect: true,
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "And another wrong answer"
-        }
-      ]
+          answer: "And another wrong answer",
+        },
+      ],
     },
     {
       question: "Ninth question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "Yet Another wrong answer"
+          answer: "Yet Another wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
-        }
-      ]
+          isCorrect: true,
+        },
+      ],
     },
     {
       question: "Tenth question",
       answers: [
         {
-          answer: "A wrong answer"
+          answer: "A wrong answer",
         },
         {
-          answer: "Another wrong answer"
+          answer: "Another wrong answer",
         },
         {
-          answer: "Yet Another wrong answer"
+          answer: "Yet Another wrong answer",
         },
         {
           answer: "Correct answer",
-          isCorrect: true
-        }
-      ]
-    }
-  ]
+          isCorrect: true,
+        },
+      ],
+    },
+  ],
 };
 
 describe("Quiz", () => {
@@ -266,7 +266,7 @@ describe("Quiz", () => {
     test.each([
       [3, /good effort, keep learning/i],
       [4, /well done/i],
-      [10, /excellent/i]
+      [10, /excellent/i],
     ])("should give correct final score and text", async (score, text) => {
       const user = userEvent.setup();
 

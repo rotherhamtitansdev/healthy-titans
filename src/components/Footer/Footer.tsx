@@ -3,16 +3,15 @@ import { Link } from "react-router-dom";
 import FacebookLogo from "../../img/Facebook.svg";
 import YoutubeLogo from "../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../img/TwitterLogo.svg";
-import PinkLogo from "../../img/pink_logo.png";
 import RTLogo from "../../img/RT_Logo.png";
 import ANDLogo from "../../img/AND-icon.png"
-
+import Logo from "../../img/Logo.svg"
 
 const Footer = () => (
   <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
     <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
       <Link to="/" className="w-32">
-        <img src={PinkLogo} alt="Rotherham Titan" />
+        <img src={Logo} alt="Cookie's Khaw" />
       </Link>
     </div>
 

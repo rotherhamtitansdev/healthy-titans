@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useGameStartedContext } from "./GameContext";
 
-const GameStartScreen = (props: { name: string, background: string }) => {
+const GameStartScreen = (props: { name: string; background: string }) => {
   const { getIsGameStarted, setIsGameStarted } = useGameStartedContext();
 
   const toggleGameStarted = useCallback(() => {
@@ -9,8 +9,16 @@ const GameStartScreen = (props: { name: string, background: string }) => {
   }, [getIsGameStarted]);
 
   return (
-    <div className="bg-white h-full rounded-xl shadow-lg my-10 p-11 sm:p-0 pointer-events-auto sm:pointer-events-none" onClick={toggleGameStarted} onKeyPress={toggleGameStarted} role="button" tabIndex={0}>
-      <div className={`bg-no-repeat bg-center bg-contain w-full h-[220px] sm:h-[580px] md:h-[640px]} ${props.background}`}>
+    <div
+      className="bg-white h-full rounded-xl shadow-lg my-10 p-11 sm:p-0 pointer-events-auto sm:pointer-events-none"
+      onClick={toggleGameStarted}
+      onKeyPress={toggleGameStarted}
+      role="button"
+      tabIndex={0}
+    >
+      <div
+        className={`bg-no-repeat bg-center bg-contain w-full h-[220px] sm:h-[580px] md:h-[640px]} ${props.background}`}
+      >
         <div className="h-full flex flex-col">
           <h1 className="font-bold text-titansDarkBlue w-fit h-fit text-[28px] xs:text-[32px] sm:text-[64px] md:text-[80px] lg:text-[100px] xl:text-[128px] mt-auto mx-auto">
             {props.name}
@@ -23,9 +31,7 @@ const GameStartScreen = (props: { name: string, background: string }) => {
           >
             BEGIN
           </button>
-          <p
-            className="sm:hidden text-[14px] text-titansDarkBlue font-medium text-center w-44 h-11 rounded-full mb-12 mx-auto"
-          >
+          <p className="sm:hidden text-[14px] text-titansDarkBlue font-medium text-center w-44 h-11 rounded-full mb-12 mx-auto">
             Press to begin
           </p>
         </div>

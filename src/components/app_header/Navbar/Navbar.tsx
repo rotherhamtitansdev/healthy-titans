@@ -5,7 +5,7 @@ import MenuLine from "../../../img/MenuLine.png";
 import YoutubeLogo from "../../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../../img/TwitterLogo.svg";
 import { useGlobalMenuOpenContext } from "../AppHeaderContext";
-import NavyLogo from "../../../img/navy_logo.png";
+import Logo from "../../../img/Logo.svg"
 
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, getAdditionalStyling } = useGlobalMenuOpenContext();
@@ -25,43 +25,19 @@ const Navbar = () => {
                   setIsMenuOpen(false);
                 }}
                 to="/"
-                className="w-32"
+                className="pl-2 md:pl-5 lg:pl-8"
               >
-                <img src={NavyLogo} alt="Rotherham Titan" />
+                <img src={Logo} alt="Cookie's Khaw" />
               </Link>
             </div>
             <div className="flex justify-end xl:justify-center w-full">
               <div className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px] hover:text-gray-900">
-                <Link
-                  to="/NutritionalInformation"
-                >
-                  Food & Nutrition
-                </Link>
-                <Link
-                  to="/FitnessChallenges"
-                >
-                  Fitness Challenges
-                </Link>
-                <Link
-                  to="/Games"
-                >
-                  Games
-                </Link>
-                <Link
-                  to="/Videos"
-                >
-                  Videos
-                </Link>
-                <Link
-                  to="/Recipes"
-                >
-                  Recipes
-                </Link>
-                <Link
-                  to="/AboutUs"
-                >
-                  About us
-                </Link>
+                <Link to="/NutritionalInformation">Food & Nutrition</Link>
+                <Link to="/FitnessChallenges">Fitness Challenges</Link>
+                <Link to="/Games">Games</Link>
+                <Link to="/Videos">Videos</Link>
+                <Link to="/Recipes">Recipes</Link>
+                <Link to="/AboutUs">About us</Link>
               </div>
 
               <div className="ml-6 -my-2 xl:hidden">

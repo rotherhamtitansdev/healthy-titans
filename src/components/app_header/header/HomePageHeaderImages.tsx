@@ -8,7 +8,7 @@ const HomePageHeaderImagesNames = [
   "HomePageImages/Avocado.png",
   "HomePageImages/Broccoli.png",
   "HomePageImages/Blueberries.png",
-  "HomePageImages/Carrot.png"
+  "HomePageImages/Carrot.png",
 ];
 
 const HomePageHeaderImages = () => {

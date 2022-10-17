@@ -11,7 +11,7 @@ const Menu = (props: MenuProps) => {
   function getStylingForCard(index: number) {
     if (!smallMenu) {
       let styling = "lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem]";
-      if ((index === props.cards.length - 1) && props.cards.length % 2 !== 0) {
+      if (index === props.cards.length - 1 && props.cards.length % 2 !== 0) {
         styling += " col-span-2 mx-[25%] lg:col-span-1 lg:mx-0";
       }
       return styling;
@@ -46,19 +46,10 @@ const Menu = (props: MenuProps) => {
         </AppHeader>
       )}
       <div className="p-5 md:p-10 pb-20">
-        {props.title && (
-          <MenuTitle
-            title={props.title.title}
-            subtitle={props.title.subtitle}
-          />
-        )}
+        {props.title && <MenuTitle title={props.title.title} subtitle={props.title.subtitle} />}
         <div className={getStyling()}>
           {cardList}
-          {!smallMenu && (
-            <div className="grid col-span-2 lg:col-span-3 ">
-              {props.children}
-            </div>
-          )}
+          {!smallMenu && <div className="grid col-span-2 lg:col-span-3 ">{props.children}</div>}
         </div>
       </div>
     </>

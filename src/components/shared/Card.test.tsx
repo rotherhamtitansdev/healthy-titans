@@ -15,7 +15,7 @@ describe("Card component", () => {
     const { container } = render(
       <Card card={cardProps}>
         <p>My Test Card Contents</p>
-      </Card>,
+      </Card>
     );
 
     expect(screen.getByText("My Test Card Contents")).toBeVisible();
@@ -33,7 +33,7 @@ describe("Card component", () => {
     render(
       <Card card={cardProps}>
         <p>My Clickable Test Card Contents</p>
-      </Card>,
+      </Card>
     );
 
     screen.getByRole("button").click();
