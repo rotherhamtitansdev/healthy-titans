@@ -153,10 +153,16 @@ exports[`Food Details Component component renders both correct data and image fr
                 <div
                   class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
                 >
-                  <span
-                    class=""
-                    style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-                  />
+                  <div
+                    class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+                  >
+                    <img
+                      alt="mock1"
+                      class="mx-auto undefined"
+                      draggable="false"
+                      src="mock/Image3.svg"
+                    />
+                  </div>
                 </div>
                 <div
                   class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
@@ -184,10 +190,16 @@ exports[`Food Details Component component renders both correct data and image fr
                 <div
                   class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
                 >
-                  <span
-                    class=""
-                    style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-                  />
+                  <div
+                    class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+                  >
+                    <img
+                      alt="mock2"
+                      class="mx-auto undefined"
+                      draggable="false"
+                      src="mock/Image3.svg"
+                    />
+                  </div>
                 </div>
                 <div
                   class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"

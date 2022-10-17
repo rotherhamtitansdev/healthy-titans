@@ -89,6 +89,8 @@ describe("Food Details Component", () => {
     expect(mockFetchFoodSingle).toHaveBeenCalledWith("mock3");
     expect(mockFetchSeeNext).toHaveBeenCalledWith("mockCategory", "mock3");
 
+    expect(await screen.findByRole("img", { name: "mock1" })).toBeVisible();
+    expect(await screen.findByRole("img", { name: "mock2" })).toBeVisible();
     expect(asFragment()).toMatchSnapshot();
   });
 });
