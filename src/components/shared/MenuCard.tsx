@@ -39,7 +39,7 @@ const MenuCard = (props: MenuCardProps) => {
       card={{
         name: props.name,
         additionalStyling: `${props.additionalStyling}`,
-        onClick: props.onClick ? props.onClick : handleOnClick()
+        onClick: handleOnClick()
       }}
     >
       <div className="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex">
