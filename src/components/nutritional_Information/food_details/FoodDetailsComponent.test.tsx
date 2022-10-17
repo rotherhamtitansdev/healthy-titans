@@ -46,7 +46,7 @@ describe("Food Details Component", () => {
       return Promise.resolve({ cardData: filteredCardData, paths: filteredPaths });
     });
     const mockFetchFoodSingle = jest.fn().mockResolvedValueOnce(mockContent.cardData[2]);
-    // const mock;
+
     jest.spyOn(FirebaseAPI, "fetchFoodDetailsSeeNext").mockImplementationOnce(mockFetchSeeNext);
     jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementationOnce(mockFetchFoodSingle);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("mock/Image3.svg");
