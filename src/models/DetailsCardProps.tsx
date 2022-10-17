@@ -1,6 +1,6 @@
 export interface ListProps {
-title: string;
-items: string[];
+  title: string;
+  items: string[];
 }
 export interface DetailsCardProps {
   name?: string;

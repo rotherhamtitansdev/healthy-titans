@@ -13,8 +13,6 @@ const QuizMenu = () => {
     },
   ];
 
-  return (
-    <Menu header={{ title: "", body: "" }} cards={quizzes} />
-  );
+  return <Menu header={{ title: "", body: "" }} cards={quizzes} />;
 };
 export default QuizMenu;

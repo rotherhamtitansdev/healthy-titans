@@ -5,11 +5,7 @@ export const beefData: NutritionDetailsAPIModel = {
   yield: 2.0,
   calories: 130,
   totalWeight: 100.0,
-  dietLabels: [
-    "HIGH_PROTEIN",
-    "LOW_CARB",
-    "LOW_SODIUM",
-  ],
+  dietLabels: ["HIGH_PROTEIN", "LOW_CARB", "LOW_SODIUM"],
   healthLabels: [
     "LOW_FAT_ABS",
     "SUGAR_CONSCIOUS",
@@ -361,9 +357,7 @@ export const chocolateData: NutritionDetailsAPIModel = {
   yield: 4.0,
   calories: 480,
   totalWeight: 100.0,
-  dietLabels: [
-    "LOW_SODIUM",
-  ],
+  dietLabels: ["LOW_SODIUM"],
   healthLabels: [
     "LOW_POTASSIUM",
     "KIDNEY_FRIENDLY",
@@ -393,9 +387,7 @@ export const chocolateData: NutritionDetailsAPIModel = {
     "SULPHITE_FREE",
     "KOSHER",
   ],
-  cautions: [
-    "SULFITES",
-  ],
+  cautions: ["SULFITES"],
   totalNutrients: {
     ENERC_KCAL: {
       label: "Energy",

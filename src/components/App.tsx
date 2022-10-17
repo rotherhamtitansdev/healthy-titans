@@ -28,7 +28,7 @@ const App: React.FC = () => (
       <Route path="NutritionalInformation">
         <Route index element={<NutritionalInformation />} />
         {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
-          (nutritionCategory, index) => (
+          (nutritionCategory) => (
             <Route
               key={nutritionCategory}
               path={nutritionCategory}

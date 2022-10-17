@@ -1,9 +1,5 @@
-import React, {
-  useCallback, useEffect, useMemo, useState,
-} from "react";
-import {
-  VictoryChart, VictoryBar, VictoryLabel, VictoryAxis,
-} from "victory";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
 import getNutritionalDetailsSingular from "../../../../api/NutritionApi";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
@@ -13,8 +9,6 @@ import { NutritionalBreakdownChartData } from "../../../../data/nutritional_info
 import { NutritionDetailsAPIModel } from "../../../../models/NutritionDetailsAPIModel";
 import "../../../../App.css";
 
-// eslint-disable no-promise-executor-return
-
 const NutritionBreakdownChart = (props: { name: string }) => {
   const { name } = props;
 
@@ -23,7 +17,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   const [getChartAmountLabels, setChartAmountLabels] = useState<string[]>();
   const [getChartNameLabels, setChartNameLabels] = useState<string[]>();
 
-  const [getChartData, setChartData] = useState<NHSNutritionalDataModelChart[]>();
+  const [getChartData, setChartData] = useState<NHSNutritionalDataModelChart[]>([]);
 
   const [getCalories, setCalories] = useState<string>();
 
@@ -34,7 +28,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
     setCalories(chartValues.calories.label);
     setChartNameLabels(chartValues.chartData.names);
 
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setChartAmountLabels(chartValues.chartData.labels);
     }, 1000);
 
@@ -43,14 +37,15 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   }, []);
 
   const chartCircleRadius = useMemo(() => chartSizing.barWidth / 2, []);
+  let ChartData:
+    | {
+        name: string;
+        data: NutritionDetailsAPIModel;
+      }
+    | undefined;
 
   useEffect(() => {
-    // eslint-disable-next-line array-callback-return,consistent-return
-    const ChartData = NutritionalBreakdownChartData.find((object) => {
-      if (object.name === name) {
-        return object.data;
-      }
-    });
+    ChartData = NutritionalBreakdownChartData.find((object) => object.name === name);
 
     if (ChartData !== undefined) {
       processChart(ChartData.data);
@@ -59,7 +54,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
         processChart(unparsed);
       });
     }
-  }, []);
+  });
 
   return (
     <div className="md:basis-1/2">
@@ -72,7 +67,9 @@ const NutritionBreakdownChart = (props: { name: string }) => {
               <p className="text-[20px] md:text-[24px] lg:text-[24px] text-nutritionInformationHeader font-semibold">
                 Nutrition Information
               </p>
-              <p className="text-[14px] md:text-[16px] lg:text-[20px] text-primaryGrey font-medium">*Based on serving of 100 g</p>
+              <p className="text-[14px] md:text-[16px] lg:text-[20px] text-primaryGrey font-medium">
+                *Based on serving of 100 g
+              </p>
             </div>
             <div className="lg:x-12 mx-8 my-8">
               <p className="text-[16px] text-primaryGrey font-medium">Calories</p>
@@ -89,32 +86,32 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 data={[
                   {
                     x: 1,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 2,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 3,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 4,
-                    y: 3
+                    y: 3,
                   },
                   {
                     x: 5,
-                    y: 3
-                  }
+                    y: 3,
+                  },
                 ]}
                 x="x"
                 y="y"
                 horizontal
                 style={{
                   data: {
-                    fill: ({ datum }) => getChartData![datum.x - 1].deluminatedColor
-                  }
+                    fill: ({ datum }) => getChartData[datum.x - 1].deluminatedColor,
+                  },
                 }}
                 barWidth={chartSizing.barWidth}
                 cornerRadius={chartSizing.smallerRounded}
@@ -127,12 +124,12 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 horizontal
                 animate={{
                   duration: 2000,
-                  onLoad: { duration: 1000 }
+                  onLoad: { duration: 1000 },
                 }}
                 style={{
                   data: {
-                    fill: ({ datum }) => datum.color
-                  }
+                    fill: ({ datum }) => datum.color,
+                  },
                 }}
                 barWidth={chartSizing.barWidth}
                 cornerRadius={chartSizing.smallerRounded}
@@ -152,10 +149,11 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                       fontFamily: "Quicksand",
                       fontSize: 14,
                       textAlign: "center",
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       fill: ({ datum }: any) => {
                         if (datum.y <= 2 || datum.x === 1) return "black";
                         return "white";
-                      }
+                      },
                     }}
                   />
                 }
@@ -199,7 +197,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 tickValues={getChartNameLabels}
                 style={{
                   axis: { stroke: "transparent" },
-                  ticks: { stroke: "transparent" }
+                  ticks: { stroke: "transparent" },
                 }}
                 tickLabelComponent={
                   <VictoryLabel style={{ fontFamily: "Quicksand", fontSize: "14px" }} />
@@ -212,6 +210,4 @@ const NutritionBreakdownChart = (props: { name: string }) => {
     </div>
   );
 };
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 export default NutritionBreakdownChart;
