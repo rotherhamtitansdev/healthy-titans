@@ -87,10 +87,11 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
     <div>
     {getNutritionData &&
       <DetailsComponent>
-      <DetailsCard img={getImageURL} />
-        <div className="pb-10 px-6 xs:px-8 lg:px-10">
-        {processHeader(getNutritionData[0],"text-[36px] lg:pt-4 lg:pl-0 pt-3 pb-3 font-quicksand  font-semibold ")}
-        <ul>{processBody(getNutritionData, "text-[16px]  pt-4 block lg:text-[20px] font-medium font-semibold font-quicksand")}</ul>
+        <div>
+          <DetailsCard img={getImageURL} />
+          <div className="pb-10 px-6 xs:px-8 lg:px-10">{processHeader(getNutritionData[0], "text-[36px] pb-3 font-quicksand font-semibold ")}
+            <ul>{processBody(getNutritionData, "text-[16px] pt-4 block lg:text-[20px] font-medium font-semibold font-quicksand")}</ul>
+          </div>
       </div>
       </DetailsComponent>
       }
