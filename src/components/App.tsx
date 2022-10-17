@@ -26,10 +26,16 @@ const App: React.FC = () => (
       <Route path="/"/>
       <Route index element={<HomePageComponents />} />
       <Route path="NutritionalInformation">
-        <Route index element={<NutritionalInformation />} />
+        <Route index element={<NutritionalInformation showFood/>} />
 
-        <Route path=":nutritionName">
-          <Route index element={<NutritionDetailsComponent />}/>
+        <Route path="Nutrition">
+          <Route index element={<NutritionalInformation showFood={false}/>}/>
+          <Route path=":nutritionName" element={<NutritionDetailsComponent />}/>
+        </Route>
+
+        <Route path=":foodCategory">
+          <Route index element={<FoodCategory />} />
+          <Route path=":foodName" element={<FoodDetailsComponent />} />
         </Route>
 
         <Route path="FruitAndVegetables">
@@ -38,10 +44,6 @@ const App: React.FC = () => (
             <Route index element={<FoodCategory />} />
             <Route path=":foodName" element={<FoodDetailsComponent />} />
           </Route>
-        </Route>
-        <Route path=":foodCategory">
-          <Route index element={<FoodCategory />} />
-          <Route path=":foodName" element={<FoodDetailsComponent />} />
         </Route>
       </Route>
       <Route path="FitnessChallenges">
