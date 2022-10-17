@@ -23,19 +23,15 @@ const App: React.FC = () => (
   <div className="layout-container">
     <Navbar />
     <Routes>
-      <Route path="/" />
+      <Route path="/"/>
       <Route index element={<HomePageComponents />} />
       <Route path="NutritionalInformation">
         <Route index element={<NutritionalInformation />} />
-        {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
-          (nutritionCategory) => (
-            <Route
-              key={nutritionCategory}
-              path={nutritionCategory}
-              element={<NutritionDetailsComponent nutritionName={nutritionCategory} />}
-            />
-          )
-        )}
+
+        <Route path=":nutritionName">
+          <Route index element={<NutritionDetailsComponent />}/>
+        </Route>
+
         <Route path="FruitAndVegetables">
           <Route index element={<FoodCategory />} />
           <Route path=":foodCategory">

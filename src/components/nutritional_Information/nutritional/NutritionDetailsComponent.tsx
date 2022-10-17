@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
+import {useParams} from "react-router-dom";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 import {
   NutritionalDetailsFirebaseProps,
@@ -7,32 +8,53 @@ import {
 import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
 import {useGlobalMenuOpenContext} from "../../app_header/AppHeaderContext";
+import {MenuCardProps} from "../../../models/MenuCardProps";
+import {FoodDetailsCarouselResponsiveConfig} from "../../../config/CarouselConfig";
+import CarouselMenu from "../../shared/CarouselMenu";
+import useWindowDimensions from "../../../functions/ScreenWidth";
 
-const NutritionDetailsComponent = (props: { nutritionName: string }) => {
+const NutritionDetailsComponent = () => {
   const [getNutritionData, setNutritionData] = useState<
     NutritionalDetailsFirebaseProps | undefined
   >();
   const [getImageURL, setImageURL] = useState<string>();
+  const [getSeeNext, setSeeNext] = useState<MenuCardProps[] | undefined>();
+  const { width } = useWindowDimensions();
+  const { nutritionName } = useParams();
 
   const { setAdditionalStyling } = useGlobalMenuOpenContext();
 
-
   useEffect(() => {
-    setAdditionalStyling("bg-white mb-10")
-    FirebaseAPI.fetchNutritionData(props.nutritionName).then((res) => {
-      const firebaseName = res[0].find((value) => value.key === "firebaseName");
 
-      if (firebaseName) {
-        FirebaseAPI.fetchImages(firebaseName.value).then((r) => setImageURL(r));
+    if(nutritionName) {
+
+      setSeeNext(undefined);
+
+      FirebaseAPI.fetchNutritionSeeNext(nutritionName).then(res => {
+        setSeeNext(res.map(element => {
+          const newElement = {...element}
+
+          newElement.path = window.location.pathname.replace(nutritionName, element.path)
+
+          return newElement
+        }))
+      })
+
+      setAdditionalStyling("bg-white mb-10")
+      FirebaseAPI.fetchNutritionData(nutritionName).then((res) => {
+        const firebaseName = res[0].find((value) => value.key === "firebaseName");
+
+        if (firebaseName) {
+          FirebaseAPI.fetchImages(firebaseName.value).then((r) => setImageURL(r));
+        }
+
+        setNutritionData(res);
+      });
       }
-
-      setNutritionData(res);
-    });
-
-    return function cleanup(){
-      setAdditionalStyling("")
-    }
-  }, []);
+      return function cleanup() {
+        setAdditionalStyling("")
+      }
+  }, [nutritionName]);
 
   const processHeader = (
     data: NutritionDetailProcessed[],
@@ -95,6 +117,18 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
       </div>
       </DetailsComponent>
       }
+      {getSeeNext && (
+          <div className="-mt-10 w-full lg:container mx-auto px-2 sm:px-6 lg:px-6 pb-20">
+            <p className="text-titansDarkBlue text-[24px] sm:text-[36px] pl-4 sm:pl-0 font-semibold pb-6">
+              See next
+            </p>
+            <CarouselMenu
+                cards={getSeeNext}
+                config={FoodDetailsCarouselResponsiveConfig}
+                renderArrowsWhenDisabled={width < 1025}
+            />
+          </div>
+      )}
   </div>
 );
 };
