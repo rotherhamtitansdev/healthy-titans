@@ -39,6 +39,8 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
     headerStyle: string
   ) => {
     if (getNutritionData) {
+
+
       const arr: ReactNode[] = [];
       const titleString = data.find((p) => p.key === "name");
       if (titleString) {
@@ -56,9 +58,14 @@ const NutritionDetailsComponent = (props: { nutritionName: string }) => {
           value.key !== "firebaseName"
       );
 
-      const contentViews: ReactNode[] = content.map((value) => (
-        <p key={value.key}>{value.value}</p>
-      ));
+      const contentViews: ReactNode[] = content.map((value) => {
+        if(value.value.includes("•")){
+          const split = value.value.split("•")
+
+          return <ul key={value.key}>{split.map(item => (<li key={item}><p>{`•  ${item}`}</p></li>))}</ul>
+        }
+        return(<p className="py-2" key={value.key}>{value.value}</p>)
+      });
 
       return arr.concat(contentViews);
     }
