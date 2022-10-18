@@ -1,12 +1,12 @@
 import {
   NHSNutritionalDataModel,
-  NHSNutritionalDataModelChart
+  NHSNutritionalDataModelChart,
 } from "../models/NHSNutritionalDataModel";
 import { ChartLabel, Colour, NHSNutritionalBoundaries } from "../models/AnalyticsChartConfig";
 import {
   Nutrient,
   NutritionDetailsAPIModel,
-  TotalNutrients
+  TotalNutrients,
 } from "../models/NutritionDetailsAPIModel";
 
 export class ChartDataProcessor {
@@ -76,8 +76,8 @@ export class ChartDataProcessor {
         x: 1,
         y: 3,
         color: "#ACCDF6",
-        deluminatedColor: "#ACCDF6"
-      }
+        deluminatedColor: "#ACCDF6",
+      },
     ];
 
     for (let i = 1; i < 5; i++) {
@@ -90,7 +90,7 @@ export class ChartDataProcessor {
         x: i + 1,
         y: boundary,
         color: colors[0],
-        deluminatedColor: colors[1]
+        deluminatedColor: colors[1],
       });
     }
 
@@ -98,7 +98,7 @@ export class ChartDataProcessor {
       chartData: {
         names: analyticsData.map((item) => `${item.label}\n\n\n\n`),
         labels: newChartLabels,
-        data: deluminatedChartData
+        data: deluminatedChartData,
       },
       calories: {
         label: calories,
@@ -106,9 +106,9 @@ export class ChartDataProcessor {
           x: 1,
           y: 3,
           color: "#ACCDF6",
-          deluminatedColor: "#ACCDF6"
-        }
-      }
+          deluminatedColor: "#ACCDF6",
+        },
+      },
     };
   };
 

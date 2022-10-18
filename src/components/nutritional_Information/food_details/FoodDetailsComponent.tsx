@@ -73,7 +73,7 @@ const FoodDetailsComponent = () => {
             list={
               getFoodDetailsComponentData.facts && {
                 title: "More Facts",
-                items: getFoodDetailsComponentData.facts
+                items: getFoodDetailsComponentData.facts,
               }
             }
           />

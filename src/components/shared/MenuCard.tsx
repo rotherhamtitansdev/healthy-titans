@@ -15,26 +15,15 @@ const MenuCard = (props: MenuCardProps) => {
   const [getImage, setImage] = useState<React.ReactNode | undefined>();
 
   const navigate = useNavigate();
-  const navigateToPath = useCallback(
-    () => navigate(props.path, { replace: false }),
-    [navigate],
-  );
+  const navigateToPath = useCallback(() => navigate(props.path, { replace: false }), [navigate]);
 
   useEffect(() => {
     if (props.firebaseName !== undefined) {
-      FirebaseAPI.fetchImages(props.firebaseName).then((URI) => setImage(
-        <Image
-          img={URI}
-          alt={props.name}
-        />,
-      ));
-    } else if (props.img !== undefined) {
-      setImage(
-        <Image
-          img={props.img}
-          alt={props.name}
-        />,
+      FirebaseAPI.fetchImages(props.firebaseName).then((URI) =>
+        setImage(<Image img={URI} alt={props.name} />)
       );
+    } else if (props.img !== undefined) {
+      setImage(<Image img={props.img} alt={props.name} />);
     }
   }, []);
 
@@ -50,7 +39,7 @@ const MenuCard = (props: MenuCardProps) => {
       card={{
         name: props.name,
         additionalStyling: `${props.additionalStyling}`,
-        onClick: handleOnClick(),
+        onClick: handleOnClick()
       }}
     >
       <div className="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex">

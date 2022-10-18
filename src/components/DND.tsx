@@ -10,7 +10,7 @@ interface DropContainerModel {
 const IngredientsData: DropContainerModel[] = [
   { name: "Cheese" },
   { name: "Flour" },
-  { name: "Sugar" }
+  { name: "Sugar" },
 ];
 
 const DND = () => {

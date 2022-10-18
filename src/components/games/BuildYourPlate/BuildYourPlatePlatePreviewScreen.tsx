@@ -55,7 +55,7 @@ const BuildYourPlatePlatePreviewScreen = (props: {
               },
               buttonText: "Play again",
               text: BuildYourPlateProcessor.constructScoreModalText(score),
-              title: BuildYourPlateProcessor.constructScoreModalTitle(score)
+              title: BuildYourPlateProcessor.constructScoreModalTitle(score),
             });
           }}
         >

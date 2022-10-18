@@ -7,9 +7,7 @@ import { MemoryRouter } from "react-router";
 // eslint-disable-next-line react/prop-types
 const TestWrapper = ({ children }) => (
   <MemoryRouter>
-    <Routes>
-      {children}
-    </Routes>
+    <Routes>{children}</Routes>
   </MemoryRouter>
 );
 

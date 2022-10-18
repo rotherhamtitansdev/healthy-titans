@@ -1,10 +1,13 @@
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
-import { doc, getDoc, collection, getDocs, setDoc, query, where } from "firebase/firestore";
+import {getDownloadURL, getStorage, ref} from "firebase/storage";
+import {collection, doc, getDoc, getDocs, query, setDoc, where} from "firebase/firestore";
 import FoodDetailsComponentData, {
   FoodDetailsComponentDataFile,
-  FoodDetailsProps
+  FoodDetailsProps,
 } from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
+import {NutritionalDetailsFirebaseProps} from "../models/NutritionDetailsComponentData";
+
+/* eslint-disable */
 
 class FirebaseAPI {
   static fetchImages = async (firebaseName: string): Promise<string> => {
@@ -31,6 +34,23 @@ class FirebaseAPI {
         await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
       })
     );
+  };
+
+  static fetchNutritionData = async (name: string):Promise<NutritionalDetailsFirebaseProps> => {
+    const querySnapshot = await getDocs(collection(fStore, "NutritionData", name , "Content"));
+
+    // @ts-ignore
+    const sorted = querySnapshot.docs.sort((a,b) => (a.data().order > b.data().order) ? 1 : ((b.data().order > a.data().order) ? -1 : 0))
+
+    // @ts-ignore
+    return sorted.map(doc => {
+      const data = doc.data()
+      let arr = []
+      for (const [key, value] of Object.entries(data)) {
+        arr.push({key: key, value: value})
+      }
+      return arr
+    })
   };
 
   static fetchFoodDetailsSingle = async (name: string) => {
@@ -65,9 +85,9 @@ class FirebaseAPI {
         firebaseName: value.firebaseName,
         category: value.category,
         score: value.score,
-        facts: value.facts
+        facts: value.facts,
       })),
-      paths: shuffled.map((value) => value.path)
+      paths: shuffled.map((value) => value.path),
     };
   };
 
@@ -90,7 +110,6 @@ class FirebaseAPI {
     }
     return undefined;
   };
-
 }
 
 export default FirebaseAPI;

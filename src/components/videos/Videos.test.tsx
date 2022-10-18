@@ -1,6 +1,4 @@
-import {
-  cleanup, render, screen,
-} from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Route } from "react-router";
@@ -19,7 +17,7 @@ test("navigate to videos page", () => {
   const snapshot = render(
     <RoutingTestWrapper path={videosRoute}>
       <Route path="/Videos" element={<VideosComponent />} />
-    </RoutingTestWrapper>,
+    </RoutingTestWrapper>
   );
 
   expect(snapshot).toMatchSnapshot();
@@ -45,7 +43,7 @@ describe("Videos page: Render", () => {
         Actions={{ setHidden: jest.fn(), setModalClickedVideoData: jest.fn() }}
         video={VideoProps}
         disableOnClick={false}
-      />,
+      />
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -57,7 +55,7 @@ describe("Videos page: Render", () => {
         Actions={{ setHidden: setHiddenMock, setModalClickedVideoData: jest.fn() }}
         video={VideoProps}
         disableOnClick={false}
-      />,
+      />
     );
 
     const video = screen.getByTestId(VideoProps.title);

@@ -41,7 +41,8 @@
     "ci:e2e": "start-server-and-test start:ci 3000 cypress:run",
     "eject": "react-scripts eject",
     "lint": "eslint \"**/*.{ts,tsx}\" --max-warnings=0",
-    "deploy": "sh ./deploy.sh"
+    "deploy": "sh ./deploy.sh",
+    "prettier:formatAll": "npx prettier --write ."
   },
   "browserslist": {
     "production": [
@@ -88,7 +89,7 @@
     "junit-report-merger": "^4.0.0",
     "mocha-junit-reporter": "^2.0.2",
     "postcss": "^8.4.14",
-    "prettier": "^2.7.1",
+    "prettier": "2.7.1",
     "start-server-and-test": "^1.14.0",
     "tailwindcss": "^3.1.4",
     "ts-node": "^10.9.1",

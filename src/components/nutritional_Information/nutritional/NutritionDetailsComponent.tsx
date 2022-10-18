@@ -1,33 +1,101 @@
-import React, { useEffect, useState } from "react";
-import { DetailsCardProps } from "../../../models/DetailsCardProps";
-import NutritionDetailsComponentData from "../../../models/NutritionDetailsComponentData";
+import React, { ReactNode, useEffect, useState } from "react";
+import FirebaseAPI from "../../../api/FirebaseAPI";
+import {
+  NutritionalDetailsFirebaseProps,
+  NutritionDetailProcessed,
+} from "../../../models/NutritionDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
+import {useGlobalMenuOpenContext} from "../../app_header/AppHeaderContext";
 
 const NutritionDetailsComponent = (props: { nutritionName: string }) => {
   const [getNutritionData, setNutritionData] = useState<
-    DetailsCardProps | undefined
+    NutritionalDetailsFirebaseProps | undefined
   >();
+  const [getImageURL, setImageURL] = useState<string>();
+
+  const { setAdditionalStyling } = useGlobalMenuOpenContext();
+
+
   useEffect(() => {
-    setNutritionData(
-      NutritionDetailsComponentData[
-        props.nutritionName as unknown as keyof typeof NutritionDetailsComponentData
-      ],
-    );
-  });
+    setAdditionalStyling("bg-white mb-10")
+    FirebaseAPI.fetchNutritionData(props.nutritionName).then((res) => {
+      const firebaseName = res[0].find((value) => value.key === "firebaseName");
+
+      if (firebaseName) {
+        FirebaseAPI.fetchImages(firebaseName.value).then((r) => setImageURL(r));
+      }
+
+      setNutritionData(res);
+    });
+
+    return function cleanup(){
+      setAdditionalStyling("")
+    }
+  }, []);
+
+  const processHeader = (
+    data: NutritionDetailProcessed[],
+    headerStyle: string
+  ) => {
+    if (getNutritionData) {
+
+
+      const arr: ReactNode[] = [];
+      const titleString = data.find((p) => p.key === "name");
+      if (titleString) {
+        arr.push(
+          <h1 key={titleString.key} className={headerStyle}>
+            {titleString.value}
+          </h1>
+        );
+      }
+
+      const content = data.filter(
+        (value) =>
+          value.key !== "order" &&
+          value.key !== "name" &&
+          value.key !== "firebaseName"
+      );
+
+      const contentViews: ReactNode[] = content.map((value) => {
+        if(value.value.includes("•")){
+          const split = value.value.split("•")
+
+          return <ul key={value.key}>{split.map(item => (<li key={item}><p>{`•  ${item}`}</p></li>))}</ul>
+        }
+        return(<p className="py-2" key={value.key}>{value.value}</p>)
+      });
+
+      return arr.concat(contentViews);
+    }
+    return undefined;
+  };
+
+  const processBody = (
+    data: NutritionDetailProcessed[][],
+    headerStyle: string
+  ) => {
+    const newArr = [...data];
+    newArr.shift();
+    return newArr.map((item) => (
+      <li key={item[0].value}>{processHeader(item, headerStyle)}</li>
+    ));
+  };
+
   return (
     <div>
-      {getNutritionData && (
-        <DetailsComponent>
-          <DetailsCard
-            name={getNutritionData.name}
-            description={getNutritionData.description}
-            img={getNutritionData.img}
-            additionalStyling="lg:w-5/12"
-          />
-        </DetailsComponent>
-      )}
-    </div>
-  );
+    {getNutritionData &&
+      <DetailsComponent>
+        <div>
+          <DetailsCard img={getImageURL} />
+          <div className="pb-10 px-6 xs:px-8 lg:px-10">{processHeader(getNutritionData[0], "text-[36px] pb-3 font-quicksand font-semibold ")}
+            <ul>{processBody(getNutritionData, "text-[16px] pt-4 block lg:text-[20px] font-medium font-semibold font-quicksand")}</ul>
+          </div>
+      </div>
+      </DetailsComponent>
+      }
+  </div>
+);
 };
 export default NutritionDetailsComponent;

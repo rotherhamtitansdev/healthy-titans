@@ -2,7 +2,6 @@ import { NHSNutritionalDataModel } from "./NHSNutritionalDataModel";
 
 // This is the numerical instance of the NHS Nutritional guidelines model
 export const NHSNutritionalBoundaries: NHSNutritionalDataModel[] = [
-
   { name: "Fat", low: 3, high: 17.5 },
   { name: "Saturates", low: 1.5, high: 5 },
   { name: "Sugars", low: 5, high: 22.5 },
@@ -25,7 +24,7 @@ export enum ChartLabel {
   Fat = "FAT",
   Saturates = "FASAT",
   Sugars = "SUGAR",
-  Salt = "NA"
+  Salt = "NA",
 }
 
 export enum Colour {

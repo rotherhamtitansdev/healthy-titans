@@ -82,7 +82,7 @@ body {
   -ms-animation: fadeIn 0.75s;
 }
 
-.slide-in-row{
+.slide-in-row {
   animation: moveToRight 0.6s;
 }
 

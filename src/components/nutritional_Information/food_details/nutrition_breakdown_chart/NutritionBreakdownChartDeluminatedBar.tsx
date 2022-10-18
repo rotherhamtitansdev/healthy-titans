@@ -16,15 +16,15 @@ const NutritionBreakdownChartDeluminatedBar = (
       { x: 2, y: 3 },
       { x: 3, y: 3 },
       { x: 4, y: 3 },
-      { x: 5, y: 3 }
+      { x: 5, y: 3 },
     ]}
     x="x"
     y="y"
     horizontal
     style={{
       data: {
-        fill: ({ datum }) => props.data[datum.x - 1].deluminatedColor
-      }
+        fill: ({ datum }) => props.data[datum.x - 1].deluminatedColor,
+      },
     }}
     barWidth={chartSizing.barWidth}
     cornerRadius={chartSizing.smallerRounded}

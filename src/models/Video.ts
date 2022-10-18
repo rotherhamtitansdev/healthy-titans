@@ -8,12 +8,12 @@ export interface Video {
 }
 
 export interface DrilledVideoProps {
-  setHidden: React.Dispatch<React.SetStateAction<boolean>>
-  setModalClickedVideoData: React.Dispatch<React.SetStateAction<Video | undefined>>
+  setHidden: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalClickedVideoData: React.Dispatch<React.SetStateAction<Video | undefined>>;
 }
 
 export interface VideoModalProps {
-  video: Video
+  video: Video;
   getHidden: boolean;
-  setHidden: React.Dispatch<React.SetStateAction<boolean>>
+  setHidden: React.Dispatch<React.SetStateAction<boolean>>;
 }

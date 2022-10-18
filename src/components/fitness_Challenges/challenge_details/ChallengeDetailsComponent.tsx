@@ -51,7 +51,7 @@ const ChallengeDetailsComponent = () => {
             list={
               getChallengeDetailsComponentData.equipment && {
                 title: "Equipment",
-                items: getChallengeDetailsComponentData.equipment
+                items: getChallengeDetailsComponentData.equipment,
               }
             }
           />
