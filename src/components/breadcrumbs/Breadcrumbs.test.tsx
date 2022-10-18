@@ -8,14 +8,24 @@ import RoutingTestWrapper from "../../tests/RoutingTestWrapper";
 
 describe("Breadcrumb Component", () => {
   it("breadcrumbs renders correctly", async () => {
-    const route = "/NutritionalInformation";
-    const { getByText, getByTestId } = render(
+    const route = "/";
+    const { getByTestId } = render(
       <RoutingTestWrapper path={route}>
         <Route path={route} element={<Breadcrumbs styling="" />} />
       </RoutingTestWrapper>
     );
 
     expect(getByTestId("breadcrumbs")).toBeInTheDocument();
+  });
+
+  it("should have correct test as determined by the route", () => {
+    const route = "/NutritionalInformation";
+    const { getByText } = render(
+      <RoutingTestWrapper path={route}>
+        <Route path={route} element={<Breadcrumbs styling="" />} />
+      </RoutingTestWrapper>
+    );
+
     expect(getByText("Food & Nutrition")).toBeInTheDocument();
   });
 });
