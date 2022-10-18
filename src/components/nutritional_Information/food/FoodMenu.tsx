@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router";
 import FoodCategoryData from "../../../data/nutritional_information/FoodCategoryData";
-import FoodCategories from "../../../data/nutritional_information/FoodTextData";
+import FoodCategories from "../../../data/nutritional_information/FoodSubCategoryData";
 import { MenuCardProps } from "../../../models/MenuCardProps";
 import { MenuTitleProps } from "../../../models/MenuTitleProps";
 import Menu from "../../shared/Menu";
