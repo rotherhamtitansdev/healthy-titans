@@ -1,7 +1,6 @@
 import React from "react";
-import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
-import { Route } from "react-router";
+import { render, screen } from "@testing-library/react";
+import { Routes, MemoryRouter, Route } from "react-router";
 
 import Breadcrumbs from "./Breadcrumbs";
 import RoutingTestWrapper from "../../tests/RoutingTestWrapper";
@@ -18,7 +17,7 @@ describe("Breadcrumb Component", () => {
     expect(getByTestId("breadcrumbs")).toBeInTheDocument();
   });
 
-  it("should have correct test as determined by the route", () => {
+  it("should have correct text as determined by the route", () => {
     const route = "/NutritionalInformation";
     const { getByText } = render(
       <RoutingTestWrapper path={route}>
@@ -27,5 +26,18 @@ describe("Breadcrumb Component", () => {
     );
 
     expect(getByText("Food & Nutrition")).toBeInTheDocument();
+  });
+
+  it("should render multiple breadcrumbs as determined by the route", () => {
+    const route = "/NutritionalInformation/Test";
+    render(
+      <MemoryRouter initialEntries={["/", route]}>
+        <Routes>
+          <Route path={route} element={<Breadcrumbs styling="" />} />
+        </Routes>
+      </MemoryRouter>
+    );
+    expect(screen.getByText("Food & Nutrition")).toBeVisible();
+    expect(screen.getByText("Test")).toBeVisible();
   });
 });
