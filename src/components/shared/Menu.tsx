@@ -52,7 +52,7 @@ const Menu = (props: MenuProps) => {
             subtitle={props.title.subtitle}
           />
         )}
-        <div className={getStyling()}>
+        <div data-testid="menu-styling" className={getStyling()}>
           {cardList}
           {!smallMenu && (
             <div className="grid col-span-2 lg:col-span-3 ">
