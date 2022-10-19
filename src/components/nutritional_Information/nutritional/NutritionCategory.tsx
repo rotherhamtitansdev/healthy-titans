@@ -46,13 +46,15 @@ const NutritionCategory = () => {
   const nutritionData: MenuCardProps[] = getNutritionData();
 
   return (
-    <Menu
-      title={{
-        title: "Explore nutrition",
-        subtitle: "Click on the type of nutritional information you want to learn about",
-      }}
-      cards={nutritionData}
-    />
+      <div>
+        <Menu
+          title={{
+            title: "Explore nutrition",
+            subtitle: "Click on the type of nutritional information you want to learn about",
+          }}
+          cards={nutritionData}
+        />
+      </div>
   );
 };
 

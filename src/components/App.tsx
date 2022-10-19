@@ -11,7 +11,7 @@ import Games from "./games/GamesMenu";
 import Quiz from "./games/quiz/Quiz";
 import QuizContext from "./games/quiz/QuizContext";
 import HomePageComponents from "./HomePageComponents";
-import FoodCategory from "./nutritional_Information/food/FoodMenu";
+import FoodCategory from "./nutritional_Information/food/FoodCategory";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
 import Recipes from "./recipes/RecipesMenu";
 import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
