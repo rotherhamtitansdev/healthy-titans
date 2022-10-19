@@ -5,7 +5,7 @@ import MenuLine from "../../../img/MenuLine.png";
 import YoutubeLogo from "../../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../../img/TwitterLogo.svg";
 import { useGlobalMenuOpenContext } from "../AppHeaderContext";
-import Logo from "../../../img/Logo.svg"
+import Logo from "../../../img/Logo.svg";
 
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, getAdditionalStyling } = useGlobalMenuOpenContext();
@@ -101,13 +101,13 @@ const Navbar = () => {
             </li>
             <li className="border-gray-400 mb-8 flex justify-evenly w-48 align-middle">
               <a className="mt-[30px]" href=" https://www.facebook.com/RotherhamRugby">
-                <img className="h-8" src={FacebookLogo} alt="logo" />
+                <img className="h-8" src={FacebookLogo} alt="Facebook Logo" />
               </a>
               <a className="mt-8" href="https://www.youtube.com/channel/UCmGpl0cHbu38pTSjjCd16dg">
-                <img className="h-7" src={YoutubeLogo} alt="logo" />
+                <img className="h-7" src={YoutubeLogo} alt="Youtube Logo" />
               </a>
               <a className="mt-8" href="https://twitter.com/RotherhamRugby">
-                <img className="h-7" src={TwitterLogo} alt="logo" />
+                <img className="h-7" src={TwitterLogo} alt="Twitter Logo" />
               </a>
             </li>
           </ul>

@@ -59,7 +59,7 @@ const AboutUs = () => {
             <div id="imgArea2" className={`${imgContainerStyles} order-last md:order-first`}>
               <img
                 src={RTLogo}
-                alt="RT Logo"
+                alt="Rotherm Titans Logo"
                 className="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
               />
             </div>
