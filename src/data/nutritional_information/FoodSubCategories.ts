@@ -1,4 +1,4 @@
-const FoodCategories = [
+const FoodSubCategories = [
   {
     category: "DairyAndEggs",
     options: [
@@ -347,4 +347,4 @@ const FoodCategories = [
   },
 ];
 
-export default FoodCategories;
+export default FoodSubCategories;
