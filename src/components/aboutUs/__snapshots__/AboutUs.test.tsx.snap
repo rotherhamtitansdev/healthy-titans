@@ -13,6 +13,7 @@ exports[`About Us component renders with sections and image 1`] = `
       >
         <h1
           class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+          data-testid="header-title"
         >
           About Us
         </h1>

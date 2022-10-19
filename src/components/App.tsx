@@ -11,7 +11,7 @@ import Games from "./games/GamesMenu";
 import Quiz from "./games/quiz/Quiz";
 import QuizContext from "./games/quiz/QuizContext";
 import HomePageComponents from "./HomePageComponents";
-import FoodCategory from "./nutritional_Information/food/FoodMenu";
+import FoodCategory from "./nutritional_Information/food/FoodCategory";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
 import Recipes from "./recipes/RecipesMenu";
 import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
@@ -23,29 +23,27 @@ const App: React.FC = () => (
   <div className="layout-container">
     <Navbar />
     <Routes>
-      <Route path="/" />
+      <Route path="/"/>
       <Route index element={<HomePageComponents />} />
       <Route path="NutritionalInformation">
-        <Route index element={<NutritionalInformation />} />
-        {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
-          (nutritionCategory) => (
-            <Route
-              key={nutritionCategory}
-              path={nutritionCategory}
-              element={<NutritionDetailsComponent nutritionName={nutritionCategory} />}
-            />
-          )
-        )}
+        <Route index element={<NutritionalInformation showFood/>} />
+
+        <Route path="Nutrition">
+          <Route index element={<NutritionalInformation showFood={false}/>}/>
+          <Route path=":nutritionName" element={<NutritionDetailsComponent />}/>
+        </Route>
+
+        <Route path=":foodCategory">
+          <Route index element={<FoodCategory />} />
+          <Route path=":foodName" element={<FoodDetailsComponent />} />
+        </Route>
+
         <Route path="FruitAndVegetables">
           <Route index element={<FoodCategory />} />
           <Route path=":foodCategory">
             <Route index element={<FoodCategory />} />
             <Route path=":foodName" element={<FoodDetailsComponent />} />
           </Route>
-        </Route>
-        <Route path=":foodCategory">
-          <Route index element={<FoodCategory />} />
-          <Route path=":foodName" element={<FoodDetailsComponent />} />
         </Route>
       </Route>
       <Route path="FitnessChallenges">
