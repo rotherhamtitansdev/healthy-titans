@@ -38,5 +38,11 @@ describe("Food & Nutrition", () => {
   it("Can view Carbs information", () => {
     cy.get('[data-testid="Food & Nutrition"]').click();
     cy.get('[data-testid="Carbs"]').click();
+
+    cy.get('[data-testid="details-title"]').should("have.text", foodNutrition.carbs.title);
+    cy.get('[data-testid="details-description"]').should(
+      "have.text",
+      foodNutrition.carbs.description
+    );
   });
 });
