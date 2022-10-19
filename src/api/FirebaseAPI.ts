@@ -84,10 +84,8 @@ class FirebaseAPI {
   static fetchNutritionData = async (name: string):Promise<NutritionalDetailsFirebaseProps> => {
     const querySnapshot = await getDocs(collection(fStore, "NutritionData", name , "Content"));
 
-    // @ts-ignore
     const sorted = querySnapshot.docs.sort((a,b) => (a.data().order > b.data().order) ? 1 : ((b.data().order > a.data().order) ? -1 : 0))
 
-    // @ts-ignore
     return sorted.map(doc => {
       const data = doc.data()
       let arr = []
