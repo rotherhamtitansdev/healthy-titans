@@ -1,5 +1,4 @@
 import React from "react";
-import nutrition from "../../../img/nutritionNutritionPage.jpg";
 import { MenuCardProps } from "../../../models/MenuCardProps";
 import Menu from "../../shared/Menu";
 
@@ -8,7 +7,6 @@ const QuizMenu = () => {
     {
       key: 0,
       name: "Nutrition",
-      img: nutrition,
       path: "Nutrition",
     },
   ];
