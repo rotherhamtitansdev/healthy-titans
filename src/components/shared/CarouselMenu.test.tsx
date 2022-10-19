@@ -142,7 +142,7 @@ describe("Carousel Menu", () => {
     );
 
     expect(
-      await screen.queryByRole("button", {
+      screen.queryByRole("button", {
         name: "Go to previous slide",
       })
     ).not.toBeInTheDocument();
