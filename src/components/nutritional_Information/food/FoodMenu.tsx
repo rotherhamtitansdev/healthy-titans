@@ -48,10 +48,6 @@ const FoodCategory = () => {
 
   return (
     <Menu
-      header={{
-        title: "Food & Nutrition",
-        body: "Food is important, we all need food to be strong and healthy. From here we can learn about the nutritional values in the foods we eat. This will show you the different types of goodness we can get from the different types of food. We will be able to explore what we need to have a healthy, well-balanced diet including carbohydrates, protein as well as vitamins and minerals.",
-      }}
       title={getTitle()}
       cards={foodData}
     />

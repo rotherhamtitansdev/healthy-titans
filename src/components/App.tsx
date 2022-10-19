@@ -23,29 +23,27 @@ const App: React.FC = () => (
   <div className="layout-container">
     <Navbar />
     <Routes>
-      <Route path="/" />
+      <Route path="/"/>
       <Route index element={<HomePageComponents />} />
       <Route path="NutritionalInformation">
-        <Route index element={<NutritionalInformation />} />
-        {["Fat", "SaltAndSugar", "Water", "Protein", "Carbs", "MacroAndMicroNutrients"].map(
-          (nutritionCategory) => (
-            <Route
-              key={nutritionCategory}
-              path={nutritionCategory}
-              element={<NutritionDetailsComponent nutritionName={nutritionCategory} />}
-            />
-          )
-        )}
+        <Route index element={<NutritionalInformation showFood/>} />
+
+        <Route path="Nutrition">
+          <Route index element={<NutritionalInformation showFood={false}/>}/>
+          <Route path=":nutritionName" element={<NutritionDetailsComponent />}/>
+        </Route>
+
+        <Route path=":foodCategory">
+          <Route index element={<FoodCategory />} />
+          <Route path=":foodName" element={<FoodDetailsComponent />} />
+        </Route>
+
         <Route path="FruitAndVegetables">
           <Route index element={<FoodCategory />} />
           <Route path=":foodCategory">
             <Route index element={<FoodCategory />} />
             <Route path=":foodName" element={<FoodDetailsComponent />} />
           </Route>
-        </Route>
-        <Route path=":foodCategory">
-          <Route index element={<FoodCategory />} />
-          <Route path=":foodName" element={<FoodDetailsComponent />} />
         </Route>
       </Route>
       <Route path="FitnessChallenges">

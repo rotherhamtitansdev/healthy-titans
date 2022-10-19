@@ -24,7 +24,7 @@ export const FatTextData = [
     name: "Fat",
     description: "Information about Fat!",
     firebaseName: "FoodCategories/Nutrition/Fat.svg",
-    path: "Fat",
+    path: "Nutrition/Fat",
   },
 ];
 export const CarbsTextData = [
