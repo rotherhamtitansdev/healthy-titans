@@ -1,8 +1,9 @@
 #### Rotherham Titans x AND Digital presents...
 
-# Healthy Titans
+# Cookie's KHAW
 
-Healthy Titans is a web application with a focus on health, well-being & fitness aimed at children
+Healthy 
+is a web application with a focus on health, well-being & fitness aimed at children
 and young adults. The app provides games and nutritional information to its users so to enable
 individuals to make informed, healthy decisions about food, nutrition and how to burn calories in a
 fun and educational setting.
