@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import "../../App.css";
 import { CardProps } from "../../models/CardProps";
 
@@ -20,10 +20,18 @@ const Card = (props: { card: CardProps; children: React.ReactNode }) => {
     );
   }
 
+  const onKeyPress = (e: KeyboardEvent) => {
+    if (props.card.onClick && (e.code === "Enter" || e.code === "Space")) {
+      // Stops page scrolling when space is pressed
+      e.preventDefault();
+      props.card.onClick();
+    }
+  };
+
   return props.card.onClick ? (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-    <div
+    <div  
       onClick={props.card.onClick}
+      onKeyDown={onKeyPress}
       role="button"
       tabIndex={0}
       className={getClassName()}
