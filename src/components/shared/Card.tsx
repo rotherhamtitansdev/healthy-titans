@@ -20,7 +20,7 @@ const Card = (props: { card: CardProps; children: React.ReactNode }) => {
     );
   }
 
-  return (
+  return props.card.onClick ? (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       onClick={props.card.onClick}
@@ -29,6 +29,10 @@ const Card = (props: { card: CardProps; children: React.ReactNode }) => {
       className={getClassName()}
       data-testid={props.card.name}
     >
+      {props.children}
+    </div>
+  ) : (
+    <div data-testid={props.card.name} tabIndex={0} role="button" className={getClassName()}>
       {props.children}
     </div>
   );
