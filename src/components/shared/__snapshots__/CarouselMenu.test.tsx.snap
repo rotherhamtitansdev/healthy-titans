@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Menu component renders 1`] = `
+<DocumentFragment>
+  <div
+    class="react-multi-carousel-list  "
+    dir="ltr"
+  >
+    <ul
+      class="react-multi-carousel-track "
+      style="transition: none; overflow: unset; transform: translate3d(0px,0,0);"
+    >
+      <li
+        aria-hidden="false"
+        class="react-multi-carousel-item react-multi-carousel-item--active p-[1rem]"
+        data-index="0"
+        style="flex-basis: auto; position: relative; width: -50px;"
+      >
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Mock Card 1"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          >
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <div
+                class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+              >
+                <img
+                  alt="Mock Card 1"
+                  class="mx-auto undefined"
+                  draggable="false"
+                  src="fruit.jpg"
+                />
+              </div>
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Mock Card 1
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        aria-hidden="false"
+        class="react-multi-carousel-item react-multi-carousel-item--active p-[1rem]"
+        data-index="1"
+        style="flex-basis: auto; position: relative; width: -50px;"
+      >
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Mock Card 2"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          >
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <div
+                class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+              >
+                <img
+                  alt="Mock Card 2"
+                  class="mx-auto undefined"
+                  draggable="false"
+                  src="fruit.jpg"
+                />
+              </div>
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Mock Card 2
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        aria-hidden="true"
+        class="react-multi-carousel-item  p-[1rem]"
+        data-index="2"
+        style="flex-basis: auto; position: relative; width: -50px;"
+      >
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Mock Card 3"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          >
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <div
+                class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+              >
+                <img
+                  alt="Mock Card 3"
+                  class="mx-auto undefined"
+                  draggable="false"
+                  src="fruit.jpg"
+                />
+              </div>
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Mock Card 3
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        aria-hidden="true"
+        class="react-multi-carousel-item  p-[1rem]"
+        data-index="3"
+        style="flex-basis: auto; position: relative; width: -50px;"
+      >
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Mock Card 4"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          >
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <div
+                class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+              >
+                <img
+                  alt="Mock Card 4"
+                  class="mx-auto undefined"
+                  draggable="false"
+                  src="fruit.jpg"
+                />
+              </div>
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Mock Card 4
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        aria-hidden="true"
+        class="react-multi-carousel-item  p-[1rem]"
+        data-index="4"
+        style="flex-basis: auto; position: relative; width: -50px;"
+      >
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Mock Card 5"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          >
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <div
+                class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+              >
+                <img
+                  alt="Mock Card 5"
+                  class="mx-auto undefined"
+                  draggable="false"
+                  src="fruit.jpg"
+                />
+              </div>
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Mock Card 5
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <button
+      aria-label="Go to previous slide"
+      class="react-multiple-carousel__arrow react-multiple-carousel__arrow--left "
+      disabled=""
+      type="button"
+    />
+    <button
+      aria-label="Go to next slide"
+      class="react-multiple-carousel__arrow react-multiple-carousel__arrow--right "
+      type="button"
+    />
+  </div>
+</DocumentFragment>
+`;
