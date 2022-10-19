@@ -32,7 +32,7 @@ const Card = (props: { card: CardProps; children: React.ReactNode }) => {
       {props.children}
     </div>
   ) : (
-    <div data-testid={props.card.name} tabIndex={0} role="button" className={getClassName()}>
+    <div data-testid={props.card.name} className={getClassName()}>
       {props.children}
     </div>
   );
