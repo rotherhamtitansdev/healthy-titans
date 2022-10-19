@@ -53,8 +53,8 @@ const Footer = () => (
           <div className="space-y-6">
             <h6 className="font-bold mb-4 flex justify-left md:justify-start">About us</h6>
             <p className="mb-4">
-              <a href="/About" className="text-[#243A73]">
-                Healthy Titans
+              <a href="/AboutUs" className="text-[#243A73]">
+                Cookie&apos;s KHAW
               </a>
             </p>
             <p className="mb-4">

@@ -7,4 +7,5 @@ export interface MenuCardProps {
   disableOnClick?: boolean;
   firebaseName?: string;
   additionalStyling?: string;
+  onClick?: () => void;
 }

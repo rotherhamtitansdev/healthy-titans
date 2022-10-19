@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
 import { FoodDetailsProps } from "../../../data/nutritional_information/FoodDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
@@ -12,6 +12,7 @@ import useWindowDimensions from "../../../functions/ScreenWidth";
 import { useGlobalMenuOpenContext } from "../../app_header/AppHeaderContext";
 
 const FoodDetailsComponent = () => {
+  const navigate = useNavigate()
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<
     FoodDetailsProps | undefined
   >();
@@ -19,7 +20,7 @@ const FoodDetailsComponent = () => {
   const { width } = useWindowDimensions();
   const [getImageURL, setImageURL] = useState<string>();
   const [getSeeNext, setSeeNext] = useState<MenuCardProps[] | undefined>();
-  const { foodName } = useParams();
+  const { foodName , foodCategory } = useParams();
   const location = useLocation();
 
   const fetchSeeNext = async (res: FoodDetailsProps) => {
@@ -43,7 +44,7 @@ const FoodDetailsComponent = () => {
     setSeeNext(undefined);
     if (foodName) {
       FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
-        if (res) {
+        if (res !== undefined) {
           fetchSeeNext(res).then((r) => {
             setSeeNext(r);
           });
@@ -52,6 +53,9 @@ const FoodDetailsComponent = () => {
             FirebaseAPI.fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
             setFoodDetailsComponentData(res);
           }
+        }
+        else{
+          navigate(`/NutritionalInformation/${foodCategory}`)
         }
       });
     }

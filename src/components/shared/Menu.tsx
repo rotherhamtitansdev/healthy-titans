@@ -46,8 +46,13 @@ const Menu = (props: MenuProps) => {
         </AppHeader>
       )}
       <div className="p-5 md:p-10 pb-20">
-        {props.title && <MenuTitle title={props.title.title} subtitle={props.title.subtitle} />}
-        <div className={getStyling()}>
+        {props.title && (
+          <MenuTitle
+            title={props.title.title}
+            subtitle={props.title.subtitle}
+          />
+        )}
+        <div data-testid="menu-styling" className={getStyling()}>
           {cardList}
           {!smallMenu && <div className="grid col-span-2 lg:col-span-3 ">{props.children}</div>}
         </div>
