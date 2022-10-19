@@ -3,9 +3,9 @@ export interface ListProps {
   items: string[];
 }
 export interface DetailsCardProps {
-  name: string;
+  name?: string;
   img?: string;
-  description: string;
+  description?: string;
   list?: ListProps;
   hideTitle?: boolean;
   additionalStyling?: string;

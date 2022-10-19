@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Card component renders with image 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+    data-testid="Mock Card 1"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+    >
+      <div
+        class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+      >
+        <div
+          class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
+        >
+          <img
+            alt="Mock Card 1"
+            class="mx-auto undefined"
+            draggable="false"
+            src="fruit.jpg"
+          />
+        </div>
+      </div>
+      <div
+        class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+      >
+        Mock Card 1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

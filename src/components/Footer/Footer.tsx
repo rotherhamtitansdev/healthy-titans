@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import FacebookLogo from "../../img/Facebook.svg";
 import YoutubeLogo from "../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../img/TwitterLogo.svg";
-import PinkLogo from "../../img/pink_logo.png";
 import RTLogo from "../../img/RT_Logo.png";
-import ANDLogo from "../../img/AND-icon.png";
+import ANDLogo from "../../img/AND-icon.png"
+import Logo from "../../img/Logo.svg"
 
 const Footer = () => (
   <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
     <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
       <Link to="/" className="w-32">
-        <img src={PinkLogo} alt="Rotherham Titan" />
+        <img src={Logo} alt="Cookie's Khaw" />
       </Link>
     </div>
 
@@ -30,14 +30,22 @@ const Footer = () => (
             >
               Powered by
             </h6>
-            <img src={RTLogo} alt="Rotherham Titan" className="w-16 mx-auto md:mx-0" />
+            <img
+              src={RTLogo}
+              alt="Rotherham Titan"
+              className="w-16 mx-auto md:mx-0"
+            />
           </div>
 
           <div className="justify-center flex flex-col items-center justify-between pb-10">
             <h6 className="font-bold mb-4 flex text-center justify-center md:justify-start">
               In collaboration with
             </h6>
-            <img src={ANDLogo} alt="Rotherham Titan" className="w-16 justify-center" />
+            <img
+              src={ANDLogo}
+              alt="Rotherham Titan"
+              className="w-16 justify-center"
+            />
           </div>
         </div>
 
@@ -45,8 +53,8 @@ const Footer = () => (
           <div className="space-y-6">
             <h6 className="font-bold mb-4 flex justify-left md:justify-start">About us</h6>
             <p className="mb-4">
-              <a href="/About" className="text-[#243A73]">
-                Healthy Titans
+              <a href="/AboutUs" className="text-[#243A73]">
+                Cookie&apos;s KHAW
               </a>
             </p>
             <p className="mb-4">
