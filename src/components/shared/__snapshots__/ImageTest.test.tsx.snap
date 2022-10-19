@@ -7,7 +7,7 @@ exports[`Image Component renders image with correct alt and name 1`] = `
   >
     <img
       alt="testAlt"
-      class="mx-auto undefined"
+      class="mx-auto testClassName"
       draggable="false"
       src="testURI.svg"
     />
