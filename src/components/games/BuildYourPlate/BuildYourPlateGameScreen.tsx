@@ -1,7 +1,3 @@
-// accessibility issues on BYP to be resolved
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from "react";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
@@ -117,20 +113,17 @@ const BuildYourPlateGameScreen = () => {
   const constructHeaders = (URLs: string[]) =>
     URLs.map((URL, index) => (
       <tr key={URL}>
-        <th
-          className="p:[1px] md:p-1"
-          onClick={() => {
-            setTableDataVisibility((newTableDataVisibility) =>
-              newTableDataVisibility.map((item, idx) => (idx === index ? !item : item))
-            );
-          }}
-          onKeyPress={() => {
-            setTableDataVisibility((newTableDataVisibility) =>
-              newTableDataVisibility.map((item, idx) => (idx === index ? !item : item))
-            );
-          }}
-        >
-          <img src={URL} alt={newBYPTableData[index].family} className={imageSize} />
+        <th className="p:[1px] md:p-1">
+          <button
+            type="button"
+            onClick={() => {
+              setTableDataVisibility((newTableDataVisibility) =>
+                newTableDataVisibility.map((item, idx) => (idx === index ? !item : item))
+              );
+            }}
+          >
+            <img src={URL} alt={newBYPTableData[index].family} className={imageSize} />
+          </button>
         </th>
       </tr>
     ));
@@ -141,14 +134,15 @@ const BuildYourPlateGameScreen = () => {
         key={item.family}
       >
         {item.items.map((cell) => (
-          <td
-            className="md:p-1"
-            key={cell.name}
-            onClick={() => {
-              toggleItemToPlate(cell);
-            }}
-          >
-            {cell.icon}
+          <td className="md:p-1" key={cell.name}>
+            <button
+              type="button"
+              onClick={() => {
+                toggleItemToPlate(cell);
+              }}
+            >
+              {cell.icon}
+            </button>
           </td>
         ))}
       </tr>
@@ -209,7 +203,7 @@ const BuildYourPlateGameScreen = () => {
           <div className="flex flex-wrap 1.5xl:flex-nowrap w-full">
             <table className="flex">
               <thead className="mr-3">{getBYPTableHeaders}</thead>
-              <thead className="w-[1px] h-full bg-titansDarkBlue" />
+              <div className="w-[1px] h-full bg-titansDarkBlue" />
               <tbody className="ml-3 overflow-x-hidden">
                 {!getLoading && getBYPTableData && constructRows(getBYPTableData)}
               </tbody>
@@ -220,15 +214,16 @@ const BuildYourPlateGameScreen = () => {
                 <img src={getPlateImage} alt="plate" />
                 <div>
                   {getBYPPlateData.map((plateItem, index) => (
-                    <div
+                    <button
                       className={`absolute ${PlateItemPositions[index]}`}
+                      type="button"
                       onClick={() => {
                         removeFromPlate([plateItem]);
                       }}
                       key={plateItem.key}
                     >
                       {plateItem.icon}
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
