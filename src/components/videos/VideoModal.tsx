@@ -18,9 +18,9 @@ const VideoModal = (props: VideoModalProps) => (
               }}
             >
               <div className="flex items-start justify-between pb-3 border-b border-solid border-slate-200 rounded-t">
-                <h3 className="text-2xl font-semibold text-homepageHeaderSubTitle">
+                <h2 className="text-2xl font-semibold text-homepageHeaderSubTitle">
                   {props.video.title}
-                </h3>
+                </h2>
                 <button
                   className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                   onClick={() => props.setHidden(true)}
