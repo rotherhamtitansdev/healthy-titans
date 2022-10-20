@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { Route } from "react-router";
+import userEvent from "@testing-library/user-event";
 import FoodCategory from "./FoodCategory";
 import RoutingTestWrapper from "../../../tests/RoutingTestWrapper";
 import FoodCategoryData from "../../../data/nutritional_information/FoodCategoryData";
@@ -44,10 +45,30 @@ describe("Food Category Component", () => {
       </RoutingTestWrapper>
     );
 
-    screen.debug();
-
     waitFor(() => {
       expect(window.location.pathname).toBe("/NutritionalInformation");
+    });
+  });
+
+  test("renders with no category & can click on a card", async () => {
+    const category = FoodCategoryData[0];
+    const route = "/NutritionalInformation";
+    const user = userEvent.setup();
+
+    render(
+      <RoutingTestWrapper path={route}>
+        <Route path={route} element={<FoodCategory />} />
+      </RoutingTestWrapper>
+    );
+
+    expect(screen.getByTestId("menutitle-title")).toBeVisible();
+    expect(screen.getByTestId("menutitle-title")).toHaveTextContent("Explore food families");
+
+    user.click(screen.getByTestId(category.name));
+
+    waitFor(() => {
+      expect(screen.findByTestId("menutitle-title")).toHaveTextContent(category.name);
+      expect(window.location.pathname).toBe(`/NutritionalInformation/${category.name}`);
     });
   });
 });
