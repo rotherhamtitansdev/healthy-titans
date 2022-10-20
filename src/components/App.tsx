@@ -22,6 +22,7 @@ import AboutUs from "./aboutUs/AboutUs";
 const App: React.FC = () => (
   <div className="layout-container">
     <Navbar />
+    <main>
     <Routes>
       <Route path="/"/>
       <Route index element={<HomePageComponents />} />
@@ -53,38 +54,39 @@ const App: React.FC = () => (
       <Route path="Videos">
         <Route index element={<VideosComponent />} />
       </Route>
-      <Route path="Recipes">
-        <Route index element={<Recipes />} />
-      </Route>
-      <Route path="AboutUs">
-        <Route index element={<AboutUs />} />
-      </Route>
-      <Route path="Games">
-        <Route index element={<Games />} />
-        <Route path="Quiz">
-          <Route
-            index
-            element={
-              <GameContext>
-                <QuizContext>
-                  <Quiz />
-                </QuizContext>
-              </GameContext>
-            }
-          />
+        <Route path="Recipes">
+          <Route index element={<Recipes />} />
         </Route>
-        <Route path="BuildYourPlate">
-          <Route
-            index
-            element={
-              <GameContext>
-                <BuildYourPlate />
-              </GameContext>
-            }
-          />
+        <Route path="AboutUs">
+          <Route index element={<AboutUs />} />
         </Route>
-      </Route>
-    </Routes>
+        <Route path="Games">
+          <Route index element={<Games />} />
+          <Route path="Quiz">
+            <Route
+              index
+              element={
+                <GameContext>
+                  <QuizContext>
+                    <Quiz />
+                  </QuizContext>
+                </GameContext>
+              }
+            />
+          </Route>
+          <Route path="BuildYourPlate">
+            <Route
+              index
+              element={
+                <GameContext>
+                  <BuildYourPlate />
+                </GameContext>
+              }
+            />
+          </Route>
+        </Route>
+      </Routes>
+    </main>
     <Footer />
   </div>
 );

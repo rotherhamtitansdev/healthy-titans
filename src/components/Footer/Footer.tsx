@@ -26,7 +26,7 @@ const Footer = () => (
             <p
               className="
                 font-bold mb-4 flex text-center justify-center md:justify-start
-            "
+            " 
             >
               Powered by
             </p>
