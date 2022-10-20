@@ -87,8 +87,8 @@ exports[`Food Details Component component renders both correct data and image fr
                 >
                   <img
                     alt="checkmark"
-                    class="pr-5"
-                    src="CheckMarkButton.svg"
+                    class="pr-5 align-center"
+                    src="CheckMarkButton.png"
                   />
                   mockFact13
                 </li>
@@ -97,8 +97,8 @@ exports[`Food Details Component component renders both correct data and image fr
                 >
                   <img
                     alt="checkmark"
-                    class="pr-5"
-                    src="CheckMarkButton.svg"
+                    class="pr-5 align-center"
+                    src="CheckMarkButton.png"
                   />
                   mockFact23
                 </li>
