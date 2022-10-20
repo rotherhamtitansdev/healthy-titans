@@ -1,6 +1,7 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
+import React from "react";
 
+import userEvent from "@testing-library/user-event";
 import { CardProps } from "../../models/CardProps";
 import Card from "./Card";
 
@@ -37,6 +38,28 @@ describe("Card component", () => {
     );
 
     screen.getByRole("button").click();
+    expect(mockOnClick).toBeCalledTimes(1);
+  });
+
+  test.each([
+    ["[Enter]"],
+    ["[Space]"],
+  ])("should trigger onClick callback when key pressed", async (keyPress: string) => {
+    const user = userEvent.setup();
+    const mockOnClick = jest.fn();
+    const cardProps: CardProps = {
+      name: "Clickable Test Card",
+      onClick: mockOnClick,
+    };
+
+    render(
+      <Card card={cardProps}>
+        <p>My Clickable Test Card Contents</p>
+      </Card>
+    );
+
+    screen.getByRole("button").focus();
+    await user.keyboard(keyPress);
     expect(mockOnClick).toBeCalledTimes(1);
   });
 });
