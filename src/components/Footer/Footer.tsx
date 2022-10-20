@@ -26,7 +26,7 @@ const Footer = () => (
             <h6
               className="
                 font-bold mb-4 flex text-center justify-center md:justify-start
-            "
+            " 
             >
               Powered by
             </h6>
