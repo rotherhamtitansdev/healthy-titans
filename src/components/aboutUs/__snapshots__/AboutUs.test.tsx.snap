@@ -68,7 +68,7 @@ exports[`About Us component renders with sections and image 1`] = `
         id="imgArea2"
       >
         <img
-          alt="Rotherm Titans Logo"
+          alt="Rotherham Titans Logo"
           class="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
           src="RT_Logo.png"
         />
