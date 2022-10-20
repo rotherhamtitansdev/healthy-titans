@@ -146,3 +146,7 @@ body {
     opacity: 1;
   }
 }
+
+img.align-center {
+  align-self: center;
+}
