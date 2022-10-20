@@ -4,8 +4,8 @@ import FacebookLogo from "../../img/Facebook.svg";
 import YoutubeLogo from "../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../img/TwitterLogo.svg";
 import RTLogo from "../../img/RT_Logo.png";
-import ANDLogo from "../../img/AND-icon.png"
-import Logo from "../../img/Logo.svg"
+import ANDLogo from "../../img/AND-icon.png";
+import Logo from "../../img/Logo.svg";
 
 const Footer = () => (
   <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
@@ -23,35 +23,27 @@ const Footer = () => (
       >
         <div className="flex gap-x-16">
           <div className="justify-center flex flex-col items-center justify-between pb-6">
-            <h6
+            <p
               className="
                 font-bold mb-4 flex text-center justify-center md:justify-start
             "
             >
               Powered by
-            </h6>
-            <img
-              src={RTLogo}
-              alt="Rotherham Titan"
-              className="w-16 mx-auto md:mx-0"
-            />
+            </p>
+            <img src={RTLogo} alt="Rotherham Titan" className="w-16 mx-auto md:mx-0" />
           </div>
 
           <div className="justify-center flex flex-col items-center justify-between pb-10">
-            <h6 className="font-bold mb-4 flex text-center justify-center md:justify-start">
+            <p className="font-bold mb-4 flex text-center justify-center md:justify-start">
               In collaboration with
-            </h6>
-            <img
-              src={ANDLogo}
-              alt="Rotherham Titan"
-              className="w-16 justify-center"
-            />
+            </p>
+            <img src={ANDLogo} alt="Rotherham Titan" className="w-16 justify-center" />
           </div>
         </div>
 
         <div className="space-y-16 md:space-y-0 md:flex justify-between pb-5 md:justify-around w-full lg:w-7/12 px-4">
           <div className="space-y-6">
-            <h6 className="font-bold mb-4 flex justify-left md:justify-start">About us</h6>
+            <p className="font-bold mb-4 flex justify-left md:justify-start">About us</p>
             <p className="mb-4">
               <a href="/AboutUs" className="text-[#243A73]">
                 Cookie&apos;s KHAW
@@ -65,7 +57,7 @@ const Footer = () => (
           </div>
 
           <div className="space-y-6">
-            <h6 className="font-bold mb-4 flex justify-left md:justify-start">External Links</h6>
+            <p className="font-bold mb-4 flex justify-left md:justify-start">External Links</p>
             <p className="mb-4">
               <a href="https://endchildfoodpoverty.org/" className="text-[#243A73]">
                 #ENDCHILDFOODPOVERTY
@@ -79,7 +71,7 @@ const Footer = () => (
           </div>
 
           <div className="space-y-6 justify-center md:justify-start">
-            <h6 className="font-bold mb-4 flex justify-left md:justify-start">Follow us</h6>
+            <p className="font-bold mb-4 flex justify-left md:justify-start">Follow us</p>
 
             <div className="flex h-10 space-x-10 justify-left">
               <a href="https://www.facebook.com/RotherhamRugby" className="flex justify-center">
