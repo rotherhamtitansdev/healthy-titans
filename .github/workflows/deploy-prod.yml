@@ -1,0 +1,23 @@
+# this file has been created based on the link below:
+# https://github.com/FirebaseExtended/action-hosting-deploy
+
+name: Deploy to Firebase Hosting on git tab push
+on:
+  push:
+    branches:
+      - main
+  tags:
+    - v*.*
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci && npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          cache: npm
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ROTHERHAM_TITANS_APP }}'
+          projectId: rotherham-titans-app
+          channelId: live
