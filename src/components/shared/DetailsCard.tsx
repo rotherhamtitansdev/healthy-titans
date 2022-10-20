@@ -40,7 +40,7 @@ const DetailsCard = (props: DetailsCardProps) => {
             <ul className="list-none px-0 lg:px-5 text-[16px] lg:text-[20px]">
               {props.list.items.map((item) => (
                 <li className="pb-4 md:pb-8 flex font-medium" key={item}>
-                  <img src={CheckMarkButton} alt="checkmark" className="pr-5" />
+                  <img src={CheckMarkButton} alt="checkmark" className="pr-5 align-center" />
                   {item}
                 </li>
               ))}
