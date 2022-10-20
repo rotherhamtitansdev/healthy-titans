@@ -23,27 +23,27 @@ const Footer = () => (
       >
         <div className="flex gap-x-16">
           <div className="justify-center flex flex-col items-center justify-between pb-6">
-            <h6
+            <p
               className="
                 font-bold mb-4 flex text-center justify-center md:justify-start
             "
             >
               Powered by
-            </h6>
+            </p>
             <img src={RTLogo} alt="Rotherham Titans Rugby" className="w-16 mx-auto md:mx-0" />
           </div>
 
           <div className="justify-center flex flex-col items-center justify-between pb-10">
-            <h6 className="font-bold mb-4 flex text-center justify-center md:justify-start">
+            <p className="font-bold mb-4 flex text-center justify-center md:justify-start">
               In collaboration with
-            </h6>
+            </p>
             <img src={ANDLogo} alt="AND Digital" className="w-16 justify-center" />
           </div>
         </div>
 
         <div className="space-y-16 md:space-y-0 md:flex justify-between pb-5 md:justify-around w-full lg:w-7/12 px-4">
           <div className="space-y-6">
-            <h6 className="font-bold mb-4 flex justify-left md:justify-start">About us</h6>
+            <p className="font-bold mb-4 flex justify-left md:justify-start">About us</p>
             <p className="mb-4">
               <a href="/AboutUs" className="text-[#243A73]">
                 Cookie&apos;s KHAW
@@ -57,7 +57,7 @@ const Footer = () => (
           </div>
 
           <div className="space-y-6">
-            <h6 className="font-bold mb-4 flex justify-left md:justify-start">External Links</h6>
+            <p className="font-bold mb-4 flex justify-left md:justify-start">External Links</p>
             <p className="mb-4">
               <a href="https://endchildfoodpoverty.org/" className="text-[#243A73]">
                 #ENDCHILDFOODPOVERTY
@@ -71,7 +71,7 @@ const Footer = () => (
           </div>
 
           <div className="space-y-6 justify-center md:justify-start">
-            <h6 className="font-bold mb-4 flex justify-left md:justify-start">Follow us</h6>
+            <p className="font-bold mb-4 flex justify-left md:justify-start">Follow us</p>
 
             <div className="flex h-10 space-x-10 justify-left">
               <a href="https://www.facebook.com/RotherhamRugby" className="flex justify-center">
