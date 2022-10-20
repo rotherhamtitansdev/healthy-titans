@@ -25,9 +25,9 @@ const Navbar = () => {
                   setIsMenuOpen(false);
                 }}
                 to="/"
-                className="pl-2 md:pl-5 lg:pl-8"
+                // className="md:pl-5 lg:pl-5"
               >
-                <img src={Logo} alt="Cookie's Khaw" />
+                <img src={Logo} className="w-52" alt="Cookie's Khaw" />
               </Link>
             </div>
             <div className="flex justify-end xl:justify-center w-full">
