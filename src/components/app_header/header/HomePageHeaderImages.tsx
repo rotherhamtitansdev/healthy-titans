@@ -52,7 +52,7 @@ const HomePageHeaderImages = () => {
         <img
           src={getImageURLs[2]}
           alt="Avocado"
-          className="absolute left-0 xs:left-[10px] sm:left-[20px] md:left-[30px] lg:left-[80px] xl:left-[200px] 2xl:left-[300px] top-[200px] h-[57px] w-[70px] md:h-[74px] md:w-[74px] lg:h-[84px] lg:w-[84px] xl:h-[90px] xl:w-[90px]"
+          className="absolute left-[10px] xs:left-[10px] sm:left-[20px] md:left-[30px] lg:left-[80px] xl:left-[200px] 2xl:left-[300px] top-[170px] h-[57px] w-[57px] md:h-[74px] md:w-[74px] lg:h-[84px] lg:w-[84px] xl:h-[90px] xl:w-[90px]"
         />
       )}
       {getImageURLs && (
