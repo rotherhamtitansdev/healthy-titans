@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
-import CheckMarkButton from "../../img/CheckMarkButton.svg";
+import CheckMarkButton from "../../img/CheckMarkButton.png";
 import { useGlobalMenuOpenContext } from "../app_header/AppHeaderContext";
 
 /*
