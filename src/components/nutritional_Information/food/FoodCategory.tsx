@@ -8,11 +8,10 @@ import Menu from "../../shared/Menu";
 import MenuHeader from "../../app_header/header/MenuHeader";
 import AppHeader from "../../app_header/AppHeader";
 
-
 const FoodCategory = () => {
   let { foodCategory } = useParams();
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [getCategoryTitle, setCategoryTitle] = useState("");
 
   useEffect(() => {
@@ -22,12 +21,10 @@ const FoodCategory = () => {
     }
     if (category) {
       setCategoryTitle(category);
+    } else {
+      navigate("/NutritionalInformation");
     }
-    else{
-        navigate("/NutritionalInformation")
-    }
-
-  },[]);
+  }, []);
 
   function getFoodData() {
     // If params isn't passed from router (e.g for FruitAndVegetables), get path from URL
@@ -55,15 +52,15 @@ const FoodCategory = () => {
   const foodData: MenuCardProps[] = getFoodData();
 
   return (
-      <div>
-          <AppHeader>
-              <MenuHeader title="Food & Nutrition" body="Food is important, we all need food to be strong and healthy. From here we can learn about the nutritional values in the foods we eat. This will show you the different types of goodness we can get from the different types of food. We will be able to explore what we need to have a healthy, well-balanced diet including carbohydrates, protein as well as vitamins and minerals."/>
-          </AppHeader>
-        <Menu
-          title={getTitle()}
-          cards={foodData}
+    <div>
+      <AppHeader>
+        <MenuHeader
+          title="Food & Nutrition"
+          body="Food is important, we all need food to be strong and healthy. From here we can learn about the nutritional values in the foods we eat. This will show you the different types of goodness we can get from the different types of food. We will be able to explore what we need to have a healthy, well-balanced diet including carbohydrates, protein as well as vitamins and minerals."
         />
-      </div>
+      </AppHeader>
+      <Menu title={getTitle()} cards={foodData} />
+    </div>
   );
 };
 
