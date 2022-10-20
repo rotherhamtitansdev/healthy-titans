@@ -42,7 +42,6 @@ const MockMenuCards = [
 beforeEach(() => {
   jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
 
-  // define width for carousel to appear
   Object.defineProperties(window.HTMLElement.prototype, {
     offsetWidth: {
       get: () => 100,
@@ -61,31 +60,28 @@ describe("Carousel Menu", () => {
       { wrapper: MemoryRouter }
     );
 
-    // check image is in document
     expect(
       await screen.findByRole("img", {
         name: "Mock Card 1",
       })
-    ).toBeInTheDocument();
+    ).toBeVisible();
 
     // check if the div with the test id is in the document
-    expect(await screen.findByTestId("Mock Card 1")).toBeInTheDocument();
+    expect(screen.getByTestId("Mock Card 1")).toBeVisible();
 
     // check image source is the same as our mock
     expect(
-      await screen.findByRole("img", {
+      screen.getByRole("img", {
         name: "Mock Card 1",
       })
     ).toHaveAttribute("src", "fruit.jpg");
 
-    // check image alt text matches
     expect(
       await screen.findByRole("img", {
         name: "Mock Card 1",
       })
     ).toHaveAttribute("alt", "Mock Card 1");
 
-    // check fragment matches snapshot
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -99,9 +95,8 @@ describe("Carousel Menu", () => {
       { wrapper: MemoryRouter }
     );
 
-    // check image is not in document
     expect(
-      await screen.queryByRole("img", {
+      screen.queryByRole("img", {
         name: "Mock Card 1",
       })
     ).not.toBeInTheDocument();
@@ -118,20 +113,19 @@ describe("Carousel Menu", () => {
     );
 
     expect(
-      await screen.findByRole("button", {
+      screen.getByRole("button", {
         name: "Go to previous slide",
       })
-    ).toBeInTheDocument();
+    ).toBeVisible();
 
     expect(
-      await screen.findByRole("button", {
+      screen.getByRole("button", {
         name: "Go to next slide",
       })
-    ).toBeInTheDocument();
+    ).toBeVisible();
   });
 
   test("component renders with only 1 arrow", async () => {
-    // if we have renderArrowsWhenDisabled set to false, then we should only see 1 arrow
     render(
       <CarouselMenu
         cards={MockMenuCards}
@@ -148,9 +142,9 @@ describe("Carousel Menu", () => {
     ).not.toBeInTheDocument();
 
     expect(
-      await screen.findByRole("button", {
+      screen.getByRole("button", {
         name: "Go to next slide",
       })
-    ).toBeInTheDocument();
+    ).toBeVisible();
   });
 });
