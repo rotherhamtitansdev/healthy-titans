@@ -41,7 +41,7 @@ const HomepageHeader = () => {
             <br />
             <button
               type="button"
-              className="font-bold bg-titansBrightPink text-white font-bold py-2 px-8 rounded-full"
+              className="bg-titansBrightPink text-white font-bold py-2 px-8 rounded-full"
               onClick={() => {
                 window.scrollTo({
                   top: 400,
