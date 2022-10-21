@@ -16,7 +16,7 @@ describe("Food Category Component", () => {
       </RoutingTestWrapper>
     );
 
-    expect(screen.getByTestId("menutitle-title")).toBeVisible();
+    expect(screen.getByText(/explore food families/i)).toBeVisible();
     expect(screen.getByText(/click on a picture to learn more/i)).toBeVisible();
 
     expect(asFragment()).toMatchSnapshot();
