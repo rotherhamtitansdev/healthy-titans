@@ -1,7 +1,7 @@
 # this file has been created based on the link below:
 # https://github.com/FirebaseExtended/action-hosting-deploy
 
-name: Deploy to Firebase Hosting on git tab push
+name: Deploy to Firebase Hosting on git tag push
 on:
   push:
     branches:
