@@ -508,8 +508,8 @@ const FoodDetailsComponentData = {
     ],
     score: 9,
   },
-  Yogurt: {
-    name: "Yogurt",
+  Yoghurt: {
+    name: "Yoghurt",
     description: "Did you know CALCIUM deficiency can cause RICKETS in children?",
     firebaseName: "FoodCategories/DairyAndEggs/Food/Yoghurt.svg",
     category: "Dairy & Eggs",
