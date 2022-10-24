@@ -130,7 +130,7 @@ const BuildYourPlateGameScreen = () => {
             );
           }}
         >
-          <img src={URL} alt="x" className={imageSize} />
+          <img src={URL} alt={newBYPTableData[index].family} className={imageSize} />
         </th>
       </tr>
     ));
@@ -159,7 +159,7 @@ const BuildYourPlateGameScreen = () => {
       if (!res) return;
       FirebaseAPI.fetchAllImages(TableHeaderImagesLinks).then((headers) => {
         const BYPItems: BYPItem[] = res.map((item) => ({
-          icon: <BuildYourPlateIcon URL={item.URL} key={item.key} />,
+          icon: <BuildYourPlateIcon URL={item.URL} key={item.key} alt={item.name} />,
           family: item.icon,
           key: item.key,
           name: item.name,
@@ -170,7 +170,7 @@ const BuildYourPlateGameScreen = () => {
         setBYPTableData(BuildYourPlateProcessor.processRows(BYPItems));
         FirebaseAPI.fetchImages("Games/BigPlate.png").then((BPres) => setPlateImage(BPres));
         FirebaseAPI.fetchImages("Games/tick.png").then((Tickres) => {
-          setTickImage(<img src={Tickres} alt={Tickres} />);
+          setTickImage(<img src={Tickres} alt="Tick" />);
         });
         setLoading(false);
       });

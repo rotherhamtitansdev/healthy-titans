@@ -30,14 +30,14 @@ const Footer = () => (
             >
               Powered by
             </p>
-            <img src={RTLogo} alt="Rotherham Titan" className="w-16 mx-auto md:mx-0" />
+            <img src={RTLogo} alt="Rotherham Titans Rugby" className="w-16 mx-auto md:mx-0" />
           </div>
 
           <div className="justify-center flex flex-col items-center justify-between pb-10">
             <p className="font-bold mb-4 flex text-center justify-center md:justify-start">
               In collaboration with
             </p>
-            <img src={ANDLogo} alt="Rotherham Titan" className="w-16 justify-center" />
+            <img src={ANDLogo} alt="AND Digital" className="w-16 justify-center" />
           </div>
         </div>
 
@@ -75,16 +75,16 @@ const Footer = () => (
 
             <div className="flex h-10 space-x-10 justify-left">
               <a href="https://www.facebook.com/RotherhamRugby" className="flex justify-center">
-                <img src={FacebookLogo} alt="Rotherham Titan Facebook" />
+                <img src={FacebookLogo} alt="Rotherham Titans Facebook" />
               </a>
               <a
                 href="https://www.youtube.com/channel/UCmGpl0cHbu38pTSjjCd16dg"
                 className="flex justify-center"
               >
-                <img src={YoutubeLogo} alt="Rotherham Titan Youtube" />
+                <img src={YoutubeLogo} alt="Rotherham Titans Youtube" />
               </a>
               <a href="https://twitter.com/RotherhamRugby" className="flex justify-center">
-                <img src={TwitterLogo} alt="Rotherham Titan Twitter" />
+                <img src={TwitterLogo} alt="Rotherham Titans Twitter" />
               </a>
             </div>
           </div>

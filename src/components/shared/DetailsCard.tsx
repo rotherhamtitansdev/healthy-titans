@@ -16,7 +16,7 @@ const DetailsCard = (props: DetailsCardProps) => {
         <img
           className={isMenuOpen ? "absolute invisible top-[13rem]" : "absolute visible top-[13rem]"}
           src={props.img}
-          alt={props.name}
+          alt=""
         />
       )}
       <div className="pl-2 pr-4 pt-[5rem]">

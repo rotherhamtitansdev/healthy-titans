@@ -32,7 +32,7 @@ exports[`Carousel Menu component renders 1`] = `
                 class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
               >
                 <img
-                  alt="Mock Card 1"
+                  alt=""
                   class="mx-auto undefined"
                   draggable="false"
                   src="fruit.jpg"
@@ -69,7 +69,7 @@ exports[`Carousel Menu component renders 1`] = `
                 class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
               >
                 <img
-                  alt="Mock Card 2"
+                  alt=""
                   class="mx-auto undefined"
                   draggable="false"
                   src="fruit.jpg"
@@ -106,7 +106,7 @@ exports[`Carousel Menu component renders 1`] = `
                 class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
               >
                 <img
-                  alt="Mock Card 3"
+                  alt=""
                   class="mx-auto undefined"
                   draggable="false"
                   src="fruit.jpg"
@@ -143,7 +143,7 @@ exports[`Carousel Menu component renders 1`] = `
                 class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
               >
                 <img
-                  alt="Mock Card 4"
+                  alt=""
                   class="mx-auto undefined"
                   draggable="false"
                   src="fruit.jpg"
@@ -180,7 +180,7 @@ exports[`Carousel Menu component renders 1`] = `
                 class="px-[2.75rem] md:px-[5rem] pb-[0.5rem] md:pb-[1rem] min-w-[89px] min-h-[81px] 2xl:mt-5"
               >
                 <img
-                  alt="Mock Card 5"
+                  alt=""
                   class="mx-auto undefined"
                   draggable="false"
                   src="fruit.jpg"

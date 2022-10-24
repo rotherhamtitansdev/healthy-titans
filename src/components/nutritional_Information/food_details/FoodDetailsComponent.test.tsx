@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 import FoodDetailsComponent from "./FoodDetailsComponent";
@@ -79,18 +79,23 @@ describe("Food Details Component", () => {
       </MemoryRouter>
     );
 
-    expect(await screen.findByText("mock3")).toBeVisible();
-    expect(screen.getByText("mockFact23")).toBeVisible();
-    expect(screen.getByRole("img", { name: "mock3" })).toHaveAttribute("src", "mock/Image3.svg");
-    expect(screen.getAllByRole("button")).toHaveLength(2);
-    expect(screen.getByRole("button", { name: "mock1" })).toBeVisible();
-    expect(screen.queryByRole("button", { name: "mock3" })).not.toBeInTheDocument();
+    const detailsCard = await screen.findByTestId("mock3-details");
+
+    expect(within(detailsCard).getByText("mock3")).toBeVisible();
+    expect(within(detailsCard).getByText("mockFact23")).toBeVisible();
+    expect(within(detailsCard).getByRole("img", { name: "" })).toHaveAttribute(
+      "src",
+      "mock/Image3.svg"
+    );
 
     expect(mockFetchFoodSingle).toHaveBeenCalledWith("mock3");
     expect(mockFetchSeeNext).toHaveBeenCalledWith("mockCategory", "mock3");
 
-    expect(await screen.findByRole("img", { name: "mock1" })).toBeVisible();
-    expect(await screen.findByRole("img", { name: "mock2" })).toBeVisible();
+    expect(screen.getAllByRole("button")).toHaveLength(2);
+    expect(screen.getByRole("button", { name: "mock1" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "mock2" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: "mock3" })).not.toBeInTheDocument();
+
     expect(asFragment()).toMatchSnapshot();
   });
 });
