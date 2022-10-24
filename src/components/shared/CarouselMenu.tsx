@@ -30,7 +30,7 @@ const CarouselMenu = (props: {
       partialVisible
       beforeChange={() => setIsMoving(true)}
       afterChange={() => setIsMoving(false)}
-      itemClass="p-[1rem]"
+      itemClass="px-[1rem] py-[1.5rem]"
       renderArrowsWhenDisabled={props.renderArrowsWhenDisabled}
     >
       {cardList}

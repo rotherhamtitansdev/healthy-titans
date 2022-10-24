@@ -137,7 +137,7 @@ exports[`Food Details Component component renders both correct data and image fr
         >
           <li
             aria-hidden="false"
-            class="react-multi-carousel-item react-multi-carousel-item--active p-[1rem]"
+            class="react-multi-carousel-item react-multi-carousel-item--active px-[1rem] py-[1.5rem]"
             data-index="0"
             style="flex-basis: auto; position: relative; width: 467px;"
           >
@@ -168,7 +168,7 @@ exports[`Food Details Component component renders both correct data and image fr
           </li>
           <li
             aria-hidden="false"
-            class="react-multi-carousel-item react-multi-carousel-item--active p-[1rem]"
+            class="react-multi-carousel-item react-multi-carousel-item--active px-[1rem] py-[1.5rem]"
             data-index="1"
             style="flex-basis: auto; position: relative; width: 467px;"
           >
