@@ -29,7 +29,7 @@ module.exports = {
         nutritionInformationHeader: "#252948",
         primaryGrey: "#5C5C5C",
         titansDarkBlue: "#243A73",
-        titansBrightPink: "#D14267",
+        titansBrightPink: "#D03E65",
         titansDarkGrey: "#545454",
       },
       fontFamily: {

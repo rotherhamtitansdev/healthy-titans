@@ -10,8 +10,8 @@ import Logo from "../../img/Logo.svg";
 const Footer = () => (
   <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
     <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
-      <Link to="/" className="w-32">
-        <img src={Logo} alt="Cookie's Khaw" />
+      <Link to="/">
+        <img src={Logo} className="w-32 md:w-44" alt="Cookie's Khaw" />
       </Link>
     </div>
 
@@ -26,7 +26,7 @@ const Footer = () => (
             <p
               className="
                 font-bold mb-4 flex text-center justify-center md:justify-start
-            "
+            " 
             >
               Powered by
             </p>
