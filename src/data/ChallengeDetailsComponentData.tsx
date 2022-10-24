@@ -43,9 +43,8 @@ const ChallengeDetailsComponentData = {
       "The last player left in untagged will be the winner and will become the catcher for the start of the new game.",
     ],
     rules: [
-      " Difficulty: ",
-      "Harder - If you want to challenge yourselves then increase the size of the playing area and increase the number of players.",
-      "Easier - Reduce the size of the playing area.",
+      "Difficulty Harder - If you want to challenge yourselves then increase the size of the playing area and increase the number of players.",
+      "Difficulty Easier - Reduce the size of the playing area.",
     ],
     equipment: ["Bibs- tuck bib into shorts, trousers or skirt to make a tail.", "Cones"],
   },
@@ -115,9 +114,8 @@ const ChallengeDetailsComponentData = {
       "The last two foxes remaining become the farmers for the next game.",
     ],
     rules: [
-      "Difficulty:",
-      "Harder - If you want to challenge yourselves then increase the size of the playing area and increase the number of players.",
-      "Easier - Reduce the size of the playing area.",
+      "Difficulty Harder - If you want to challenge yourselves then increase the size of the playing area and increase the number of players.",
+      "Difficulty Easier - Reduce the size of the playing area.",
     ],
     equipment: ["Bibs", "Cones"],
   },
