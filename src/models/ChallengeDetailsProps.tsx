@@ -1,8 +1,8 @@
 export interface ChallengeDetailsProps {
   name: string;
   description: string;
-  img: string;
+  firebaseName: string;
   rules: string[];
   equipment: string[];
-  howToPlay?: string[];
+  howToPlay: string[];
 }
