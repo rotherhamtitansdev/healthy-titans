@@ -166,8 +166,8 @@ const BuildYourPlateGameScreen = () => {
                 {getBYPTableHeaders &&
                   getBYPTableHeaders.map((URL, index) => (
                     <tr key={URL}>
-                      <div className="py:[1px] md:py-1 pr-3 bg-white z-10 relative border-r border-titansDarkBlue border-spacing-4">
-                        <th>
+                      <div className="py-0 md:py-1 pr-3 bg-white z-10 relative border-r border-titansDarkBlue">
+                        <th className="p-0">
                           <button
                             type="button"
                             onClick={() => {
@@ -186,13 +186,14 @@ const BuildYourPlateGameScreen = () => {
                           </button>
                         </th>
                       </div>
+                      <td className="bg-white z-10 relative pr-3" />
                       {getBYPTableData[index].items.map((cell) => (
                         <td
                           key={cell.name}
                           className={
                             getTableDataVisibility[index]
-                              ? "slide-in-row visible md:py-1 pl-3"
-                              : "invisible"
+                              ? "slide-in-row visible py-0 md:py-1"
+                              : "invisible py-0"
                           }
                         >
                           <button
