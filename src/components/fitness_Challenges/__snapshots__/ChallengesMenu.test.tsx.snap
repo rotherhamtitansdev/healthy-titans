@@ -44,11 +44,11 @@ exports[`ChallengesMenu component renders with list of challenges 1`] = `
       </div>
     </div>
     <div
-      class="grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]"
+      class="px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6"
       data-testid="menu-styling"
     >
       <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
         data-testid="Ball Rush"
         role="button"
         tabindex="0"
@@ -72,7 +72,7 @@ exports[`ChallengesMenu component renders with list of challenges 1`] = `
         </div>
       </div>
       <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
         data-testid="Ball Balance"
         role="button"
         tabindex="0"
@@ -95,30 +95,6 @@ exports[`ChallengesMenu component renders with list of challenges 1`] = `
           </div>
         </div>
       </div>
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        role="button"
-        tabindex="0"
-      >
-        <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
-        >
-          <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
-          >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          />
-        </div>
-      </div>
-      <div
-        class="grid col-span-2 lg:col-span-3 "
-      />
     </div>
   </div>
 </DocumentFragment>

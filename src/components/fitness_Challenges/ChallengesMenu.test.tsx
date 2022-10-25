@@ -3,8 +3,9 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import FirebaseAPI from "../../api/FirebaseAPI";
 import ChallengesMenu from "./ChallengesMenu";
+import { MenuCardProps } from "../../models/MenuCardProps";
 
-const content = [
+const content: MenuCardProps[] = [
   {
     key: 0,
     name: "Ball Rush",
@@ -17,7 +18,6 @@ const content = [
     path: "/BallBalance",
     firebaseName: "FitnessChallengesImages/ballBalance.svg",
   },
-  {},
 ];
 
 describe("ChallengesMenu", () => {
