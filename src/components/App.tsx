@@ -26,7 +26,7 @@ const App: React.FC = () => (
       <Routes>
         <Route path="/" />
         <Route index element={<HomePageComponents />} />
-        <Route path="NutritionalInformation">
+        <Route path="FoodAndNutrition">
           <Route index element={<NutritionalInformation showFood />} />
 
           <Route path="Nutrition">
