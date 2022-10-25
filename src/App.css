@@ -44,7 +44,7 @@ body {
 }
 
 .react-multiple-carousel__arrow {
-  background: #d14267 !important;
+  background: #D03E65 !important;
 }
 .react-multiple-carousel__arrow:disabled {
   opacity: 0.3;
@@ -145,4 +145,8 @@ body {
   100% {
     opacity: 1;
   }
+}
+
+img.align-center {
+  align-self: center;
 }

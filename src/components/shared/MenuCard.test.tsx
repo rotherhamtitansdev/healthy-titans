@@ -6,13 +6,12 @@ import FirebaseAPI from "../../api/FirebaseAPI";
 import MenuCard from "./MenuCard";
 import { MenuCardProps } from "../../models/MenuCardProps";
 
-const MockMenuCard =
-  {
-    key: 0,
-    name: "Mock Card 1",
-    path: "/mock-path-1",
-    firebaseName: "MockImages/mock-card-1.jpg",
-  } as MenuCardProps;
+const MockMenuCard = {
+  key: 0,
+  name: "Mock Card 1",
+  path: "/mock-path-1",
+  firebaseName: "MockImages/mock-card-1.jpg",
+} as MenuCardProps;
 
 beforeEach(() => {
   jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
@@ -30,14 +29,11 @@ describe("Menu Card", () => {
         additionalStyling=""
       />,
       {
-        wrapper: MemoryRouter
+        wrapper: MemoryRouter,
       }
     );
 
-    expect(await screen.findByRole("img", { name: "Mock Card 1" })).toHaveAttribute(
-      "src",
-      "fruit.jpg"
-    );
+    expect(await screen.findByRole("img", { name: "" })).toHaveAttribute("src", "fruit.jpg");
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -46,20 +42,17 @@ describe("Menu Card", () => {
       <MenuCard
         key={MockMenuCard.key}
         name={MockMenuCard.name}
-        img='fruit.jpg'
+        img="fruit.jpg"
         path={MockMenuCard.path}
         externalPath={MockMenuCard.externalPath}
         additionalStyling=""
       />,
       {
-        wrapper: MemoryRouter
+        wrapper: MemoryRouter,
       }
     );
 
-    expect(await screen.findByRole("img", { name: "Mock Card 1" })).toHaveAttribute(
-      "src",
-      "fruit.jpg"
-    );
+    expect(await screen.findByRole("img", { name: "" })).toHaveAttribute("src", "fruit.jpg");
   });
 
   test("component renders and can click card", async () => {
@@ -76,7 +69,7 @@ describe("Menu Card", () => {
         additionalStyling=""
       />,
       {
-        wrapper: MemoryRouter
+        wrapper: MemoryRouter,
       }
     );
 
@@ -99,7 +92,7 @@ describe("Menu Card", () => {
         additionalStyling=""
       />,
       {
-        wrapper: MemoryRouter
+        wrapper: MemoryRouter,
       }
     );
 

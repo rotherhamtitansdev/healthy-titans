@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
-import CheckMarkButton from "../../img/CheckMarkButton.svg";
+import CheckMarkButton from "../../img/CheckMarkButton.png";
 import { useGlobalMenuOpenContext } from "../app_header/AppHeaderContext";
 
 /*
@@ -16,7 +16,7 @@ const DetailsCard = (props: DetailsCardProps) => {
         <img
           className={isMenuOpen ? "absolute invisible top-[13rem]" : "absolute visible top-[13rem]"}
           src={props.img}
-          alt={props.name}
+          alt=""
         />
       )}
       <div className="pl-2 pr-4 pt-[5rem]">
@@ -40,7 +40,7 @@ const DetailsCard = (props: DetailsCardProps) => {
             <ul className="list-none px-0 lg:px-5 text-[16px] lg:text-[20px]">
               {props.list.items.map((item) => (
                 <li className="pb-4 md:pb-8 flex font-medium" key={item}>
-                  <img src={CheckMarkButton} alt="checkmark" className="pr-5" />
+                  <img src={CheckMarkButton} alt="checkmark" className="pr-5 align-center" />
                   {item}
                 </li>
               ))}

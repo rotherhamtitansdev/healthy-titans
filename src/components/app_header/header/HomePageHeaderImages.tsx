@@ -36,8 +36,8 @@ const HomePageHeaderImages = () => {
           alt="Apple"
           className={
             isMenuOpen
-              ? "absolute inset-x-[124px]"
-              : "absolute invisible lg:visible inset-x-[124px] top-[70px]"
+              ? "absolute inset-x-[80px]"
+              : "absolute invisible lg:visible inset-x-[80px] top-[250px]"
           }
         />
       )}
@@ -52,7 +52,7 @@ const HomePageHeaderImages = () => {
         <img
           src={getImageURLs[2]}
           alt="Avocado"
-          className="absolute left-0 xs:left-[10px] sm:left-[20px] md:left-[30px] lg:left-[80px] xl:left-[200px] 2xl:left-[300px] top-[120px] h-[57px] w-[70px] md:h-[74px] md:w-[74px] lg:h-[84px] lg:w-[84px] xl:h-[90px] xl:w-[90px]"
+          className="absolute left-0 xs:left-[10px] sm:left-[20px] md:left-[30px] lg:left-[80px] xl:left-[200px] 2xl:left-[300px] top-[120px] h-[57px] w-[57px] md:h-[74px] md:w-[74px] lg:h-[84px] lg:w-[84px] xl:h-[90px] xl:w-[90px]"
         />
       )}
       {getImageURLs && (
@@ -73,7 +73,7 @@ const HomePageHeaderImages = () => {
         <img
           src={getImageURLs[5]}
           alt="Carrot"
-          className="absolute -left-[35px] top-[440px] sm:top-[380px] md:-left-[20px] xl:left-[80px] w-[160px] sm:w-[190px] md:w-[200px] xl:w-[205px] 2xl:w-[210px]"
+          className="absolute -left-[20px] top-[440px] md:top-[380px] md:left-[0px] lg:left-[80px] w-[120px] sm:w-[120px] md:w-[200px] xl:w-[205px] 2xl:w-[210px]"
         />
       )}
     </div>
