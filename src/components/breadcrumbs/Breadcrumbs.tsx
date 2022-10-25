@@ -10,6 +10,7 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
   const routes = [
     { path: "/", breadcrumb: null },
     { path: "NutritionalInformation", breadcrumb: "Food & Nutrition" },
+    { path: "NutritionalInformation/Nutrition", breadcrumb: null },
   ];
 
   const breadcrumbs = useBreadcrumbs(routes);

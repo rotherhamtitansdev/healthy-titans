@@ -23,37 +23,37 @@ const App: React.FC = () => (
   <div className="layout-container">
     <Navbar />
     <main>
-    <Routes>
-      <Route path="/"/>
-      <Route index element={<HomePageComponents />} />
-      <Route path="NutritionalInformation">
-        <Route index element={<NutritionalInformation showFood/>} />
+      <Routes>
+        <Route path="/" />
+        <Route index element={<HomePageComponents />} />
+        <Route path="NutritionalInformation">
+          <Route index element={<NutritionalInformation showFood />} />
 
-        <Route path="Nutrition">
-          <Route index element={<NutritionalInformation showFood={false}/>}/>
-          <Route path=":nutritionName" element={<NutritionDetailsComponent />}/>
-        </Route>
+          <Route path="Nutrition">
+            <Route index element={<NutritionalInformation showFood />} />
+            <Route path=":nutritionName" element={<NutritionDetailsComponent />} />
+          </Route>
 
-        <Route path=":foodCategory">
-          <Route index element={<FoodCategory />} />
-          <Route path=":foodName" element={<FoodDetailsComponent />} />
-        </Route>
-
-        <Route path="FruitAndVegetables">
-          <Route index element={<FoodCategory />} />
           <Route path=":foodCategory">
             <Route index element={<FoodCategory />} />
             <Route path=":foodName" element={<FoodDetailsComponent />} />
           </Route>
+
+          <Route path="FruitAndVegetables">
+            <Route index element={<FoodCategory />} />
+            <Route path=":foodCategory">
+              <Route index element={<FoodCategory />} />
+              <Route path=":foodName" element={<FoodDetailsComponent />} />
+            </Route>
+          </Route>
         </Route>
-      </Route>
-      <Route path="FitnessChallenges">
-        <Route index element={<Challenges />} />
-        <Route path=":challengeName" element={<ChallengeDetailsComponent />} />
-      </Route>
-      <Route path="Videos">
-        <Route index element={<VideosComponent />} />
-      </Route>
+        <Route path="FitnessChallenges">
+          <Route index element={<Challenges />} />
+          <Route path=":challengeName" element={<ChallengeDetailsComponent />} />
+        </Route>
+        <Route path="Videos">
+          <Route index element={<VideosComponent />} />
+        </Route>
         <Route path="Recipes">
           <Route index element={<Recipes />} />
         </Route>
