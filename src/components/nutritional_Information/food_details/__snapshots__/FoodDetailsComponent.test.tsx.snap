@@ -17,7 +17,7 @@ exports[`Food Details Component component renders both correct data and image fr
           class="active"
           href="/FoodAndNutrition"
         >
-           Food &  Nutrition
+           Food & Nutrition
         </a>
         <p
           class="text text-titansBrightPink"

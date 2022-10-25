@@ -9,7 +9,6 @@ interface BreadcrumbsProps {
 const Breadcrumbs = (props: BreadcrumbsProps) => {
   const routes = [
     { path: "/", breadcrumb: null },
-    { path: "FoodAndNutrition", breadcrumb: "Food & Nutrition" },
     { path: "FoodAndNutrition/Nutrition", breadcrumb: null },
   ];
 
