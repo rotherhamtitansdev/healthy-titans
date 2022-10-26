@@ -8,7 +8,7 @@ import FoodCategoryData from "../../../data/nutritional_information/FoodCategory
 
 describe("Food Category Component", () => {
   test("renders with no category", async () => {
-    const route = "/NutritionalInformation";
+    const route = "/FoodAndNutrition";
 
     const { asFragment } = render(
       <RoutingTestWrapper path={route}>
@@ -24,7 +24,7 @@ describe("Food Category Component", () => {
 
   test("renders with category", () => {
     const category = FoodCategoryData[0];
-    const route = `/NutritionalInformation/${category.name}`;
+    const route = `/FoodAndNutrition/${category.name}`;
 
     render(
       <RoutingTestWrapper path={route}>
@@ -36,7 +36,7 @@ describe("Food Category Component", () => {
   });
 
   test("fallsback if no category is found", () => {
-    const route = "/NutritionalInformation/NotARealCategory";
+    const route = "/FoodAndNutrition/NotARealCategory";
 
     render(
       <RoutingTestWrapper path={route}>
@@ -45,13 +45,13 @@ describe("Food Category Component", () => {
     );
 
     waitFor(() => {
-      expect(window.location.pathname).toBe("/NutritionalInformation");
+      expect(window.location.pathname).toBe("/FoodAndNutrition");
     });
   });
 
   test("renders with no category & can click on a card", async () => {
     const category = FoodCategoryData[0];
-    const route = "/NutritionalInformation";
+    const route = "/FoodAndNutrition";
     const user = userEvent.setup();
 
     render(
@@ -66,7 +66,7 @@ describe("Food Category Component", () => {
 
     waitFor(() => {
       expect(screen.findByTestId("menutitle-title")).toHaveTextContent(category.name);
-      expect(window.location.pathname).toBe(`/NutritionalInformation/${category.name}`);
+      expect(window.location.pathname).toBe(`/FoodAndNutrition/${category.name}`);
     });
   });
 });

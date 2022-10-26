@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import AppHeaderContextWrapper from "./components/app_header/AppHeaderContext";
 import reportWebVitals from "./config/reportWebVitals";
 import App from "./components/App";
+import ScrollToTop from "./functions/ScrollToTop";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
@@ -12,6 +13,7 @@ root.render(
   <BrowserRouter>
     <AppHeaderContextWrapper>
       <div className="overflow-x-hidden">
+        <ScrollToTop />
         <App />
       </div>
     </AppHeaderContextWrapper>
