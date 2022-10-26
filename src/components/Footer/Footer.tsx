@@ -26,18 +26,22 @@ const Footer = () => (
             <p
               className="
                 font-bold mb-4 flex text-center justify-center md:justify-start
-            " 
+            "
             >
               Powered by
             </p>
-            <img src={RTLogo} alt="Rotherham Titans Rugby" className="w-16 mx-auto md:mx-0" />
+            <a href="https://www.titans-rugby.com/">
+              <img src={RTLogo} alt="Rotherham Titans Rugby" className="w-16 mx-auto md:mx-0" />
+            </a>
           </div>
 
           <div className="justify-center flex flex-col items-center justify-between pb-10">
             <p className="font-bold mb-4 flex text-center justify-center md:justify-start">
               In collaboration with
             </p>
-            <img src={ANDLogo} alt="AND Digital" className="w-16 justify-center" />
+            <a href="https://www.and.digital/">
+              <img src={ANDLogo} alt="AND Digital" className="w-16 justify-center" />
+            </a>
           </div>
         </div>
 
