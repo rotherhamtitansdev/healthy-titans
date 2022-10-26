@@ -29,12 +29,12 @@ describe("ChallengeDetailsComponent", () => {
         </Routes>
       </MemoryRouter>
     );
-    
+
     expect(mockFetchChallengesData).toBeCalledWith("mychallenge");
     await waitFor(() => {
       expect(screen.getByText("Ball")).toBeVisible();
     });
-    
+
     expect(screen.getByText("Rules")).toBeVisible();
     expect(screen.getByText(content.rules[0])).toBeVisible();
     expect(screen.getByText(content.rules[1])).toBeVisible();
@@ -70,15 +70,14 @@ describe("ChallengeDetailsComponent", () => {
         </Routes>
       </MemoryRouter>
     );
-    
+
     expect(mockFetchChallengesData).toBeCalledWith("mychallenge");
     await waitFor(() => {
       expect(screen.getByText("Ball")).toBeVisible();
     });
-    
+
     expect(screen.queryByText("Rules")).not.toBeInTheDocument();
 
     expect(asFragment()).toMatchSnapshot();
   });
-
 });
