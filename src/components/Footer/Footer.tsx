@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import FacebookLogo from "../../img/Facebook.svg";
 import YoutubeLogo from "../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../img/TwitterLogo.svg";
-import RTLogo from "../../img/RT_Logo.png";
+// import RTLogo from "../../img/RT_Logo.png";
+import TitansLogo from "../../img/TitansCommunityLogo.png"
 import ANDLogo from "../../img/AND-icon.png";
 import Logo from "../../img/Logo.svg";
 
@@ -27,7 +28,7 @@ const Footer = () => (
               Powered by
             </p>
             <a href="https://www.titans-rugby.com/" target="_blank" rel="noreferrer">
-              <img src={RTLogo} alt="Rotherham Titans Rugby" className="w-16 mx-auto md:mx-0" />
+              <img src={TitansLogo} alt="Titans Community Foundation Logo" className="w-16 mx-auto md:mx-0" />
             </a>
           </div>
 
@@ -92,7 +93,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="text-left p-10">
-      <span>© TITANS RUGBY 2022</span>
+      <span>© TITANS COMMUNITY FOUNDATION 2022</span>
     </div>
   </footer>
 );
