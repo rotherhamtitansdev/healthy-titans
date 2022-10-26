@@ -21,7 +21,7 @@ const DetailsCard = (props: DetailsCardProps) => {
         <img
           className={isMenuOpen ? "absolute invisible top-[13rem]" : "absolute visible top-[13rem]"}
           src={props.img}
-          alt={props.name}
+          alt=""
         />
       )}
       <div className="pl-2 pr-4 pt-[5rem]">
@@ -46,7 +46,7 @@ const DetailsCard = (props: DetailsCardProps) => {
               {props.list.items.map((item) => (
                 <li className="pb-4 md:pb-8 flex font-medium" key={item}>
                   {checkmarkImgUrl && (
-                    <img src={checkmarkImgUrl} alt="checkmark" className="pr-5" />
+                    <img src={checkmarkImgUrl} alt="checkmark" className="pr-5 align-center" />
                   )}
                   {item}
                 </li>

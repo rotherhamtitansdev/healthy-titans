@@ -12,7 +12,7 @@ import useWindowDimensions from "../../../functions/ScreenWidth";
 import { useGlobalMenuOpenContext } from "../../app_header/AppHeaderContext";
 
 const FoodDetailsComponent = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<
     FoodDetailsProps | undefined
   >();
@@ -20,7 +20,7 @@ const FoodDetailsComponent = () => {
   const { width } = useWindowDimensions();
   const [getImageURL, setImageURL] = useState<string>();
   const [getSeeNext, setSeeNext] = useState<MenuCardProps[] | undefined>();
-  const { foodName , foodCategory } = useParams();
+  const { foodName, foodCategory } = useParams();
   const location = useLocation();
 
   const fetchSeeNext = async (res: FoodDetailsProps) => {
@@ -31,7 +31,8 @@ const FoodDetailsComponent = () => {
         const URI = await FirebaseAPI.fetchImages(doc.firebaseName);
         let path = "";
         if (foodName) {
-          path = location.pathname.replace(foodName, docs.paths[index]);
+          // Replaces the foodName at the end of the path, instead of the first occurrence
+          path = location.pathname.replace(new RegExp(`${foodName}$`), docs.paths[index]);
         }
 
         return { key: index, name: doc.name, path, img: URI };
@@ -53,9 +54,8 @@ const FoodDetailsComponent = () => {
             FirebaseAPI.fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
             setFoodDetailsComponentData(res);
           }
-        }
-        else{
-          navigate(`/NutritionalInformation/${foodCategory}`)
+        } else {
+          navigate(`/FoodAndNutrition/${foodCategory}`);
         }
       });
     }

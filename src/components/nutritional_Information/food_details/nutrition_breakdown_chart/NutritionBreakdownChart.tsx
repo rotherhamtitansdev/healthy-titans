@@ -71,7 +71,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 *Based on serving of 100 g
               </p>
             </div>
-            <div className="lg:x-12 mx-8 my-8">
+            <div className="lg:mx-12 mx-8 my-8">
               <p className="text-[16px] text-primaryGrey font-medium">Calories</p>
               <p
                 data-testid="calorie-count"
@@ -81,7 +81,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
               </p>
               <p className="text-[20px] text-titansDarkBlue">Kcal</p>
             </div>
-            <VictoryChart height={chartSizing.chartHeight}>
+            <VictoryChart title="Nutrition Information Chart" height={chartSizing.chartHeight}>
               <VictoryBar
                 data={[
                   {

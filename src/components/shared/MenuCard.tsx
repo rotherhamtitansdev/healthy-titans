@@ -20,10 +20,10 @@ const MenuCard = (props: MenuCardProps) => {
   useEffect(() => {
     if (props.firebaseName !== undefined) {
       FirebaseAPI.fetchImages(props.firebaseName).then((URI) =>
-        setImage(<Image img={URI} alt={props.name} />)
+        setImage(<Image img={URI} alt="" />)
       );
     } else if (props.img !== undefined) {
-      setImage(<Image img={props.img} alt={props.name} />);
+      setImage(<Image img={props.img} alt="" />);
     }
   }, []);
 
@@ -39,7 +39,7 @@ const MenuCard = (props: MenuCardProps) => {
       card={{
         name: props.name,
         additionalStyling: `${props.additionalStyling}`,
-        onClick: handleOnClick()
+        onClick: handleOnClick(),
       }}
     >
       <div className="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex">

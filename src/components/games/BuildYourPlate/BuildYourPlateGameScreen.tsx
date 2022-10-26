@@ -1,20 +1,16 @@
-// accessibility issues on BYP to be resolved
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from "react";
 import FirebaseAPI from "../../../api/FirebaseAPI";
-import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
 import TableHeaderImagesLinks, {
   imageSize,
   PlateItemPositions,
 } from "../../../data/BYPData/BYPData";
-import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
+import useWindowDimensions from "../../../functions/ScreenWidth";
+import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
 import { useGameStartedContext } from "../GameContext";
 import GameModalScreen from "../GameModalScreen";
-import useWindowDimensions from "../../../functions/ScreenWidth";
-import BuildYourPlatePlatePreviewScreen from "./BuildYourPlatePlatePreviewScreen";
 import BuildYourPlateIcon from "./BuildYourPlateIcon";
+import BuildYourPlatePlatePreviewScreen from "./BuildYourPlatePlatePreviewScreen";
+import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
 
 let newBYPTableData: BYPTableRowFamily[] = [
   { family: "Meat", items: [] },
@@ -39,11 +35,10 @@ const BuildYourPlateGameScreen = () => {
   const [getTableDataVisibility, setTableDataVisibility] = useState<boolean[]>(
     Array(7).fill(false)
   );
-  const [getBYPTableHeaders, setBYPTableHeaders] = useState<React.ReactNode>();
+  const [getBYPTableHeaders, setBYPTableHeaders] = useState<string[]>();
   const [getPlateImage, setPlateImage] = useState<string>();
   const [getTickImage, setTickImage] = useState<React.ReactNode>();
   const [getButtonColor, setButtonColor] = useState<string>();
-  const [getLoading, setLoading] = useState<boolean>(true);
 
   const { width } = useWindowDimensions();
 
@@ -114,65 +109,24 @@ const BuildYourPlateGameScreen = () => {
     });
   };
 
-  const constructHeaders = (URLs: string[]) =>
-    URLs.map((URL, index) => (
-      <tr key={URL}>
-        <th
-          className="p:[1px] md:p-1"
-          onClick={() => {
-            setTableDataVisibility((newTableDataVisibility) =>
-              newTableDataVisibility.map((item, idx) => (idx === index ? !item : item))
-            );
-          }}
-          onKeyPress={() => {
-            setTableDataVisibility((newTableDataVisibility) =>
-              newTableDataVisibility.map((item, idx) => (idx === index ? !item : item))
-            );
-          }}
-        >
-          <img src={URL} alt="x" className={imageSize} />
-        </th>
-      </tr>
-    ));
-  const constructRows = (BYPTableData: BYPTableRowFamily[]) =>
-    BYPTableData.map((item, index) => (
-      <tr
-        className={getTableDataVisibility[index] ? "slide-in-row visible" : "invisible"}
-        key={item.family}
-      >
-        {item.items.map((cell) => (
-          <td
-            className="md:p-1"
-            key={cell.name}
-            onClick={() => {
-              toggleItemToPlate(cell);
-            }}
-          >
-            {cell.icon}
-          </td>
-        ))}
-      </tr>
-    ));
-
   useEffect(() => {
     BuildYourPlateProcessor.fetchAllUrls().then(async (res) => {
       if (!res) return;
       FirebaseAPI.fetchAllImages(TableHeaderImagesLinks).then((headers) => {
         const BYPItems: BYPItem[] = res.map((item) => ({
-          icon: <BuildYourPlateIcon URL={item.URL} key={item.key} />,
+          icon: <BuildYourPlateIcon URL={item.URL} key={item.key} alt={item.name} />,
           family: item.icon,
           key: item.key,
           name: item.name,
           selected: false,
           score: item.score,
         }));
-        setBYPTableHeaders(constructHeaders(headers));
+        setBYPTableHeaders(headers);
         setBYPTableData(BuildYourPlateProcessor.processRows(BYPItems));
         FirebaseAPI.fetchImages("Games/BigPlate.png").then((BPres) => setPlateImage(BPres));
         FirebaseAPI.fetchImages("Games/tick.png").then((Tickres) => {
-          setTickImage(<img src={Tickres} alt={Tickres} />);
+          setTickImage(<img src={Tickres} alt="Tick" />);
         });
-        setLoading(false);
       });
     });
   }, []);
@@ -208,10 +162,52 @@ const BuildYourPlateGameScreen = () => {
           <p className="font-bold text-[22px] pb-4 text-titansDarkBlue">Food Families</p>
           <div className="flex flex-wrap 1.5xl:flex-nowrap w-full">
             <table className="flex">
-              <thead className="mr-3">{getBYPTableHeaders}</thead>
-              <thead className="w-[1px] h-full bg-titansDarkBlue" />
-              <tbody className="ml-3 overflow-x-hidden">
-                {!getLoading && getBYPTableData && constructRows(getBYPTableData)}
+              <tbody className="overflow-x-hidden">
+                {getBYPTableHeaders &&
+                  getBYPTableHeaders.map((URL, index) => (
+                    <tr key={URL}>
+                      <div className="py-0 md:py-1 pr-3 bg-white z-10 relative border-r border-titansDarkBlue">
+                        <th className="p-0">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setTableDataVisibility((newTableDataVisibility) =>
+                                newTableDataVisibility.map((item, idx) =>
+                                  idx === index ? !item : item
+                                )
+                              );
+                            }}
+                          >
+                            <img
+                              src={URL}
+                              alt={newBYPTableData[index].family}
+                              className={imageSize}
+                            />
+                          </button>
+                        </th>
+                      </div>
+                      <td className="bg-white z-10 relative pr-3" />
+                      {getBYPTableData[index].items.map((cell) => (
+                        <td
+                          key={cell.name}
+                          className={
+                            getTableDataVisibility[index]
+                              ? "slide-in-row visible py-0 md:py-1"
+                              : "invisible py-0"
+                          }
+                        >
+                          <button
+                            type="button"
+                            onClick={() => {
+                              toggleItemToPlate(cell);
+                            }}
+                          >
+                            {cell.icon}
+                          </button>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
               </tbody>
             </table>
 
@@ -220,15 +216,16 @@ const BuildYourPlateGameScreen = () => {
                 <img src={getPlateImage} alt="plate" />
                 <div>
                   {getBYPPlateData.map((plateItem, index) => (
-                    <div
+                    <button
                       className={`absolute ${PlateItemPositions[index]}`}
+                      type="button"
                       onClick={() => {
                         removeFromPlate([plateItem]);
                       }}
                       key={plateItem.key}
                     >
                       {plateItem.icon}
-                    </div>
+                    </button>
                   ))}
                 </div>
               </div>
