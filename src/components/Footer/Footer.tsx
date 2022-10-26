@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import FacebookLogo from "../../img/Facebook.svg";
 import YoutubeLogo from "../../img/YoutubeLogo.svg";
 import TwitterLogo from "../../img/TwitterLogo.svg";
-// import RTLogo from "../../img/RT_Logo.png";
 import TitansLogo from "../../img/TitansCommunityLogo.png"
 import ANDLogo from "../../img/AND-icon.png";
 import Logo from "../../img/Logo.svg";

@@ -6,7 +6,6 @@ import FirebaseAPI from "../../api/FirebaseAPI";
 import { AboutUsProps } from "../../models/AboutUs/AboutUsProps";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
-// import RTLogo from "../../img/RT_Logo.png";
 import TitansLogo from "../../img/TitansCommunityLogo.png"
 
 const gridStyles = "grid grid-cols-1 md:grid-cols-2";
