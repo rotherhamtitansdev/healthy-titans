@@ -30,7 +30,7 @@ const Footer = () => (
             >
               Powered by
             </p>
-            <a href="https://www.titans-rugby.com/">
+            <a href="https://www.titans-rugby.com/" target="_blank" rel="noreferrer">
               <img src={RTLogo} alt="Rotherham Titans Rugby" className="w-16 mx-auto md:mx-0" />
             </a>
           </div>
@@ -39,7 +39,7 @@ const Footer = () => (
             <p className="font-bold mb-4 flex text-center justify-center md:justify-start">
               In collaboration with
             </p>
-            <a href="https://www.and.digital/">
+            <a href="https://www.and.digital/" target="_blank" rel="noreferrer">
               <img src={ANDLogo} alt="AND Digital" className="w-16 justify-center" />
             </a>
           </div>
