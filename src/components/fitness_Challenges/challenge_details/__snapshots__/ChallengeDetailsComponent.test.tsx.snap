@@ -71,21 +71,11 @@ exports[`ChallengeDetailsComponent component does not render rules if empty arra
                 <li
                   class="pb-4 md:pb-8 flex font-medium"
                 >
-                  <img
-                    alt="checkmark"
-                    class="pr-5 align-center"
-                    src="CheckMarkButton.png"
-                  />
                   Ball
                 </li>
                 <li
                   class="pb-4 md:pb-8 flex font-medium"
                 >
-                  <img
-                    alt="checkmark"
-                    class="pr-5 align-center"
-                    src="CheckMarkButton.png"
-                  />
                   Bow and Arrows
                 </li>
               </ul>
@@ -200,21 +190,11 @@ exports[`ChallengeDetailsComponent component renders rules if in data 1`] = `
                 <li
                   class="pb-4 md:pb-8 flex font-medium"
                 >
-                  <img
-                    alt="checkmark"
-                    class="pr-5 align-center"
-                    src="CheckMarkButton.png"
-                  />
                   Ball
                 </li>
                 <li
                   class="pb-4 md:pb-8 flex font-medium"
                 >
-                  <img
-                    alt="checkmark"
-                    class="pr-5 align-center"
-                    src="CheckMarkButton.png"
-                  />
                   Bow and Arrows
                 </li>
               </ul>
