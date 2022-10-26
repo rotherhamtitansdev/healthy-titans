@@ -6,7 +6,7 @@ import FirebaseAPI from "../../api/FirebaseAPI";
 import { AboutUsProps } from "../../models/AboutUs/AboutUsProps";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
-import RTLogo from "../../img/RT_Logo.png";
+import TitansLogo from "../../img/TitansCommunityLogo.png";
 
 const gridStyles = "grid grid-cols-1 md:grid-cols-2";
 const sectionPaddingStyles = "py-6 md:py-14";
@@ -59,8 +59,8 @@ const AboutUs = () => {
           <div id="section2" className={`${gridStyles} ${sectionPaddingStyles} bg-white`}>
             <div id="imgArea2" className={`${imgContainerStyles} order-last md:order-first`}>
               <img
-                src={RTLogo}
-                alt="Rotherham Titans Logo"
+                src={TitansLogo}
+                alt="Titans Community Foundation Logo"
                 className="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
               />
             </div>
