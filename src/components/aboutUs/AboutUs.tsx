@@ -14,6 +14,7 @@ const sectionHeaderStyles = "font-semibold text-[#252948] text-xl md:text-2xl lg
 const imgContainerStyles = "flex justify-center items-center my-6 md:my-0";
 const textMarginStyles = "mx-8 md:mx-16 lg:mx-24";
 const textAreaStyles = `${textMarginStyles} flex flex-col gap-4`;
+const spacerDivStyle = "bg-gradient-to-b from-white to-transparent";
 
 const AboutUs = () => {
   const [AboutUsData, setAboutUsData] = useState<AboutUsProps | undefined>();
@@ -23,7 +24,7 @@ const AboutUs = () => {
     FirebaseAPI.fetchAboutUsData().then((res) => {
       if (res) {
         setAboutUsData(res as DocumentData as AboutUsProps);
-      }
+            }
     });
 
     FirebaseAPI.fetchImages("FoodCategories/Fruits/FruitAndVeg.svg").then((value) =>
@@ -93,9 +94,9 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-          <div className="h-[50px] bg-gradient-to-b from-white to-transparent"></div>
         </div>
       )}
+      <div className={`${AboutUsData ? spacerDivStyle: null} h-[50px]`}></div>
     </>
   );
 };
