@@ -13,9 +13,6 @@ const DetailsCard = (props: DetailsCardProps) => {
 
   useEffect(() => {
     FirebaseAPI.fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
-    FirebaseAPI.fetchImages("BYPImages/byp_background.png").then((res) =>
-      console.log("URL -->", res)
-    );
   }, []);
 
   return (
@@ -63,10 +60,3 @@ const DetailsCard = (props: DetailsCardProps) => {
 };
 
 export default DetailsCard;
-
-// import React, {useEffect} from "react";
-// import FirebaseAPI from "../../api/FirebaseAPI";
-// const [imgUrl, setImgUrl] = useState<string>("");
-// useEffect(() => {
-//   FirebaseAPI.fetchImages("").then((res) => setImgUrl(res));
-// }, []);
