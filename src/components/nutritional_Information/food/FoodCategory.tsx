@@ -26,7 +26,7 @@ const FoodCategory = () => {
       setCategoryTitle(category);
     } else {
       // if the category is not found then redirect to the nutritional information page
-      navigate("/NutritionalInformation");
+      navigate("/FoodAndNutrition");
     }
   }, []);
 

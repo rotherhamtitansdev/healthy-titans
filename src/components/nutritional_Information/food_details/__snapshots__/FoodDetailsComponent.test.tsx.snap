@@ -15,9 +15,9 @@ exports[`Food Details Component component renders both correct data and image fr
         <a
           aria-current="page"
           class="active"
-          href="/NutritionalInformation"
+          href="/FoodAndNutrition"
         >
-           Food &  Nutrition
+           Food & Nutrition
         </a>
         <p
           class="text text-titansBrightPink"
@@ -27,7 +27,7 @@ exports[`Food Details Component component renders both correct data and image fr
         <a
           aria-current="page"
           class="active"
-          href="/NutritionalInformation/mockCategory"
+          href="/FoodAndNutrition/mockCategory"
         >
            Mock Category
         </a>
@@ -39,7 +39,7 @@ exports[`Food Details Component component renders both correct data and image fr
         <a
           aria-current="page"
           class="active"
-          href="/NutritionalInformation/mockCategory/mock3"
+          href="/FoodAndNutrition/mockCategory/mock3"
         >
            Mock3
         </a>

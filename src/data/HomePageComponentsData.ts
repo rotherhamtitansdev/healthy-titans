@@ -4,7 +4,7 @@ const HomePageComponentsData: MenuCardProps[] = [
   {
     key: 0,
     name: "Food & Nutrition",
-    path: "/NutritionalInformation",
+    path: "/FoodAndNutrition",
     firebaseName: "HomePageImages/apple.svg",
   },
   {

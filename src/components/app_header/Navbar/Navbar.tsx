@@ -32,7 +32,7 @@ const Navbar = () => {
               </div>
               <div className="flex justify-end xl:justify-center w-full">
                 <div className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px] hover:text-gray-900">
-                  <Link to="/NutritionalInformation">Food & Nutrition</Link>
+                  <Link to="/FoodAndNutrition">Food & Nutrition</Link>
                   <Link to="/FitnessChallenges">Fitness Challenges</Link>
                   <Link to="/Games">Games</Link>
                   <Link to="/Videos">Videos</Link>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 <a href="/">Home</a>
               </li>
               <li className="border-gray-400 my-2  text-sm font-medium text-bold text-titansDarkBlue hover:text-gray-900">
-                <a href="/NutritionalInformation">Food & Nutrition</a>
+                <a href="/FoodAndNutrition">Food & Nutrition</a>
               </li>
               <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
                 <a href="/FitnessChallenges">Fitness Challenges</a>
