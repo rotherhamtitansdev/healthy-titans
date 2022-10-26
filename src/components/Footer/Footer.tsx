@@ -8,26 +8,22 @@ import ANDLogo from "../../img/AND-icon.png";
 import Logo from "../../img/Logo.svg";
 
 const Footer = () => (
-  <footer className="lg:text-center text-left bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 md:pt-30 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
+  <footer className="text-left lg:text-center bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
     <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
       <Link to="/">
         <img src={Logo} className="w-32 md:w-44" alt="Cookie's Khaw" />
       </Link>
     </div>
 
-    <div className="py-14 text-left px-4 md:text-left">
+    <div className="py-14 lg:pt-20 text-left px-4 md:text-left">
       <div
         className="flex flex-wrap justify-center space-y-10
         md:place-items-center md:grid md:grid-cols-1 md:grid-rows-2 md:gap-y-14 md:space-y-0
-         lg:gap-y-0 lg:flex lg:flex-wrap lg:flex-nowrap lg:justify-evenly"
+         lg:gap-y-0 lg:flex lg:justify-evenly"
       >
         <div className="flex gap-x-16">
-          <div className="justify-center flex flex-col items-center justify-between pb-6">
-            <p
-              className="
-                font-bold mb-4 flex text-center justify-center md:justify-start
-            "
-            >
+          <div className="justify-center flex flex-col items-center pb-6">
+            <p className="font-bold mb-4 flex text-center justify-center md:justify-start">
               Powered by
             </p>
             <a href="https://www.titans-rugby.com/" target="_blank" rel="noreferrer">
@@ -35,7 +31,7 @@ const Footer = () => (
             </a>
           </div>
 
-          <div className="justify-center flex flex-col items-center justify-between pb-10">
+          <div className="justify-center flex flex-col items-center pb-10">
             <p className="font-bold mb-4 flex text-center justify-center md:justify-start">
               In collaboration with
             </p>
