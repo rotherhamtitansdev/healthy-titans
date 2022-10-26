@@ -148,9 +148,9 @@ exports[`About Us component renders with sections and image 1`] = `
         </div>
       </div>
     </div>
-    <div
-      class="h-[50px] bg-gradient-to-b from-white to-transparent"
-    />
   </div>
+  <div
+    class="bg-gradient-to-b from-white to-transparent h-[50px]"
+  />
 </DocumentFragment>
 `;
