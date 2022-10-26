@@ -59,13 +59,13 @@ describe("Menu Component", () => {
   });
 
   test("if conditional styling is applied, less than 3 cards", () => {
-    const mockProps: MenuProps = {
+    const Props: MenuProps = {
       header: { title: "Test First Title", body: "Test Body Title" },
       cards: [{ key: 1, name: "Test Card Name 1", path: "https://www.bbc.co.uk/" }],
       title: { title: "Test Second Title" }
     };
     const { asFragment } = render(
-      <Menu cards={mockProps.cards} header={mockProps.header} title={mockProps.title}>
+      <Menu cards={Props.cards} header={Props.header} title={Props.title}>
         <h1>Hello</h1>
       </Menu>,
       { wrapper: MemoryRouter }

@@ -132,6 +132,26 @@ class FirebaseAPI {
     }
     return undefined;
   };
+
+
+  static fetchChallengesData = async (currentName: string) => {
+    const docRef = doc(fStore, "Challenges", currentName );
+    const challengesDoc = await getDoc(docRef);
+
+    if (challengesDoc.exists()) {
+      return challengesDoc.data();
+    }
+    return undefined
+  }
+
+  static fetchChallengesList = async () => {
+  const querySnapshot = await getDocs(collection(fStore, "ChallengesData"));
+
+  if (!querySnapshot) return undefined;
+  return querySnapshot.docs.map((each) => each.data());
+};
+
 }
+
 
 export default FirebaseAPI;
