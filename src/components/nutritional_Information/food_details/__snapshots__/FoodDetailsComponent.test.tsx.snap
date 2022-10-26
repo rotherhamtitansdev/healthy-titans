@@ -85,21 +85,11 @@ exports[`Food Details Component component renders both correct data and image fr
                 <li
                   class="pb-4 md:pb-8 flex font-medium"
                 >
-                  <img
-                    alt="checkmark"
-                    class="pr-5 align-center"
-                    src="CheckMarkButton.png"
-                  />
                   mockFact13
                 </li>
                 <li
                   class="pb-4 md:pb-8 flex font-medium"
                 >
-                  <img
-                    alt="checkmark"
-                    class="pr-5 align-center"
-                    src="CheckMarkButton.png"
-                  />
                   mockFact23
                 </li>
               </ul>
