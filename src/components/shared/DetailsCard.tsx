@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
-import CheckMarkButton from "../../img/CheckMarkButton.svg";
 import { useGlobalMenuOpenContext } from "../app_header/AppHeaderContext";
+import FirebaseAPI from "../../api/FirebaseAPI";
 
 /*
  * This component represents a details card
  * */
 const DetailsCard = (props: DetailsCardProps) => {
   const { isMenuOpen } = useGlobalMenuOpenContext();
+  const [checkmarkImgUrl, setCheckmarkImgUrl] = useState<string>("");
+
+  useEffect(() => {
+    FirebaseAPI.fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
+    FirebaseAPI.fetchImages("BYPImages/byp_background.png").then((res) =>
+      console.log("URL -->", res)
+    );
+  }, []);
 
   return (
     <div data-testid={`${props.name}-details`} className="pl-5 md:basis-1/2">
@@ -40,7 +48,9 @@ const DetailsCard = (props: DetailsCardProps) => {
             <ul className="list-none px-0 lg:px-5 text-[16px] lg:text-[20px]">
               {props.list.items.map((item) => (
                 <li className="pb-4 md:pb-8 flex font-medium" key={item}>
-                  <img src={CheckMarkButton} alt="checkmark" className="pr-5" />
+                  {checkmarkImgUrl && (
+                    <img src={checkmarkImgUrl} alt="checkmark" className="pr-5" />
+                  )}
                   {item}
                 </li>
               ))}
@@ -53,3 +63,10 @@ const DetailsCard = (props: DetailsCardProps) => {
 };
 
 export default DetailsCard;
+
+// import React, {useEffect} from "react";
+// import FirebaseAPI from "../../api/FirebaseAPI";
+// const [imgUrl, setImgUrl] = useState<string>("");
+// useEffect(() => {
+//   FirebaseAPI.fetchImages("").then((res) => setImgUrl(res));
+// }, []);
