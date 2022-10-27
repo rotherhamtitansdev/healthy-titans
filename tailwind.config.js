@@ -38,7 +38,8 @@ module.exports = {
       backgroundImage: {
         wave: "url('/src/img/wave.png')",
         wavesvg: "url('/src/img/wavesvg.svg')",
-        byp_background: "url('/src/img/byp_background.png')",
+        byp_background:
+          "url('https://firebasestorage.googleapis.com/v0/b/rotherham-titans-app.appspot.com/o/BYPImages%2Fbyp_background.png?alt=media&token=def647a4-03f7-4b7e-a86a-2a33155fbf8d')",
         quiz_background:
           "url('https://firebasestorage.googleapis.com/v0/b/rotherham-titans-app.appspot.com/o/QuizImages%2Fquiz_background.svg?alt=media&token=01bed7c9-68be-494a-bb58-b8c274f4f3b1')",
         quiz_correct_answer:
