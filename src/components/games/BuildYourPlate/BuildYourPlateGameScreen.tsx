@@ -166,26 +166,24 @@ const BuildYourPlateGameScreen = () => {
                 {getBYPTableHeaders &&
                   getBYPTableHeaders.map((URL, index) => (
                     <tr key={URL}>
-                      <div className="py-0 md:py-1 pr-3 bg-white z-10 relative border-r border-titansDarkBlue">
-                        <th className="p-0">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setTableDataVisibility((newTableDataVisibility) =>
-                                newTableDataVisibility.map((item, idx) =>
-                                  idx === index ? !item : item
-                                )
-                              );
-                            }}
-                          >
-                            <img
-                              src={URL}
-                              alt={newBYPTableData[index].family}
-                              className={imageSize}
-                            />
-                          </button>
-                        </th>
-                      </div>
+                      <th className="py-0 md:py-1 pr-3 bg-white z-10 relative border-r border-titansDarkBlue">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setTableDataVisibility((newTableDataVisibility) =>
+                              newTableDataVisibility.map((item, idx) =>
+                                idx === index ? !item : item
+                              )
+                            );
+                          }}
+                        >
+                          <img
+                            src={URL}
+                            alt={newBYPTableData[index].family}
+                            className={imageSize}
+                          />
+                        </button>
+                      </th>
                       <td className="bg-white z-10 relative pr-3" />
                       {getBYPTableData[index].items.map((cell) => (
                         <td
