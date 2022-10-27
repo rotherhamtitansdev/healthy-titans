@@ -114,9 +114,9 @@ const BuildYourPlateGameScreen = () => {
       if (!res) return;
       FirebaseAPI.fetchAllImages(TableHeaderImagesLinks).then((headers) => {
         const BYPItems: BYPItem[] = res.map((item) => ({
-          icon: <BuildYourPlateIcon URL={item.URL} key={item.key} alt={item.name} />,
+          icon: <BuildYourPlateIcon URL={item.URL} id={item.id} alt={item.name} />,
           family: item.icon,
-          key: item.key,
+          id: item.id,
           name: item.name,
           selected: false,
           score: item.score,
@@ -220,7 +220,7 @@ const BuildYourPlateGameScreen = () => {
                       onClick={() => {
                         removeFromPlate([plateItem]);
                       }}
-                      key={plateItem.key}
+                      key={plateItem.id}
                     >
                       {plateItem.icon}
                     </button>

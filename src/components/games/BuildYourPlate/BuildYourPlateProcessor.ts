@@ -36,7 +36,7 @@ class BuildYourPlateProcessor {
         icon: item.category,
         name: item.name,
         URL: await FirebaseAPI.fetchImages(item.firebaseName),
-        key: item.name,
+        id: item.name,
         score: item.score,
       }))
     );

@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface BYPItem {
-  key: string;
+  id: string;
   name: string;
   icon: React.ReactNode;
   family: string;
