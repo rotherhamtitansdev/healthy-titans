@@ -1,9 +1,8 @@
 import React from "react";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import FirebaseAPI, { FoodDetailsProps } from "../../../api/FirebaseAPI";
 import FoodDetailsComponent from "./FoodDetailsComponent";
-import { FoodDetailsProps } from "../../../data/nutritional_information/FoodDetailsComponentData";
 
 const mockContent = {
   cardData: [
@@ -48,7 +47,9 @@ describe("Food Details Component", () => {
     const mockFetchFoodSingle = jest.fn().mockResolvedValueOnce(mockContent.cardData[2]);
 
     jest.spyOn(FirebaseAPI, "fetchFoodDetailsSeeNext").mockImplementationOnce(mockFetchSeeNext);
-    jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementationOnce(mockFetchFoodSingle);
+    jest
+      .spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData")
+      .mockImplementationOnce(mockFetchFoodSingle);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("mock/Image3.svg");
 
     // define width for carousel to appear & prevent buttons from loading

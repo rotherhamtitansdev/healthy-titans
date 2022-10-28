@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
-import { FoodDetailsProps } from "../../../data/nutritional_information/FoodDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import FirebaseAPI, { FoodDetailsProps } from "../../../api/FirebaseAPI";
 import DetailsComponent from "../../shared/DetailsComponent";
 import { MenuCardProps } from "../../../models/MenuCardProps";
 import CarouselMenu from "../../shared/CarouselMenu";
@@ -12,7 +11,7 @@ import useWindowDimensions from "../../../functions/ScreenWidth";
 import { useGlobalMenuOpenContext } from "../../app_header/AppHeaderContext";
 
 const FoodDetailsComponent = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [getFoodDetailsComponentData, setFoodDetailsComponentData] = useState<
     FoodDetailsProps | undefined
   >();
@@ -20,7 +19,7 @@ const FoodDetailsComponent = () => {
   const { width } = useWindowDimensions();
   const [getImageURL, setImageURL] = useState<string>();
   const [getSeeNext, setSeeNext] = useState<MenuCardProps[] | undefined>();
-  const { foodName , foodCategory } = useParams();
+  const { foodName, foodCategory } = useParams();
   const location = useLocation();
 
   const fetchSeeNext = async (res: FoodDetailsProps) => {
@@ -44,19 +43,18 @@ const FoodDetailsComponent = () => {
     setAdditionalStyling("bg-white mb-10");
     setSeeNext(undefined);
     if (foodName) {
-      FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
+      FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData("FYPData", foodName).then((res) => {
         if (res !== undefined) {
-          fetchSeeNext(res).then((r) => {
+          fetchSeeNext(res as FoodDetailsProps).then((r) => {
             setSeeNext(r);
           });
 
           if (res.firebaseName) {
             FirebaseAPI.fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
-            setFoodDetailsComponentData(res);
+            setFoodDetailsComponentData(res as FoodDetailsProps);
           }
-        }
-        else{
-          navigate(`/NutritionalInformation/${foodCategory}`)
+        } else {
+          navigate(`/NutritionalInformation/${foodCategory}`);
         }
       });
     }

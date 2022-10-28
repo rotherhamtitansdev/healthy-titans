@@ -5,7 +5,7 @@ import getNutritionalDetailsSingular from "../../../../api/NutritionApi";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
 import { chartSizing } from "../../../../models/AnalyticsChartConfig";
 import { ChartDataProcessor } from "../../../../functions/ChartDataProcessor";
-import { NutritionalBreakdownChartData } from "../../../../data/nutritional_information/FoodDetailsComponentData";
+import NutritionalBreakdownChartData from "../../../../data/NutritionBreakdownChart";
 import { NutritionDetailsAPIModel } from "../../../../models/NutritionDetailsAPIModel";
 import "../../../../App.css";
 

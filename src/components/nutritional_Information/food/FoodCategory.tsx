@@ -1,46 +1,100 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router";
-import FoodCategoryData from "../../../data/nutritional_information/FoodCategoryData";
-import FoodSubCategories from "../../../data/nutritional_information/FoodSubCategories";
 import { MenuCardProps } from "../../../models/MenuCardProps";
 import { MenuTitleProps } from "../../../models/MenuTitleProps";
 import Menu from "../../shared/Menu";
 import MenuHeader from "../../app_header/header/MenuHeader";
 import AppHeader from "../../app_header/AppHeader";
+import FirebaseAPI from "../../../api/FirebaseAPI";
 
 const FoodCategory = () => {
   let { foodCategory } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const [getCategoryTitle, setCategoryTitle] = useState("");
+  const [getFoodCategoryData, setFoodCategoryData] = useState<MenuCardProps[]>([]);
+  const [getFoodSubcategoryData, setFoodSubcategoryData] = useState<MenuCardProps[]>([]);
+
+  function setParamFoodCat() {
+    foodCategory = location.pathname.slice(
+      location.pathname.lastIndexOf("/") + 1,
+      location.pathname.length
+    );
+    console.log("SET PARAM", foodCategory);
+  }
+
+  function navigateBackToNutrionalInfo() {
+    setCategoryTitle("Nutritional Information");
+    // if the category is not found then redirect to the nutritional information page
+    navigate("/NutritionalInformation");
+  }
+
+  function readyToCallSetCategoryTitle() {
+    console.log(foodCategory, getFoodCategoryData, getFoodSubcategoryData);
+    if (
+      getFoodCategoryData &&
+      getFoodCategoryData.length !== 0 &&
+      getFoodCategoryData.length > 1 &&
+      foodCategory !== "NutritionalInformation"
+    ) {
+      console.log("ARRAY LENGTH", getFoodCategoryData.length);
+      setCategoryTitle(getFoodCategoryData[0].path);
+    } else if (
+      getFoodSubcategoryData &&
+      getFoodSubcategoryData.length !== 0 &&
+      foodCategory !== "NutritionalInformation"
+    ) {
+      setCategoryTitle(getFoodSubcategoryData[0].path);
+    } else {
+      navigateBackToNutrionalInfo();
+    }
+  }
 
   useEffect(() => {
-    // find the category from hard coded data and match the path with the current category
-    let category = FoodCategoryData.find((element) => element.path === foodCategory)?.name;
-    // if the category is not found, search the subcategories for the category
-    if (!category) {
-      category = FoodSubCategories.find((element) => element.category === foodCategory)?.category;
+    console.log("CALL USEEFFECT", foodCategory, getFoodCategoryData);
+    if (!foodCategory) {
+      setParamFoodCat();
     }
-    // if the category is found then set the category title to the given category
-    if (category) {
-      setCategoryTitle(category);
+
+    if (getFoodCategoryData.length === 0 && getFoodSubcategoryData.length === 0) {
+      // Got no data so make call to get data
+      // find the category from hard coded data and match the path with the current category
+      if (foodCategory && foodCategory !== "NutritionalInformation") {
+        console.log("HERE", foodCategory, typeof getFoodCategoryData);
+        FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData(
+          "FoodCategoryData",
+          foodCategory
+        ).then((categoryData) => {
+          setFoodCategoryData(categoryData as MenuCardProps[]);
+        });
+
+        FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData(
+          "FoodSubCategoryData",
+          foodCategory
+        ).then((subcategoryData) => {
+          setFoodSubcategoryData(subcategoryData as MenuCardProps[]);
+        });
+      } else {
+        console.log("Check food category", foodCategory);
+        FirebaseAPI.fetchSpecifiedComponentData("FoodCategoryData").then((categoryData) => {
+          setFoodCategoryData(categoryData as MenuCardProps[]);
+          console.log("CATEGORY DATA", categoryData);
+        });
+
+        FirebaseAPI.fetchSpecifiedComponentData("FoodSubCategoryData").then((subcategoryData) => {
+          setFoodSubcategoryData(subcategoryData as MenuCardProps[]);
+          console.log("SUBCATEGORY DATA", subcategoryData);
+        });
+      }
+      // Got data so now safe after setStates to call next methods
     } else {
-      // if the category is not found then redirect to the nutritional information page
-      navigate("/NutritionalInformation");
+      console.log("AT ELSE", foodCategory, getFoodCategoryData, getFoodSubcategoryData);
+      readyToCallSetCategoryTitle();
     }
   }, []);
 
   function getFoodData() {
-    // If params isn't passed from router (e.g for FruitAndVegetables), get path from URL
-    if (!foodCategory) {
-      foodCategory = location.pathname.slice(
-        location.pathname.lastIndexOf("/") + 1,
-        location.pathname.length
-      );
-    }
-
-    const category = FoodSubCategories.find((element) => element.category === foodCategory);
-    return category ? category.options : FoodCategoryData;
+    return getFoodCategoryData;
   }
 
   function getTitle(): MenuTitleProps {
@@ -54,8 +108,6 @@ const FoodCategory = () => {
         };
   }
 
-  const foodData: MenuCardProps[] = getFoodData();
-
   return (
     <div>
       <AppHeader>
@@ -64,7 +116,9 @@ const FoodCategory = () => {
           body="Food is important, we all need food to be strong and healthy. From here we can learn about the nutritional values in the foods we eat. This will show you the different types of goodness we can get from the different types of food. We will be able to explore what we need to have a healthy, well-balanced diet including carbohydrates, protein as well as vitamins and minerals."
         />
       </AppHeader>
-      <Menu title={getTitle()} cards={foodData} />
+      {getFoodCategoryData && getFoodCategoryData.length !== 0 && getCategoryTitle && (
+        <Menu title={getTitle()} cards={getFoodData()} />
+      )}
     </div>
   );
 };

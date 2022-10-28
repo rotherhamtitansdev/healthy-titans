@@ -20,7 +20,7 @@ const AboutUs = () => {
   const [imgUrl, setImgUrl] = useState<string | undefined>("");
 
   useEffect(() => {
-    FirebaseAPI.fetchAboutUsData().then((res) => {
+    FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData("AboutUsData", "Data").then((res) => {
       if (res) {
         setAboutUsData(res as DocumentData as AboutUsProps);
       }
