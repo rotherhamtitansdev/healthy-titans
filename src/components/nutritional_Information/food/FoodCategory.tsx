@@ -24,6 +24,7 @@ const FoodCategory = () => {
   }
 
   function navigateBackToNutrionalInfo() {
+    console.log("REFRESH PAGE");
     setCategoryTitle("Food and Nutrition");
     // if the category is not found then redirect to the food and nutrition information page
     navigate("/FoodAndNutrition");
@@ -78,12 +79,12 @@ const FoodCategory = () => {
         console.log("Check food category", foodCategory);
         FirebaseAPI.fetchSpecifiedComponentData("FoodCategoryData").then((categoryData) => {
           setFoodCategoryData(categoryData as MenuCardProps[]);
-          console.log("CATEGORY DATA", categoryData);
+          console.log("CATEGORY DATA", categoryData, getFoodCategoryData);
         });
 
         FirebaseAPI.fetchSpecifiedComponentData("FoodSubCategoryData").then((subcategoryData) => {
           setFoodSubcategoryData(subcategoryData as MenuCardProps[]);
-          console.log("SUBCATEGORY DATA", subcategoryData);
+          console.log("SUBCATEGORY DATA", subcategoryData, getFoodSubcategoryData);
         });
       }
       // Got data so now safe after setStates to call next methods
