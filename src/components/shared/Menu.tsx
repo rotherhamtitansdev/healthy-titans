@@ -14,12 +14,22 @@ const Menu = (props: MenuProps) => {
       if (index === props.cards.length - 1 && props.cards.length % 2 !== 0) {
         styling += " col-span-2 mx-[25%] lg:col-span-1 lg:mx-0";
       }
+      if (props.displaySingleColumnMobile) {
+        if (index === props.cards.length - 1 && props.cards.length % 2 !== 0) {
+          return "w-full my-5 md:my-0 lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] md:ml-[50%] lg:ml-0";
+        }
+        return "w-full my-5 md:my-0 lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem]";
+      }
       return styling;
     }
     return "";
   }
 
   function getStyling() {
+    if (props.displaySingleColumnMobile) {
+      return "px-5 md:py-0 py-5 md:py-0 md:grid md:grid-cols-2 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 md:gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]";
+    }
+
     if (smallMenu) {
       return "px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6";
     }
@@ -46,12 +56,7 @@ const Menu = (props: MenuProps) => {
         </AppHeader>
       )}
       <div className="p-5 md:p-10 pb-20">
-        {props.title && (
-          <MenuTitle
-            title={props.title.title}
-            subtitle={props.title.subtitle}
-          />
-        )}
+        {props.title && <MenuTitle title={props.title.title} subtitle={props.title.subtitle} />}
         <div data-testid="menu-styling" className={getStyling()}>
           {cardList}
           {!smallMenu && <div className="grid col-span-2 lg:col-span-3 ">{props.children}</div>}
