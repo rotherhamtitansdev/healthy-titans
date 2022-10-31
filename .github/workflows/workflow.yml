@@ -113,6 +113,7 @@ jobs:
       - name: Unit Test Results
         uses: mikepenz/action-junit-report@v3.5.1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           check_name: Unit Test Results
           report_paths: "**/results/unit/unit-test-junit.xml"
           include_passed: true
@@ -121,6 +122,7 @@ jobs:
       - name: Cypress Results
         uses: mikepenz/action-junit-report@v3.5.1
         with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           check_name: Cypress Results
           report_paths: "**/results/e2e/e2e-junit.xml"
           include_passed: true
