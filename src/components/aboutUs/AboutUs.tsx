@@ -6,7 +6,7 @@ import FirebaseAPI from "../../api/FirebaseAPI";
 import { AboutUsProps } from "../../models/AboutUs/AboutUsProps";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
-import RTLogo from "../../img/RT_Logo.png";
+import TitansLogo from "../../img/TitansCommunityLogo.png";
 
 const gridStyles = "grid grid-cols-1 md:grid-cols-2";
 const sectionPaddingStyles = "py-6 md:py-14";
@@ -14,6 +14,7 @@ const sectionHeaderStyles = "font-semibold text-[#252948] text-xl md:text-2xl lg
 const imgContainerStyles = "flex justify-center items-center my-6 md:my-0";
 const textMarginStyles = "mx-8 md:mx-16 lg:mx-24";
 const textAreaStyles = `${textMarginStyles} flex flex-col gap-4`;
+const spacerDivStyle = "bg-gradient-to-b from-white to-transparent";
 
 const AboutUs = () => {
   const [AboutUsData, setAboutUsData] = useState<AboutUsProps | undefined>();
@@ -23,7 +24,7 @@ const AboutUs = () => {
     FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData("AboutUsData", "Data").then((res) => {
       if (res) {
         setAboutUsData(res as DocumentData as AboutUsProps);
-      }
+            }
     });
 
     FirebaseAPI.fetchImages("FoodCategories/Fruits/FruitAndVeg.svg").then((value) =>
@@ -58,8 +59,8 @@ const AboutUs = () => {
           <div id="section2" className={`${gridStyles} ${sectionPaddingStyles} bg-white`}>
             <div id="imgArea2" className={`${imgContainerStyles} order-last md:order-first`}>
               <img
-                src={RTLogo}
-                alt="Rotherham Titans Logo"
+                src={TitansLogo}
+                alt="Titans Community Foundation Logo"
                 className="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
               />
             </div>
@@ -93,9 +94,9 @@ const AboutUs = () => {
               </div>
             </div>
           </div>
-          <div className="h-[50px] bg-gradient-to-b from-white to-transparent"></div>
         </div>
       )}
+      <div className={`${AboutUsData ? spacerDivStyle: null} h-[50px]`}></div>
     </>
   );
 };

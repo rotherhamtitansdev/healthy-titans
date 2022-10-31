@@ -17,6 +17,12 @@ const Games = () => {
       path: "Quiz",
       firebaseName: "Games/Quiz.svg",
     },
+    {
+      key: 2,
+      name: "External Games",
+      path: "ExternalGames",
+      firebaseName: "Games/Joystick.svg",
+    },
   ];
   const headerData: HeaderProps = {
     title: "Games",

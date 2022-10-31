@@ -24,9 +24,9 @@ const FoodCategory = () => {
   }
 
   function navigateBackToNutrionalInfo() {
-    setCategoryTitle("Nutritional Information");
-    // if the category is not found then redirect to the nutritional information page
-    navigate("/NutritionalInformation");
+    setCategoryTitle("Food and Nutrition");
+    // if the category is not found then redirect to the food and nutrition information page
+    navigate("/FoodAndNutrition");
   }
 
   function readyToCallSetCategoryTitle() {
@@ -35,14 +35,14 @@ const FoodCategory = () => {
       getFoodCategoryData &&
       getFoodCategoryData.length !== 0 &&
       getFoodCategoryData.length > 1 &&
-      foodCategory !== "NutritionalInformation"
+      foodCategory !== "FoodAndNutrition"
     ) {
       console.log("ARRAY LENGTH", getFoodCategoryData.length);
       setCategoryTitle(getFoodCategoryData[0].path);
     } else if (
       getFoodSubcategoryData &&
       getFoodSubcategoryData.length !== 0 &&
-      foodCategory !== "NutritionalInformation"
+      foodCategory !== "FoodAndNutrition"
     ) {
       setCategoryTitle(getFoodSubcategoryData[0].path);
     } else {
@@ -59,7 +59,7 @@ const FoodCategory = () => {
     if (getFoodCategoryData.length === 0 && getFoodSubcategoryData.length === 0) {
       // Got no data so make call to get data
       // find the category from hard coded data and match the path with the current category
-      if (foodCategory && foodCategory !== "NutritionalInformation") {
+      if (foodCategory && foodCategory !== "FoodAndNutrition") {
         console.log("HERE", foodCategory, typeof getFoodCategoryData);
         FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData(
           "FoodCategoryData",

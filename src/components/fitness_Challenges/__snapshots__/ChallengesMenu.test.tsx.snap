@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChallengesMenu component renders with list of challenges 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
+  >
+    <div
+      class="flex flex-wrap h-[22rem]"
+    >
+      <div
+        class="mx-auto pt-[3rem] md:pt-[2rem]"
+      >
+        <h1
+          class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+          data-testid="header-title"
+        >
+          Fitness Challenges
+        </h1>
+        <div
+          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+        >
+          Being active and moving your body is really important to remain strong and healthy. Exercise can be in the form of playing a sport, walking the dog or taking part in competetive games with friends!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="p-5 md:p-10 pb-20"
+  >
+    <div
+      class="md:px-5"
+    >
+      <div
+        class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+        data-testid="menutitle-title"
+      >
+        Stay fit with these fun challenges!
+      </div>
+      <div
+        class="font-medium text-[#243A73] md:text-xl lg:text-xl md:pb-5"
+      >
+        Click on a picture to learn more about each activity
+      </div>
+    </div>
+    <div
+      class="px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6"
+      data-testid="menu-styling"
+    >
+      <div
+        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+        data-testid="Ball Rush"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+        >
+          <div
+            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+          >
+            <span
+              class=""
+              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+            />
+          </div>
+          <div
+            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+          >
+            Ball Rush
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+        data-testid="Ball Balance"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+        >
+          <div
+            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+          >
+            <span
+              class=""
+              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+            />
+          </div>
+          <div
+            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+          >
+            Ball Balance
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

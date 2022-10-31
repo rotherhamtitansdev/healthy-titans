@@ -18,7 +18,7 @@ describe("Breadcrumb Component", () => {
   });
 
   it("should have correct text as determined by the route", () => {
-    const route = "/NutritionalInformation";
+    const route = "/FoodAndNutrition";
     const { getByText } = render(
       <RoutingTestWrapper path={route}>
         <Route path={route} element={<Breadcrumbs styling="" />} />
@@ -29,7 +29,7 @@ describe("Breadcrumb Component", () => {
   });
 
   it("should render multiple breadcrumbs as determined by the route", () => {
-    const route = "/NutritionalInformation/Test";
+    const route = "/FoodAndNutrition/Test";
     render(
       <MemoryRouter initialEntries={["/", route]}>
         <Routes>

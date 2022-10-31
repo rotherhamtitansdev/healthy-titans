@@ -71,7 +71,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 *Based on serving of 100 g
               </p>
             </div>
-            <div className="lg:x-12 mx-8 my-8">
+            <div className="lg:mx-12 mx-8 my-8">
               <p className="text-[16px] text-primaryGrey font-medium">Calories</p>
               <p
                 data-testid="calorie-count"

@@ -54,7 +54,7 @@ const FoodDetailsComponent = () => {
             setFoodDetailsComponentData(res as FoodDetailsProps);
           }
         } else {
-          navigate(`/NutritionalInformation/${foodCategory}`);
+          navigate(`/FoodAndNutrition/${foodCategory}`);
         }
       });
     }

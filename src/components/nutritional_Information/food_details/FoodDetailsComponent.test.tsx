@@ -68,12 +68,12 @@ describe("Food Details Component", () => {
     // Using memoryrouter to mock Route as path to the component is required for the contents
     const { asFragment } = render(
       <MemoryRouter
-        initialEntries={[{ pathname: "/NutritionalInformation/mockCategory/mock3" }]}
+        initialEntries={[{ pathname: "/FoodAndNutrition/mockCategory/mock3" }]}
         initialIndex={0}
       >
         <Routes>
           <Route
-            path="/NutritionalInformation/mockCategory/:foodName"
+            path="/FoodAndNutrition/mockCategory/:foodName"
             element={<FoodDetailsComponent />}
           />
         </Routes>
