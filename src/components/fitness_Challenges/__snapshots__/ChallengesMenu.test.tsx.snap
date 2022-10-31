@@ -44,7 +44,7 @@ exports[`ChallengesMenu component renders with list of challenges 1`] = `
       </div>
     </div>
     <div
-      class="px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-x-10 gap-y-6"
       data-testid="menu-styling"
     >
       <div
