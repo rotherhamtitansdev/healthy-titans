@@ -8,6 +8,8 @@ export default defineConfig({
     reporterOptions: {
       mochaFile: "results/e2e/e2e-test-junit-[hash].xml",
     },
+    screenshotsFolder: "results/e2e/screenshots",
+    videosFolder: "results/e2e/videos",
 
     setupNodeEvents(on, config) {
       // implement node event listeners here
