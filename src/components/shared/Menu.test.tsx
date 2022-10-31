@@ -118,8 +118,6 @@ describe("Menu Component", () => {
     expect(screen.getByTestId(props.cards[3].name)).toHaveClass(
       "lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem]"
     );
-
-    screen.debug();
     expect(asFragment()).toMatchSnapshot();
   });
 });
