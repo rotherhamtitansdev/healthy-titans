@@ -1,5 +1,5 @@
-// empty function expected for context
 /* eslint-disable @typescript-eslint/no-empty-function */
+// empty function expected for context
 import React, { FC, useMemo, useState, createContext, useContext } from "react";
 
 export type GlobalMenuOpen = {
