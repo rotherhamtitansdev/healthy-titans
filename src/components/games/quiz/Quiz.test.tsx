@@ -1,3 +1,5 @@
+/* eslint-disable no-await-in-loop */
+// intended to be used in a loop
 
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";

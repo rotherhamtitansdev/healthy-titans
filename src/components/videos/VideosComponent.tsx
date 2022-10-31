@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
-import { VideoData } from "../../data/VideoData";
+import VideoData from "../../data/VideoData";
 import { Video } from "../../models/Video";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";

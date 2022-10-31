@@ -18,7 +18,7 @@ describe("MenuTitle component", () => {
   });
 
   test("renders with title and subtitle and no breadcrumbs", () => {
-    const menuTitleProps: MenuTitleProps = {
+    const menuTitleProps = {
       title: "My Test Title",
       subtitle: "My Test Subtitle",
     };
@@ -28,7 +28,7 @@ describe("MenuTitle component", () => {
     });
 
     expect(screen.getByText(menuTitleProps.title)).toBeVisible();
-    expect(screen.getByText(menuTitleProps.subtitle!)).toBeVisible();
+    expect(screen.getByText(menuTitleProps.subtitle)).toBeVisible();
     expect(screen.queryByTestId("breadcrumbs")).not.toBeInTheDocument();
   });
 });

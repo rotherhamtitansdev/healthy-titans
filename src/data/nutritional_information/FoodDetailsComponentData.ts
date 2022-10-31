@@ -4,8 +4,6 @@
  * Mainly 3 things need to be added for a type of food: 1.Name 2.Link 3.Img
  */
 
-// @ts-nocheck
-
 import { NutritionDetailsAPIModel } from "../../models/NutritionDetailsAPIModel";
 
 export interface FoodDetailsProps {
@@ -16,11 +14,6 @@ export interface FoodDetailsProps {
   score: number;
   facts: string[];
 }
-
-export interface FoodDetailsComponentDataFile {
-  [key: string]: FoodDetailsComponentData;
-}
-
 const FoodDetailsComponentData = {
   Beef: {
     name: "Beef",

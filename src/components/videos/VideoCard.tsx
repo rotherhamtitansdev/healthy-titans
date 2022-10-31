@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/media-has-caption */
+// we are not writing captions for videos
 import React, { useCallback, useState } from "react";
 import FirebaseAPI from "../../api/FirebaseAPI";
 import "../../App.css";

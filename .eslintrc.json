@@ -19,7 +19,7 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "unused-imports", "react"],
-  "ignorePatterns": ["**/config/*.ts"],
+  "ignorePatterns": ["**/*.config.ts", "**/*.config.js"],
   "rules": {
     "no-empty-function": "off",
     "max-len": [1],
