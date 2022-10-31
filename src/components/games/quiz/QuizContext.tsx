@@ -1,5 +1,3 @@
-// empty functions expected for context
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { FC, createContext, useContext, useState, useMemo } from "react";
 import { AnswerProps } from "../../../models/Quiz/AnswerProps";
 import { QuestionProps } from "../../../models/Quiz/QuestionProps";

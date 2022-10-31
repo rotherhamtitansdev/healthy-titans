@@ -3,7 +3,7 @@
  * All the data about different kind of foods is stored here.
  * Mainly 3 things need to be added for a type of food: 1.Name 2.Link 3.Img
  */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
 // @ts-nocheck
 
 import { NutritionDetailsAPIModel } from "../../models/NutritionDetailsAPIModel";

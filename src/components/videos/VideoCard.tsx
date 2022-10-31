@@ -39,7 +39,6 @@ const VideoCard = (props: {
     >
       <div className="p-5">
         {getVideoURL && props.video.description && (
-          // eslint-disable-next-line jsx-a11y/media-has-caption
           <video className="rounded-3xl">
             <source src={getVideoURL} />
           </video>

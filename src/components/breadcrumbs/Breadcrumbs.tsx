@@ -13,8 +13,6 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
   ];
 
   const breadcrumbs = useBreadcrumbs(routes);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function getBreadcrumbName(breadcrumb: any) {
     const path = breadcrumb.props.children;
     // Replace pascal case with title case

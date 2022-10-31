@@ -28,7 +28,6 @@ describe("MenuTitle component", () => {
     });
 
     expect(screen.getByText(menuTitleProps.title)).toBeVisible();
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(screen.getByText(menuTitleProps.subtitle!)).toBeVisible();
     expect(screen.queryByTestId("breadcrumbs")).not.toBeInTheDocument();
   });

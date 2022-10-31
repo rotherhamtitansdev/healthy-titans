@@ -1,4 +1,4 @@
-// eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
+
 const FoodDetailsComponentData = {
   Beef: {
     name: "Beef",
