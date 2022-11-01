@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
-import getNutritionalDetailsSingular from "../../../../api/NutritionApi";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
 import { chartSizing } from "../../../../models/AnalyticsChartConfig";
 import { ChartDataProcessor } from "../../../../functions/ChartDataProcessor";
@@ -49,11 +48,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
 
     if (ChartData !== undefined) {
       processChart(ChartData.data);
-    } else {
-      getNutritionalDetailsSingular(name).then((unparsed) => {
-        processChart(unparsed);
-      });
-    }
+    } 
   });
 
   return (
