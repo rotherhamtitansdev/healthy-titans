@@ -33,16 +33,28 @@ const ExternalGames = () => {
   };
 
   return (
-    <Menu
-      header={headerData}
-      cards={gamesData}
-      displaySingleColumnMobile
-      title={{
-        title: "Games & Challenges",
-        subtitle:
-          "Click on a game to see how much you've learned so far - you'll surprise yourself 😀",
-      }}
-    />
+    <>
+      <Menu
+        header={headerData}
+        cards={gamesData}
+        displaySingleColumnMobile
+        title={{
+          title: "Games & Challenges",
+        }}
+        containerStyles="hidden lg:block"
+      />
+      <Menu
+        header={headerData}
+        cards={gamesData}
+        displaySingleColumnMobile
+        title={{
+          title: "Games & Challenges",
+          subtitle:
+            "Click on a game to see how much you've learned so far - you'll surprise yourself 😀",
+        }}
+        containerStyles="lg:hidden"
+      />
+    </>
   );
 };
 

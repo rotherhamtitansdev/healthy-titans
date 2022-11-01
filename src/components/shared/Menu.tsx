@@ -49,7 +49,7 @@ const Menu = (props: MenuProps) => {
   ));
 
   return (
-    <>
+    <div className={props.containerStyles}>
       {props.header && (
         <AppHeader>
           <MenuHeader title={props.header.title} body={props.header.body} />
@@ -62,7 +62,7 @@ const Menu = (props: MenuProps) => {
           {!smallMenu && <div className="grid col-span-2 lg:col-span-3 ">{props.children}</div>}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Menu;

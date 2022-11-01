@@ -9,4 +9,5 @@ export interface MenuProps {
   title?: MenuTitleProps;
   children?: React.ReactNode;
   displaySingleColumnMobile?: boolean;
+  containerStyles?: string;
 }
