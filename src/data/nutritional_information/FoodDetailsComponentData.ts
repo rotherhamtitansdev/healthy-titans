@@ -14,673 +14,6 @@ export interface FoodDetailsProps {
   score: number;
   facts: string[];
 }
-const FoodDetailsComponentData = {
-  Beef: {
-    name: "Beef",
-    description:
-      "Beef is a very good source of protein and can be bought and cooked in many different ways...",
-    firebaseName: "FoodCategories/Meat/Food/Beef.svg",
-    category: "Meat",
-    facts: [
-      "Source of PROTEIN and FAT",
-      "Great source of IRON which helps make our red blood cells which carry oxygen round our body.",
-      "Good source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B12, B6 & B3",
-      "VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production",
-      "VITAMIN B6 plays a role in brain development and function plus making hormones",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-      "Good source of ZINC which is important for growth and development. Zinc helps make enzymes for digestion.",
-    ],
-    score: 9,
-  },
-  Chicken: {
-    name: "Chicken",
-    description:
-      "Chicken is one of the world's most popular meats and they also give us eggs - laying a fresh egg about every 25 hours!",
-    firebaseName: "FoodCategories/Meat/Food/Chicken.svg",
-    category: "Meat",
-    facts: [
-      "Great source of PROTEIN",
-      "Good source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B12, B6, B3 & B2",
-      "VITAMIN B2 works as an ANTIOXIDANT",
-      "VITAMIN B6 plays a role in brain development and function plus making hormones",
-      "VITAMIN B12 contributes to healthy nerve cells, production of DNA and red blood cell production",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Good source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-      "Source of ZINC which is important for growth and development. Zinc helps make enzymes for digestion.",
-      "Source of COPPER which helps our body make red blood cells which transport oxygen round the body",
-    ],
-    score: 9,
-  },
-  Turkey: {
-    name: "Turkey",
-    description:
-      'Turkey started being used in celebrations from as early as the 1500s, originally in England. Charles Dickens helped make Turkey popular by featuring it in the story "A Christmas Carol"',
-    firebaseName: "FoodCategories/Meat/Food/Turkey.svg",
-    category: "Meat",
-    facts: [
-      "Great source of PROTEIN",
-      "Rich source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B12, B6 & B3",
-      "VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production",
-      "VITAMIN B6 plays a role in brain development and function plus making hormones",
-      "Source of ZINC which is important for growth and development. Zinc helps make enzymes for digestion.",
-      "Contains SODIUM which is an electrolyte that plays a role in fluid balance so the body can function normally",
-      "Good source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-    ],
-    score: 9,
-  },
-  Pork: {
-    name: "Pork",
-    description: "Pork is the most widely eaten meat in the whole world!",
-    firebaseName: "FoodCategories/Meat/Food/Pork.svg",
-    category: "Meat",
-    facts: [
-      "Great source of PROTEIN and FAT",
-      "Some B-complex vitamins which help the body convert food into fuel. VITAMIN B12, B6, B3 & B1",
-      "VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production",
-      "VITAMIN B6 plays a role in brain development and function plus making hormones",
-      "VITAMIN B1 plays an important role in many body functions. One of which is the removal of carbon dioxide",
-      "Good source of ZINC which is important for growth and development.  Zinc helps make enzymes for digestion.",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Good source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-      "Great source of IRON which helps make our red blood cells which carry oxygen round our body",
-    ],
-    score: 8,
-  },
-  Lamb: {
-    name: "Lamb",
-    description: 'The word Lamb comes from the German word "Lambiz" ',
-    firebaseName: "FoodCategories/Meat/Food/Lamb.svg",
-    category: "Meat",
-    facts: [
-      "Great source of PROTEIN and FAT",
-      "Good source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-      "Good source of ZINC which is important for growth and development. Zinc helps make enzymes for digestion.",
-      "Great source of IRON which helps make our red blood cells which carry oxygen around our body",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Good source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B12 & B3",
-      "VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production",
-    ],
-    score: 9,
-  },
-  CookedMeats: {
-    name: "Cooked Meats",
-    description: "Great protein source to put into your sandwiches.",
-    firebaseName: "FoodCategories/Meat/Food/CookedMeats.svg",
-    category: "Meat",
-    facts: [
-      "Pre-cooked meats will have a similar nutrition profile to their respective meat e.g. ham and pork",
-      "Pre-cooked meats are very quick and convenient for packed lunches",
-    ],
-    score: 8,
-  },
-  Cod: {
-    name: "Cod",
-    description:
-      "Cod are usually around 50cm long and can be found in the Pacific and Atlantic Oceans",
-    firebaseName: "FoodCategories/Fish/Food/Cod.svg",
-    category: "Fish",
-    facts: [
-      "Good source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B12, B6 & B3",
-      "VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production",
-      "VITAMIN B6 plays a role in brain development and function plus making hormones",
-      "Great source of PROTEIN",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Good source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-    ],
-    score: 7,
-  },
-  Salmon: {
-    name: "Salmon",
-    description:
-      'Salmon can live in both freshwater and saltwater - wow!  This means they are considered "anadromous"',
-    firebaseName: "FoodCategories/Fish/Food/Salmon.svg",
-    category: "Fish",
-    facts: [
-      "Salmon contains the essential fatty acids omega-3 which our bodies can’t produce so these are important to include in our diets for a range of functions within the body. Omega-3 fish oils support cardiovascular health, metabolic health and cognitive function (brain) which could aid learning at school.",
-      "Good source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B12, B6, B3, B1 & B5",
-      "VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production",
-      "VITAMIN B6 plays a role in brain development and function plus making hormones",
-      "VITAMIN B1 plays an important role in many body functions. One of which is the removal of carbon dioxide",
-      "VITAMIN B5 contributes to the production of red blood cells and hormones",
-      "Great source of PROTEIN",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Good source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-    ],
-    score: 10,
-  },
-  Tuna: {
-    name: "Tuna",
-    description:
-      "The Atlantic Bluefin Tuna can grow to 10feet in length and weigh more than a horse around 2000lbs, that's over 900kg!",
-    firebaseName: "FoodCategories/Fish/Food/Tuna.svg",
-    category: "Fish",
-    facts: [
-      "Tuna contains the essential fatty acids omega-3 which our bodies can’t produce so these are important to include in our diets for a range of functions within the body. Omega-3 fish oils are heart healthy and support cardiovascular health, metabolic health and cognitive function (Brain) which could aid learning at school.",
-      "Good source of PROTEIN",
-      "Good source of SELENIUM which works closely with VITAMIN E which acts as an antioxidant to prevent cell damage",
-      "Source of VITAMIN D which has a range of benefits in children including improved bone health via vitamin D supporting calcium absorption, improves immune system and has been shown to reduce depression symptoms.",
-    ],
-    score: 9,
-  },
-  Apples: {
-    name: "Apples",
-    description:
-      "As well as being a great fruit, legend has it that Isaac Newton formulated his theory on Gravity around after watching an apple fall from a tree and asking why it fell straight down.",
-    firebaseName: "FoodCategories/Fruits/Food/Apple.svg",
-    category: "Fruit",
-    facts: [
-      "Source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Good source of FIBRE which is key for our digestive system and health",
-      "Source of POTASSIUM which plays a role in hydration, Did you know apples are very heart health and bone healthy?",
-      "Did you know apples are very filling? They could be a good snack to combat those cravings between meals",
-    ],
-    score: 7,
-  },
-  Bananas: {
-    name: "Bananas",
-    description: "Bananas have been proven to improve mood in some people",
-    firebaseName: "FoodCategories/Fruits/Food/Banana.svg",
-    category: "Fruit",
-    facts: [
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Moderate amount of CARBOHYDRATE which gives us energy",
-      "High source of VITAMIN B6 which is important for brain development and function plus keeping the immune system healthy.",
-      "Contains FIBRE which is key for our digestive system and health",
-    ],
-    score: 9,
-  },
-  Grapes: {
-    name: "Grapes",
-    description:
-      "Did you know that Grapes are actualy Berries and they've been around for 65million years?",
-    firebaseName: "FoodCategories/Fruits/Food/Grapes.svg",
-    category: "Fruit",
-    facts: [
-      "Rich source of COPPER which helps our body make red blood cells which transport oxygen round the body",
-      "Good source of VITAMIN K which is important in blood clotting and bone formation",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Good source of the B-complex vitamins which help the body convert food into fuel",
-    ],
-    score: 7,
-  },
-  Oranges: {
-    name: "Oranges",
-    description: "Did you know a lack of VITAMIN C can lead to SCURVY?",
-    firebaseName: "FoodCategories/Fruits/Food/Orange.svg",
-    category: "Fruit",
-    facts: [
-      "Oranges contain high amounts of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-    ],
-    score: 7,
-  },
-  Pears: {
-    name: "Pears",
-    description:
-      "There are more than 3000 differnet variety of pears and the USA is one of the larget producers of pears in the world",
-    firebaseName: "FoodCategories/Fruits/Food/Pear.svg",
-    category: "Fruit",
-    facts: [
-      "Good source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Source of COPPER which helps our body make red blood cells which transport oxygen round the body",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Good source of FIBRE which is key for our digestive system and health",
-    ],
-    score: 7,
-  },
-  Strawberries: {
-    name: "Strawberries",
-    description:
-      "Traditionally, Tennis fans at Wimbledon get through an average of 122,000 punnets of strawberries each year!",
-    firebaseName: "FoodCategories/Fruits/Food/Strawberry.svg",
-    category: "Fruit",
-    facts: [
-      "Strawberries contain VITAMIN C which is important for our health.  Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Moderate amount of CARBOHYDRATE which gives us energy",
-      "Contains FIBRE which is key for our digestive system and health",
-    ],
-    score: 7,
-  },
-  Blueberries: {
-    name: "Blueberries",
-    description:
-      "Blueberries ranked number one in antioxidant health benefits in a comparison with more than 40 fresh fruits and vegetables",
-    firebaseName: "FoodCategories/Fruits/Food/Blueberries.svg",
-    category: "Fruit",
-    facts: [
-      "Source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood",
-      "These go very well with yoghurt!",
-      "Good source of FIBRE which is key for our digestive system and health",
-      "Rich in antioxidants which help protect the body from damaging free radicals",
-    ],
-    score: 7,
-  },
-  Tomato: {
-    name: "Tomato",
-    description: "Yes, that's right a Tomato is a fruit and not a vegetable - did  you know that?",
-    firebaseName: "FoodCategories/Fruits/Food/Tomato.svg",
-    category: "Fruit",
-    facts: [
-      "Rich source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and aids our vision in dim light conditions",
-    ],
-    score: 8,
-  },
-  Avocado: {
-    name: "Avocado",
-    description:
-      "In the summer of 2017, more than 3,000,000 photos of avocado toast were uploaded to Instagram every single day! Avocado is the main ingredient of the yummy dip Guacamole, have you tried it?",
-    firebaseName: "FoodCategories/Fruits/Food/Avocado.svg",
-    category: "Fruit",
-    facts: [
-      "Great source of some B-complex vitamins which help the body convert food into fuel. VITAMIN B2, B3,B5, B6 & B9",
-      "VITAMIN B2 works as an ANTIOXIDANT",
-      "VITAMIN B5 contributes to the production of red blood cells and hormones",
-      "VITAMIN B6 plays a role in brain development and function plus making hormones",
-      "Rich source of VITAMIN B9 which is important for brain function",
-      "Source of COPPER which helps our body make red blood cells which transport oxygen round the body",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Source of VITAMIN C which is important for our health. Functions of vitamin C include:ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Rich source of VITAMIN K which is important in blood clotting and bone formation",
-      "Source of Magnesium which helps maintain blood pressure",
-      "Rich source of FIBRE which is key for our digestive system and health",
-      "Source of VITAMIN E which acts as an antioxidant to prevent cell damage",
-    ],
-    score: 8,
-  },
-  Asparagus: {
-    name: "Asparagus",
-    description: "It takes 3 years for Aparagus to get from being a seed to being harvested",
-    firebaseName: "FoodCategories/Vegetables/Food/Asparagus.svg",
-    category: "Veg",
-    facts: [
-      "Rich source of VITAMIN K which is important in blood clotting and bone formation",
-      "Rich source of vitamin B9 which is important for brain function",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Source of VITAMIN E which acts as an antioxidantt o prevent cell damage",
-      "Good source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and seeing in dim light",
-      "Source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-    ],
-    score: 9,
-  },
-  BellPeppers: {
-    name: "Bell Peppers",
-    description:
-      "Red bell peppers have more than twice the vitamin C of a green pepper and they do taste different.  Green peppers are the least ripe and red is the sweetest.",
-    firebaseName: "FoodCategories/Vegetables/Food/BellPepper.svg",
-    category: "Veg",
-    facts: [
-      "Red bell peppers are a very rich source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood",
-      "Source of VITAMIN K which is important in blood clotting and bone formation",
-      "Source of VITAMIN B6 which is important for brain development and function plus keeping the immune system healthy.",
-      "Source of VITAMIN B9 which plays a role in brain function, DNA production and red blood cells production",
-      "Source of VITAMIN E which acts as an antioxidant to prevent cell damage",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and aids our vision in dim light conditions.",
-    ],
-    score: 9,
-  },
-  Broccoli: {
-    name: "Broccoli",
-    description:
-      "Standing your broccoli up on your plate makes it look like a tiny forest full of little trees 😆",
-    firebaseName: "FoodCategories/Vegetables/Food/Broccoli.svg",
-    category: "Veg",
-    facts: [
-      "Rich source of VITAMIN C which is important for our health. Functions of vitamin C include:ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Good source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and seeing in dim light conditions",
-      "Source of VITAMIN B9 which is important for brain function",
-      "Source of VITAMIN K which is important in blood clotting and bone formation",
-      "Source of IRON helps make our red blood cells whichcarry oxygen round our body",
-      "Source of MAGNESIUM which helps maintainblood pressure",
-      "PHOSPHORUS, an essential mineral that plays an important role in biological processes",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-    ],
-    score: 9,
-  },
-  Carrot: {
-    name: "Carrots",
-    description:
-      "Carrots help you see in the dark. Fun fact: VITAMIN A is important our vision and can help us see in dim light conditions.",
-    firebaseName: "FoodCategories/Vegetables/Food/Carrot.svg",
-    category: "Veg",
-    facts: [
-      "Rich source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle.  Vitamin A also plays a role in having healthy skin and seeing in dim light conditions.",
-      "Contains FIBRE which is key for our digestive system and health.",
-    ],
-    score: 7,
-  },
-  Cauliflower: {
-    name: "Cauliflower",
-    description: "Cauliflower is related to Kale so is also super-healthy.",
-    firebaseName: "FoodCategories/Vegetables/Food/Cauliflower.svg",
-    category: "Veg",
-    facts: [
-      "Rich source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Contains FIBRE which is key for our digestive system and health.",
-      "Source of vitamin B9 which plays a role in brain function, DNA production and red blood cells production.",
-      "Source of MAGNESIUM which helps maintain blood pressure.",
-      "Source of PHOSPHORUS, an essential mineral that plays an important role in biological processes.",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health.",
-      "Source of VITAMIN B6 which is important for brain development and function plus keeping the immune system healthy.",
-      "Good source of VITAMIN K which is important in blood clotting and bone formation.",
-    ],
-    score: 9,
-  },
-  Mushrooms: {
-    name: "Mushrooms",
-    description:
-      "Portobello, Button and White (Cremini) mushrooms are all the same - its just the different ages of them that makes them differ.",
-    firebaseName: "FoodCategories/Vegetables/Food/Mushroom.svg",
-    category: "Veg",
-    facts: [
-      "Source of some of the B- complex vitamins which help the body convert food into fuel. Vitamin B2, B3 & B5.",
-      "VITAMIN B2 works as an ANTIOXIDANT.",
-      "VITAMIN B5 contributes to the production of red blood cells and hormones.",
-      "Rich in antioxidants which help protect the body from damaging free radicals.",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health.",
-      "Contains FIBRE which is key for our digestive system and health.",
-      "Source of COPPER which helps our body make red blood cells which transport oxygen round the body.",
-    ],
-    score: 7,
-  },
-  Peas: {
-    name: "Peas",
-    description: "Peas were first frozen in the 1920s to keep them fresh.",
-    firebaseName: "FoodCategories/Vegetables/Food/Peas.svg",
-    category: "Veg",
-    facts: [
-      "Peas are great for growing minds by aiding the development of brain cells and improving memory.",
-      "Source of VITAMIN K which is important in blood clotting and bone formation.",
-      "Source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and sight.",
-      "Source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-    ],
-    score: 8,
-  },
-  Kale: {
-    name: "Kale",
-    description: "Kale is right at the top of the nutrient density scale - you can't beat it!",
-    firebaseName: "FoodCategories/Vegetables/Food/Kale.svg",
-    category: "Veg",
-    facts: [
-      "Rich source of VITAMIN K which is important in blood clotting and bone formation. Vitamin K deficiency can lead to severe bleeding",
-      "Good source of some of the B-complex vitamins which help the body convert food into fuel",
-      "Source of VITAMIN C which is important for our health.  Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Good source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and seeing in dim light",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Source of MAGNESIUM which helps maintain blood pressure",
-      "Source of COPPER helps our body make red blood cells which transport oxygen around the body",
-      "Source of CALCIUM which helps build bones and teeth",
-    ],
-    score: 9,
-  },
-  Potato: {
-    name: "Potato",
-    description:
-      "The word 'potato' comes from the Spanish word 'patata' and there are thousands of different types available.",
-    firebaseName: "FoodCategories/Vegetables/Food/Potato.svg",
-    category: "Veg",
-    facts: [
-      "Contains FIBRE which is key for our digestive system and health.",
-      "Source of VITAMIN C which is important for our health. Functions of vitamin C include: ANTIOXIDANT, wound healing, aids IRON absorption and plays a role in the formation and maintenance of collagen which is a protein you rely on to build skin, cartilage, ligaments, tendons, bones and blood vessels.",
-      "Moderate amount of CARBOHYDRATE which gives us energy.",
-    ],
-    score: 7,
-  },
-  SweetPotato: {
-    name: "Sweet Potato",
-    description:
-      "How cool is the colour of sweet potatoes?! Fun fact:  VITAMIN A is important to our vision and can help us see in dim light conditions",
-    firebaseName: "FoodCategories/Vegetables/Food/SweetPotato.svg",
-    category: "Veg",
-    facts: [
-      "Contains FIBRE which is key for our digestive system and health",
-      "Moderate amount of CARBOHYDRATE which gives us energy",
-      "Rich source of VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin",
-    ],
-    score: 7,
-  },
-  Spinach: {
-    name: "Spinach",
-    description:
-      "Spinach is arty! During medieval times the green pigment extracted from Spinach was used as ink in artwork",
-    firebaseName: "FoodCategories/Vegetables/Food/Spinach.svg",
-    category: "Veg",
-    facts: [
-      "Great source of IRON helps make our red blood cells which carry oxygen round our body",
-      "Source of vitamin B9 which is important for brain function",
-      "Contains FIBRE which is key for our digestive system and health",
-      "Source of POTASSIUM which plays a role in hydration, heart health and bone health",
-      "Source of MAGNESIUM which helps maintain blood pressure",
-    ],
-    score: 8,
-  },
-  Butter: {
-    name: "Butter",
-    description:
-      "Butter is a healthier alternative to margarine spreads as they contain TRANS FATS. Trans fats have been proven to increase the risk of heart disease, stroke, diabetes and mortality!",
-    firebaseName: "FoodCategories/DairyAndEggs/Food/Butter.svg",
-    category: "Dairy & Eggs",
-    facts: [
-      "Butter from grass fed sources contain the essential omega -3 fatty acids.",
-      "Source of VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production.",
-      "Source of the FAT - soluble vitamins A, D & E.",
-      "VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and sight.",
-      "Source of VITAMIN D which has a range of benefits in children including improved bone health via vitamin D supporting calcium absorption, improves immune system and has been shown to reduce depression symptoms.",
-      "VITAMIN E acts as an antioxidant to prevent cell damage.",
-    ],
-    score: 7,
-  },
-  Cheese: {
-    name: "Cheese",
-    description:
-      "Where can we include cheese in our diets? Cheese is great to have in your sandwiches, on pasta bakes, jacket potato or with crackers!",
-    firebaseName: "FoodCategories/DairyAndEggs/Food/Cheese.svg",
-    category: "Dairy & Eggs",
-    facts: [
-      "Rich source of CALCIUM which helps build bones and teeth.",
-      "Source of PHOSPHORUS which helps with bone formation and prevents the loss of calcium from bone.",
-      "Source of FAT and high source of PROTEIN.",
-      "Rich source of VITAMIN B12 which contributes to healthy nerve cells, production of DNA and red blood cell production.",
-      "Full fat varieties have VITAMIN A.",
-      "VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and sight.",
-    ],
-    score: 8,
-  },
-  Eggs: {
-    name: "Eggs",
-    description:
-      "Eggs can be boiled, fried, scrambled, poached and baked. Boiled eggs have the highest protein value.",
-    firebaseName: "FoodCategories/DairyAndEggs/Food/Eggs.svg",
-    category: "Dairy & Eggs",
-    facts: [
-      "Source of Biotin which is beneficial for hair and nail health.",
-      "Egg yolks are a good source of VITAMIN K which is important in blood clotting and bone formation.",
-      "Good source of PROTEIN.",
-      "Moderate amount of VITAMIN B2 which works as an ANTIOXIDANT.",
-      "Good source of FAT which comes from the yolk.",
-      "Rich source of CHOLINE which is necessary for brain development.",
-      "Rich source of vitamin B12 which contributes to healthy nerve cells, production of DNA and red blood cell production.",
-      "Vitamin B12 deficiency symptoms include fatigue, feeling of faint, breathlessness and headaches.",
-      "Source of VITAMIN D which has a range of benefits in children including improved bone health via vitamin D supporting calcium absorption, improves immune system and has been shown to reduce depression symptoms.",
-    ],
-    score: 9,
-  },
-  Milk: {
-    name: "Milk",
-    description: "Did you know CALCIUM deficiency can cause RICKETS in children?",
-    firebaseName: "FoodCategories/DairyAndEggs/Food/Milk.svg",
-    category: "Dairy & Eggs",
-    facts: [
-      "Whole milk contains VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and sight.",
-      "Source of VITAMIN D which has a range of benefits in children including improved bone health via vitamin D supporting calcium absorption, improves immune system and has been shown to reduce depression symptoms.",
-      "Rich source of CALCIUM which helps build bones and teeth.",
-      "Good source of FAT and PROTEIN.",
-    ],
-    score: 9,
-  },
-  Yoghurt: {
-    name: "Yoghurt",
-    description: "Did you know CALCIUM deficiency can cause RICKETS in children?",
-    firebaseName: "FoodCategories/DairyAndEggs/Food/Yoghurt.svg",
-    category: "Dairy & Eggs",
-    facts: [
-      "Yoghurt is a good source of PHOSPHORUS, an essential mineral that plays an important role in biological processes.",
-      "Good source of PROTEIN.",
-      "Rich source of CALCIUM which helps build bones and teeth.",
-      "Good source of the B-complex vitamins which help the body convert food into fuel.",
-    ],
-    score: 9,
-  },
-  // Junk Food
-  Burger: {
-    name: "Hamburger",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/JunkFood/Food/Burger.svg",
-    category: "Fast Food",
-    facts: [
-      "Think about if the burger meat is processed and what the burger also consists of. Can we make this healthier?",
-      "Consider making homemade burgers using unprocessed meat, adding vegetables of your choice and making your own sauces. This is very fun too!",
-    ],
-    score: 3,
-  },
-  Chips: {
-    name: "French Fries",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/JunkFood/Food/Chips.svg",
-    category: "Fast Food",
-    facts: [
-      "Try pre-cut vegetable sticks with a low-calorie dip like hummus or greek yoghurt. Banana bread, rice cakes, walnuts or beef jerky are also good snack options.",
-    ],
-    score: 3,
-  },
-  FizzyDrinks: {
-    name: "Coke",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/JunkFood/Food/FizzyDrinks.svg",
-    category: "Fast Food",
-    facts: [
-      'If you regularly consume fizzy drinks then try look for sugar free alternatives initially. They usually contain the words "zero" "free" or "diet" on them.',
-    ],
-    score: 2,
-  },
-  FriedChicken: {
-    name: "Fried Chicken",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/JunkFood/Food/FriedChicken.svg",
-    category: "Fast Food",
-    facts: [
-      "Deep-fried chicken typically high in trans fats which have been proven to increase the risk of heart disease, stroke, diabetes and mortality!",
-      "Why not bake or grill the chicken instead? you still achieve similar flavour of chicken and the same texture of the meat too. Seasoning chicken with a pinch of salt, pepper, rosemary, paprika or garlic powder can add some nice flavour.",
-    ],
-    score: 2,
-  },
-  Hotdogs: {
-    name: "Hotdogs",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/JunkFood/Food/HotDog.svg",
-    category: "Fast Food",
-    facts: [
-      "Think about if the sausage meat is processed and what the hot dog consists of. Can we make this healthier?",
-      "Consider making your own homemade hotdogs by using unprocessed meat, adding vegetables of your choice and making your own sauces. This is very fun too!",
-    ],
-    score: 2,
-  },
-  Milkshakes: {
-    name: "Chocolate Milkshakes",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/DairyAndEggs/Food/Milkshakes.svg",
-    category: "Fast Food",
-    facts: [
-      "Whole milk contains VITAMIN A which has multiple benefits to children including helping with the maintenance of healthy bones, immune system and soft tissues such as muscle. Vitamin A also plays a role in having healthy skin and sight.",
-      "Source of vitamin D which has a range of benefits in children including improved bone health via vitamin D supporting calcium absorption, improves immune system and has been shown to reduce depression symptoms.",
-      "Rich source of CALCIUM which helps build bones and teeth.",
-      "Good source of PROTEIN",
-    ],
-    score: 2,
-  },
-  Pizza: {
-    name: "Pizza",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/JunkFood/Food/Pizza.svg",
-    category: "Fast Food",
-    facts: [
-      "Many frozen pizzas contain trans fats which have been proven to increase the risk of heart disease, stroke, diabetes and mortality!",
-      "Try making a healthy homemade pizza! Making your own dough and adding vegetables, meat and even some fruits like pineapple can be very fun!",
-    ],
-    score: 2,
-  },
-  Chocolate: {
-    name: "Chocolate",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/Sweets/Food/Chocolate.svg",
-    category: "Sweets",
-    facts: [
-      "If we don’t buy snacks like chocolate, sweets or cake to have available at home then we’re less likely to consume them. Buy fresh fruit to have available at home as a healthier and more nutritious snack option! Have you tried dark chocolate instead or normal chocolate?",
-      "Try pre-cut vegetable sticks with a low-calorie dip like hummus or greek yoghurt. Banana bread, rice cakes, walnuts or beef jerky are also good snack options.",
-    ],
-    score: 2,
-  },
-  JellySweets: {
-    name: "Jelly Sweets",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/Sweets/Food/JellySweets.svg",
-    category: "Sweets",
-    facts: [
-      "If we don’t buy snacks like chocolate, sweets or cake to have available at home then we’re less likely to consume them. Buy fresh fruit to have available at home as a healthier and more nutritious snack option! Have you tried dark chocolate instead or normal chocolate?",
-      "Try pre-cut vegetable sticks with a low-calorie dip like hummus or greek yoghurt. Banana bread, rice cakes, walnuts or beef jerky are also good snack options.",
-    ],
-    score: 2,
-  },
-  Cake: {
-    name: "Cupcakes",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/Sweets/Food/Cake.svg",
-    category: "Sweets",
-    facts: [
-      "If we don’t buy snacks like chocolate, sweets or cake to have available at home then we’re less likely to consume them. Buy fresh fruit to have available at home as a healthier and more nutritious snack option! Have you tried dark chocolate instead or normal chocolate?",
-      "Try pre-cut vegetable sticks with a low-calorie dip like hummus or greek yoghurt. Banana bread, rice cakes, walnuts or beef jerky are also good snack options.",
-    ],
-    score: 2,
-  },
-  Biscuits: {
-    name: "Biscuits",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/Sweets/Food/Biscuit.svg",
-    category: "Sweets",
-    facts: [
-      "If we don’t buy snacks like chocolate, sweets or cake to have available at home then we’re less likely to consume them. Buy fresh fruit to have available at home as a healthier and more nutritious snack option! Have you tried dark chocolate instead or normal chocolate?",
-      "Try pre-cut vegetable sticks with a low-calorie dip like hummus or greek yoghurt. Banana bread, rice cakes, walnuts or beef jerky are also good snack options.",
-    ],
-    score: 2,
-  },
-  Donuts: {
-    name: "Donuts",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/Sweets/Food/Donut.svg",
-    category: "Sweets",
-    facts: [
-      "If we don’t buy snacks like chocolate, sweets or cake to have available at home then we’re less likely to consume them. Buy fresh fruit to have available at home as a healthier and more nutritious snack option! Have you tried dark chocolate instead or normal chocolate?",
-      "Try pre-cut vegetable sticks with a low-calorie dip like hummus or greek yoghurt. Banana bread, rice cakes, walnuts or beef jerky are also good snack options.",
-    ],
-    score: 2,
-  },
-  IceCream: {
-    name: "Ice Cream",
-    description: "It's okay to have these in moderation - little and not frequent.",
-    firebaseName: "FoodCategories/Sweets/Food/IceCream.svg",
-    category: "Sweets",
-    facts: [
-      "If we don’t buy snacks like chocolate, sweets or cake to have available at home then we’re less likely to consume them. Buy fresh fruit to have available at home as a healthier and more nutritious snack option! Have you tried dark chocolate instead or normal chocolate?",
-      "Try pre-cut vegetable sticks with a low-calorie dip like hummus or greek yoghurt. Banana bread, rice cakes, walnuts or beef jerky are also good snack options.",
-    ],
-    score: 2,
-  },
-};
 
 export const NutritionalBreakdownChartData: {
   name: string;
@@ -2006,6 +1339,366 @@ export const NutritionalBreakdownChartData: {
         },
       },
     },
+  },
+  {
+name: "Turkey",
+data: {
+  "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_bb6e2b4f1b424bf2bded336c4939f48e",
+  "yield": 2.0,
+  "calories": 143,
+  "totalWeight": 100.0,
+  "dietLabels": [
+      "HIGH_PROTEIN",
+      "LOW_CARB",
+      "LOW_SODIUM"
+  ],
+  "healthLabels": [
+      "LOW_FAT_ABS",
+      "SUGAR_CONSCIOUS",
+      "LOW_POTASSIUM",
+      "KIDNEY_FRIENDLY",
+      "KETO_FRIENDLY",
+      "PALEO",
+      "SPECIFIC_CARBS",
+      "MEDITERRANEAN",
+      "DAIRY_FREE",
+      "GLUTEN_FREE",
+      "WHEAT_FREE",
+      "EGG_FREE",
+      "MILK_FREE",
+      "PEANUT_FREE",
+      "TREE_NUT_FREE",
+      "SOY_FREE",
+      "FISH_FREE",
+      "SHELLFISH_FREE",
+      "PORK_FREE",
+      "RED_MEAT_FREE",
+      "CRUSTACEAN_FREE",
+      "CELERY_FREE",
+      "MUSTARD_FREE",
+      "SESAME_FREE",
+      "LUPINE_FREE",
+      "MOLLUSK_FREE",
+      "ALCOHOL_FREE",
+      "NO_OIL_ADDED",
+      "NO_SUGAR_ADDED",
+      "SULPHITE_FREE",
+      "FODMAP_FREE",
+      "KOSHER"
+  ],
+  "cautions": [],
+  "totalNutrients": {
+      "ENERC_KCAL": {
+          "label": "Energy",
+          "quantity": 143.0,
+          "unit": "kcal"
+      },
+      "FAT": {
+          "label": "Total lipid (fat)",
+          "quantity": 5.64,
+          "unit": "g"
+      },
+      "FASAT": {
+          "label": "Fatty acids, total saturated",
+          "quantity": 1.461,
+          "unit": "g"
+      },
+      "FATRN": {
+          "label": "Fatty acids, total trans",
+          "quantity": 0.062,
+          "unit": "g"
+      },
+      "FAMS": {
+          "label": "Fatty acids, total monounsaturated",
+          "quantity": 1.826,
+          "unit": "g"
+      },
+      "FAPU": {
+          "label": "Fatty acids, total polyunsaturated",
+          "quantity": 1.466,
+          "unit": "g"
+      },
+      "CHOCDF": {
+          "label": "Carbohydrate, by difference",
+          "quantity": 0.13,
+          "unit": "g"
+      },
+      "FIBTG": {
+          "label": "Fiber, total dietary",
+          "quantity": 0.0,
+          "unit": "g"
+      },
+      "SUGAR": {
+          "label": "Sugars, total",
+          "quantity": 0.07,
+          "unit": "g"
+      },
+      "PROCNT": {
+          "label": "Protein",
+          "quantity": 21.64,
+          "unit": "g"
+      },
+      "CHOLE": {
+          "label": "Cholesterol",
+          "quantity": 72.0,
+          "unit": "mg"
+      },
+      "NA": {
+          "label": "Sodium, Na",
+          "quantity": 112.0,
+          "unit": "mg"
+      },
+      "CA": {
+          "label": "Calcium, Ca",
+          "quantity": 11.0,
+          "unit": "mg"
+      },
+      "MG": {
+          "label": "Magnesium, Mg",
+          "quantity": 25.0,
+          "unit": "mg"
+      },
+      "K": {
+          "label": "Potassium, K",
+          "quantity": 224.0,
+          "unit": "mg"
+      },
+      "FE": {
+          "label": "Iron, Fe",
+          "quantity": 0.86,
+          "unit": "mg"
+      },
+      "ZN": {
+          "label": "Zinc, Zn",
+          "quantity": 1.78,
+          "unit": "mg"
+      },
+      "P": {
+          "label": "Phosphorus, P",
+          "quantity": 183.0,
+          "unit": "mg"
+      },
+      "VITA_RAE": {
+          "label": "Vitamin A, RAE",
+          "quantity": 17.0,
+          "unit": "µg"
+      },
+      "VITC": {
+          "label": "Vitamin C, total ascorbic acid",
+          "quantity": 0.0,
+          "unit": "mg"
+      },
+      "THIA": {
+          "label": "Thiamin",
+          "quantity": 0.048,
+          "unit": "mg"
+      },
+      "RIBF": {
+          "label": "Riboflavin",
+          "quantity": 0.185,
+          "unit": "mg"
+      },
+      "NIA": {
+          "label": "Niacin",
+          "quantity": 7.631,
+          "unit": "mg"
+      },
+      "VITB6A": {
+          "label": "Vitamin B-6",
+          "quantity": 0.599,
+          "unit": "mg"
+      },
+      "FOLDFE": {
+          "label": "Folate, DFE",
+          "quantity": 7.0,
+          "unit": "µg"
+      },
+      "FOLFD": {
+          "label": "Folate, food",
+          "quantity": 7.0,
+          "unit": "µg"
+      },
+      "FOLAC": {
+          "label": "Folic acid",
+          "quantity": 0.0,
+          "unit": "µg"
+      },
+      "VITB12": {
+          "label": "Vitamin B-12",
+          "quantity": 1.22,
+          "unit": "µg"
+      },
+      "VITD": {
+          "label": "Vitamin D (D2 + D3)",
+          "quantity": 0.3,
+          "unit": "µg"
+      },
+      "TOCPHA": {
+          "label": "Vitamin E (alpha-tocopherol)",
+          "quantity": 0.09,
+          "unit": "mg"
+      },
+      "VITK1": {
+          "label": "Vitamin K (phylloquinone)",
+          "quantity": 0.0,
+          "unit": "µg"
+      },
+      "WATER": {
+          "label": "Water",
+          "quantity": 72.69,
+          "unit": "g"
+      }
+  },
+  "totalDaily": {
+      "ENERC_KCAL": {
+          "label": "Energy",
+          "quantity": 7.15,
+          "unit": "%"
+      },
+      "FAT": {
+          "label": "Fat",
+          "quantity": 8.676923076923076,
+          "unit": "%"
+      },
+      "FASAT": {
+          "label": "Saturated",
+          "quantity": 7.305,
+          "unit": "%"
+      },
+      "CHOCDF": {
+          "label": "Carbs",
+          "quantity": 0.043333333333333335,
+          "unit": "%"
+      },
+      "FIBTG": {
+          "label": "Fiber",
+          "quantity": 0.0,
+          "unit": "%"
+      },
+      "PROCNT": {
+          "label": "Protein",
+          "quantity": 43.28,
+          "unit": "%"
+      },
+      "CHOLE": {
+          "label": "Cholesterol",
+          "quantity": 24.0,
+          "unit": "%"
+      },
+      "NA": {
+          "label": "Sodium",
+          "quantity": 4.666666666666667,
+          "unit": "%"
+      },
+      "CA": {
+          "label": "Calcium",
+          "quantity": 1.1,
+          "unit": "%"
+      },
+      "MG": {
+          "label": "Magnesium",
+          "quantity": 5.9523809523809526,
+          "unit": "%"
+      },
+      "K": {
+          "label": "Potassium",
+          "quantity": 4.76595744680851,
+          "unit": "%"
+      },
+      "FE": {
+          "label": "Iron",
+          "quantity": 4.777777777777778,
+          "unit": "%"
+      },
+      "ZN": {
+          "label": "Zinc",
+          "quantity": 16.181818181818183,
+          "unit": "%"
+      },
+      "P": {
+          "label": "Phosphorus",
+          "quantity": 26.142857142857142,
+          "unit": "%"
+      },
+      "VITA_RAE": {
+          "label": "Vitamin A",
+          "quantity": 1.8888888888888888,
+          "unit": "%"
+      },
+      "VITC": {
+          "label": "Vitamin C",
+          "quantity": 0.0,
+          "unit": "%"
+      },
+      "THIA": {
+          "label": "Thiamin (B1)",
+          "quantity": 4.0,
+          "unit": "%"
+      },
+      "RIBF": {
+          "label": "Riboflavin (B2)",
+          "quantity": 14.23076923076923,
+          "unit": "%"
+      },
+      "NIA": {
+          "label": "Niacin (B3)",
+          "quantity": 47.69375,
+          "unit": "%"
+      },
+      "VITB6A": {
+          "label": "Vitamin B6",
+          "quantity": 46.07692307692307,
+          "unit": "%"
+      },
+      "FOLDFE": {
+          "label": "Folate equivalent (total)",
+          "quantity": 1.75,
+          "unit": "%"
+      },
+      "VITB12": {
+          "label": "Vitamin B12",
+          "quantity": 50.833333333333336,
+          "unit": "%"
+      },
+      "VITD": {
+          "label": "Vitamin D",
+          "quantity": 2.0,
+          "unit": "%"
+      },
+      "TOCPHA": {
+          "label": "Vitamin E",
+          "quantity": 0.6,
+          "unit": "%"
+      },
+      "VITK1": {
+          "label": "Vitamin K",
+          "quantity": 0.0,
+          "unit": "%"
+      }
+  },
+  "totalNutrientsKCal": {
+      "ENERC_KCAL": {
+          "label": "Energy",
+          "quantity": 144,
+          "unit": "kcal"
+      },
+      "PROCNT_KCAL": {
+          "label": "Calories from protein",
+          "quantity": 90,
+          "unit": "kcal"
+      },
+      "FAT_KCAL": {
+          "label": "Calories from fat",
+          "quantity": 53,
+          "unit": "kcal"
+      },
+      "CHOCDF_KCAL": {
+          "label": "Calories from carbohydrates",
+          "quantity": 1,
+          "unit": "kcal"
+      }
+  }
+}
   },
   {
     name: "Cooked Meats",
@@ -3752,6 +3445,366 @@ export const NutritionalBreakdownChartData: {
     },
   },
   {
+    name: "Blueberries",
+    data: {
+      "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_a24c162dff11454ca5076a9dde406577",
+      "yield": 2.0,
+      "calories": 57,
+      "totalWeight": 100.0,
+      "dietLabels": [
+          "LOW_FAT",
+          "LOW_SODIUM"
+      ],
+      "healthLabels": [
+          "FAT_FREE",
+          "LOW_FAT_ABS",
+          "LOW_POTASSIUM",
+          "KIDNEY_FRIENDLY",
+          "KETO_FRIENDLY",
+          "VEGAN",
+          "VEGETARIAN",
+          "PESCATARIAN",
+          "PALEO",
+          "SPECIFIC_CARBS",
+          "MEDITERRANEAN",
+          "DASH",
+          "DAIRY_FREE",
+          "GLUTEN_FREE",
+          "WHEAT_FREE",
+          "EGG_FREE",
+          "MILK_FREE",
+          "PEANUT_FREE",
+          "TREE_NUT_FREE",
+          "SOY_FREE",
+          "FISH_FREE",
+          "SHELLFISH_FREE",
+          "PORK_FREE",
+          "RED_MEAT_FREE",
+          "CRUSTACEAN_FREE",
+          "CELERY_FREE",
+          "MUSTARD_FREE",
+          "SESAME_FREE",
+          "LUPINE_FREE",
+          "MOLLUSK_FREE",
+          "ALCOHOL_FREE",
+          "NO_OIL_ADDED",
+          "NO_SUGAR_ADDED",
+          "SULPHITE_FREE",
+          "FODMAP_FREE",
+          "KOSHER"
+      ],
+      "cautions": [
+          "SULFITES"
+      ],
+      "totalNutrients": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 57.0,
+              "unit": "kcal"
+          },
+          "FAT": {
+              "label": "Total lipid (fat)",
+              "quantity": 0.33,
+              "unit": "g"
+          },
+          "FASAT": {
+              "label": "Fatty acids, total saturated",
+              "quantity": 0.028,
+              "unit": "g"
+          },
+          "FAMS": {
+              "label": "Fatty acids, total monounsaturated",
+              "quantity": 0.047,
+              "unit": "g"
+          },
+          "FAPU": {
+              "label": "Fatty acids, total polyunsaturated",
+              "quantity": 0.146,
+              "unit": "g"
+          },
+          "CHOCDF": {
+              "label": "Carbohydrate, by difference",
+              "quantity": 14.49,
+              "unit": "g"
+          },
+          "FIBTG": {
+              "label": "Fiber, total dietary",
+              "quantity": 2.4,
+              "unit": "g"
+          },
+          "SUGAR": {
+              "label": "Sugars, total",
+              "quantity": 9.96,
+              "unit": "g"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 0.74,
+              "unit": "g"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "mg"
+          },
+          "NA": {
+              "label": "Sodium, Na",
+              "quantity": 1.0,
+              "unit": "mg"
+          },
+          "CA": {
+              "label": "Calcium, Ca",
+              "quantity": 6.0,
+              "unit": "mg"
+          },
+          "MG": {
+              "label": "Magnesium, Mg",
+              "quantity": 6.0,
+              "unit": "mg"
+          },
+          "K": {
+              "label": "Potassium, K",
+              "quantity": 77.0,
+              "unit": "mg"
+          },
+          "FE": {
+              "label": "Iron, Fe",
+              "quantity": 0.28,
+              "unit": "mg"
+          },
+          "ZN": {
+              "label": "Zinc, Zn",
+              "quantity": 0.16,
+              "unit": "mg"
+          },
+          "P": {
+              "label": "Phosphorus, P",
+              "quantity": 12.0,
+              "unit": "mg"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A, RAE",
+              "quantity": 3.0,
+              "unit": "µg"
+          },
+          "VITC": {
+              "label": "Vitamin C, total ascorbic acid",
+              "quantity": 9.7,
+              "unit": "mg"
+          },
+          "THIA": {
+              "label": "Thiamin",
+              "quantity": 0.037,
+              "unit": "mg"
+          },
+          "RIBF": {
+              "label": "Riboflavin",
+              "quantity": 0.041,
+              "unit": "mg"
+          },
+          "NIA": {
+              "label": "Niacin",
+              "quantity": 0.418,
+              "unit": "mg"
+          },
+          "VITB6A": {
+              "label": "Vitamin B-6",
+              "quantity": 0.052,
+              "unit": "mg"
+          },
+          "FOLDFE": {
+              "label": "Folate, DFE",
+              "quantity": 6.0,
+              "unit": "µg"
+          },
+          "FOLFD": {
+              "label": "Folate, food",
+              "quantity": 6.0,
+              "unit": "µg"
+          },
+          "FOLAC": {
+              "label": "Folic acid",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITB12": {
+              "label": "Vitamin B-12",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITD": {
+              "label": "Vitamin D (D2 + D3)",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E (alpha-tocopherol)",
+              "quantity": 0.57,
+              "unit": "mg"
+          },
+          "VITK1": {
+              "label": "Vitamin K (phylloquinone)",
+              "quantity": 19.3,
+              "unit": "µg"
+          },
+          "WATER": {
+              "label": "Water",
+              "quantity": 84.21,
+              "unit": "g"
+          }
+      },
+      "totalDaily": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 2.85,
+              "unit": "%"
+          },
+          "FAT": {
+              "label": "Fat",
+              "quantity": 0.5076923076923077,
+              "unit": "%"
+          },
+          "FASAT": {
+              "label": "Saturated",
+              "quantity": 0.14,
+              "unit": "%"
+          },
+          "CHOCDF": {
+              "label": "Carbs",
+              "quantity": 4.83,
+              "unit": "%"
+          },
+          "FIBTG": {
+              "label": "Fiber",
+              "quantity": 9.6,
+              "unit": "%"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 1.48,
+              "unit": "%"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "NA": {
+              "label": "Sodium",
+              "quantity": 0.041666666666666664,
+              "unit": "%"
+          },
+          "CA": {
+              "label": "Calcium",
+              "quantity": 0.6,
+              "unit": "%"
+          },
+          "MG": {
+              "label": "Magnesium",
+              "quantity": 1.4285714285714286,
+              "unit": "%"
+          },
+          "K": {
+              "label": "Potassium",
+              "quantity": 1.6382978723404256,
+              "unit": "%"
+          },
+          "FE": {
+              "label": "Iron",
+              "quantity": 1.5555555555555558,
+              "unit": "%"
+          },
+          "ZN": {
+              "label": "Zinc",
+              "quantity": 1.4545454545454546,
+              "unit": "%"
+          },
+          "P": {
+              "label": "Phosphorus",
+              "quantity": 1.7142857142857142,
+              "unit": "%"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A",
+              "quantity": 0.3333333333333333,
+              "unit": "%"
+          },
+          "VITC": {
+              "label": "Vitamin C",
+              "quantity": 10.777777777777777,
+              "unit": "%"
+          },
+          "THIA": {
+              "label": "Thiamin (B1)",
+              "quantity": 3.083333333333333,
+              "unit": "%"
+          },
+          "RIBF": {
+              "label": "Riboflavin (B2)",
+              "quantity": 3.153846153846154,
+              "unit": "%"
+          },
+          "NIA": {
+              "label": "Niacin (B3)",
+              "quantity": 2.6125,
+              "unit": "%"
+          },
+          "VITB6A": {
+              "label": "Vitamin B6",
+              "quantity": 4.0,
+              "unit": "%"
+          },
+          "FOLDFE": {
+              "label": "Folate equivalent (total)",
+              "quantity": 1.5,
+              "unit": "%"
+          },
+          "VITB12": {
+              "label": "Vitamin B12",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "VITD": {
+              "label": "Vitamin D",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E",
+              "quantity": 3.7999999999999994,
+              "unit": "%"
+          },
+          "VITK1": {
+              "label": "Vitamin K",
+              "quantity": 16.083333333333332,
+              "unit": "%"
+          }
+      },
+      "totalNutrientsKCal": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 58,
+              "unit": "kcal"
+          },
+          "PROCNT_KCAL": {
+              "label": "Calories from protein",
+              "quantity": 3,
+              "unit": "kcal"
+          },
+          "FAT_KCAL": {
+              "label": "Calories from fat",
+              "quantity": 3,
+              "unit": "kcal"
+          },
+          "CHOCDF_KCAL": {
+              "label": "Calories from carbohydrates",
+              "quantity": 52,
+              "unit": "kcal"
+          }
+      }
+  }
+  },
+  {
     name: "Bananas",
     data: {
       uri: "http://www.edamam.com/ontologies/edamam.owl#recipe_c16777b1cc074507a96d2f13018877de",
@@ -4103,6 +4156,363 @@ export const NutritionalBreakdownChartData: {
         },
       },
     },
+  },
+  {
+    name: "Avocado",
+    data: {
+      "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_6b1db3b24e954c8dbae5928e5a813e24",
+      "yield": 2.0,
+      "calories": 160,
+      "totalWeight": 100.0,
+      "dietLabels": [
+          "LOW_CARB",
+          "LOW_SODIUM"
+      ],
+      "healthLabels": [
+          "SUGAR_CONSCIOUS",
+          "KIDNEY_FRIENDLY",
+          "KETO_FRIENDLY",
+          "VEGAN",
+          "VEGETARIAN",
+          "PESCATARIAN",
+          "PALEO",
+          "SPECIFIC_CARBS",
+          "MEDITERRANEAN",
+          "DASH",
+          "DAIRY_FREE",
+          "GLUTEN_FREE",
+          "WHEAT_FREE",
+          "EGG_FREE",
+          "MILK_FREE",
+          "PEANUT_FREE",
+          "TREE_NUT_FREE",
+          "SOY_FREE",
+          "FISH_FREE",
+          "SHELLFISH_FREE",
+          "PORK_FREE",
+          "RED_MEAT_FREE",
+          "CRUSTACEAN_FREE",
+          "CELERY_FREE",
+          "MUSTARD_FREE",
+          "SESAME_FREE",
+          "LUPINE_FREE",
+          "MOLLUSK_FREE",
+          "ALCOHOL_FREE",
+          "NO_OIL_ADDED",
+          "NO_SUGAR_ADDED",
+          "SULPHITE_FREE",
+          "KOSHER"
+      ],
+      "cautions": [
+          "SULFITES"
+      ],
+      "totalNutrients": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 160.0,
+              "unit": "kcal"
+          },
+          "FAT": {
+              "label": "Total lipid (fat)",
+              "quantity": 14.66,
+              "unit": "g"
+          },
+          "FASAT": {
+              "label": "Fatty acids, total saturated",
+              "quantity": 2.126,
+              "unit": "g"
+          },
+          "FAMS": {
+              "label": "Fatty acids, total monounsaturated",
+              "quantity": 9.799,
+              "unit": "g"
+          },
+          "FAPU": {
+              "label": "Fatty acids, total polyunsaturated",
+              "quantity": 1.816,
+              "unit": "g"
+          },
+          "CHOCDF": {
+              "label": "Carbohydrate, by difference",
+              "quantity": 8.53,
+              "unit": "g"
+          },
+          "FIBTG": {
+              "label": "Fiber, total dietary",
+              "quantity": 6.7,
+              "unit": "g"
+          },
+          "SUGAR": {
+              "label": "Sugars, total",
+              "quantity": 0.66,
+              "unit": "g"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 2.0,
+              "unit": "g"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "mg"
+          },
+          "NA": {
+              "label": "Sodium, Na",
+              "quantity": 7.0,
+              "unit": "mg"
+          },
+          "CA": {
+              "label": "Calcium, Ca",
+              "quantity": 12.0,
+              "unit": "mg"
+          },
+          "MG": {
+              "label": "Magnesium, Mg",
+              "quantity": 29.0,
+              "unit": "mg"
+          },
+          "K": {
+              "label": "Potassium, K",
+              "quantity": 485.0,
+              "unit": "mg"
+          },
+          "FE": {
+              "label": "Iron, Fe",
+              "quantity": 0.55,
+              "unit": "mg"
+          },
+          "ZN": {
+              "label": "Zinc, Zn",
+              "quantity": 0.64,
+              "unit": "mg"
+          },
+          "P": {
+              "label": "Phosphorus, P",
+              "quantity": 52.0,
+              "unit": "mg"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A, RAE",
+              "quantity": 7.0,
+              "unit": "µg"
+          },
+          "VITC": {
+              "label": "Vitamin C, total ascorbic acid",
+              "quantity": 10.0,
+              "unit": "mg"
+          },
+          "THIA": {
+              "label": "Thiamin",
+              "quantity": 0.067,
+              "unit": "mg"
+          },
+          "RIBF": {
+              "label": "Riboflavin",
+              "quantity": 0.13,
+              "unit": "mg"
+          },
+          "NIA": {
+              "label": "Niacin",
+              "quantity": 1.738,
+              "unit": "mg"
+          },
+          "VITB6A": {
+              "label": "Vitamin B-6",
+              "quantity": 0.257,
+              "unit": "mg"
+          },
+          "FOLDFE": {
+              "label": "Folate, DFE",
+              "quantity": 81.0,
+              "unit": "µg"
+          },
+          "FOLFD": {
+              "label": "Folate, food",
+              "quantity": 81.0,
+              "unit": "µg"
+          },
+          "FOLAC": {
+              "label": "Folic acid",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITB12": {
+              "label": "Vitamin B-12",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITD": {
+              "label": "Vitamin D (D2 + D3)",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E (alpha-tocopherol)",
+              "quantity": 2.07,
+              "unit": "mg"
+          },
+          "VITK1": {
+              "label": "Vitamin K (phylloquinone)",
+              "quantity": 21.0,
+              "unit": "µg"
+          },
+          "WATER": {
+              "label": "Water",
+              "quantity": 73.23,
+              "unit": "g"
+          }
+      },
+      "totalDaily": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 8.0,
+              "unit": "%"
+          },
+          "FAT": {
+              "label": "Fat",
+              "quantity": 22.553846153846155,
+              "unit": "%"
+          },
+          "FASAT": {
+              "label": "Saturated",
+              "quantity": 10.629999999999999,
+              "unit": "%"
+          },
+          "CHOCDF": {
+              "label": "Carbs",
+              "quantity": 2.843333333333333,
+              "unit": "%"
+          },
+          "FIBTG": {
+              "label": "Fiber",
+              "quantity": 26.8,
+              "unit": "%"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 4.0,
+              "unit": "%"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "NA": {
+              "label": "Sodium",
+              "quantity": 0.2916666666666667,
+              "unit": "%"
+          },
+          "CA": {
+              "label": "Calcium",
+              "quantity": 1.2,
+              "unit": "%"
+          },
+          "MG": {
+              "label": "Magnesium",
+              "quantity": 6.904761904761905,
+              "unit": "%"
+          },
+          "K": {
+              "label": "Potassium",
+              "quantity": 10.319148936170214,
+              "unit": "%"
+          },
+          "FE": {
+              "label": "Iron",
+              "quantity": 3.055555555555556,
+              "unit": "%"
+          },
+          "ZN": {
+              "label": "Zinc",
+              "quantity": 5.818181818181818,
+              "unit": "%"
+          },
+          "P": {
+              "label": "Phosphorus",
+              "quantity": 7.428571428571429,
+              "unit": "%"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A",
+              "quantity": 0.7777777777777778,
+              "unit": "%"
+          },
+          "VITC": {
+              "label": "Vitamin C",
+              "quantity": 11.11111111111111,
+              "unit": "%"
+          },
+          "THIA": {
+              "label": "Thiamin (B1)",
+              "quantity": 5.583333333333334,
+              "unit": "%"
+          },
+          "RIBF": {
+              "label": "Riboflavin (B2)",
+              "quantity": 10.0,
+              "unit": "%"
+          },
+          "NIA": {
+              "label": "Niacin (B3)",
+              "quantity": 10.8625,
+              "unit": "%"
+          },
+          "VITB6A": {
+              "label": "Vitamin B6",
+              "quantity": 19.769230769230766,
+              "unit": "%"
+          },
+          "FOLDFE": {
+              "label": "Folate equivalent (total)",
+              "quantity": 20.25,
+              "unit": "%"
+          },
+          "VITB12": {
+              "label": "Vitamin B12",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "VITD": {
+              "label": "Vitamin D",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E",
+              "quantity": 13.799999999999999,
+              "unit": "%"
+          },
+          "VITK1": {
+              "label": "Vitamin K",
+              "quantity": 17.5,
+              "unit": "%"
+          }
+      },
+      "totalNutrientsKCal": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 159,
+              "unit": "kcal"
+          },
+          "PROCNT_KCAL": {
+              "label": "Calories from protein",
+              "quantity": 7,
+              "unit": "kcal"
+          },
+          "FAT_KCAL": {
+              "label": "Calories from fat",
+              "quantity": 121,
+              "unit": "kcal"
+          },
+          "CHOCDF_KCAL": {
+              "label": "Calories from carbohydrates",
+              "quantity": 31,
+              "unit": "kcal"
+          }
+      }
+  }
   },
   {
     name: "Grapes",
@@ -5878,6 +6288,1077 @@ export const NutritionalBreakdownChartData: {
         },
       },
     },
+  },
+  {
+    name: "Kale",
+    data: {
+      "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_ba854503ca94409bb4fe3ef61b0669b4",
+      "yield": 2.0,
+      "calories": 49,
+      "totalWeight": 100.0,
+      "dietLabels": [
+          "LOW_SODIUM"
+      ],
+      "healthLabels": [
+          "FAT_FREE",
+          "LOW_FAT_ABS",
+          "SUGAR_CONSCIOUS",
+          "KIDNEY_FRIENDLY",
+          "KETO_FRIENDLY",
+          "VEGAN",
+          "VEGETARIAN",
+          "PESCATARIAN",
+          "PALEO",
+          "SPECIFIC_CARBS",
+          "MEDITERRANEAN",
+          "DASH",
+          "DAIRY_FREE",
+          "GLUTEN_FREE",
+          "WHEAT_FREE",
+          "EGG_FREE",
+          "MILK_FREE",
+          "PEANUT_FREE",
+          "TREE_NUT_FREE",
+          "SOY_FREE",
+          "FISH_FREE",
+          "SHELLFISH_FREE",
+          "PORK_FREE",
+          "RED_MEAT_FREE",
+          "CRUSTACEAN_FREE",
+          "CELERY_FREE",
+          "MUSTARD_FREE",
+          "SESAME_FREE",
+          "LUPINE_FREE",
+          "MOLLUSK_FREE",
+          "ALCOHOL_FREE",
+          "NO_OIL_ADDED",
+          "NO_SUGAR_ADDED",
+          "SULPHITE_FREE",
+          "FODMAP_FREE",
+          "KOSHER"
+      ],
+      "cautions": [],
+      "totalNutrients": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 49.0,
+              "unit": "kcal"
+          },
+          "FAT": {
+              "label": "Total lipid (fat)",
+              "quantity": 0.93,
+              "unit": "g"
+          },
+          "FASAT": {
+              "label": "Fatty acids, total saturated",
+              "quantity": 0.091,
+              "unit": "g"
+          },
+          "FAMS": {
+              "label": "Fatty acids, total monounsaturated",
+              "quantity": 0.052,
+              "unit": "g"
+          },
+          "FAPU": {
+              "label": "Fatty acids, total polyunsaturated",
+              "quantity": 0.338,
+              "unit": "g"
+          },
+          "CHOCDF": {
+              "label": "Carbohydrate, by difference",
+              "quantity": 8.75,
+              "unit": "g"
+          },
+          "FIBTG": {
+              "label": "Fiber, total dietary",
+              "quantity": 3.6,
+              "unit": "g"
+          },
+          "SUGAR": {
+              "label": "Sugars, total",
+              "quantity": 2.26,
+              "unit": "g"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 4.28,
+              "unit": "g"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "mg"
+          },
+          "NA": {
+              "label": "Sodium, Na",
+              "quantity": 38.0,
+              "unit": "mg"
+          },
+          "CA": {
+              "label": "Calcium, Ca",
+              "quantity": 150.0,
+              "unit": "mg"
+          },
+          "MG": {
+              "label": "Magnesium, Mg",
+              "quantity": 47.0,
+              "unit": "mg"
+          },
+          "K": {
+              "label": "Potassium, K",
+              "quantity": 491.0,
+              "unit": "mg"
+          },
+          "FE": {
+              "label": "Iron, Fe",
+              "quantity": 1.47,
+              "unit": "mg"
+          },
+          "ZN": {
+              "label": "Zinc, Zn",
+              "quantity": 0.56,
+              "unit": "mg"
+          },
+          "P": {
+              "label": "Phosphorus, P",
+              "quantity": 92.0,
+              "unit": "mg"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A, RAE",
+              "quantity": 500.0,
+              "unit": "µg"
+          },
+          "VITC": {
+              "label": "Vitamin C, total ascorbic acid",
+              "quantity": 120.0,
+              "unit": "mg"
+          },
+          "THIA": {
+              "label": "Thiamin",
+              "quantity": 0.11,
+              "unit": "mg"
+          },
+          "RIBF": {
+              "label": "Riboflavin",
+              "quantity": 0.13,
+              "unit": "mg"
+          },
+          "NIA": {
+              "label": "Niacin",
+              "quantity": 1.0,
+              "unit": "mg"
+          },
+          "VITB6A": {
+              "label": "Vitamin B-6",
+              "quantity": 0.271,
+              "unit": "mg"
+          },
+          "FOLDFE": {
+              "label": "Folate, DFE",
+              "quantity": 141.0,
+              "unit": "µg"
+          },
+          "FOLFD": {
+              "label": "Folate, food",
+              "quantity": 141.0,
+              "unit": "µg"
+          },
+          "FOLAC": {
+              "label": "Folic acid",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITB12": {
+              "label": "Vitamin B-12",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITD": {
+              "label": "Vitamin D (D2 + D3)",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E (alpha-tocopherol)",
+              "quantity": 1.54,
+              "unit": "mg"
+          },
+          "VITK1": {
+              "label": "Vitamin K (phylloquinone)",
+              "quantity": 704.8,
+              "unit": "µg"
+          },
+          "WATER": {
+              "label": "Water",
+              "quantity": 84.04,
+              "unit": "g"
+          }
+      },
+      "totalDaily": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 2.45,
+              "unit": "%"
+          },
+          "FAT": {
+              "label": "Fat",
+              "quantity": 1.4307692307692308,
+              "unit": "%"
+          },
+          "FASAT": {
+              "label": "Saturated",
+              "quantity": 0.45499999999999996,
+              "unit": "%"
+          },
+          "CHOCDF": {
+              "label": "Carbs",
+              "quantity": 2.9166666666666665,
+              "unit": "%"
+          },
+          "FIBTG": {
+              "label": "Fiber",
+              "quantity": 14.4,
+              "unit": "%"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 8.56,
+              "unit": "%"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "NA": {
+              "label": "Sodium",
+              "quantity": 1.5833333333333333,
+              "unit": "%"
+          },
+          "CA": {
+              "label": "Calcium",
+              "quantity": 15.0,
+              "unit": "%"
+          },
+          "MG": {
+              "label": "Magnesium",
+              "quantity": 11.19047619047619,
+              "unit": "%"
+          },
+          "K": {
+              "label": "Potassium",
+              "quantity": 10.446808510638299,
+              "unit": "%"
+          },
+          "FE": {
+              "label": "Iron",
+              "quantity": 8.166666666666666,
+              "unit": "%"
+          },
+          "ZN": {
+              "label": "Zinc",
+              "quantity": 5.090909090909092,
+              "unit": "%"
+          },
+          "P": {
+              "label": "Phosphorus",
+              "quantity": 13.142857142857142,
+              "unit": "%"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A",
+              "quantity": 55.55555555555556,
+              "unit": "%"
+          },
+          "VITC": {
+              "label": "Vitamin C",
+              "quantity": 133.33333333333334,
+              "unit": "%"
+          },
+          "THIA": {
+              "label": "Thiamin (B1)",
+              "quantity": 9.166666666666668,
+              "unit": "%"
+          },
+          "RIBF": {
+              "label": "Riboflavin (B2)",
+              "quantity": 10.0,
+              "unit": "%"
+          },
+          "NIA": {
+              "label": "Niacin (B3)",
+              "quantity": 6.25,
+              "unit": "%"
+          },
+          "VITB6A": {
+              "label": "Vitamin B6",
+              "quantity": 20.846153846153847,
+              "unit": "%"
+          },
+          "FOLDFE": {
+              "label": "Folate equivalent (total)",
+              "quantity": 35.25,
+              "unit": "%"
+          },
+          "VITB12": {
+              "label": "Vitamin B12",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "VITD": {
+              "label": "Vitamin D",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E",
+              "quantity": 10.266666666666667,
+              "unit": "%"
+          },
+          "VITK1": {
+              "label": "Vitamin K",
+              "quantity": 587.3333333333334,
+              "unit": "%"
+          }
+      },
+      "totalNutrientsKCal": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 49,
+              "unit": "kcal"
+          },
+          "PROCNT_KCAL": {
+              "label": "Calories from protein",
+              "quantity": 14,
+              "unit": "kcal"
+          },
+          "FAT_KCAL": {
+              "label": "Calories from fat",
+              "quantity": 7,
+              "unit": "kcal"
+          },
+          "CHOCDF_KCAL": {
+              "label": "Calories from carbohydrates",
+              "quantity": 28,
+              "unit": "kcal"
+          }
+      }
+  }
+  },
+  {
+    name: "Sweet Potato",
+    data: {
+      "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_cafbc8fd16294c2ca842135205050281",
+      "yield": 2.0,
+      "calories": 86,
+      "totalWeight": 100.0,
+      "dietLabels": [
+          "LOW_FAT",
+          "LOW_SODIUM"
+      ],
+      "healthLabels": [
+          "FAT_FREE",
+          "LOW_FAT_ABS",
+          "SUGAR_CONSCIOUS",
+          "KIDNEY_FRIENDLY",
+          "VEGAN",
+          "VEGETARIAN",
+          "PESCATARIAN",
+          "PALEO",
+          "MEDITERRANEAN",
+          "DASH",
+          "DAIRY_FREE",
+          "GLUTEN_FREE",
+          "WHEAT_FREE",
+          "EGG_FREE",
+          "MILK_FREE",
+          "PEANUT_FREE",
+          "TREE_NUT_FREE",
+          "SOY_FREE",
+          "FISH_FREE",
+          "SHELLFISH_FREE",
+          "PORK_FREE",
+          "RED_MEAT_FREE",
+          "CRUSTACEAN_FREE",
+          "CELERY_FREE",
+          "MUSTARD_FREE",
+          "SESAME_FREE",
+          "LUPINE_FREE",
+          "MOLLUSK_FREE",
+          "ALCOHOL_FREE",
+          "NO_OIL_ADDED",
+          "NO_SUGAR_ADDED",
+          "SULPHITE_FREE",
+          "FODMAP_FREE",
+          "KOSHER"
+      ],
+      "cautions": [],
+      "totalNutrients": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 86.0,
+              "unit": "kcal"
+          },
+          "FAT": {
+              "label": "Total lipid (fat)",
+              "quantity": 0.05,
+              "unit": "g"
+          },
+          "FASAT": {
+              "label": "Fatty acids, total saturated",
+              "quantity": 0.018,
+              "unit": "g"
+          },
+          "FAMS": {
+              "label": "Fatty acids, total monounsaturated",
+              "quantity": 0.001,
+              "unit": "g"
+          },
+          "FAPU": {
+              "label": "Fatty acids, total polyunsaturated",
+              "quantity": 0.014,
+              "unit": "g"
+          },
+          "CHOCDF": {
+              "label": "Carbohydrate, by difference",
+              "quantity": 20.12,
+              "unit": "g"
+          },
+          "FIBTG": {
+              "label": "Fiber, total dietary",
+              "quantity": 3.0,
+              "unit": "g"
+          },
+          "SUGAR": {
+              "label": "Sugars, total",
+              "quantity": 4.18,
+              "unit": "g"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 1.57,
+              "unit": "g"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "mg"
+          },
+          "NA": {
+              "label": "Sodium, Na",
+              "quantity": 55.0,
+              "unit": "mg"
+          },
+          "CA": {
+              "label": "Calcium, Ca",
+              "quantity": 30.0,
+              "unit": "mg"
+          },
+          "MG": {
+              "label": "Magnesium, Mg",
+              "quantity": 25.0,
+              "unit": "mg"
+          },
+          "K": {
+              "label": "Potassium, K",
+              "quantity": 337.0,
+              "unit": "mg"
+          },
+          "FE": {
+              "label": "Iron, Fe",
+              "quantity": 0.61,
+              "unit": "mg"
+          },
+          "ZN": {
+              "label": "Zinc, Zn",
+              "quantity": 0.3,
+              "unit": "mg"
+          },
+          "P": {
+              "label": "Phosphorus, P",
+              "quantity": 47.0,
+              "unit": "mg"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A, RAE",
+              "quantity": 709.0,
+              "unit": "µg"
+          },
+          "VITC": {
+              "label": "Vitamin C, total ascorbic acid",
+              "quantity": 2.4,
+              "unit": "mg"
+          },
+          "THIA": {
+              "label": "Thiamin",
+              "quantity": 0.078,
+              "unit": "mg"
+          },
+          "RIBF": {
+              "label": "Riboflavin",
+              "quantity": 0.061,
+              "unit": "mg"
+          },
+          "NIA": {
+              "label": "Niacin",
+              "quantity": 0.557,
+              "unit": "mg"
+          },
+          "VITB6A": {
+              "label": "Vitamin B-6",
+              "quantity": 0.209,
+              "unit": "mg"
+          },
+          "FOLDFE": {
+              "label": "Folate, DFE",
+              "quantity": 11.0,
+              "unit": "µg"
+          },
+          "FOLFD": {
+              "label": "Folate, food",
+              "quantity": 11.0,
+              "unit": "µg"
+          },
+          "FOLAC": {
+              "label": "Folic acid",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITB12": {
+              "label": "Vitamin B-12",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITD": {
+              "label": "Vitamin D (D2 + D3)",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E (alpha-tocopherol)",
+              "quantity": 0.26,
+              "unit": "mg"
+          },
+          "VITK1": {
+              "label": "Vitamin K (phylloquinone)",
+              "quantity": 1.8,
+              "unit": "µg"
+          },
+          "WATER": {
+              "label": "Water",
+              "quantity": 77.28,
+              "unit": "g"
+          }
+      },
+      "totalDaily": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 4.3,
+              "unit": "%"
+          },
+          "FAT": {
+              "label": "Fat",
+              "quantity": 0.07692307692307693,
+              "unit": "%"
+          },
+          "FASAT": {
+              "label": "Saturated",
+              "quantity": 0.09,
+              "unit": "%"
+          },
+          "CHOCDF": {
+              "label": "Carbs",
+              "quantity": 6.706666666666667,
+              "unit": "%"
+          },
+          "FIBTG": {
+              "label": "Fiber",
+              "quantity": 12.0,
+              "unit": "%"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 3.14,
+              "unit": "%"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "NA": {
+              "label": "Sodium",
+              "quantity": 2.2916666666666665,
+              "unit": "%"
+          },
+          "CA": {
+              "label": "Calcium",
+              "quantity": 3.0,
+              "unit": "%"
+          },
+          "MG": {
+              "label": "Magnesium",
+              "quantity": 5.9523809523809526,
+              "unit": "%"
+          },
+          "K": {
+              "label": "Potassium",
+              "quantity": 7.170212765957447,
+              "unit": "%"
+          },
+          "FE": {
+              "label": "Iron",
+              "quantity": 3.388888888888889,
+              "unit": "%"
+          },
+          "ZN": {
+              "label": "Zinc",
+              "quantity": 2.727272727272727,
+              "unit": "%"
+          },
+          "P": {
+              "label": "Phosphorus",
+              "quantity": 6.714285714285714,
+              "unit": "%"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A",
+              "quantity": 78.77777777777777,
+              "unit": "%"
+          },
+          "VITC": {
+              "label": "Vitamin C",
+              "quantity": 2.6666666666666665,
+              "unit": "%"
+          },
+          "THIA": {
+              "label": "Thiamin (B1)",
+              "quantity": 6.5,
+              "unit": "%"
+          },
+          "RIBF": {
+              "label": "Riboflavin (B2)",
+              "quantity": 4.692307692307692,
+              "unit": "%"
+          },
+          "NIA": {
+              "label": "Niacin (B3)",
+              "quantity": 3.48125,
+              "unit": "%"
+          },
+          "VITB6A": {
+              "label": "Vitamin B6",
+              "quantity": 16.076923076923077,
+              "unit": "%"
+          },
+          "FOLDFE": {
+              "label": "Folate equivalent (total)",
+              "quantity": 2.75,
+              "unit": "%"
+          },
+          "VITB12": {
+              "label": "Vitamin B12",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "VITD": {
+              "label": "Vitamin D",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E",
+              "quantity": 1.7333333333333334,
+              "unit": "%"
+          },
+          "VITK1": {
+              "label": "Vitamin K",
+              "quantity": 1.5,
+              "unit": "%"
+          }
+      },
+      "totalNutrientsKCal": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 85,
+              "unit": "kcal"
+          },
+          "PROCNT_KCAL": {
+              "label": "Calories from protein",
+              "quantity": 6,
+              "unit": "kcal"
+          },
+          "FAT_KCAL": {
+              "label": "Calories from fat",
+              "quantity": 0,
+              "unit": "kcal"
+          },
+          "CHOCDF_KCAL": {
+              "label": "Calories from carbohydrates",
+              "quantity": 79,
+              "unit": "kcal"
+          }
+      }
+  }
+  },
+  {
+    name: "Asparagus",
+    data: {
+      "uri": "http://www.edamam.com/ontologies/edamam.owl#recipe_e62ea83c8b864be39442f534bffcfed6",
+      "yield": 2.0,
+      "calories": 20,
+      "totalWeight": 100.0,
+      "dietLabels": [
+          "LOW_FAT",
+          "LOW_SODIUM"
+      ],
+      "healthLabels": [
+          "FAT_FREE",
+          "LOW_FAT_ABS",
+          "SUGAR_CONSCIOUS",
+          "LOW_POTASSIUM",
+          "KIDNEY_FRIENDLY",
+          "KETO_FRIENDLY",
+          "VEGAN",
+          "VEGETARIAN",
+          "PESCATARIAN",
+          "PALEO",
+          "SPECIFIC_CARBS",
+          "MEDITERRANEAN",
+          "DASH",
+          "DAIRY_FREE",
+          "GLUTEN_FREE",
+          "WHEAT_FREE",
+          "EGG_FREE",
+          "MILK_FREE",
+          "PEANUT_FREE",
+          "TREE_NUT_FREE",
+          "SOY_FREE",
+          "FISH_FREE",
+          "SHELLFISH_FREE",
+          "PORK_FREE",
+          "RED_MEAT_FREE",
+          "CRUSTACEAN_FREE",
+          "CELERY_FREE",
+          "MUSTARD_FREE",
+          "SESAME_FREE",
+          "LUPINE_FREE",
+          "MOLLUSK_FREE",
+          "ALCOHOL_FREE",
+          "NO_OIL_ADDED",
+          "NO_SUGAR_ADDED",
+          "SULPHITE_FREE",
+          "KOSHER"
+      ],
+      "cautions": [],
+      "totalNutrients": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 20.0,
+              "unit": "kcal"
+          },
+          "FAT": {
+              "label": "Total lipid (fat)",
+              "quantity": 0.12,
+              "unit": "g"
+          },
+          "FASAT": {
+              "label": "Fatty acids, total saturated",
+              "quantity": 0.04,
+              "unit": "g"
+          },
+          "FAMS": {
+              "label": "Fatty acids, total monounsaturated",
+              "quantity": 0.0,
+              "unit": "g"
+          },
+          "FAPU": {
+              "label": "Fatty acids, total polyunsaturated",
+              "quantity": 0.05,
+              "unit": "g"
+          },
+          "CHOCDF": {
+              "label": "Carbohydrate, by difference",
+              "quantity": 3.88,
+              "unit": "g"
+          },
+          "FIBTG": {
+              "label": "Fiber, total dietary",
+              "quantity": 2.1,
+              "unit": "g"
+          },
+          "SUGAR": {
+              "label": "Sugars, total",
+              "quantity": 1.88,
+              "unit": "g"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 2.2,
+              "unit": "g"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "mg"
+          },
+          "NA": {
+              "label": "Sodium, Na",
+              "quantity": 2.0,
+              "unit": "mg"
+          },
+          "CA": {
+              "label": "Calcium, Ca",
+              "quantity": 24.0,
+              "unit": "mg"
+          },
+          "MG": {
+              "label": "Magnesium, Mg",
+              "quantity": 14.0,
+              "unit": "mg"
+          },
+          "K": {
+              "label": "Potassium, K",
+              "quantity": 202.0,
+              "unit": "mg"
+          },
+          "FE": {
+              "label": "Iron, Fe",
+              "quantity": 2.14,
+              "unit": "mg"
+          },
+          "ZN": {
+              "label": "Zinc, Zn",
+              "quantity": 0.54,
+              "unit": "mg"
+          },
+          "P": {
+              "label": "Phosphorus, P",
+              "quantity": 52.0,
+              "unit": "mg"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A, RAE",
+              "quantity": 38.0,
+              "unit": "µg"
+          },
+          "VITC": {
+              "label": "Vitamin C, total ascorbic acid",
+              "quantity": 5.6,
+              "unit": "mg"
+          },
+          "THIA": {
+              "label": "Thiamin",
+              "quantity": 0.143,
+              "unit": "mg"
+          },
+          "RIBF": {
+              "label": "Riboflavin",
+              "quantity": 0.141,
+              "unit": "mg"
+          },
+          "NIA": {
+              "label": "Niacin",
+              "quantity": 0.978,
+              "unit": "mg"
+          },
+          "VITB6A": {
+              "label": "Vitamin B-6",
+              "quantity": 0.091,
+              "unit": "mg"
+          },
+          "FOLDFE": {
+              "label": "Folate, DFE",
+              "quantity": 52.0,
+              "unit": "µg"
+          },
+          "FOLFD": {
+              "label": "Folate, food",
+              "quantity": 52.0,
+              "unit": "µg"
+          },
+          "FOLAC": {
+              "label": "Folic acid",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITB12": {
+              "label": "Vitamin B-12",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "VITD": {
+              "label": "Vitamin D (D2 + D3)",
+              "quantity": 0.0,
+              "unit": "µg"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E (alpha-tocopherol)",
+              "quantity": 1.13,
+              "unit": "mg"
+          },
+          "VITK1": {
+              "label": "Vitamin K (phylloquinone)",
+              "quantity": 41.6,
+              "unit": "µg"
+          },
+          "WATER": {
+              "label": "Water",
+              "quantity": 93.22,
+              "unit": "g"
+          }
+      },
+      "totalDaily": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 1.0,
+              "unit": "%"
+          },
+          "FAT": {
+              "label": "Fat",
+              "quantity": 0.18461538461538463,
+              "unit": "%"
+          },
+          "FASAT": {
+              "label": "Saturated",
+              "quantity": 0.2,
+              "unit": "%"
+          },
+          "CHOCDF": {
+              "label": "Carbs",
+              "quantity": 1.2933333333333332,
+              "unit": "%"
+          },
+          "FIBTG": {
+              "label": "Fiber",
+              "quantity": 8.4,
+              "unit": "%"
+          },
+          "PROCNT": {
+              "label": "Protein",
+              "quantity": 4.4,
+              "unit": "%"
+          },
+          "CHOLE": {
+              "label": "Cholesterol",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "NA": {
+              "label": "Sodium",
+              "quantity": 0.08333333333333333,
+              "unit": "%"
+          },
+          "CA": {
+              "label": "Calcium",
+              "quantity": 2.4,
+              "unit": "%"
+          },
+          "MG": {
+              "label": "Magnesium",
+              "quantity": 3.3333333333333335,
+              "unit": "%"
+          },
+          "K": {
+              "label": "Potassium",
+              "quantity": 4.297872340425532,
+              "unit": "%"
+          },
+          "FE": {
+              "label": "Iron",
+              "quantity": 11.88888888888889,
+              "unit": "%"
+          },
+          "ZN": {
+              "label": "Zinc",
+              "quantity": 4.909090909090909,
+              "unit": "%"
+          },
+          "P": {
+              "label": "Phosphorus",
+              "quantity": 7.428571428571429,
+              "unit": "%"
+          },
+          "VITA_RAE": {
+              "label": "Vitamin A",
+              "quantity": 4.222222222222222,
+              "unit": "%"
+          },
+          "VITC": {
+              "label": "Vitamin C",
+              "quantity": 6.222222222222222,
+              "unit": "%"
+          },
+          "THIA": {
+              "label": "Thiamin (B1)",
+              "quantity": 11.916666666666666,
+              "unit": "%"
+          },
+          "RIBF": {
+              "label": "Riboflavin (B2)",
+              "quantity": 10.846153846153845,
+              "unit": "%"
+          },
+          "NIA": {
+              "label": "Niacin (B3)",
+              "quantity": 6.1125,
+              "unit": "%"
+          },
+          "VITB6A": {
+              "label": "Vitamin B6",
+              "quantity": 6.999999999999999,
+              "unit": "%"
+          },
+          "FOLDFE": {
+              "label": "Folate equivalent (total)",
+              "quantity": 13.0,
+              "unit": "%"
+          },
+          "VITB12": {
+              "label": "Vitamin B12",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "VITD": {
+              "label": "Vitamin D",
+              "quantity": 0.0,
+              "unit": "%"
+          },
+          "TOCPHA": {
+              "label": "Vitamin E",
+              "quantity": 7.533333333333332,
+              "unit": "%"
+          },
+          "VITK1": {
+              "label": "Vitamin K",
+              "quantity": 34.666666666666664,
+              "unit": "%"
+          }
+        },
+      "totalNutrientsKCal": {
+          "ENERC_KCAL": {
+              "label": "Energy",
+              "quantity": 20,
+              "unit": "kcal"
+          },
+          "PROCNT_KCAL": {
+              "label": "Calories from protein",
+              "quantity": 7,
+              "unit": "kcal"
+          },
+          "FAT_KCAL": {
+              "label": "Calories from fat",
+              "quantity": 1,
+              "unit": "kcal"
+          },
+          "CHOCDF_KCAL": {
+              "label": "Calories from carbohydrates",
+              "quantity": 12,
+              "unit": "kcal"
+          }
+      }
+  }
   },
   {
     name: "Potato",
@@ -14883,4 +16364,3 @@ export const NutritionalBreakdownChartData: {
     },
   },
 ];
-export default FoodDetailsComponentData;

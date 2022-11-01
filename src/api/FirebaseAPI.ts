@@ -5,13 +5,10 @@ import {
   getDoc,
   getDocs,
   query,
-  setDoc,
   where,
   documentId,
 } from "firebase/firestore";
-import FoodDetailsComponentData, {
-    FoodDetailsProps,
-} from "../data/nutritional_information/FoodDetailsComponentData";
+import { FoodDetailsProps } from "../data/nutritional_information/FoodDetailsComponentData";
 import { fStore } from "../config/firebase-config";
 import { NutritionalDetailsFirebaseProps } from "../models/NutritionDetailsComponentData";
 
@@ -38,14 +35,6 @@ class FirebaseAPI {
     const querySnapshot = await getDocs(collection(fStore, "FYPData"));
     if (!querySnapshot) return undefined;
      return querySnapshot.docs.map((each) => each.data() as FoodDetailsProps);
-  };
-
-  static addFoodDetailsComponentsData = async () => {
-    await Promise.all(
-      Object.entries(FoodDetailsComponentData).map(async (each) => {
-        await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
-      })
-    );
   };
 
   static fetchFoodDetailsSingle = async (name: string) => {
