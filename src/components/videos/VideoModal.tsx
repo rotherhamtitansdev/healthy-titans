@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+// to be fixed in another ticket
+
 import React from "react";
 import { VideoModalProps } from "../../models/Video";
 import VideoPlayer from "./VideoPlayer";

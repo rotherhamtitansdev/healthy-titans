@@ -1,5 +1,4 @@
 // empty div at bottom for layout issue
-/* eslint-disable react/self-closing-comp */
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import FirebaseAPI from "../../api/FirebaseAPI";
@@ -96,7 +95,7 @@ const AboutUs = () => {
           </div>
         </div>
       )}
-      <div className={`${AboutUsData ? spacerDivStyle: null} h-[50px]`}></div>
+      <div className={`${AboutUsData ? spacerDivStyle: null} h-[50px]`} />
     </>
   );
 };

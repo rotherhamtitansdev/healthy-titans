@@ -149,6 +149,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                       fontFamily: "Quicksand",
                       fontSize: 14,
                       textAlign: "center",
+                      // type comes from chart package
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       fill: ({ datum }: any) => {
                         if (datum.y <= 2 || datum.x === 1) return "black";
