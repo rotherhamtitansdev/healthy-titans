@@ -103,22 +103,17 @@ class FirebaseAPI {
   };
 
   static fetchNutritionSeeNext = async (currentName: string): Promise<SeeNextProps[]> => {
-
     const q = query(collection(fStore, "NutritionData"),where(documentId(), "!=", currentName));
     const querySnapshot = await getDocs(q)
 
     const docs = querySnapshot.docs.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     return Promise.all(docs.map(async (sortedDoc, index) => {
-
       const dataDoc = await getDoc(doc(fStore, "NutritionData", sortedDoc.id, "Content", "Main"))
-
       const URI = await FirebaseAPI.fetchImages(dataDoc.data()!.firebaseName)
 
       return {key: index, name:dataDoc.data()!.name, path:docs[index].id,img:URI}
     }))
   }
 };
-
-
 export default FirebaseAPI;

@@ -12,9 +12,14 @@ const FoodCategoryComponent = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  interface SubCategoryProps {
+    subCategory: MenuCardProps[];
+  }
+
   const [getCategoryTitle, setCategoryTitle] = useState("");
   const [getFoodCategoryData, setFoodCategoryData] = useState<MenuCardProps[]>([]);
-  const [getFoodSubcategoryData, setFoodSubcategoryData] = useState<MenuCardProps[]>([]);
+  const [getFoodSubcategoryData, setFoodSubcategoryData] = useState<SubCategoryProps>();
+
   const defaultFoodCategory = "FoodAndNutrition";
 
   function setParam() {
@@ -31,25 +36,21 @@ const FoodCategoryComponent = () => {
 
     if (foodCategory && foodCategory !== defaultFoodCategory) {
       FirebaseAPI.fetchDataFromSubpath("FoodSubCategoryData", foodCategory).then((data) => {
-        setFoodSubcategoryData(data as MenuCardProps[]);
-        console.log("SUBCATEGORY DATA", data, getFoodSubcategoryData, foodCategory);
+        setFoodSubcategoryData(data as SubCategoryProps);
       });
     } else {
       FirebaseAPI.fetchDataFromPath("FoodCategoryData").then((data) => {
         setFoodCategoryData(data as MenuCardProps[]);
-        console.log("CATEGORY DATA", data, getFoodCategoryData, foodCategory);
       });
     }
   }, []);
 
   function navigateBackToNutrionalInfo() {
     setCategoryTitle(defaultFoodCategory);
-    // if the category is not found then redirect to the food and nutrition information page
     navigate("/FoodAndNutrition");
   }
 
   function readyToCallSetTitle() {
-    console.log("Set Title", foodCategory, getFoodCategoryData, getFoodSubcategoryData);
     if (
       getFoodCategoryData &&
       getFoodCategoryData.length !== 0 &&
@@ -58,20 +59,19 @@ const FoodCategoryComponent = () => {
       setCategoryTitle(defaultFoodCategory);
     } else if (
       getFoodSubcategoryData &&
-      getFoodSubcategoryData.length !== 0 &&
+      getFoodSubcategoryData.subCategory.length !== 0 &&
       foodCategory !== defaultFoodCategory
     ) {
-      setCategoryTitle(getFoodSubcategoryData[0].path);
+      setCategoryTitle(getFoodSubcategoryData.subCategory[0].path);
     } else {
       navigateBackToNutrionalInfo();
     }
   }
 
   useEffect(() => {
-    console.log("Second Use Effect", getFoodCategoryData, getFoodSubcategoryData, foodCategory);
     if (
       getFoodCategoryData.length > 0 ||
-      (getFoodSubcategoryData && getFoodSubcategoryData.length > 0)
+      (getFoodSubcategoryData && getFoodSubcategoryData?.subCategory.length > 0)
     ) {
       if (!foodCategory) {
         setParam();
@@ -92,21 +92,20 @@ const FoodCategoryComponent = () => {
   }
 
   function getFoodData() {
-    if (foodCategory === defaultFoodCategory) {
-      return getFoodCategoryData;
+    if (getFoodSubcategoryData) {
+      return getFoodSubcategoryData.subCategory;
     }
-    return getFoodSubcategoryData;
+    return getFoodCategoryData;
   }
 
   function checkReadyToRender() {
-    console.log("READY TO RENDER", foodCategory, getFoodSubcategoryData);
     if (!foodCategory) setParam();
     if (foodCategory === defaultFoodCategory) {
       if (getFoodCategoryData && getFoodCategoryData.length > 0) {
         return true;
       }
     }
-    if (getFoodSubcategoryData && getFoodSubcategoryData.length > 0) return true;
+    if (getFoodSubcategoryData && getFoodSubcategoryData.subCategory.length > 0) return true;
     return false;
   }
 
@@ -122,5 +121,4 @@ const FoodCategoryComponent = () => {
     </div>
   );
 };
-
 export default FoodCategoryComponent;
