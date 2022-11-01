@@ -147,6 +147,13 @@ class FirebaseAPI {
     if (!querySnapshot) return undefined;
     return querySnapshot.docs.map((each) => each.data());
   };
+
+  static fetchExternalGamesList = async () => {
+    const querySnapshot = await getDocs(collection(fStore, "ExternalGamesData"));
+
+    if (!querySnapshot) return undefined;
+    return querySnapshot.docs.map((each) => each.data());
+  };
 }
 
 export default FirebaseAPI;
