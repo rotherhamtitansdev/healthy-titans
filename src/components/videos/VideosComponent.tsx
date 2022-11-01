@@ -17,9 +17,7 @@ const VideosComponent = () => {
 
   useEffect(() => {
     if (!getVideoData || getVideoData.length === 0) {
-      FirebaseAPI.fetchSpecifiedComponentData("VideoData").then((data) =>
-        setVideoData(data as Video[])
-      );
+      FirebaseAPI.fetchDataFromPath("VideoData").then((data) => setVideoData(data as Video[]));
     }
   }, []);
 

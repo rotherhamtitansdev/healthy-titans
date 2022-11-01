@@ -199,7 +199,7 @@ describe("Quiz", () => {
   describe("Quiz functionality", () => {
     beforeEach(async () => {
       jest
-        .spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData")
+        .spyOn(FirebaseAPI, "fetchDataFromSubpath")
         .mockImplementation(() => Promise.resolve(mockContent));
     });
 

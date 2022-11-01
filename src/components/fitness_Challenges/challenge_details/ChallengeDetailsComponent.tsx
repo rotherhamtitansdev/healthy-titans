@@ -18,13 +18,11 @@ const ChallengeDetailsComponent = () => {
 
   useEffect(() => {
     if (challengeName) {
-      FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData("Challenges", challengeName).then(
-        (res) => {
-          setChallengeDetailsComponentData(res as ChallengeDetailsProps);
-          const image = res?.firebaseName;
-          FirebaseAPI.fetchImages(image as string).then((url) => setImageURL(url));
-        }
-      );
+      FirebaseAPI.fetchDataFromSubpath("Challenges", challengeName).then((res) => {
+        setChallengeDetailsComponentData(res as ChallengeDetailsProps);
+        const image = res?.firebaseName;
+        FirebaseAPI.fetchImages(image as string).then((url) => setImageURL(url));
+      });
     }
 
     setAdditionalStyling("bg-white mb-10");

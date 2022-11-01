@@ -77,7 +77,7 @@ const DND = () => {
         className="w-20 h-20 bg-titansBrightPink"
         type="submit"
         onClick={() => {
-          FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData("FYPData", "Apples");
+          FirebaseAPI.fetchDataFromSubpath("FYPData", "Apples");
         }}
       >
         fetch

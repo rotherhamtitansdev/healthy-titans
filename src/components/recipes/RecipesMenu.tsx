@@ -10,7 +10,7 @@ const Recipes = () => {
 
   useEffect(() => {
     if (!getRecipesData || getRecipesData.length === 0) {
-      FirebaseAPI.fetchSpecifiedComponentData("RecipesData").then((data) =>
+      FirebaseAPI.fetchDataFromPath("RecipesData").then((data) =>
         setRecipesData(data as MenuCardProps[])
       );
     }

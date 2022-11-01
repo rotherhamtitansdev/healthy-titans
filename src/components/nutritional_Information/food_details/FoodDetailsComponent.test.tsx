@@ -47,9 +47,7 @@ describe("Food Details Component", () => {
     const mockFetchFoodSingle = jest.fn().mockResolvedValueOnce(mockContent.cardData[2]);
 
     jest.spyOn(FirebaseAPI, "fetchFoodDetailsSeeNext").mockImplementationOnce(mockFetchSeeNext);
-    jest
-      .spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData")
-      .mockImplementationOnce(mockFetchFoodSingle);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockImplementationOnce(mockFetchFoodSingle);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("mock/Image3.svg");
 
     // define width for carousel to appear & prevent buttons from loading

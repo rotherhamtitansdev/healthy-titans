@@ -21,10 +21,10 @@ const AboutUs = () => {
   const [imgUrl, setImgUrl] = useState<string | undefined>("");
 
   useEffect(() => {
-    FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData("AboutUsData", "Data").then((res) => {
+    FirebaseAPI.fetchDataFromSubpath("AboutUsData", "Data").then((res) => {
       if (res) {
         setAboutUsData(res as DocumentData as AboutUsProps);
-            }
+      }
     });
 
     FirebaseAPI.fetchImages("FoodCategories/Fruits/FruitAndVeg.svg").then((value) =>
@@ -96,7 +96,7 @@ const AboutUs = () => {
           </div>
         </div>
       )}
-      <div className={`${AboutUsData ? spacerDivStyle: null} h-[50px]`}></div>
+      <div className={`${AboutUsData ? spacerDivStyle : null} h-[50px]`}></div>
     </>
   );
 };

@@ -31,14 +31,14 @@ class FirebaseAPI {
   static fetchAllImages = async (firebaseNames: string[]) =>
     Promise.all(firebaseNames.map((firebaseName) => FirebaseAPI.fetchImages(firebaseName)));
 
-  static fetchSpecifiedComponentData = async(path:string) => {
+  static fetchDataFromPath = async(path:string) => {
     const querySnapshot = await getDocs(collection(fStore, path));
 
     if (!querySnapshot) return undefined;
     return querySnapshot.docs.map((each) => each.data());
   };
 
-  static fetchSpecifiedChildOfSpecifiedComponentData = async(path:string, subpath: string) => {
+  static fetchDataFromSubpath = async(path:string, subpath: string) => {
     const docRef = doc(fStore, path, subpath);
     const dataDoc = await getDoc(docRef);
 
@@ -50,7 +50,7 @@ class FirebaseAPI {
 
   static addFoodDetailsComponentsData = async () => {
     await Promise.all(
-        Object.entries(this.fetchSpecifiedComponentData("FYPData")).map(async (each) => {
+        Object.entries(this.fetchDataFromPath("FYPData")).map(async (each) => {
           await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
         })
     );

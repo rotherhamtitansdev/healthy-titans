@@ -18,9 +18,7 @@ const mockContent = {
 
 describe("About Us", () => {
   test("component renders with sections and image", async () => {
-    jest
-      .spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData")
-      .mockResolvedValue(mockContent);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockResolvedValue(mockContent);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
 
     const { asFragment } = render(<AboutUs />);

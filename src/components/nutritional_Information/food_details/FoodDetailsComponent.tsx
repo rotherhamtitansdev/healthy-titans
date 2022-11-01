@@ -43,7 +43,7 @@ const FoodDetailsComponent = () => {
     setAdditionalStyling("bg-white mb-10");
     setSeeNext(undefined);
     if (foodName) {
-      FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData("FYPData", foodName).then((res) => {
+      FirebaseAPI.fetchDataFromSubpath("FYPData", foodName).then((res) => {
         if (res !== undefined) {
           fetchSeeNext(res as FoodDetailsProps).then((r) => {
             setSeeNext(r);

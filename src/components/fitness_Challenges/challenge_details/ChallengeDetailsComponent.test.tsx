@@ -19,9 +19,7 @@ describe("ChallengeDetailsComponent", () => {
 
     const mockFetchChallengesData = jest.fn().mockResolvedValueOnce(content);
 
-    jest
-      .spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData")
-      .mockImplementation(mockFetchChallengesData);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockImplementation(mockFetchChallengesData);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue(url);
 
     const { asFragment } = render(
@@ -62,9 +60,7 @@ describe("ChallengeDetailsComponent", () => {
 
     const mockFetchChallengesData = jest.fn().mockResolvedValueOnce(content);
 
-    jest
-      .spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData")
-      .mockImplementation(mockFetchChallengesData);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockImplementation(mockFetchChallengesData);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue(url);
 
     const { asFragment } = render(

@@ -15,7 +15,7 @@ const NutritionCategory = () => {
 
   useEffect(() => {
     if (!getNutritionCategoryData) {
-      FirebaseAPI.fetchSpecifiedComponentData("NutritionData").then((data) =>
+      FirebaseAPI.fetchDataFromPath("NutritionData").then((data) =>
         setCategoryNutritionData(data as NutritionCardProps[])
       );
     }

@@ -42,7 +42,7 @@ const mockHomeContent: MenuCardProps[] = [
 test("home page renders", async () => {
   // const mockFetchHomeData = jest.fn(() => {});
   // jest.spyOn(FirebaseAPI,
-  // "fetchSpecifiedComponentData").mockImplementationOnce(mockFetchHomeData);
+  // "fetchDataFromPath").mockImplementationOnce(mockFetchHomeData);
 
   // Define width so carousel on homepage loads
   Object.defineProperties(window.HTMLElement.prototype, {

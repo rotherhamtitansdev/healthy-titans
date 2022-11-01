@@ -15,7 +15,7 @@ const FoodCategory = () => {
   const [getFoodCategoryData, setFoodCategoryData] = useState<MenuCardProps[]>([]);
   const [getFoodSubcategoryData, setFoodSubcategoryData] = useState<MenuCardProps[]>([]);
 
-  function setParamFoodCat() {
+  function setParam() {
     foodCategory = location.pathname.slice(
       location.pathname.lastIndexOf("/") + 1,
       location.pathname.length
@@ -30,7 +30,7 @@ const FoodCategory = () => {
     navigate("/FoodAndNutrition");
   }
 
-  function readyToCallSetCategoryTitle() {
+  function readyToCallSetTitle() {
     console.log(foodCategory, getFoodCategoryData, getFoodSubcategoryData);
     if (
       getFoodCategoryData &&
@@ -54,7 +54,7 @@ const FoodCategory = () => {
   useEffect(() => {
     console.log("CALL USEEFFECT", foodCategory, getFoodCategoryData);
     if (!foodCategory) {
-      setParamFoodCat();
+      setParam();
     }
 
     if (getFoodCategoryData.length === 0 && getFoodSubcategoryData.length === 0) {
@@ -62,35 +62,29 @@ const FoodCategory = () => {
       // find the category from hard coded data and match the path with the current category
       if (foodCategory && foodCategory !== "FoodAndNutrition") {
         console.log("HERE", foodCategory, typeof getFoodCategoryData);
-        FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData(
-          "FoodCategoryData",
-          foodCategory
-        ).then((categoryData) => {
-          setFoodCategoryData(categoryData as MenuCardProps[]);
+        FirebaseAPI.fetchDataFromSubpath("FoodCategoryData", foodCategory).then((data) => {
+          setFoodCategoryData(data as MenuCardProps[]);
         });
 
-        FirebaseAPI.fetchSpecifiedChildOfSpecifiedComponentData(
-          "FoodSubCategoryData",
-          foodCategory
-        ).then((subcategoryData) => {
-          setFoodSubcategoryData(subcategoryData as MenuCardProps[]);
+        FirebaseAPI.fetchDataFromSubpath("FoodSubCategoryData", foodCategory).then((data) => {
+          setFoodSubcategoryData(data as MenuCardProps[]);
         });
       } else {
         console.log("Check food category", foodCategory);
-        FirebaseAPI.fetchSpecifiedComponentData("FoodCategoryData").then((categoryData) => {
-          setFoodCategoryData(categoryData as MenuCardProps[]);
-          console.log("CATEGORY DATA", categoryData, getFoodCategoryData);
+        FirebaseAPI.fetchDataFromPath("FoodCategoryData").then((data) => {
+          setFoodCategoryData(data as MenuCardProps[]);
+          console.log("CATEGORY DATA", data, getFoodCategoryData);
         });
 
-        FirebaseAPI.fetchSpecifiedComponentData("FoodSubCategoryData").then((subcategoryData) => {
-          setFoodSubcategoryData(subcategoryData as MenuCardProps[]);
-          console.log("SUBCATEGORY DATA", subcategoryData, getFoodSubcategoryData);
+        FirebaseAPI.fetchDataFromPath("FoodSubCategoryData").then((data) => {
+          setFoodSubcategoryData(data as MenuCardProps[]);
+          console.log("SUBCATEGORY DATA", data, getFoodSubcategoryData);
         });
       }
       // Got data so now safe after setStates to call next methods
     } else {
       console.log("AT ELSE", foodCategory, getFoodCategoryData, getFoodSubcategoryData);
-      readyToCallSetCategoryTitle();
+      readyToCallSetTitle();
     }
   }, []);
 

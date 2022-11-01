@@ -12,7 +12,7 @@ const HomePageComponents = () => {
 
   useEffect(() => {
     if (!getHomePageData || getHomePageData.length === 0) {
-      FirebaseAPI.fetchSpecifiedComponentData("HomePageComponentsData").then((homeData) =>
+      FirebaseAPI.fetchDataFromPath("HomePageComponentsData").then((homeData) =>
         setHomePageData(homeData as MenuCardProps[])
       );
     }

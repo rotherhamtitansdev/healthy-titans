@@ -8,9 +8,7 @@ const Challenges = () => {
   const [data, setData] = useState<MenuCardProps[]>([]);
 
   useEffect(() => {
-    FirebaseAPI.fetchSpecifiedComponentData("ChallengesData").then((res) =>
-      setData(res as MenuCardProps[])
-    );
+    FirebaseAPI.fetchDataFromPath("ChallengesData").then((res) => setData(res as MenuCardProps[]));
   }, []);
 
   const headerData: HeaderProps = {

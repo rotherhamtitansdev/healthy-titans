@@ -29,7 +29,7 @@ class BuildYourPlateProcessor {
   };
 
   static fetchAllUrls = async () => {
-    const data = await FirebaseAPI.fetchSpecifiedComponentData("FYPData");
+    const data = await FirebaseAPI.fetchDataFromPath("FYPData");
     if (!data) return undefined;
     return Promise.all(
       Object.values(data).map(async (item) => ({

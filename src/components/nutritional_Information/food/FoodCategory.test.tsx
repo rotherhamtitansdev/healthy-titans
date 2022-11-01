@@ -62,7 +62,7 @@ describe("Food Category Component", () => {
   });
 
   test("renders with category", () => {
-    jest.spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData");
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath");
 
     const category = mockFoodCategoryContent[0];
     const route = `/FoodAndNutrition/${category.name}`;
@@ -95,7 +95,7 @@ describe("Food Category Component", () => {
     const route = "/FoodAndNutrition";
     const user = userEvent.setup();
 
-    jest.spyOn(FirebaseAPI, "fetchSpecifiedChildOfSpecifiedComponentData");
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath");
 
     render(
       <RoutingTestWrapper path={route}>
