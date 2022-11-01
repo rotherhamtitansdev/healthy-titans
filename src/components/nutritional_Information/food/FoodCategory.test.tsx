@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
 import { Route } from "react-router";
 import userEvent from "@testing-library/user-event";
-import FoodCategory from "./FoodCategory";
+import FoodCategoryComponent from "./FoodCategory";
 import RoutingTestWrapper from "../../../tests/RoutingTestWrapper";
 import FirebaseAPI from "../../../api/FirebaseAPI";
 
@@ -51,7 +51,7 @@ describe("Food Category Component", () => {
 
     const { asFragment } = render(
       <RoutingTestWrapper path={route}>
-        <Route path={route} element={<FoodCategory />} />
+        <Route path={route} element={<FoodCategoryComponent />} />
       </RoutingTestWrapper>
     );
 
@@ -69,7 +69,7 @@ describe("Food Category Component", () => {
 
     render(
       <RoutingTestWrapper path={route}>
-        <Route path={route} element={<FoodCategory />} />
+        <Route path={route} element={<FoodCategoryComponent />} />
       </RoutingTestWrapper>
     );
 
@@ -81,7 +81,7 @@ describe("Food Category Component", () => {
 
     render(
       <RoutingTestWrapper path={route}>
-        <Route path={route} element={<FoodCategory />} />
+        <Route path={route} element={<FoodCategoryComponent />} />
       </RoutingTestWrapper>
     );
 
@@ -99,7 +99,7 @@ describe("Food Category Component", () => {
 
     render(
       <RoutingTestWrapper path={route}>
-        <Route path={route} element={<FoodCategory />} />
+        <Route path={route} element={<FoodCategoryComponent />} />
       </RoutingTestWrapper>
     );
 
