@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/media-has-caption */
+// we are not writing captions for videos
 import React, { useCallback, useState } from "react";
 import FirebaseAPI from "../../api/FirebaseAPI";
 import "../../App.css";
@@ -39,7 +41,6 @@ const VideoCard = (props: {
     >
       <div className="p-5">
         {getVideoURL && props.video.description && (
-          // eslint-disable-next-line jsx-a11y/media-has-caption
           <video className="rounded-3xl">
             <source src={getVideoURL} />
           </video>

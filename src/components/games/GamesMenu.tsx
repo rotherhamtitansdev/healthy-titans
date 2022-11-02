@@ -33,6 +33,7 @@ const Games = () => {
     <Menu
       header={headerData}
       cards={gamesData}
+      displaySingleColumnMobile
       title={{
         title: "Games & Challenges",
         subtitle:

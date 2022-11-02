@@ -8,4 +8,6 @@ export interface MenuProps {
   cards: MenuCardProps[];
   title?: MenuTitleProps;
   children?: React.ReactNode;
+  displaySingleColumnMobile?: boolean;
+  containerStyles?: string;
 }

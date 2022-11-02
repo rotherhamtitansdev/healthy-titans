@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
-import FirebaseAPI, { FoodDetailsProps } from "../../../api/FirebaseAPI";
+import FirebaseAPI from "../../../api/FirebaseAPI";
+import { FoodDetailsProps } from "../../../models/FoodDetailsProps";
 import FoodDetailsComponent from "./FoodDetailsComponent";
 
 const mockContent = {
@@ -87,7 +88,7 @@ describe("Food Details Component", () => {
       "mock/Image3.svg"
     );
 
-    expect(mockFetchFoodSingle).toHaveBeenCalledWith("mock3");
+    expect(mockFetchFoodSingle).toHaveBeenCalledWith("FYPData", "mock3");
     expect(mockFetchSeeNext).toHaveBeenCalledWith("mockCategory", "mock3");
 
     expect(screen.getAllByRole("button")).toHaveLength(2);

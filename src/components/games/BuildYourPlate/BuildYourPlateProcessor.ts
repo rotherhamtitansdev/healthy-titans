@@ -32,11 +32,11 @@ class BuildYourPlateProcessor {
     const data = await FirebaseAPI.fetchDataFromPath("FYPData");
     if (!data) return undefined;
     return Promise.all(
-      Object.values(data).map(async (item) => ({
+      data.map(async (item) => ({
         icon: item.category,
         name: item.name,
         URL: await FirebaseAPI.fetchImages(item.firebaseName),
-        key: item.name,
+        id: item.name,
         score: item.score,
       }))
     );

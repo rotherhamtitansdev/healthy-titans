@@ -5,49 +5,57 @@ import userEvent from "@testing-library/user-event";
 import FoodCategoryComponent from "./FoodCategory";
 import RoutingTestWrapper from "../../../tests/RoutingTestWrapper";
 import FirebaseAPI from "../../../api/FirebaseAPI";
+import { MenuCardProps } from "../../../models/MenuCardProps";
+import { SubCategoryProps } from "../../../models/SubCategoryProps";
 
-const mockFoodCategoryContent = [
+const mockFoodCategoryContent: MenuCardProps[] = [
   {
     key: 0,
-    name: "Macronutrients & Micronutrients",
-    path: "Nutrition/MacroAndMicroNutrients",
-    firebaseName: "FoodCategories/Nutrition/MacronutrientsAndMicronutrients.svg",
+    name: "Dairy and Eggs",
+    path: "DairyAndEggs",
+    firebaseName: "FoodCategories/DairyAndEggs/DairyAndEggs.svg",
   },
   {
     key: 1,
-    name: "Protein",
-    firebaseName: "FoodCategories/Nutrition/Protien.svg",
-    path: "Nutrition/Protein",
+    name: "Fast Food",
+    path: "FastFood",
+    firebaseName: "FoodCategories/JunkFood/FastFood.svg",
   },
   {
     key: 2,
-    name: "Fat",
-    firebaseName: "FoodCategories/Nutrition/Fat.svg",
-    path: "Nutrition/Fat",
-  },
-  {
-    key: 3,
-    name: "Carbs",
-    firebaseName: "FoodCategories/Nutrition/Carbohydrates.svg",
-    path: "Nutrition/Carbs",
-  },
-  {
-    key: 4,
-    name: "Salt & Sugar",
-    firebaseName: "FoodCategories/Nutrition/SugarAndSalt.svg",
-    path: "Nutrition/SaltAndSugar",
-  },
-  {
-    key: 5,
-    name: "Water",
-    firebaseName: "FoodCategories/Nutrition/Water.svg",
-    path: "Nutrition/Water",
+    name: "Fish",
+    path: "Fish",
+    firebaseName: "FoodCategories/Fish/Fish.svg",
   },
 ];
+
+const mockFoodSubCategoryContent: SubCategoryProps = {
+  subCategory: [
+    {
+      key: 0,
+      name: "Dairy and Eggs",
+      path: "DairyAndEggs",
+      firebaseName: "FoodCategories/DairyAndEggs/DairyAndEggs.svg",
+    },
+    {
+      key: 1,
+      name: "Fast Food",
+      path: "FastFood",
+      firebaseName: "FoodCategories/JunkFood/FastFood.svg",
+    },
+    {
+      key: 2,
+      name: "Fish",
+      path: "Fish",
+      firebaseName: "FoodCategories/Fish/Fish.svg",
+    },
+  ],
+};
 
 describe("Food Category Component", () => {
   test("renders with no category", async () => {
     const route = "/FoodAndNutrition";
+    jest.spyOn(FirebaseAPI, "fetchDataFromPath").mockResolvedValueOnce(mockFoodCategoryContent);
 
     const { asFragment } = render(
       <RoutingTestWrapper path={route}>
@@ -55,29 +63,34 @@ describe("Food Category Component", () => {
       </RoutingTestWrapper>
     );
 
-    expect(screen.getByText(/explore food families/i)).toBeVisible();
-    expect(screen.getByText(/click on a picture to learn more/i)).toBeVisible();
+    expect(await screen.findByText(/explore food families/i)).toBeVisible();
+    expect(await screen.findByText(/click on a picture to learn more/i)).toBeVisible();
 
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test("renders with category", () => {
-    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath");
-
+  test("renders with category", async () => {
     const category = mockFoodCategoryContent[0];
-    const route = `/FoodAndNutrition/${category.name}`;
+    const route = `/FoodAndNutrition/${category.path}`;
+    jest.spyOn(FirebaseAPI, "fetchDataFromPath").mockResolvedValueOnce(mockFoodCategoryContent);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockResolvedValue(mockFoodSubCategoryContent);
 
-    render(
+    const { asFragment } = render(
       <RoutingTestWrapper path={route}>
         <Route path={route} element={<FoodCategoryComponent />} />
       </RoutingTestWrapper>
     );
 
-    expect(screen.getByTestId("menutitle-title")).toHaveTextContent(category.name);
+    waitFor(async () => {
+      expect(await screen.findByTestId("menutitle-title")).toHaveTextContent(category.name);
+    });
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  test("fallsback if no category is found", () => {
+  test("fallsback if no category is found", async () => {
     const route = "/FoodAndNutrition/NotARealCategory";
+    jest.spyOn(FirebaseAPI, "fetchDataFromPath").mockResolvedValueOnce(mockFoodCategoryContent);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockResolvedValueOnce(undefined);
 
     render(
       <RoutingTestWrapper path={route}>
@@ -94,8 +107,7 @@ describe("Food Category Component", () => {
     const category = mockFoodCategoryContent[0];
     const route = "/FoodAndNutrition";
     const user = userEvent.setup();
-
-    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath");
+    jest.spyOn(FirebaseAPI, "fetchDataFromPath").mockResolvedValueOnce(mockFoodCategoryContent);
 
     render(
       <RoutingTestWrapper path={route}>
@@ -103,8 +115,7 @@ describe("Food Category Component", () => {
       </RoutingTestWrapper>
     );
 
-    expect(screen.getByText(/explore food families/i)).toBeVisible();
-
+    expect(await screen.findByText(/explore food families/i)).toBeVisible();
     user.click(screen.getByTestId(category.name));
 
     waitFor(() => {

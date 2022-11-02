@@ -19,11 +19,11 @@ export interface TotalNutrients {
   FAMS: Nutrient;
   FAPU: Nutrient;
   CHOCDF: Nutrient;
-  FIBTG: Nutrient;
-  SUGAR: Nutrient;
+  FIBTG?: Nutrient;
+  SUGAR?: Nutrient;
   "SUGAR.added"?: Nutrient;
   PROCNT: Nutrient;
-  CHOLE: Nutrient;
+  CHOLE?: Nutrient;
   NA: Nutrient;
   CA: Nutrient;
   MG: Nutrient;
@@ -31,19 +31,19 @@ export interface TotalNutrients {
   FE: Nutrient;
   ZN: Nutrient;
   P: Nutrient;
-  VITA_RAE: Nutrient;
-  VITC: Nutrient;
+  VITA_RAE?: Nutrient;
+  VITC?: Nutrient;
   THIA: Nutrient;
-  RIBF: Nutrient;
+  RIBF?: Nutrient;
   NIA: Nutrient;
   VITB6A: Nutrient;
-  FOLDFE: Nutrient;
-  FOLFD: Nutrient;
-  FOLAC: Nutrient;
-  VITB12: Nutrient;
-  VITD: Nutrient;
-  TOCPHA: Nutrient;
-  VITK1: Nutrient;
+  FOLDFE?: Nutrient;
+  FOLFD?: Nutrient;
+  FOLAC?: Nutrient;
+  VITB12?: Nutrient;
+  VITD?: Nutrient;
+  TOCPHA?: Nutrient;
+  VITK1?: Nutrient;
   WATER: Nutrient;
 }
 
@@ -52,9 +52,9 @@ export interface TotalDaily {
   FAT: Nutrient;
   FASAT: Nutrient;
   CHOCDF: Nutrient;
-  FIBTG: Nutrient;
+  FIBTG?: Nutrient;
   PROCNT: Nutrient;
-  CHOLE: Nutrient;
+  CHOLE?: Nutrient;
   NA: Nutrient;
   CA: Nutrient;
   MG: Nutrient;
@@ -62,17 +62,17 @@ export interface TotalDaily {
   FE: Nutrient;
   ZN: Nutrient;
   P: Nutrient;
-  VITA_RAE: Nutrient;
-  VITC: Nutrient;
+  VITA_RAE?: Nutrient;
+  VITC?: Nutrient;
   THIA: Nutrient;
   RIBF: Nutrient;
   NIA: Nutrient;
   VITB6A: Nutrient;
-  FOLDFE: Nutrient;
-  VITB12: Nutrient;
-  VITD: Nutrient;
-  TOCPHA: Nutrient;
-  VITK1: Nutrient;
+  FOLDFE?: Nutrient;
+  VITB12?: Nutrient;
+  VITD?: Nutrient;
+  TOCPHA?: Nutrient;
+  VITK1?: Nutrient;
 }
 
 export interface TotalNutrientsKCal {

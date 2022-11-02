@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import FirebaseAPI from "../../../api/FirebaseAPI";

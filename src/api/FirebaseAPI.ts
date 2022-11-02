@@ -1,24 +1,14 @@
 import {getDownloadURL, getStorage, ref} from "firebase/storage";
 import {collection, doc, getDoc, getDocs, query, setDoc, where, documentId} from "firebase/firestore";
 import { fStore } from "../config/firebase-config";
-import {NutritionalDetailsFirebaseProps} from "../models/NutritionDetailsComponentData";
-
-/* eslint-disable */
+import { NutritionalDetailsFirebaseProps } from "../models/NutritionDetailsComponentData";
+import {FoodDetailsProps} from "../models/FoodDetailsProps";
 
 interface SeeNextProps {
-  key: number
-  name: string
-  path: string
-  img: string
-}
-
-export interface FoodDetailsProps {
+  key: number;
   name: string;
-  description: string;
-  firebaseName: string;
-  category: string;
-  score: number;
-  facts: string[];
+  path: string;
+  img: string;
 }
 
 class FirebaseAPI {
@@ -87,19 +77,23 @@ class FirebaseAPI {
     };
   };
 
-  static fetchNutritionData = async (name: string):Promise<NutritionalDetailsFirebaseProps> => {
-    const querySnapshot = await getDocs(collection(fStore, "NutritionData", name , "Content"));
+  static fetchNutritionData = async (name: string): Promise<NutritionalDetailsFirebaseProps> => {
+    const querySnapshot = await getDocs(collection(fStore, "NutritionData", name, "Content"));
 
-    const sorted = querySnapshot.docs.sort((a,b) => (a.data().order > b.data().order) ? 1 : ((b.data().order > a.data().order) ? -1 : 0))
-
-    return sorted.map(doc => {
-      const data = doc.data()
-      let arr = []
-      for (const [key, value] of Object.entries(data)) {
-        arr.push({key: key, value: value})
+    const sorted = querySnapshot.docs.sort((a, b) => {
+      if (a.data().order > b.data().order) {
+        return 1;
       }
-      return arr
-    })
+      if (b.data().order > a.data().order) {
+        return -1;
+      }
+      return 0;
+    });
+
+    return sorted.map((doc2) => {
+      const data = doc2.data();
+      return Object.entries(data).map(([key,value]) => ({key,value}));
+    });
   };
 
   static fetchNutritionSeeNext = async (currentName: string): Promise<SeeNextProps[]> => {
@@ -110,9 +104,9 @@ class FirebaseAPI {
 
     return Promise.all(docs.map(async (sortedDoc, index) => {
       const dataDoc = await getDoc(doc(fStore, "NutritionData", sortedDoc.id, "Content", "Main"))
-      const URI = await FirebaseAPI.fetchImages(dataDoc.data()!.firebaseName)
+      const URI = await FirebaseAPI.fetchImages(dataDoc.data()?.firebaseName)
 
-      return {key: index, name:dataDoc.data()!.name, path:docs[index].id,img:URI}
+      return {key: index, name:dataDoc.data()?.name, path:docs[index].id,img:URI}
     }))
   }
 };

@@ -14,7 +14,7 @@ const NutritionCategory = () => {
   const loc = useLocation();
 
   useEffect(() => {
-    if (!getNutritionCategoryData) {
+    if (getNutritionCategoryData.length === 0) {
       FirebaseAPI.fetchDataFromPath("NutritionData").then((data) =>
         setCategoryNutritionData(data as NutritionCardProps[])
       );
@@ -23,33 +23,32 @@ const NutritionCategory = () => {
 
   function getNutritionData() {
     const newData: NutritionCardProps[] = [];
-    if (getNutritionCategoryData) {
-      let data = [...getNutritionCategoryData];
+    let data = [...getNutritionCategoryData];
 
-      if (nutritionCategory) {
-        data.forEach((item) => {
-          if (item.path === nutritionCategory) {
-            newData.push(item);
-          }
-        });
-        if (newData.length > 0) return newData;
-      }
-
-      if (loc.pathname.endsWith("Nutrition") || loc.pathname.endsWith("Nutrition/")) {
-        data = data.map((element) => {
-          const newElement = { ...element };
-          newElement.path = newElement.path.replace("Nutrition/", "");
-          return newElement;
-        });
-      }
-      return data;
+    if (nutritionCategory) {
+      data.forEach((item) => {
+        if (item.path === nutritionCategory) {
+          newData.push(item);
+        }
+      });
+      if (newData.length > 0) return newData;
     }
-    return newData;
+
+    // Since change of name to Food and Nutrition base name ends with AndNutrition
+    // so check has to accomodate it only ending with just /Nutrition
+    if (loc.pathname.endsWith("/Nutrition") || loc.pathname.endsWith("/Nutrition/")) {
+      data = data.map((element) => {
+        const newElement = { ...element };
+        newElement.path = newElement.path.replace("Nutrition/", "");
+        return newElement;
+      });
+    }
+    return data;
   }
 
   return (
     <div>
-      {getNutritionCategoryData && (
+      {getNutritionCategoryData.length > 0 && (
         <Menu
           title={{
             title: "Explore nutrition",

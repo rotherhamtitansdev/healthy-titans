@@ -18,6 +18,7 @@ import NutritionDetailsComponent from "./nutritional_Information/nutritional/Nut
 import NutritionalInformation from "./nutritional_Information/NutritionalInformation";
 import VideosComponent from "./videos/VideosComponent";
 import AboutUs from "./aboutUs/AboutUs";
+import ExternalGames from "./games/ExternalGames/ExternalGamesMenu";
 
 const App: React.FC = () => (
   <div className="layout-container">
@@ -80,6 +81,16 @@ const App: React.FC = () => (
               element={
                 <GameContext>
                   <BuildYourPlate />
+                </GameContext>
+              }
+            />
+          </Route>
+          <Route path="ExternalGames">
+            <Route
+              index
+              element={
+                <GameContext>
+                  <ExternalGames />
                 </GameContext>
               }
             />
