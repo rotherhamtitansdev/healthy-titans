@@ -73,7 +73,7 @@ const AboutUs = () => {
               <h2 className={sectionHeaderStyles}>{AboutUsData.section_3[0]}</h2>
               <p>{AboutUsData.section_3[1]}</p>
             </div>
-            <div id="imgArea2" className={`${imgContainerStyles} hidden md:flex`}>
+            <div id="imgArea3" className={`${imgContainerStyles} hidden md:flex`}>
               <img
                 src={Images[2]}
                 alt="green hearts"
@@ -82,7 +82,7 @@ const AboutUs = () => {
             </div>
           </div>
           <div id="section4" className={`${gridStyles} ${sectionPaddingStyles} bg-white`}>
-            <div id="imgArea3" className={`${imgContainerStyles} hidden md:flex`}>
+            <div id="imgArea4" className={`${imgContainerStyles} hidden md:flex`}>
               <img
                 src={Images[1]}
                 alt="1 in 4 people"
@@ -103,7 +103,7 @@ const AboutUs = () => {
             <div id="imgArea5" className={`${imgContainerStyles} order-first md:order-last`}>
               <img
                 src={Logo}
-                alt="Cookie's Khaw"
+                alt="Cookie's Khaw Logo"
                 className="w-[270px] lg:w-[453px]"
               />
             </div>

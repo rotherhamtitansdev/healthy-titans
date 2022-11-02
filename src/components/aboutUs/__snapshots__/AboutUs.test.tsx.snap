@@ -119,7 +119,7 @@ exports[`About Us component renders with sections and image 1`] = `
       </div>
       <div
         class="flex justify-center items-center my-6 md:my-0 hidden md:flex"
-        id="imgArea2"
+        id="imgArea3"
       >
         <img
           alt="green hearts"
@@ -134,7 +134,7 @@ exports[`About Us component renders with sections and image 1`] = `
     >
       <div
         class="flex justify-center items-center my-6 md:my-0 hidden md:flex"
-        id="imgArea3"
+        id="imgArea4"
       >
         <img
           alt="1 in 4 people"
@@ -181,7 +181,7 @@ exports[`About Us component renders with sections and image 1`] = `
         id="imgArea5"
       >
         <img
-          alt="Cookie's Khaw"
+          alt="Cookie's Khaw Logo"
           class="w-[270px] lg:w-[453px]"
           src="Logo.svg"
         />
