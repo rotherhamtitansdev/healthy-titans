@@ -2,128 +2,130 @@
 
 exports[`Menu Component if component renders header, card, title, and children (3+ cards) 1`] = `
 <DocumentFragment>
-  <div
-    class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
-  >
+  <div>
     <div
-      class="flex flex-wrap h-[22rem]"
+      class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
     >
       <div
-        class="mx-auto pt-[3rem] md:pt-[2rem]"
+        class="flex flex-wrap h-[22rem]"
       >
-        <h1
-          class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
-          data-testid="header-title"
-        >
-          Test First Title
-        </h1>
         <div
-          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          class="mx-auto pt-[3rem] md:pt-[2rem]"
         >
-          Test Body Title
+          <h1
+            class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+            data-testid="header-title"
+          >
+            Test First Title
+          </h1>
+          <div
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          >
+            Test Body Title
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="p-5 md:p-10 pb-20"
-  >
     <div
-      class="md:px-5"
+      class="p-5 md:p-10 pb-20"
     >
       <div
-        class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
-        data-testid="menutitle-title"
-      >
-        Test Second Title
-      </div>
-      <div
-        class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
-        data-testid="breadcrumbs"
-      />
-    </div>
-    <div
-      class="grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]"
-      data-testid="menu-styling"
-    >
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 1"
-        role="button"
-        tabindex="0"
+        class="md:px-5"
       >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+          data-testid="menutitle-title"
         >
-          <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
-          >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 1
-          </div>
+          Test Second Title
         </div>
+        <div
+          class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
+          data-testid="breadcrumbs"
+        />
       </div>
       <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 2"
-        role="button"
-        tabindex="0"
+        class="grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]"
+        data-testid="menu-styling"
       >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 1"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 2
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 1
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 3"
-        role="button"
-        tabindex="0"
-      >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 2"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 3
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 2
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="grid col-span-2 lg:col-span-3 "
-      >
-        <h1>
-          Hello
-        </h1>
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 3"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          >
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 3
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid col-span-2 lg:col-span-3 "
+        >
+          <h1>
+            Hello
+          </h1>
+        </div>
       </div>
     </div>
   </div>
@@ -132,71 +134,73 @@ exports[`Menu Component if component renders header, card, title, and children (
 
 exports[`Menu Component if component renders header, card, title, but not children (less than 3 cards) 1`] = `
 <DocumentFragment>
-  <div
-    class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
-  >
+  <div>
     <div
-      class="flex flex-wrap h-[22rem]"
+      class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
     >
       <div
-        class="mx-auto pt-[3rem] md:pt-[2rem]"
+        class="flex flex-wrap h-[22rem]"
       >
-        <h1
-          class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
-          data-testid="header-title"
-        >
-          Test First Title
-        </h1>
         <div
-          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          class="mx-auto pt-[3rem] md:pt-[2rem]"
         >
-          Test Body Title
+          <h1
+            class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+            data-testid="header-title"
+          >
+            Test First Title
+          </h1>
+          <div
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          >
+            Test Body Title
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="p-5 md:p-10 pb-20"
-  >
     <div
-      class="md:px-5"
+      class="p-5 md:p-10 pb-20"
     >
       <div
-        class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
-        data-testid="menutitle-title"
-      >
-        Test Second Title
-      </div>
-      <div
-        class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
-        data-testid="breadcrumbs"
-      />
-    </div>
-    <div
-      class="px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6"
-      data-testid="menu-styling"
-    >
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 1"
-        role="button"
-        tabindex="0"
+        class="md:px-5"
       >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+          data-testid="menutitle-title"
+        >
+          Test Second Title
+        </div>
+        <div
+          class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
+          data-testid="breadcrumbs"
+        />
+      </div>
+      <div
+        class="px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6"
+        data-testid="menu-styling"
+      >
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 1"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 1
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 1
+            </div>
           </div>
         </div>
       </div>
@@ -207,88 +211,90 @@ exports[`Menu Component if component renders header, card, title, but not childr
 
 exports[`Menu Component if component renders only cards, no header or title 1`] = `
 <DocumentFragment>
-  <div
-    class="p-5 md:p-10 pb-20"
-  >
+  <div>
     <div
-      class="grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]"
-      data-testid="menu-styling"
+      class="p-5 md:p-10 pb-20"
     >
       <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 1"
-        role="button"
-        tabindex="0"
+        class="grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]"
+        data-testid="menu-styling"
       >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 1"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 1
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 1
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 2"
-        role="button"
-        tabindex="0"
-      >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 2"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 2
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 2
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 3"
-        role="button"
-        tabindex="0"
-      >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 3"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 3
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 3
+            </div>
           </div>
         </div>
+        <div
+          class="grid col-span-2 lg:col-span-3 "
+        />
       </div>
-      <div
-        class="grid col-span-2 lg:col-span-3 "
-      />
     </div>
   </div>
 </DocumentFragment>
@@ -296,128 +302,130 @@ exports[`Menu Component if component renders only cards, no header or title 1`] 
 
 exports[`Menu Component if conditional styling is applied, 3+ cards 1`] = `
 <DocumentFragment>
-  <div
-    class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
-  >
+  <div>
     <div
-      class="flex flex-wrap h-[22rem]"
+      class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
     >
       <div
-        class="mx-auto pt-[3rem] md:pt-[2rem]"
+        class="flex flex-wrap h-[22rem]"
       >
-        <h1
-          class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
-          data-testid="header-title"
-        >
-          Test First Title
-        </h1>
         <div
-          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          class="mx-auto pt-[3rem] md:pt-[2rem]"
         >
-          Test Body Title
+          <h1
+            class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+            data-testid="header-title"
+          >
+            Test First Title
+          </h1>
+          <div
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          >
+            Test Body Title
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="p-5 md:p-10 pb-20"
-  >
     <div
-      class="md:px-5"
+      class="p-5 md:p-10 pb-20"
     >
       <div
-        class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
-        data-testid="menutitle-title"
-      >
-        Test Second Title
-      </div>
-      <div
-        class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
-        data-testid="breadcrumbs"
-      />
-    </div>
-    <div
-      class="grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]"
-      data-testid="menu-styling"
-    >
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 1"
-        role="button"
-        tabindex="0"
+        class="md:px-5"
       >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+          data-testid="menutitle-title"
         >
-          <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
-          >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 1
-          </div>
+          Test Second Title
         </div>
+        <div
+          class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
+          data-testid="breadcrumbs"
+        />
       </div>
       <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 2"
-        role="button"
-        tabindex="0"
+        class="grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]"
+        data-testid="menu-styling"
       >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 1"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 2
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 1
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 3"
-        role="button"
-        tabindex="0"
-      >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 2"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 3
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 2
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="grid col-span-2 lg:col-span-3 "
-      >
-        <h1>
-          Hello
-        </h1>
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 3"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          >
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 3
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid col-span-2 lg:col-span-3 "
+        >
+          <h1>
+            Hello
+          </h1>
+        </div>
       </div>
     </div>
   </div>
@@ -426,71 +434,73 @@ exports[`Menu Component if conditional styling is applied, 3+ cards 1`] = `
 
 exports[`Menu Component if conditional styling is applied, less than 3 cards 1`] = `
 <DocumentFragment>
-  <div
-    class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
-  >
+  <div>
     <div
-      class="flex flex-wrap h-[22rem]"
+      class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
     >
       <div
-        class="mx-auto pt-[3rem] md:pt-[2rem]"
+        class="flex flex-wrap h-[22rem]"
       >
-        <h1
-          class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
-          data-testid="header-title"
-        >
-          Test First Title
-        </h1>
         <div
-          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          class="mx-auto pt-[3rem] md:pt-[2rem]"
         >
-          Test Body Title
+          <h1
+            class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+            data-testid="header-title"
+          >
+            Test First Title
+          </h1>
+          <div
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          >
+            Test Body Title
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div
-    class="p-5 md:p-10 pb-20"
-  >
     <div
-      class="md:px-5"
+      class="p-5 md:p-10 pb-20"
     >
       <div
-        class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
-        data-testid="menutitle-title"
-      >
-        Test Second Title
-      </div>
-      <div
-        class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
-        data-testid="breadcrumbs"
-      />
-    </div>
-    <div
-      class="px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6"
-      data-testid="menu-styling"
-    >
-      <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-        data-testid="Test Card Name 1"
-        role="button"
-        tabindex="0"
+        class="md:px-5"
       >
         <div
-          class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
+          class="font-semibold text-[#243A73] text-2xl md:text-3xl lg:text-4xl py-5"
+          data-testid="menutitle-title"
+        >
+          Test Second Title
+        </div>
+        <div
+          class="text-[#243A73] flex font-medium md:text-xl lg:text-xl pb-5"
+          data-testid="breadcrumbs"
+        />
+      </div>
+      <div
+        class="px-5 py-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 gap-y-6"
+        data-testid="menu-styling"
+      >
+        <div
+          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          data-testid="Test Card Name 1"
+          role="button"
+          tabindex="0"
         >
           <div
-            class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
           >
-            <span
-              class=""
-              style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-            />
-          </div>
-          <div
-            class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-          >
-            Test Card Name 1
+            <div
+              class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
+            >
+              <span
+                class=""
+                style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
+              />
+            </div>
+            <div
+              class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
+            >
+              Test Card Name 1
+            </div>
           </div>
         </div>
       </div>
