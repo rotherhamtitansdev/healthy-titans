@@ -1,4 +1,3 @@
-// empty div at bottom for layout issue
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import FirebaseAPI from "../../api/FirebaseAPI";
@@ -19,7 +18,7 @@ const AboutUs = () => {
   const [AboutUsData, setAboutUsData] = useState<AboutUsProps | undefined>();
   const [Images, setImages] = useState<string[] | undefined>();
 
-  const aboutUsImages = ["AboutUs/speechmark.svg", "AboutUs/People.svg", "AboutUs/Hearts.svg"];
+  const aboutUsImages = ["AboutUs/speechmark.svg", "AboutUs/People.png", "AboutUs/Hearts.png"];
 
   useEffect(() => {
     FirebaseAPI.fetchAboutUsData().then((res) => {
@@ -27,10 +26,6 @@ const AboutUs = () => {
         setAboutUsData(res as DocumentData as AboutUsProps);
       }
     });
-
-    // FirebaseAPI.fetchImages("FoodCategories/Fruits/FruitAndVeg.svg").then((value) =>
-    //   setImgUrl(value)
-    // );
 
     FirebaseAPI.fetchAllImages(aboutUsImages).then((value) => {
       setImages(value);
@@ -78,20 +73,20 @@ const AboutUs = () => {
               <h2 className={sectionHeaderStyles}>{AboutUsData.section_3[0]}</h2>
               <p>{AboutUsData.section_3[1]}</p>
             </div>
-            <div id="imgArea2" className={imgContainerStyles}>
+            <div id="imgArea2" className={`${imgContainerStyles} hidden md:flex`}>
               <img
                 src={Images[2]}
                 alt="green hearts"
-                className="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
+                className="hidden md:flex md:h-[268px] md:w-[268px]"
               />
             </div>
           </div>
           <div id="section4" className={`${gridStyles} ${sectionPaddingStyles} bg-white`}>
-            <div id="imgArea3" className={imgContainerStyles}>
+            <div id="imgArea3" className={`${imgContainerStyles} hidden md:flex`}>
               <img
                 src={Images[1]}
                 alt="1 in 4 people"
-                className="h-[265px] w-[228px] lg:h-[388px] lg:w-[331px]"
+                className="lg:h-[315px] lg:w-[315px] md:h-[170px] md:w-[170px]"
               />
             </div>
             <div id="textArea4" className={textAreaStyles}>
@@ -105,11 +100,11 @@ const AboutUs = () => {
               <p>{AboutUsData.section_5[1]}</p>
               <p>{AboutUsData.section_5[2]}</p>
             </div>
-            <div id="imgArea5" className={imgContainerStyles}>
+            <div id="imgArea5" className={`${imgContainerStyles} order-first md:order-last`}>
               <img
                 src={Logo}
                 alt="Cookie's Khaw"
-                className="md:w-[270px] lg:w-[453px]"
+                className="w-[270px] lg:w-[453px]"
               />
             </div>
           </div>
