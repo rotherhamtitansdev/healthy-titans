@@ -122,7 +122,7 @@ class FirebaseAPI {
   };
 
   static fetchAboutUsData = async () => {
-    const docRef = doc(fStore, "AboutUsData", "Data");
+    const docRef = doc(fStore, "AboutUs", "Data");
     const aboutUsDoc = await getDoc(docRef);
 
     if (aboutUsDoc.exists()) {
