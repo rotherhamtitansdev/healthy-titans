@@ -12669,7 +12669,7 @@ data: {
     },
   },
   {
-    name: "Coke",
+    name: "Fizzy Drinks (Coke)",
     data: {
       uri: "http://www.edamam.com/ontologies/edamam.owl#recipe_1300d692d4b94139a3e31ea497fc259c",
       yield: 2.0,
