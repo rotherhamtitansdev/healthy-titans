@@ -1,18 +1,15 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-// to be fixed in another ticket
-
 import React from "react";
 import { VideoModalProps } from "../../models/Video";
 import VideoPlayer from "./VideoPlayer";
 
 const VideoModal = (props: VideoModalProps) => (
-  <div onClick={() => props.setHidden(true)}>
+  <div onClick={() => props.setHidden(true)} role="none">
     {props.getHidden ? null : (
       <>
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
           <div className="relative w-full sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-6/12 mx-3 sm:mx-0">
             <div
+              role="none"
               className="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none p-[1.3rem]"
               onClick={(e) => {
                 // do not close modal if anything inside modal content is clicked
