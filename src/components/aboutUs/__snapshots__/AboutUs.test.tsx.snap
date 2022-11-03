@@ -37,9 +37,9 @@ exports[`About Us component renders with sections and image 1`] = `
         id="textArea1"
       >
         <h2
-          class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5"
+          class="font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5"
         >
-          section 1
+          section 1 header
         </h2>
         <p>
           section 1 body
@@ -49,14 +49,24 @@ exports[`About Us component renders with sections and image 1`] = `
         </p>
       </div>
       <div
-        class="flex justify-center items-center my-6 md:my-0"
+        class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
         id="imgArea1"
       >
         <img
-          alt="fruit and veg"
-          class="h-[200px] w-[200px] md:h-[300px] md:w-[300px] lg:h-[400px] lg:w-[400px]"
+          alt="speechmark"
+          class="max-w-[62px] lg:max-w-[75px] py-5"
           src="fruit.jpg"
         />
+        <p
+          class="font-semibold text-xl lg:text-2xl text-titansDarkBlue"
+        >
+          section 1 body 3
+        </p>
+        <p
+          class="text-base lg:text-xl font-medium"
+        >
+          section 1 body 4
+        </p>
       </div>
     </div>
     <div
@@ -78,9 +88,9 @@ exports[`About Us component renders with sections and image 1`] = `
         id="textArea2"
       >
         <h2
-          class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5"
+          class="font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5"
         >
-          section 2
+          section 2 header
         </h2>
         <p>
           section 2 body
@@ -91,66 +101,92 @@ exports[`About Us component renders with sections and image 1`] = `
       </div>
     </div>
     <div
-      class="py-6 md:py-14"
+      class="grid grid-cols-1 md:grid-cols-2 py-6 md:py-14"
       id="section3"
     >
-      <h2
-        class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5 mx-8 md:mx-16 lg:mx-24 md:max-w-[40%]"
-      >
-        section 3
-      </h2>
       <div
-        class="grid grid-cols-1 md:grid-cols-2"
+        class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
+        id="textArea3"
       >
-        <p
-          class="mx-8 md:mx-16 lg:mx-24  mb-4 md:mb-0"
+        <h2
+          class="font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5"
         >
+          section 3 header
+        </h2>
+        <p>
           section 3 body
         </p>
-        <p
-          class="mx-8 md:mx-16 lg:mx-24"
+      </div>
+      <div
+        class="flex justify-center items-center my-6 md:my-0 hidden md:flex"
+        id="imgArea3"
+      >
+        <img
+          alt="green hearts"
+          class="hidden md:flex md:h-[268px] md:w-[268px]"
+          src="example.jpg"
+        />
+      </div>
+    </div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 py-6 md:py-14 bg-white"
+      id="section4"
+    >
+      <div
+        class="flex justify-center items-center my-6 md:my-0 hidden md:flex"
+        id="imgArea4"
+      >
+        <img
+          alt="1 in 4 people"
+          class="lg:h-[315px] lg:w-[315px] md:h-[170px] md:w-[170px]"
+          src="logo.png"
+        />
+      </div>
+      <div
+        class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
+        id="textArea4"
+      >
+        <h2
+          class="font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5"
         >
-          section 3 body 2
+          section 4 header
+        </h2>
+        <p>
+          section 4 body
         </p>
       </div>
     </div>
     <div
-      class="py-6 md:py-14 bg-white"
-      id="section4"
+      class="grid grid-cols-1 md:grid-cols-2 py-6 md:py-14"
+      id="section5"
     >
-      <h2
-        class="font-semibold text-[#252948] text-xl md:text-2xl lg:text-4xl py-5 mx-8 md:mx-16 lg:mx-24"
-      >
-        section 4
-      </h2>
       <div
-        class="grid grid-cols-1 md:grid-cols-2"
+        class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
+        id="textArea5"
       >
-        <div
-          class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4 mb-4 md:mb-0"
+        <h2
+          class="font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5"
         >
-          <p>
-            section 4 body
-          </p>
-          <p>
-            section 4 body 2
-          </p>
-        </div>
-        <div
-          class="mx-8 md:mx-16 lg:mx-24 flex flex-col gap-4"
-        >
-          <p>
-            section 4 body 3
-          </p>
-          <p>
-            section 4 body 4
-          </p>
-        </div>
+          section 4 header
+        </h2>
+        <p>
+          section 4 body
+        </p>
+        <p>
+          section 4 body 2
+        </p>
+      </div>
+      <div
+        class="flex justify-center items-center my-6 md:my-0 order-first md:order-last"
+        id="imgArea5"
+      >
+        <img
+          alt="Cookie's Khaw Logo"
+          class="w-[270px] lg:w-[453px]"
+          src="Logo.svg"
+        />
       </div>
     </div>
   </div>
-  <div
-    class="bg-gradient-to-b from-white to-transparent h-[50px]"
-  />
 </DocumentFragment>
 `;
