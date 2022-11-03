@@ -75,28 +75,28 @@ const Navbar = () => {
         >
           {isMenuOpen && (
             <ul className=" xl:hidden flex flex-col mt-8 mb-14 items-center overscroll-none">
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-gray-900">
                 <a href="/">Home</a>
               </li>
-              <li className="border-gray-400 my-2  text-sm font-medium text-bold text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4  text-sm font-bold text-bold text-titansDarkBlue hover:text-gray-900">
                 <a href="/FoodAndNutrition">Food & Nutrition</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-gray-900">
                 <a href="/FitnessChallenges">Fitness Challenges</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-gray-900">
                 <a href="/Games">Games</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-gray-900">
                 <a href="/Videos">Videos</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-gray-900">
                 <a href="/Recipes">Recipes</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-gray-900">
                 <a href="/AboutUs">About us</a>
               </li>
-              <li className="border-gray-400 my-2">
+              <li className="border-gray-400 my-4">
                 <img src={MenuLine} alt="MenuLine" />
               </li>
               <li className="border-gray-400 mb-8 flex justify-evenly w-48 align-middle">
