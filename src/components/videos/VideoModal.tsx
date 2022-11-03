@@ -12,7 +12,7 @@ const VideoModal = (props: VideoModalProps) => (
               role="none"
               className="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none p-[1.3rem]"
               onClick={(e) => {
-                // do not close modal if anything inside modal content is clicked
+                // do not close modal if anything inside modal content is clicked.
                 e.stopPropagation();
               }}
             >
