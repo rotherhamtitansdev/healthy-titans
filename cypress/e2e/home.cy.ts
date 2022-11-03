@@ -20,18 +20,41 @@ describe("Homepage", () => {
     cy.viewport(768, 1024)
     cy.visit("http://localhost:3000");
     cy.get("[aria-label='menu-toggle'").should("be.visible")
-    cy.get('a[href="/FoodAndNutrition"]').should("not.be.visible")
-    cy.contains("Home").should("not.exist")
+    cy.get("[data-testid='mobile-menu").should("not.be.visible")
     cy.get("[aria-label='menu-toggle'").click()
-    cy.contains("Home")
+    cy.get("[data-testid='mobile-menu").find("a[href='/FoodAndNutrition']").should("be.visible")
     cy.get("[aria-label='menu-toggle'").click()
-    cy.contains("Home").should("not.exist")
+    cy.get("[data-testid='mobile-menu").should("not.be.visible")
   })
 
   it("Has top navbar instead of mobile menu when page is wide enough", () => {
     cy.viewport(1440, 900)
     cy.visit("http://localhost:3000");
     cy.get("[aria-label='menu-toggle'").should("not.be.visible")
-    cy.get('a[href="/FoodAndNutrition"]').should("be.visible")
+    cy.get("a[href='/FoodAndNutrition']").should("be.visible")
+
+    cy.get("a[href='/FoodAndNutrition']").click()
+    cy.url().should("eq", "http://localhost:3000/FoodAndNutrition")
+  })
+
+  it("Can navigate with mobile menu links", () => {
+    cy.viewport(768, 1024)
+    cy.visit("http://localhost:3000");
+    cy.get("[aria-label='menu-toggle'").click()
+    cy.get("[data-testid='mobile-menu").find("a[href='/FoodAndNutrition']").click()
+    cy.url().should("eq", "http://localhost:3000/FoodAndNutrition")
+  })
+
+  it("Can navigate with top navbar links", () => {
+    cy.viewport(1440, 900)
+    cy.visit("http://localhost:3000");
+    cy.get("a[href='/FoodAndNutrition']").click()
+    cy.url().should("eq", "http://localhost:3000/FoodAndNutrition")
+  })
+
+  it("Can navigate with carousel buttons", () => {
+    cy.visit("http://localhost:3000");
+    cy.get(".react-multi-carousel-list").find("[data-testid='Food & Nutrition']").click()
+    cy.url().should("eq", "http://localhost:3000/FoodAndNutrition")
   })
 });
