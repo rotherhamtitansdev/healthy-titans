@@ -58,6 +58,7 @@ const VideosComponent = () => {
     while (videos.length < 3) {
       videos = videos.concat(
         <Card
+          key={key}
           card={{
             name: "placeholder",
             additionalStyling:
