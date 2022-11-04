@@ -35,7 +35,7 @@ const VideoCard = (props: {
     <Card
       card={{
         name: props.video.title,
-        additionalStyling: "w-[18rem] xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem]",
+        additionalStyling: "xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem]",
         onClick: props.disableOnClick ? () => undefined : handleClick,
       }}
     >
