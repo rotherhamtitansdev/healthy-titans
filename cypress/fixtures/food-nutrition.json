@@ -1,9 +1,10 @@
 {
   "carbs": {
-    "title": "Carbs",
-    "description": "Carbs Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua.sed do eiusmod tempor incididunt ut labore et  dolore magna aliqua."
+    "title": "Carbohydrates",
+    "description": "Carbohydrates are an important nutrient for us as it’s our main source of energy. Carbohydrates from food are broken down into a sugar called glucose which our brain and central nervous system utilise as their primary energy source so it’s important we have a continued supply!Glucose is also a great fuel for our muscles so it’s key for exercise and sports you participate in. Fibre is found in all types of plant-based foods. These include fruit, vegetables, pulses, grains, nuts and seeds. Fibre is important to include in your diet as not only are the foods that contain fibre mostly nutritious but it’s also very good for your digestive health and can help prevent constipation."
   },
   "friedChicken": {
+    "title": "Fried Chicken",
     "description": "It's okay to have these in moderation - little and not frequent.",
     "calories": "307"
   }
