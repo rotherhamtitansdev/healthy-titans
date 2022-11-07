@@ -27,7 +27,11 @@ const Footer = () => (
               Powered by
             </p>
             <a href="https://www.titans-rugby.com/" target="_blank" rel="noreferrer">
-              <img src={TitansLogo} alt="Titans Community Foundation Logo" className="w-16 mx-auto md:mx-0" />
+              <img
+                src={TitansLogo}
+                alt="Titans Community Foundation Logo"
+                className="w-16 mx-auto md:mx-0"
+              />
             </a>
           </div>
 
@@ -50,8 +54,8 @@ const Footer = () => (
               </a>
             </p>
             <p className="mb-4">
-              <a href="https://www.titans-rugby.com/" className="text-[#243A73]">
-                Titans Rugby
+              <a href="https://www.titans-rugby.com/about-tcf" className="text-[#243A73]">
+                Titans Community Foundation
               </a>
             </p>
           </div>
