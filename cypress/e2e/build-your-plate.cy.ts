@@ -1,4 +1,5 @@
 import terminalLog from "../support/terminal-log";
+import foodList from "../fixtures/build-your-plate.json";
 
 describe("Build Your Plate", () => {
   beforeEach(() => {
@@ -23,10 +24,7 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Score my plate").should("be.disabled");
     cy.get("button [alt='Sweets']").click();
 
-    const sweets = ["Chocolate", "Jelly Sweets", "Cupcakes", "Biscuits", "Donuts", "Ice Cream"];
-    // let selectedItems = 0;
-    // let absentItems = 0;
-    sweets.forEach((item) => {
+    Object.keys(foodList.sweets).forEach((item) => {
       cy.get("body").then((body) => {
         if (body.find(`button [alt='${item}']`).length) {
           cy.get(`button [alt='${item}']`).click();
@@ -55,10 +53,9 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Score my plate").should("be.disabled");
     cy.get("button [alt='Meat']").click();
 
-    const meats = { Beef: 9, Lamb: 9, Chicken: 9, Pork: 8, Turkey: 9, "Cooked Meats": 8 };
     const expectedScore = [0];
     cy.wrap(expectedScore).as("expectedScore");
-    Object.entries(meats).forEach(([key, value]) => {
+    Object.entries(foodList.meats).forEach(([key, value]) => {
       cy.get("body").then((body) => {
         if (body.find(`button [alt='${key}']`).length) {
           cy.get(`button [alt='${key}']`).click();
