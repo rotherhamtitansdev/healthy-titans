@@ -60,11 +60,12 @@ const VideosComponent = () => {
         <Card
           key={key}
           card={{
-            name: "video placeholder",
-            additionalStyling: "max-h-[20rem] md:max-h-[28rem] max-w-[22.5rem] sm:max-w-[37.5rem]",
+            name: "placeholder",
+            additionalStyling:
+              "xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem] max-h-[20rem] md:max-h-[28rem] h-full md:mr-1",
           }}
         >
-          <div className="text-center py-[4.5rem] px-[5rem] xs:py-[5.75rem] xs:px-[7.25rem] sm:py-[9.35rem] sm:px-[5rem] md:py-[9rem] md:px-[15rem] lg:py-[11.5rem] lg:px-[10rem]">
+          <div className="text-center py-[4.5rem] xs:px-[5rem] xs:py-[5.75rem] xs:px-[7.25rem] sm:py-[9.35rem] sm:px-[5rem] md:py-[9rem] md:px-[10rem] lg:py-[11.5rem] lg:px-[10rem]">
             <div className="font-semibold text-4xl font-quicksand text-homepageHeaderText">
               More videos coming soon!
             </div>
