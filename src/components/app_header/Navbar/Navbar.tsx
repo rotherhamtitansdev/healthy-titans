@@ -31,7 +31,10 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="flex justify-end xl:justify-center w-full">
-                <div className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px]">
+                <div
+                  className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px]"
+                  data-testid="desktop-navbar-links"
+                >
                   <Link to="/FoodAndNutrition" className="hover:text-[#D14267]">
                     Food & Nutrition
                   </Link>

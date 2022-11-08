@@ -32,7 +32,7 @@ describe("Homepage", () => {
     cy.viewport(1440, 900)
     cy.visit("http://localhost:3000");
     cy.get("[aria-label='menu-toggle']").should("not.be.visible")
-    cy.get("a[href='/FoodAndNutrition']").should("be.visible")
+    cy.get("[data-testid='desktop-navbar-links'] a[href='/FoodAndNutrition']").should("be.visible")
   })
 
   it("Can navigate with mobile menu links", () => {
@@ -45,7 +45,7 @@ describe("Homepage", () => {
 
   it("Can navigate with top navbar links", () => {
     cy.viewport(1440, 900)
-    cy.get("a[href='/FoodAndNutrition']").click()
+    cy.get("[data-testid='desktop-navbar-links'] a[href='/FoodAndNutrition']").click()
     cy.url().should("eq", "http://localhost:3000/FoodAndNutrition")
   })
 
