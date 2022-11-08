@@ -28,14 +28,9 @@ describe("Build Your Plate", () => {
       cy.get("body").then((body) => {
         if (body.find(`button [alt='${item}']`).length) {
           cy.get(`button [alt='${item}']`).click();
-          //   selectedItems += 1;
-          // } else {
-          //   absentItems += 1;
         }
       });
     });
-    // expect(selectedItems).to.be.eq(5);
-    // expect(absentItems).to.be.eq(1);
 
     cy.get("[alt='Tick']").should("have.length", 5);
     cy.contains("button", "Score my plate").should("be.enabled");
@@ -78,7 +73,108 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Play again").click();
   });
 
-  it("gives correct score with 5 mixed items");
+  it("gives correct score with 5 mixed items", () => {
+    cy.get("[data-testid='game-begin']").click();
+    cy.contains("button", "Play").click();
+    cy.contains("button", "Score my plate").should("be.disabled");
+
+    const expectedScore = [0];
+    cy.wrap(expectedScore).as("expectedScore");
+
+    cy.get("button [alt='Meat']").click();
+    cy.get("[class*='slide-in-row'] button")
+      .first()
+      .click()
+      .find("img")
+      .should("have.attr", "alt")
+      .then((alttext) => {
+        cy.get<number[]>("@expectedScore").then((score) => {
+          score.push(score.pop() + foodList.meats[alttext as unknown as string]);
+        });
+      });
+    cy.get("button [alt='Meat']").click();
+
+    cy.get("button [alt='Fish']").click();
+    cy.get("[class*='slide-in-row'] button")
+      .first()
+      .click()
+      .find("img")
+      .should("have.attr", "alt")
+      .then((alttext) => {
+        cy.get<number[]>("@expectedScore").then((score) => {
+          score.push(score.pop() + foodList.fish[alttext as unknown as string]);
+        });
+      });
+    cy.get("button [alt='Fish']").click();
+
+    cy.get("button [alt='Fruit']").click();
+    cy.get("[class*='slide-in-row'] button")
+      .first()
+      .click()
+      .find("img")
+      .should("have.attr", "alt")
+      .then((alttext) => {
+        cy.get<number[]>("@expectedScore").then((score) => {
+          score.push(score.pop() + foodList.fruit[alttext as unknown as string]);
+        });
+      });
+    cy.get("button [alt='Fruit']").click();
+
+    cy.get("button [alt='Veg']").click();
+    cy.get("[class*='slide-in-row'] button")
+      .first()
+      .click()
+      .find("img")
+      .should("have.attr", "alt")
+      .then((alttext) => {
+        cy.get<number[]>("@expectedScore").then((score) => {
+          score.push(score.pop() + foodList.vegetables[alttext as unknown as string]);
+        });
+      });
+    cy.get("button [alt='Veg']").click();
+
+    cy.get("button [alt='Dairy & Eggs']").click();
+    cy.get("[class*='slide-in-row'] button")
+      .first()
+      .click()
+      .find("img")
+      .should("have.attr", "alt")
+      .then((alttext) => {
+        cy.get<number[]>("@expectedScore").then((score) => {
+          score.push(score.pop() + foodList.dairy[alttext as unknown as string]);
+        });
+      });
+    cy.get("button [alt='Dairy & Eggs']").click();
+
+    cy.contains("button", "Score my plate").should("be.enabled");
+    cy.contains("button", "Score my plate").click();
+    cy.get("[alt='plate']");
+    cy.contains("button", "Score my plate").click();
+    cy.get<number[]>("@expectedScore").then((score) => {
+      cy.contains(`Score: ${score[0]} out of 50`);
+      switch (true) {
+        case score[0] >= 45:
+          cy.contains("Fantastic!");
+          break;
+        case score[0] >= 40:
+          cy.contains("Great!");
+          break;
+        case score[0] >= 30:
+          cy.contains("Very good!");
+          break;
+        case score[0] >= 20:
+          cy.contains("Good!");
+          break;
+        case score[0] >= 10:
+          cy.contains("Could be better!");
+          break;
+        default:
+          cy.contains("Needs improvement!");
+          break;
+      }
+    });
+    cy.contains("button", "Play again").click();
+  });
 
   it("allows user to swap food items before scoring (on mobile)", () => {
     cy.viewport(768, 1024);
