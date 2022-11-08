@@ -176,7 +176,7 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Play again").click();
   });
 
-  it("allows user to swap food items before scoring (on mobile)", () => {
+  it("allows user to swap food items before scoring on mobile", () => {
     cy.viewport(768, 1024);
 
     cy.get("[data-testid='game-begin']").click();
@@ -197,7 +197,6 @@ describe("Build Your Plate", () => {
       });
     });
 
-    cy.log(`${selectedSweets}`);
     cy.contains("button", "Score my plate").click();
     cy.get("[alt='plate']");
     selectedSweets.forEach((item) => cy.get(`button [alt='${item}']`));
@@ -212,5 +211,35 @@ describe("Build Your Plate", () => {
     cy.get("button [alt='Fish']").click();
     cy.get("button [alt='Tuna']").click();
     cy.get("[alt='Tick']").should("have.length", 5);
+
+    cy.contains("button", "Score my plate").click();
+    cy.contains("button", "Score my plate").click();
+    cy.contains("Score: 17 out of 50");
+    cy.contains("Could be better!");
+    cy.contains("button", "Play again").click();
+  });
+
+  it("shows the plate simultaneously and scores immediately on wider screens", () => {
+    cy.viewport(1600, 900);
+
+    cy.get("[data-testid='game-begin']").click();
+    cy.contains("button", "Play").click();
+    cy.get("[alt='plate']");
+
+    cy.get("button [alt='Sweets']").click();
+    const sweets = ["Chocolate", "Jelly Sweets", "Cupcakes", "Biscuits", "Donuts", "Ice Cream"];
+    sweets.forEach((item) => {
+      cy.get("body").then((body) => {
+        if (body.find(`button [alt='${item}']`).length) {
+          cy.get(`button [alt='${item}']`).click();
+          cy.get(`button [alt='${item}']`).should("have.length", 2);
+        }
+      });
+    });
+
+    cy.contains("button", "Score my plate").click();
+    cy.contains("Score: 10 out of 50");
+    cy.contains("Could be better!");
+    cy.contains("button", "Play again").click();
   });
 });
