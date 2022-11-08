@@ -22,6 +22,7 @@ describe("Build Your Plate", () => {
     cy.get("[data-testid='game-begin']").click();
     cy.contains("button", "Play").click();
     cy.contains("button", "Score my plate").should("be.disabled");
+    cy.contains("0 / 5");
     cy.get("button [alt='Sweets']").click();
 
     Object.keys(foodList.sweets).forEach((item) => {
@@ -34,6 +35,7 @@ describe("Build Your Plate", () => {
 
     cy.get("[alt='Tick']").should("have.length", 5);
     cy.contains("button", "Score my plate").should("be.enabled");
+    cy.contains("5 / 5");
     cy.contains("button", "Score my plate").click();
     cy.get("[alt='plate']");
     cy.contains("button", "Score my plate").click();
@@ -46,6 +48,7 @@ describe("Build Your Plate", () => {
     cy.get("[data-testid='game-begin']").click();
     cy.contains("button", "Play").click();
     cy.contains("button", "Score my plate").should("be.disabled");
+    cy.contains("0 / 5");
     cy.get("button [alt='Meat']").click();
 
     const expectedScore = [0];
@@ -63,6 +66,7 @@ describe("Build Your Plate", () => {
 
     cy.get("[alt='Tick']").should("have.length", 5);
     cy.contains("button", "Score my plate").should("be.enabled");
+    cy.contains("5 / 5");
     cy.contains("button", "Score my plate").click();
     cy.get("[alt='plate']");
     cy.contains("button", "Score my plate").click();
@@ -203,14 +207,17 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Swap Food").click();
 
     cy.get("[alt='Tick']").should("have.length", 5);
+    cy.contains("5 / 5");
     cy.get<string[]>("@selectedSweets").then((selected) => {
       // Need to force click as cypress thinks the tick covers the button
       cy.get(`button [alt='${selected[0]}']`).filter(":visible").click({ force: true });
     });
     cy.get("[alt='Tick']").should("have.length", 4);
+    cy.contains("4 / 5");
     cy.get("button [alt='Fish']").click();
     cy.get("button [alt='Tuna']").click();
     cy.get("[alt='Tick']").should("have.length", 5);
+    cy.contains("5 / 5");
 
     cy.contains("button", "Score my plate").click();
     cy.contains("button", "Score my plate").click();
