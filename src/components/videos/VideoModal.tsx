@@ -7,7 +7,10 @@ const VideoModal = (props: VideoModalProps) => (
     {props.getHidden ? null : (
       <>
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-          <div className="relative w-full sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-6/12 mx-3 sm:mx-0">
+          <div
+            className="relative w-full sm:w-11/12 md:w-10/12 lg:w-8/12 xl:w-6/12 mx-3 sm:mx-0"
+            data-testid="VideoModal"
+          >
             <div
               role="none"
               className="border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none p-[1.3rem]"
