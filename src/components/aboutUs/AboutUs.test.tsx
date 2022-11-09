@@ -19,15 +19,15 @@ const mockContent = {
 
 describe("About Us", () => {
   test("component renders with sections and image", async () => {
-    jest.spyOn(FirebaseAPI, "fetchAboutUsData").mockResolvedValue(mockContent);
-    jest.spyOn(FirebaseAPI, "fetchAllImages").mockResolvedValue(["fruit.jpg","logo.png","example.jpg"]);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockResolvedValueOnce(mockContent);
+    jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
 
     const { asFragment } = render(<AboutUs />);
 
     expect(await screen.findByText("section 1 header")).toBeVisible();
     expect(await screen.findByRole("img", { name: "green hearts" })).toHaveAttribute(
       "src",
-      "example.jpg"
+      "fruit.jpg"
     );
     expect(asFragment()).toMatchSnapshot();
   });

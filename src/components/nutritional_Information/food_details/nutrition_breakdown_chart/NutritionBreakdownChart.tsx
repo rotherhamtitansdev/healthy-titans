@@ -4,7 +4,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
 import { chartSizing } from "../../../../models/AnalyticsChartConfig";
 import { ChartDataProcessor } from "../../../../functions/ChartDataProcessor";
-import { NutritionalBreakdownChartData } from "../../../../data/nutritional_information/FoodDetailsComponentData";
+import NutritionalBreakdownChartData from "../../../../data/NutritionBreakdownChart";
 import { NutritionDetailsAPIModel } from "../../../../models/NutritionDetailsAPIModel";
 import "../../../../App.css";
 
@@ -48,7 +48,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
 
     if (ChartData !== undefined) {
       processChart(ChartData.data);
-    } 
+    }
   });
 
   return (

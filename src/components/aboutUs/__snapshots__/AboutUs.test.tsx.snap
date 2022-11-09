@@ -124,7 +124,7 @@ exports[`About Us component renders with sections and image 1`] = `
         <img
           alt="green hearts"
           class="hidden md:flex md:h-[268px] md:w-[268px]"
-          src="example.jpg"
+          src="fruit.jpg"
         />
       </div>
     </div>
@@ -139,7 +139,7 @@ exports[`About Us component renders with sections and image 1`] = `
         <img
           alt="1 in 4 people"
           class="lg:h-[315px] lg:w-[315px] md:h-[170px] md:w-[170px]"
-          src="logo.png"
+          src="fruit.jpg"
         />
       </div>
       <div

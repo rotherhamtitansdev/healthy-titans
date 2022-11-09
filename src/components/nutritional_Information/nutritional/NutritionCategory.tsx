@@ -1,51 +1,62 @@
-import React from "react";
-import { useParams } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useParams, useLocation } from "react-router";
 import { MenuCardProps } from "../../../models/MenuCardProps";
-import NutritionCategoryData from "../../../data/nutritional_information/NutritionCategoryData";
-import {
-  FatTextData,
-  SaltAndSugarTextData,
-  WaterTextData,
-  ProteinTextData,
-  CarbsTextData,
-  MacroAndMicroTextData,
-} from "../../../data/nutritional_information/NutritionCategoryTextData";
+import FirebaseAPI from "../../../api/FirebaseAPI";
 import Menu from "../../shared/Menu";
+
+interface NutritionCardProps extends MenuCardProps {
+  description: string;
+}
 
 const NutritionCategory = () => {
   const { nutritionCategory } = useParams();
+  const [getNutritionCategoryData, setCategoryNutritionData] = useState<NutritionCardProps[]>([]);
+  const loc = useLocation();
+
+  useEffect(() => {
+    if (getNutritionCategoryData.length === 0) {
+      FirebaseAPI.fetchDataFromPath("NutritionData").then((data) =>
+        setCategoryNutritionData(data as NutritionCardProps[])
+      );
+    }
+  }, []);
 
   function getNutritionData() {
-    const data = [...NutritionCategoryData];
-    switch (nutritionCategory) {
-      case "Fat":
-        return FatTextData;
-      case "SaltAndSugar":
-        return SaltAndSugarTextData;
-      case "Water":
-        return WaterTextData;
-      case "Protein":
-        return ProteinTextData;
-      case "Carbs":
-        return CarbsTextData;
-      case "MacroAndMicroNutrients":
-        return MacroAndMicroTextData;
-      default:
-        return data;
-    }
-  }
+    const newData: NutritionCardProps[] = [];
+    let data = [...getNutritionCategoryData];
 
-  const nutritionData: MenuCardProps[] = getNutritionData();
+    if (nutritionCategory) {
+      data.forEach((item) => {
+        if (item.path === nutritionCategory) {
+          newData.push(item);
+        }
+      });
+      if (newData.length > 0) return newData;
+    }
+
+    // Since change of name to Food and Nutrition base name ends with AndNutrition
+    // so check has to accomodate it only ending with just /Nutrition
+    if (loc.pathname.endsWith("/Nutrition") || loc.pathname.endsWith("/Nutrition/")) {
+      data = data.map((element) => {
+        const newElement = { ...element };
+        newElement.path = newElement.path.replace("Nutrition/", "");
+        return newElement;
+      });
+    }
+    return data;
+  }
 
   return (
     <div>
-      <Menu
-        title={{
-          title: "Explore nutrition",
-          subtitle: "Click on the type of nutritional information you want to learn about",
-        }}
-        cards={nutritionData}
-      />
+      {getNutritionCategoryData.length > 0 && (
+        <Menu
+          title={{
+            title: "Explore nutrition",
+            subtitle: "Click on the type of nutritional information you want to learn about",
+          }}
+          cards={getNutritionData()}
+        />
+      )}
     </div>
   );
 };

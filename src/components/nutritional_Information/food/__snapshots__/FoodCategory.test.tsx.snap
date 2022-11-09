@@ -1,5 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Food Category Component renders with category 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="bg-mobileWave sm:bg-wave bg-no-repeat pb-2 bg-span"
+    >
+      <div
+        class="flex flex-wrap h-[22rem]"
+      >
+        <div
+          class="mx-auto pt-[3rem] md:pt-[2rem]"
+        >
+          <h1
+            class="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4"
+            data-testid="header-title"
+          >
+            Food & Nutrition
+          </h1>
+          <div
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          >
+            Food is important, we all need food to be strong and healthy. From here we can learn about the nutritional values in the foods we eat. This will show you the different types of goodness we can get from the different types of food. We will be able to explore what we need to have a healthy, well-balanced diet including carbohydrates, protein as well as vitamins and minerals.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Food Category Component renders with no category 1`] = `
 <DocumentFragment>
   <div>
@@ -51,7 +81,7 @@ exports[`Food Category Component renders with no category 1`] = `
         >
           <div
             class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-            data-testid="Meat"
+            data-testid="Dairy and Eggs"
             role="button"
             tabindex="0"
           >
@@ -69,79 +99,7 @@ exports[`Food Category Component renders with no category 1`] = `
               <div
                 class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
               >
-                Meat
-              </div>
-            </div>
-          </div>
-          <div
-            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-            data-testid="Fish"
-            role="button"
-            tabindex="0"
-          >
-            <div
-              class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
-            >
-              <div
-                class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
-              >
-                <span
-                  class=""
-                  style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-                />
-              </div>
-              <div
-                class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-              >
-                Fish
-              </div>
-            </div>
-          </div>
-          <div
-            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-            data-testid="Fruit & Vegetables"
-            role="button"
-            tabindex="0"
-          >
-            <div
-              class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
-            >
-              <div
-                class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
-              >
-                <span
-                  class=""
-                  style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-                />
-              </div>
-              <div
-                class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-              >
-                Fruit & Vegetables
-              </div>
-            </div>
-          </div>
-          <div
-            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-            data-testid="Dairy & Eggs"
-            role="button"
-            tabindex="0"
-          >
-            <div
-              class="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex"
-            >
-              <div
-                class="w-full h-full flex justify-center items-center md:-mt-0 md:-mt-8"
-              >
-                <span
-                  class=""
-                  style="width: 100px; height: 100px; border-radius: 100%; border: 2px solid; border-top-color: #DC476D; border-bottom-color: transparent; border-left-color: #DC476D; border-right-color: #DC476D; display: inline-block; animation: react-spinners-ClipLoader-clip 0.75s 0s infinite linear; animation-fill-mode: both;"
-                />
-              </div>
-              <div
-                class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
-              >
-                Dairy & Eggs
+                Dairy and Eggs
               </div>
             </div>
           </div>
@@ -170,8 +128,8 @@ exports[`Food Category Component renders with no category 1`] = `
             </div>
           </div>
           <div
-            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
-            data-testid="Sweets"
+            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+            data-testid="Fish"
             role="button"
             tabindex="0"
           >
@@ -189,7 +147,7 @@ exports[`Food Category Component renders with no category 1`] = `
               <div
                 class="md:text-xl text-homepageHeaderText font-semibold text-center mt-auto"
               >
-                Sweets
+                Fish
               </div>
             </div>
           </div>

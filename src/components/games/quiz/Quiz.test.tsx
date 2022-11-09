@@ -201,7 +201,7 @@ describe("Quiz", () => {
   describe("Quiz functionality", () => {
     beforeEach(async () => {
       jest
-        .spyOn(FirebaseAPI, "fetchQuizData")
+        .spyOn(FirebaseAPI, "fetchDataFromSubpath")
         .mockImplementation(() => Promise.resolve(mockContent));
     });
 

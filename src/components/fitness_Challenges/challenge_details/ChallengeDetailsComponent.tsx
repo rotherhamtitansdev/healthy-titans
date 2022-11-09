@@ -18,7 +18,7 @@ const ChallengeDetailsComponent = () => {
 
   useEffect(() => {
     if (challengeName) {
-      FirebaseAPI.fetchChallengesData(challengeName).then((res) => {
+      FirebaseAPI.fetchDataFromSubpath("Challenges", challengeName).then((res) => {
         setChallengeDetailsComponentData(res as ChallengeDetailsProps);
         const image = res?.firebaseName;
         FirebaseAPI.fetchImages(image as string).then((url) => setImageURL(url));
@@ -61,7 +61,7 @@ const ChallengeDetailsComponent = () => {
                   ))}
                 </ul>
               </div>
-              {getChallengeDetailsComponentData.rules.length >=1 && (
+              {getChallengeDetailsComponentData.rules.length >= 1 && (
                 <>
                   <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold">
                     Rules

@@ -14,7 +14,7 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState<QuizProps | undefined>();
 
   useEffect(() => {
-    FirebaseAPI.fetchQuizData().then((res) => {
+    FirebaseAPI.fetchDataFromSubpath("QuizData", "Quiz").then((res) => {
       if (res) {
         setQuizData(res as DocumentData as QuizProps);
       }

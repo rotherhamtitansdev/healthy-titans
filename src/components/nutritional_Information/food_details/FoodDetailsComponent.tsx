@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
-import { FoodDetailsProps } from "../../../data/nutritional_information/FoodDetailsComponentData";
 import DetailsCard from "../../shared/DetailsCard";
 import FirebaseAPI from "../../../api/FirebaseAPI";
+import { FoodDetailsProps } from "../../../models/FoodDetailsProps";
 import DetailsComponent from "../../shared/DetailsComponent";
 import { MenuCardProps } from "../../../models/MenuCardProps";
 import CarouselMenu from "../../shared/CarouselMenu";
@@ -44,15 +44,15 @@ const FoodDetailsComponent = () => {
     setAdditionalStyling("bg-white mb-10");
     setSeeNext(undefined);
     if (foodName) {
-      FirebaseAPI.fetchFoodDetailsSingle(foodName).then((res) => {
+      FirebaseAPI.fetchDataFromSubpath("FYPData", foodName).then((res) => {
         if (res !== undefined) {
-          fetchSeeNext(res).then((r) => {
+          fetchSeeNext(res as FoodDetailsProps).then((r) => {
             setSeeNext(r);
           });
 
           if (res.firebaseName) {
             FirebaseAPI.fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
-            setFoodDetailsComponentData(res);
+            setFoodDetailsComponentData(res as FoodDetailsProps);
           }
         } else {
           navigate(`/FoodAndNutrition/${foodCategory}`);

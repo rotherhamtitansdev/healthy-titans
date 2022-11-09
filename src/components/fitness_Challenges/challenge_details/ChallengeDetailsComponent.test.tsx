@@ -19,7 +19,7 @@ describe("ChallengeDetailsComponent", () => {
 
     const mockFetchChallengesData = jest.fn().mockResolvedValueOnce(content);
 
-    jest.spyOn(FirebaseAPI, "fetchChallengesData").mockImplementation(mockFetchChallengesData);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockImplementation(mockFetchChallengesData);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue(url);
 
     const { asFragment } = render(
@@ -30,7 +30,7 @@ describe("ChallengeDetailsComponent", () => {
       </MemoryRouter>
     );
 
-    expect(mockFetchChallengesData).toBeCalledWith("mychallenge");
+    expect(mockFetchChallengesData).toBeCalledWith("Challenges", "mychallenge");
     await waitFor(() => {
       expect(screen.getByText("Ball")).toBeVisible();
     });
@@ -60,7 +60,7 @@ describe("ChallengeDetailsComponent", () => {
 
     const mockFetchChallengesData = jest.fn().mockResolvedValueOnce(content);
 
-    jest.spyOn(FirebaseAPI, "fetchChallengesData").mockImplementation(mockFetchChallengesData);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockImplementation(mockFetchChallengesData);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue(url);
 
     const { asFragment } = render(
@@ -71,13 +71,11 @@ describe("ChallengeDetailsComponent", () => {
       </MemoryRouter>
     );
 
-    expect(mockFetchChallengesData).toBeCalledWith("mychallenge");
+    expect(mockFetchChallengesData).toBeCalledWith("Challenges", "mychallenge");
     await waitFor(() => {
       expect(screen.getByText("Ball")).toBeVisible();
     });
-
     expect(screen.queryByText("Rules")).not.toBeInTheDocument();
-
     expect(asFragment()).toMatchSnapshot();
   });
 });
