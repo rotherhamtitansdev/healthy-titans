@@ -3,4 +3,5 @@ export interface AboutUsProps {
   section_2: string[];
   section_3: string[];
   section_4: string[];
+  section_5: string[];
 }

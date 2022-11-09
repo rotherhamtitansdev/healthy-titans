@@ -1,8 +1,17 @@
-import {getDownloadURL, getStorage, ref} from "firebase/storage";
-import {collection, doc, getDoc, getDocs, query, setDoc, where, documentId} from "firebase/firestore";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  setDoc,
+  where,
+  documentId,
+} from "firebase/firestore";
 import { fStore } from "../config/firebase-config";
 import { NutritionalDetailsFirebaseProps } from "../models/NutritionDetailsComponentData";
-import {FoodDetailsProps} from "../models/FoodDetailsProps";
+import { FoodDetailsProps } from "../models/FoodDetailsProps";
 
 interface SeeNextProps {
   key: number;
@@ -21,14 +30,14 @@ class FirebaseAPI {
   static fetchAllImages = async (firebaseNames: string[]) =>
     Promise.all(firebaseNames.map((firebaseName) => FirebaseAPI.fetchImages(firebaseName)));
 
-  static fetchDataFromPath = async(path:string) => {
+  static fetchDataFromPath = async (path: string) => {
     const querySnapshot = await getDocs(collection(fStore, path));
 
     if (!querySnapshot) return undefined;
     return querySnapshot.docs.map((each) => each.data());
   };
 
-  static fetchDataFromSubpath = async(path:string, subpath: string) => {
+  static fetchDataFromSubpath = async (path: string, subpath: string) => {
     const docRef = doc(fStore, path, subpath);
     const dataDoc = await getDoc(docRef);
 
@@ -40,9 +49,9 @@ class FirebaseAPI {
 
   static addFoodDetailsComponentsData = async () => {
     await Promise.all(
-        Object.entries(this.fetchDataFromPath("FYPData")).map(async (each) => {
-          await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
-        })
+      Object.entries(this.fetchDataFromPath("FYPData")).map(async (each) => {
+        await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
+      })
     );
   };
 
@@ -92,22 +101,24 @@ class FirebaseAPI {
 
     return sorted.map((doc2) => {
       const data = doc2.data();
-      return Object.entries(data).map(([key,value]) => ({key,value}));
+      return Object.entries(data).map(([key, value]) => ({ key, value }));
     });
   };
 
   static fetchNutritionSeeNext = async (currentName: string): Promise<SeeNextProps[]> => {
-    const q = query(collection(fStore, "NutritionData"),where(documentId(), "!=", currentName));
-    const querySnapshot = await getDocs(q)
+    const q = query(collection(fStore, "NutritionData"), where(documentId(), "!=", currentName));
+    const querySnapshot = await getDocs(q);
 
     const docs = querySnapshot.docs.sort(() => 0.5 - Math.random()).slice(0, 3);
 
-    return Promise.all(docs.map(async (sortedDoc, index) => {
-      const dataDoc = await getDoc(doc(fStore, "NutritionData", sortedDoc.id, "Content", "Main"))
-      const URI = await FirebaseAPI.fetchImages(dataDoc.data()?.firebaseName)
+    return Promise.all(
+      docs.map(async (sortedDoc, index) => {
+        const dataDoc = await getDoc(doc(fStore, "NutritionData", sortedDoc.id, "Content", "Main"));
+        const URI = await FirebaseAPI.fetchImages(dataDoc.data()?.firebaseName);
 
-      return {key: index, name:dataDoc.data()?.name, path:docs[index].id,img:URI}
-    }))
-  }
-};
+        return { key: index, name: dataDoc.data()?.name, path: docs[index].id, img: URI };
+      })
+    );
+  };
+}
 export default FirebaseAPI;

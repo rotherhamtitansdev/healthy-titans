@@ -31,13 +31,28 @@ const Navbar = () => {
                 </Link>
               </div>
               <div className="flex justify-end xl:justify-center w-full">
-                <div className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px] hover:text-gray-900">
-                  <Link to="/FoodAndNutrition">Food & Nutrition</Link>
-                  <Link to="/FitnessChallenges">Fitness Challenges</Link>
-                  <Link to="/Games">Games</Link>
-                  <Link to="/Videos">Videos</Link>
-                  <Link to="/Recipes">Recipes</Link>
-                  <Link to="/AboutUs">About us</Link>
+                <div
+                  className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px]"
+                  data-testid="desktop-navbar-links"
+                >
+                  <Link to="/FoodAndNutrition" className="hover:text-[#D14267]">
+                    Food & Nutrition
+                  </Link>
+                  <Link to="/FitnessChallenges" className="hover:text-[#D14267]">
+                    Fitness Challenges
+                  </Link>
+                  <Link to="/Games" className="hover:text-[#D14267]">
+                    Games
+                  </Link>
+                  <Link to="/Videos" className="hover:text-[#D14267]">
+                    Videos
+                  </Link>
+                  <Link to="/Recipes" className="hover:text-[#D14267]" data-testid="recipes-link">
+                    Recipes
+                  </Link>
+                  <Link to="/AboutUs" className="hover:text-[#D14267]">
+                    About us
+                  </Link>
                 </div>
 
                 <div className="ml-6 -my-2 xl:hidden">
@@ -75,28 +90,30 @@ const Navbar = () => {
         >
           {isMenuOpen && (
             <ul className=" xl:hidden flex flex-col mt-8 mb-14 items-center overscroll-none">
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/">Home</a>
               </li>
-              <li className="border-gray-400 my-2  text-sm font-medium text-bold text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4  text-sm font-bold text-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/FoodAndNutrition">Food & Nutrition</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/FitnessChallenges">Fitness Challenges</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/Games">Games</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/Videos">Videos</a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
-                <a href="/Recipes">Recipes</a>
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
+                <a href="/Recipes" data-testid="recipes-mobile-link">
+                  Recipes
+                </a>
               </li>
-              <li className="border-gray-400 my-2 text-sm font-medium text-titansDarkBlue hover:text-gray-900">
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/AboutUs">About us</a>
               </li>
-              <li className="border-gray-400 my-2">
+              <li className="border-gray-400 my-4">
                 <img src={MenuLine} alt="MenuLine" />
               </li>
               <li className="border-gray-400 mb-8 flex justify-evenly w-48 align-middle">

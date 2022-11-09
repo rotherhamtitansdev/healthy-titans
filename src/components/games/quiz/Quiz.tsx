@@ -33,7 +33,7 @@ const Quiz = () => {
       </AppHeader>
       <div className="mx-7 xs:mx-8 sm:mx-12 md:mx-14">
         <MenuTitle title="Quiz" />
-        {getIsGameStarted ? (
+        {getIsGameStarted && quizData ? (
           <QuizGameScreen quizData={quizData} />
         ) : (
           <GameStartScreen
