@@ -22,7 +22,7 @@ const AboutUs = () => {
   const aboutUsImages = ["AboutUs/speechmark.svg", "AboutUs/People.png", "AboutUs/Hearts.png"];
 
   useEffect(() => {
-    FirebaseAPI.fetchDataFromSubpath("AboutUsData", "Data").then((res) => {
+    FirebaseAPI.fetchDataFromSubpath("AboutUs", "Data").then((res) => {
       if (res) {
         setAboutUsData(res as DocumentData as AboutUsProps);
       }
