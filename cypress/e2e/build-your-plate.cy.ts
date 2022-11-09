@@ -23,7 +23,7 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Play").click();
     cy.contains("button", "Score my plate").should("be.disabled");
     cy.contains("0 / 5");
-    cy.get("button [alt='Sweets']").click();
+    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
 
     Object.keys(foodList.sweets).forEach((item) => {
       cy.get("body").then((body) => {
@@ -49,7 +49,7 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Play").click();
     cy.contains("button", "Score my plate").should("be.disabled");
     cy.contains("0 / 5");
-    cy.get("button [alt='Meat']").click();
+    cy.get("button [alt='Meat']", { timeout: 10000 }).click();
 
     const expectedScore = [0];
     cy.wrap(expectedScore).as("expectedScore");
@@ -85,7 +85,7 @@ describe("Build Your Plate", () => {
     const expectedScore = [0];
     cy.wrap(expectedScore).as("expectedScore");
 
-    cy.get("button [alt='Meat']").click();
+    cy.get("button [alt='Meat']", { timeout: 10000 }).click();
     cy.get("[class*='slide-in-row'] button")
       .first()
       .click()
@@ -94,6 +94,7 @@ describe("Build Your Plate", () => {
       .then((alttext) => {
         cy.get<number[]>("@expectedScore").then((score) => {
           score.push(score.pop() + foodList.meats[alttext as unknown as string]);
+          cy.log(`${alttext} -> ${score}`);
         });
       });
     cy.get("button [alt='Meat']").click();
@@ -107,6 +108,7 @@ describe("Build Your Plate", () => {
       .then((alttext) => {
         cy.get<number[]>("@expectedScore").then((score) => {
           score.push(score.pop() + foodList.fish[alttext as unknown as string]);
+          cy.log(`${alttext} -> ${score}`);
         });
       });
     cy.get("button [alt='Fish']").click();
@@ -120,6 +122,7 @@ describe("Build Your Plate", () => {
       .then((alttext) => {
         cy.get<number[]>("@expectedScore").then((score) => {
           score.push(score.pop() + foodList.fruit[alttext as unknown as string]);
+          cy.log(`${alttext} -> ${score}`);
         });
       });
     cy.get("button [alt='Fruit']").click();
@@ -133,6 +136,7 @@ describe("Build Your Plate", () => {
       .then((alttext) => {
         cy.get<number[]>("@expectedScore").then((score) => {
           score.push(score.pop() + foodList.vegetables[alttext as unknown as string]);
+          cy.log(`${alttext} -> ${score}`);
         });
       });
     cy.get("button [alt='Veg']").click();
@@ -146,6 +150,7 @@ describe("Build Your Plate", () => {
       .then((alttext) => {
         cy.get<number[]>("@expectedScore").then((score) => {
           score.push(score.pop() + foodList.dairy[alttext as unknown as string]);
+          cy.log(`${alttext} -> ${score}`);
         });
       });
     cy.get("button [alt='Dairy & Eggs']").click();
@@ -186,7 +191,7 @@ describe("Build Your Plate", () => {
     cy.get("[data-testid='game-begin']").click();
     cy.contains("button", "Play").click();
 
-    cy.get("button [alt='Sweets']").click();
+    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
     const sweets = ["Chocolate", "Jelly Sweets", "Cupcakes", "Biscuits", "Donuts", "Ice Cream"];
     const selectedSweets = [];
     cy.wrap(selectedSweets).as("selectedSweets");
@@ -233,7 +238,7 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Play").click();
     cy.get("[alt='plate']");
 
-    cy.get("button [alt='Sweets']").click();
+    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
     const sweets = ["Chocolate", "Jelly Sweets", "Cupcakes", "Biscuits", "Donuts", "Ice Cream"];
     sweets.forEach((item) => {
       cy.get("body").then((body) => {
