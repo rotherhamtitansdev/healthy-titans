@@ -5,11 +5,12 @@ import { AboutUsProps } from "../../models/AboutUs/AboutUsProps";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
 import TitansLogo from "../../img/TitansCommunityLogo.png";
-import Logo from "../../img/Logo.svg"
+import Logo from "../../img/Logo.svg";
 
 const gridStyles = "grid grid-cols-1 md:grid-cols-2";
 const sectionPaddingStyles = "py-6 md:py-14";
-const sectionHeaderStyles = "font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5";
+const sectionHeaderStyles =
+  "font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5";
 const imgContainerStyles = "flex justify-center items-center my-6 md:my-0";
 const textMarginStyles = "mx-8 md:mx-16 lg:mx-24";
 const textAreaStyles = `${textMarginStyles} flex flex-col gap-4`;
@@ -21,7 +22,7 @@ const AboutUs = () => {
   const aboutUsImages = ["AboutUs/speechmark.svg", "AboutUs/People.png", "AboutUs/Hearts.png"];
 
   useEffect(() => {
-    FirebaseAPI.fetchAboutUsData().then((res) => {
+    FirebaseAPI.fetchDataFromSubpath("AboutUs", "Data").then((res) => {
       if (res) {
         setAboutUsData(res as DocumentData as AboutUsProps);
       }
@@ -50,7 +51,9 @@ const AboutUs = () => {
             </div>
             <div id="imgArea1" className={textAreaStyles}>
               <img src={Images[0]} alt="speechmark" className="max-w-[62px] lg:max-w-[75px] py-5" />
-              <p className="font-semibold text-xl lg:text-2xl text-titansDarkBlue">{AboutUsData.section_1[3]}</p>
+              <p className="font-semibold text-xl lg:text-2xl text-titansDarkBlue">
+                {AboutUsData.section_1[3]}
+              </p>
               <p className="text-base lg:text-xl font-medium">{AboutUsData.section_1[4]}</p>
             </div>
           </div>
@@ -95,17 +98,13 @@ const AboutUs = () => {
             </div>
           </div>
           <div id="section5" className={`${gridStyles} ${sectionPaddingStyles}`}>
-              <div id="textArea5" className={textAreaStyles}>
+            <div id="textArea5" className={textAreaStyles}>
               <h2 className={sectionHeaderStyles}>{AboutUsData.section_5[0]}</h2>
               <p>{AboutUsData.section_5[1]}</p>
               <p>{AboutUsData.section_5[2]}</p>
             </div>
             <div id="imgArea5" className={`${imgContainerStyles} order-first md:order-last`}>
-              <img
-                src={Logo}
-                alt="Cookie's Khaw Logo"
-                className="w-[270px] lg:w-[453px]"
-              />
+              <img src={Logo} alt="Cookie's Khaw Logo" className="w-[270px] lg:w-[453px]" />
             </div>
           </div>
         </div>

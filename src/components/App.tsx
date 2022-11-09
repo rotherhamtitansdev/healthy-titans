@@ -11,7 +11,7 @@ import Games from "./games/GamesMenu";
 import Quiz from "./games/quiz/Quiz";
 import QuizContext from "./games/quiz/QuizContext";
 import HomePageComponents from "./HomePageComponents";
-import FoodCategory from "./nutritional_Information/food/FoodCategory";
+import FoodCategoryComponent from "./nutritional_Information/food/FoodCategory";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
 import Recipes from "./recipes/RecipesMenu";
 import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
@@ -36,14 +36,14 @@ const App: React.FC = () => (
           </Route>
 
           <Route path=":foodCategory">
-            <Route index element={<FoodCategory />} />
+            <Route index element={<FoodCategoryComponent />} />
             <Route path=":foodName" element={<FoodDetailsComponent />} />
           </Route>
 
           <Route path="FruitAndVegetables">
-            <Route index element={<FoodCategory />} />
+            <Route index element={<FoodCategoryComponent />} />
             <Route path=":foodCategory">
-              <Route index element={<FoodCategory />} />
+              <Route index element={<FoodCategoryComponent />} />
               <Route path=":foodName" element={<FoodDetailsComponent />} />
             </Route>
           </Route>
@@ -101,5 +101,4 @@ const App: React.FC = () => (
     <Footer />
   </div>
 );
-
 export default App;

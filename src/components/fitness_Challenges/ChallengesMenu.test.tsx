@@ -22,7 +22,7 @@ const content: MenuCardProps[] = [
 
 describe("ChallengesMenu", () => {
   test("component renders with list of challenges", async () => {
-    jest.spyOn(FirebaseAPI, "fetchChallengesList").mockResolvedValue(content);
+    jest.spyOn(FirebaseAPI, "fetchDataFromPath").mockResolvedValueOnce(content);
 
     const { asFragment } = render(<ChallengesMenu />, {
       wrapper: MemoryRouter,

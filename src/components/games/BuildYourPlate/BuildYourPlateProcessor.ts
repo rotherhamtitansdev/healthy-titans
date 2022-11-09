@@ -29,7 +29,7 @@ class BuildYourPlateProcessor {
   };
 
   static fetchAllUrls = async () => {
-    const data = await FirebaseAPI.fetchFoodDetailsComponentsData();
+    const data = await FirebaseAPI.fetchDataFromPath("FYPData");
     if (!data) return undefined;
     return Promise.all(
       data.map(async (item) => ({

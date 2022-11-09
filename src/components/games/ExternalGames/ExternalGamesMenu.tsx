@@ -9,7 +9,7 @@ const ExternalGames = () => {
   const [gamesData, setGamesData] = useState<MenuCardProps[]>([]);
 
   useEffect(() => {
-    FirebaseAPI.fetchExternalGamesList().then((res) => {
+    FirebaseAPI.fetchDataFromPath("ExternalGamesData").then((res) => {
       if (res) {
         setGamesData(res as DocumentData as MenuCardProps[]);
       }

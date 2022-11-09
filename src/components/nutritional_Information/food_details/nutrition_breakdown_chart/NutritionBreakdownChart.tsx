@@ -24,7 +24,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
 
   // fetch data on page load and set state for Nutrition Data and the chart label names
   useEffect(() => {
-    FirebaseAPI.fetchNutritionChartData(name).then((data) => {
+    FirebaseAPI.fetchDataFromSubpath("NutritionChart", name).then((data) => {
       if (data !== undefined) {
         setNutritionData(data as ChartData);
         setChartAmountLabels([
@@ -162,10 +162,10 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 }
                 labels={getChartAmountLabels}
               />
-{/* coloured circles in primary colour for left edge of bar */}
+              {/* coloured circles in primary colour for left edge of bar */}
               {getChartColours !== undefined && (
                 <>
-                     <circle
+                  <circle
                     cx={50}
                     cy={chartSizing.CStartPos}
                     r={chartCircleRadius}
@@ -197,7 +197,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                   />
                 </>
               )}
-  {/* name labels for each bar (protein, fat etc.) */}
+              {/* name labels for each bar (protein, fat etc.) */}
               <VictoryAxis
                 invertAxis
                 orientation="right"

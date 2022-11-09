@@ -1,20 +1,35 @@
-import React from "react";
-import RecipesData from "../../data/RecipesData";
+import React, { useEffect, useState } from "react";
 import openInNewTab from "../../functions/Navigate";
 import { MenuCardProps } from "../../models/MenuCardProps";
+import FirebaseAPI from "../../api/FirebaseAPI";
 import Card from "../shared/Card";
 import Menu from "../shared/Menu";
 
 const Recipes = () => {
-  const recipesData = RecipesData;
+  const [getRecipesData, setRecipesData] = useState<MenuCardProps[]>([]);
 
-  const recipes: MenuCardProps[] = recipesData.map((item) => ({
-    key: item.key,
-    name: item.name,
-    path: item.path,
-    externalPath: true,
-    firebaseName: item.firebaseName,
-  }));
+  useEffect(() => {
+    if (!getRecipesData || getRecipesData.length === 0) {
+      FirebaseAPI.fetchDataFromPath("RecipesData").then((data) =>
+        setRecipesData(data as MenuCardProps[])
+      );
+    }
+  }, []);
+
+  function getRecipes() {
+    if (getRecipesData) {
+      const recipes: MenuCardProps[] = getRecipesData.map((item) => ({
+        key: item.key,
+        name: item.name,
+        path: item.path,
+        externalPath: true,
+        firebaseName: item.firebaseName,
+      }));
+      return recipes;
+    }
+    return [];
+  }
+
   const headerData = {
     title: "Recipes",
     body: "There's nothing like being able to make your own delicious, nutritional and healthy meals. Here you can find some yummy recipes to try out and enjoy. Yum!",
@@ -26,7 +41,7 @@ const Recipes = () => {
   const moreRecipesLink = "https://endchildfoodpoverty.org/full-time-meals";
 
   return (
-    <Menu header={headerData} cards={recipes} title={titleData}>
+    <Menu header={headerData} cards={getRecipes()} title={titleData}>
       <Card card={{ name: "More recipes", onClick: () => openInNewTab(moreRecipesLink) }}>
         <div className="my-[1rem] md:my-[2rem] md:text-2xl text-homepageHeaderText font-semibold text-center">
           More recipes
