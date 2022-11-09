@@ -47,7 +47,7 @@ class BuildYourPlateProcessor {
   static constructScoreModalText = (score: number): string => {
     if (score >= 45) return "Fantastic!";
     if (score >= 40 && score < 45) return "Great!";
-    if (score >= 30 && score < 50) return "Very good!";
+    if (score >= 30 && score < 40) return "Very good!";
     if (score >= 20 && score < 30) return "Good!";
     if (score >= 10 && score < 20) return "Could be better!";
     return "Needs improvement!";
