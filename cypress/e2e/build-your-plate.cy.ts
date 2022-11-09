@@ -6,7 +6,7 @@ describe("Build Your Plate", () => {
     cy.visit("http://localhost:3000/Games/BuildYourPlate");
   });
 
-  it("check a11y buuld-your-plate page", () => {
+  it("check a11y build-your-plate page", () => {
     cy.injectAxe();
     cy.checkA11y(null, null, terminalLog, true);
   });
@@ -21,10 +21,8 @@ describe("Build Your Plate", () => {
   it("gives correct score with 5 sweets", () => {
     cy.get("[data-testid='game-begin']").click();
     cy.contains("button", "Play").click();
-    cy.contains("button", "Score my plate").should("be.disabled");
-    cy.contains("0 / 5");
-    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
 
+    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
     Object.keys(foodList.sweets).forEach((item) => {
       cy.get("body").then((body) => {
         if (body.find(`button [alt='${item}']`).length) {
@@ -33,24 +31,17 @@ describe("Build Your Plate", () => {
       });
     });
 
-    cy.get("[alt='Tick']").should("have.length", 5);
-    cy.contains("button", "Score my plate").should("be.enabled");
-    cy.contains("5 / 5");
     cy.contains("button", "Score my plate").click();
-    cy.get("[alt='plate']");
     cy.contains("button", "Score my plate").click();
     cy.contains("Score: 10 out of 50");
     cy.contains("Could be better!");
-    cy.contains("button", "Play again").click();
   });
 
   it("gives correct score with 5 meats", () => {
     cy.get("[data-testid='game-begin']").click();
     cy.contains("button", "Play").click();
-    cy.contains("button", "Score my plate").should("be.disabled");
-    cy.contains("0 / 5");
-    cy.get("button [alt='Meat']", { timeout: 10000 }).click();
 
+    cy.get("button [alt='Meat']", { timeout: 10000 }).click();
     const expectedScore = [0];
     cy.wrap(expectedScore).as("expectedScore");
     Object.entries(foodList.meats).forEach(([key, value]) => {
@@ -64,23 +55,17 @@ describe("Build Your Plate", () => {
       });
     });
 
-    cy.get("[alt='Tick']").should("have.length", 5);
-    cy.contains("button", "Score my plate").should("be.enabled");
-    cy.contains("5 / 5");
     cy.contains("button", "Score my plate").click();
-    cy.get("[alt='plate']");
     cy.contains("button", "Score my plate").click();
     cy.get<number[]>("@expectedScore").then((score) => {
       cy.contains(`Score: ${score[0]} out of 50`);
     });
     cy.contains("Great!");
-    cy.contains("button", "Play again").click();
   });
 
   it("gives correct score with 5 mixed items", () => {
     cy.get("[data-testid='game-begin']").click();
     cy.contains("button", "Play").click();
-    cy.contains("button", "Score my plate").should("be.disabled");
 
     const expectedScore = [0];
     cy.wrap(expectedScore).as("expectedScore");
@@ -155,9 +140,7 @@ describe("Build Your Plate", () => {
       });
     cy.get("button [alt='Dairy & Eggs']").click();
 
-    cy.contains("button", "Score my plate").should("be.enabled");
     cy.contains("button", "Score my plate").click();
-    cy.get("[alt='plate']");
     cy.contains("button", "Score my plate").click();
     cy.get<number[]>("@expectedScore").then((score) => {
       cy.contains(`Score: ${score[0]} out of 50`);
@@ -182,7 +165,6 @@ describe("Build Your Plate", () => {
           break;
       }
     });
-    cy.contains("button", "Play again").click();
   });
 
   it("allows user to swap food items before scoring on mobile", () => {
@@ -228,7 +210,6 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Score my plate").click();
     cy.contains("Score: 17 out of 50");
     cy.contains("Could be better!");
-    cy.contains("button", "Play again").click();
   });
 
   it("shows the plate simultaneously and scores immediately on wider screens", () => {
@@ -252,6 +233,57 @@ describe("Build Your Plate", () => {
     cy.contains("button", "Score my plate").click();
     cy.contains("Score: 10 out of 50");
     cy.contains("Could be better!");
+  });
+
+  it("score button should be disabled until five selections are made", () => {
+    cy.get("[data-testid='game-begin']").click();
+    cy.contains("button", "Play").click();
+    cy.contains("button", "Score my plate").should("be.disabled");
+    cy.contains("0 / 5");
+
+    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
+    Object.keys(foodList.sweets).forEach((item) => {
+      cy.get("body").then((body) => {
+        if (body.find(`button [alt='${item}']`).length) {
+          cy.get(`button [alt='${item}']`).click();
+        }
+      });
+    });
+
+    cy.get("[alt='Tick']").should("have.length", 5);
+    cy.contains("button", "Score my plate").should("be.enabled");
+    cy.contains("5 / 5");
+
+    cy.contains("button", "Score my plate").click();
+    cy.contains("button", "Score my plate").click();
+    cy.contains("Score: 10 out of 50");
+    cy.contains("Could be better!");
+  });
+
+  it("should clear the selections after choosing play again", () => {
+    cy.get("[data-testid='game-begin']").click();
+    cy.contains("button", "Play").click();
+
+    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
+    Object.keys(foodList.sweets).forEach((item) => {
+      cy.get("body").then((body) => {
+        if (body.find(`button [alt='${item}']`).length) {
+          cy.get(`button [alt='${item}']`).click();
+        }
+      });
+    });
+
+    cy.get("[alt='Tick']").should("have.length", 5);
+    cy.contains("5 / 5");
+
+    cy.contains("button", "Score my plate").click();
+    cy.contains("button", "Score my plate").click();
+    cy.contains("Score: 10 out of 50");
+    cy.contains("Could be better!");
     cy.contains("button", "Play again").click();
+
+    cy.get("[alt='Tick']").should("not.exist");
+    cy.contains("0 / 5");
+    cy.get("button [alt='Sweets']", { timeout: 10000 });
   });
 });
