@@ -154,6 +154,16 @@ class FirebaseAPI {
     if (!querySnapshot) return undefined;
     return querySnapshot.docs.map((each) => each.data());
   };
+
+  static fetchNutritionChartData = async (name: string) => {
+    const docRef = doc(fStore, "NutritionChart", name);
+    const nutritionDoc = await getDoc(docRef);
+
+    if (nutritionDoc.exists()) {
+      return nutritionDoc.data();
+    }
+    return undefined;
+  };
 }
 
 export default FirebaseAPI;
