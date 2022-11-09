@@ -18,25 +18,6 @@ describe("Build Your Plate", () => {
     cy.url().should("eq", "http://localhost:3000/Games/BuildYourPlate");
   });
 
-  it("gives correct score with 5 sweets", () => {
-    cy.get("[data-testid='game-begin']").click();
-    cy.contains("button", "Play").click();
-
-    cy.get("button [alt='Sweets']", { timeout: 10000 }).click();
-    Object.keys(foodList.sweets).forEach((item) => {
-      cy.get("body").then((body) => {
-        if (body.find(`button [alt='${item}']`).length) {
-          cy.get(`button [alt='${item}']`).click();
-        }
-      });
-    });
-
-    cy.contains("button", "Score my plate").click();
-    cy.contains("button", "Score my plate").click();
-    cy.contains("Score: 10 out of 50");
-    cy.contains("Could be better!");
-  });
-
   it("gives correct score with 5 meats", () => {
     cy.get("[data-testid='game-begin']").click();
     cy.contains("button", "Play").click();
