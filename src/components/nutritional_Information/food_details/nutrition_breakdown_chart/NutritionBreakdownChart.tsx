@@ -36,12 +36,12 @@ const NutritionBreakdownChart = (props: { name: string }) => {
         ]);
       }
     });
-  }, []);
+  }, [name]);
 
   // when NutritionData is updated, set the colours of the bars, but not on first render(page load)
   useEffect(() => {
     if (!isFirstRender && getNutritionData !== undefined) {
-      setChartColours(
+        setChartColours(
         ProcessNutritionData([
           getNutritionData.Fat,
           getNutritionData.Saturates,
