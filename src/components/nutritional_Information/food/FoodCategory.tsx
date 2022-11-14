@@ -6,7 +6,7 @@ import { MenuTitleProps } from "../../../models/MenuTitleProps";
 import Menu from "../../shared/Menu";
 import MenuHeader from "../../app_header/header/MenuHeader";
 import AppHeader from "../../app_header/AppHeader";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromPath, fetchDataFromSubpath } from "../../../api/FirebaseAPI";
 
 const FoodCategoryComponent = () => {
   let { foodCategory } = useParams();
@@ -44,14 +44,14 @@ const FoodCategoryComponent = () => {
 
     // Get Subcategories if the category is not the default
     if (foodCategory && foodCategory !== defaultFoodCategory) {
-      FirebaseAPI.fetchDataFromSubpath("FoodSubCategoryData", foodCategory).then((data) => {
+      fetchDataFromSubpath("FoodSubCategoryData", foodCategory).then((data) => {
         if (data) {
           setFoodSubcategoryData(data as SubCategoryProps);
         } else {
           navigateBackToNutrionalInfo();
         }
       });
-      FirebaseAPI.fetchDataFromPath("FoodCategoryData").then((data) => {
+      fetchDataFromPath("FoodCategoryData").then((data) => {
         if (data) {
           setFoodCategoryData(data as MenuCardProps[]);
         } else {
@@ -60,7 +60,7 @@ const FoodCategoryComponent = () => {
       });
     } else {
       // Get all categories if the category is the default and on /FoodAndNutrition
-      FirebaseAPI.fetchDataFromPath("FoodCategoryData").then((data) => {
+      fetchDataFromPath("FoodCategoryData").then((data) => {
         if (data) {
           setFoodCategoryData(data as MenuCardProps[]);
         } else {

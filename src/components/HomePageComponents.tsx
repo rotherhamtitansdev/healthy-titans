@@ -5,14 +5,14 @@ import CarouselMenu from "./shared/CarouselMenu";
 import MenuTitle from "./shared/MenuTitle";
 import { MenuCardProps } from "../models/MenuCardProps";
 import { HomePageCarouselResponsiveConfig } from "../config/CarouselConfig";
-import FirebaseAPI from "../api/FirebaseAPI";
+import { fetchDataFromPath } from "../api/FirebaseAPI";
 
 const HomePageComponents = () => {
   const [getHomePageData, setHomePageData] = useState<MenuCardProps[]>([]);
 
   useEffect(() => {
     if (!getHomePageData || getHomePageData.length === 0) {
-      FirebaseAPI.fetchDataFromPath("HomePageComponentsData").then((homeData) =>
+      fetchDataFromPath("HomePageComponentsData").then((homeData) =>
         setHomePageData(homeData as MenuCardProps[])
       );
     }

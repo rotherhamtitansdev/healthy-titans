@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromSubpath, fetchImages } from "../../../api/FirebaseAPI";
 import { ChallengeDetailsProps } from "../../../models/ChallengeDetailsProps";
 import DetailsCard from "../../shared/DetailsCard";
 import DetailsComponent from "../../shared/DetailsComponent";
@@ -18,10 +18,10 @@ const ChallengeDetailsComponent = () => {
 
   useEffect(() => {
     if (challengeName) {
-      FirebaseAPI.fetchDataFromSubpath("Challenges", challengeName).then((res) => {
+      fetchDataFromSubpath("Challenges", challengeName).then((res) => {
         setChallengeDetailsComponentData(res as ChallengeDetailsProps);
         const image = res?.firebaseName;
-        FirebaseAPI.fetchImages(image as string).then((url) => setImageURL(url));
+        fetchImages(image as string).then((url) => setImageURL(url));
       });
     }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../../api/FirebaseAPI";
 import { FoodDetailsProps } from "../../../models/FoodDetailsProps";
 import FoodDetailsComponent from "./FoodDetailsComponent";
 

@@ -1,6 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromSubpath } from "../../../api/FirebaseAPI";
 import { QuizProps } from "../../../models/Quiz/QuizProps";
 import AppHeader from "../../app_header/AppHeader";
 import MenuHeader from "../../app_header/header/MenuHeader";
@@ -14,7 +14,7 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState<QuizProps | undefined>();
 
   useEffect(() => {
-    FirebaseAPI.fetchDataFromSubpath("QuizData", "Quiz").then((res) => {
+    fetchDataFromSubpath("QuizData", "Quiz").then((res) => {
       if (res) {
         setQuizData(res as DocumentData as QuizProps);
       }

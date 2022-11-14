@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import FirebaseAPI from "../../api/FirebaseAPI";
+// import * as FirebaseAPI from "../../api/FirebaseAPI";
 import AboutUs from "./AboutUs";
 
 const mockContent = {
@@ -19,8 +19,14 @@ const mockContent = {
 
 describe("About Us", () => {
   test("component renders with sections and image", async () => {
-    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockResolvedValueOnce(mockContent);
-    jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
+    jest.mock("../../api/FirebaseAPI", () => ({
+      ...jest.requireActual("../../api/FirebaseAPI"),
+      fetchImages: jest.fn().mockReturnValue("fruit.jpg"),
+      fetchDataFromSubpath: jest.fn().mockReturnValue(mockContent),
+    }));
+
+    // jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockResolvedValueOnce(mockContent);
+    // jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("fruit.jpg");
 
     const { asFragment } = render(<AboutUs />);
 

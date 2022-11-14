@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router";
 import { MenuCardProps } from "../../../models/MenuCardProps";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromPath } from "../../../api/FirebaseAPI";
 import Menu from "../../shared/Menu";
 
 interface NutritionCardProps extends MenuCardProps {
@@ -15,7 +15,7 @@ const NutritionCategory = () => {
 
   useEffect(() => {
     if (getNutritionCategoryData.length === 0) {
-      FirebaseAPI.fetchDataFromPath("NutritionData").then((data) =>
+      fetchDataFromPath("NutritionData").then((data) =>
         setCategoryNutritionData(data as NutritionCardProps[])
       );
     }

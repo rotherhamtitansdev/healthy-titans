@@ -3,7 +3,7 @@ import { MemoryRouter } from "react-router";
 import React from "react";
 import CarouselMenu from "./CarouselMenu";
 import { HomePageCarouselResponsiveConfig } from "../../config/CarouselConfig";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../api/FirebaseAPI";
 import { MenuCardProps } from "../../models/MenuCardProps";
 
 const MockMenuCards = [

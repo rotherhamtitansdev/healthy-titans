@@ -2,7 +2,7 @@ import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Route } from "react-router";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../api/FirebaseAPI";
 import { Video } from "../../models/Video";
 import RoutingTestWrapper from "../../tests/RoutingTestWrapper";
 import VideoCard from "./VideoCard";

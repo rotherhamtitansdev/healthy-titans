@@ -4,7 +4,7 @@ import { Route } from "react-router";
 import userEvent from "@testing-library/user-event";
 import FoodCategoryComponent from "./FoodCategory";
 import RoutingTestWrapper from "../../../tests/RoutingTestWrapper";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../../api/FirebaseAPI";
 import { MenuCardProps } from "../../../models/MenuCardProps";
 import { SubCategoryProps } from "../../../models/SubCategoryProps";
 
