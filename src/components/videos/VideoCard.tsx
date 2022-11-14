@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 // we are not writing captions for videos
 import React, { useCallback, useState } from "react";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import { fetchImages } from "../../api/FirebaseAPI";
 import "../../App.css";
 import { DrilledVideoProps, Video } from "../../models/Video";
 import Card from "../shared/Card";
@@ -16,7 +16,7 @@ const VideoCard = (props: {
 
   React.useEffect(() => {
     if (props.video.firebaseName !== undefined) {
-      FirebaseAPI.fetchImages(props.video.firebaseName).then((URI) => setVideoURL(URI));
+      fetchImages(props.video.firebaseName).then((URI) => setVideoURL(URI));
     }
   }, []);
 

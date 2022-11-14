@@ -3,13 +3,13 @@ import { DocumentData } from "firebase/firestore";
 import { HeaderProps } from "../../../models/HeaderProps";
 import { MenuCardProps } from "../../../models/MenuCardProps";
 import Menu from "../../shared/Menu";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromPath } from "../../../api/FirebaseAPI";
 
 const ExternalGames = () => {
   const [gamesData, setGamesData] = useState<MenuCardProps[]>([]);
 
   useEffect(() => {
-    FirebaseAPI.fetchDataFromPath("ExternalGamesData").then((res) => {
+    fetchDataFromPath("ExternalGamesData").then((res) => {
       if (res) {
         setGamesData(res as DocumentData as MenuCardProps[]);
       }

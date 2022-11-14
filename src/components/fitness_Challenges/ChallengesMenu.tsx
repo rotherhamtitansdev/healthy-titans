@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { HeaderProps } from "../../models/HeaderProps";
 import { MenuCardProps } from "../../models/MenuCardProps";
 import Menu from "../shared/Menu";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import { fetchDataFromPath } from "../../api/FirebaseAPI";
 
 const Challenges = () => {
   const [data, setData] = useState<MenuCardProps[]>([]);
 
   useEffect(() => {
-    FirebaseAPI.fetchDataFromPath("ChallengesData").then((res) => setData(res as MenuCardProps[]));
+    fetchDataFromPath("ChallengesData").then((res) => setData(res as MenuCardProps[]));
   }, []);
 
   const headerData: HeaderProps = {

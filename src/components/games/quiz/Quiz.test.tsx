@@ -6,7 +6,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { MemoryRouter } from "react-router";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../../api/FirebaseAPI";
 import GameContext from "../GameContext";
 import Quiz from "./Quiz";
 import QuizContext from "./QuizContext";

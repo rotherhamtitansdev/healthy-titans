@@ -1,6 +1,6 @@
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
 
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromPath, fetchImages } from "../../../api/FirebaseAPI";
 
 class BuildYourPlateProcessor {
   static processRows = (BYPItems: BYPItem[]) => {
@@ -29,13 +29,13 @@ class BuildYourPlateProcessor {
   };
 
   static fetchAllUrls = async () => {
-    const data = await FirebaseAPI.fetchDataFromPath("FYPData");
+    const data = await fetchDataFromPath("FYPData");
     if (!data) return undefined;
     return Promise.all(
       data.map(async (item) => ({
         icon: item.category,
         name: item.name,
-        URL: await FirebaseAPI.fetchImages(item.firebaseName),
+        URL: await fetchImages(item.firebaseName),
         id: item.name,
         score: item.score,
       }))

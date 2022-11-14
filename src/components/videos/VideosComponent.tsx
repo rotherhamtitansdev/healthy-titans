@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import { fetchDataFromPath } from "../../api/FirebaseAPI";
 import { Video } from "../../models/Video";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
@@ -17,7 +17,7 @@ const VideosComponent = () => {
 
   useEffect(() => {
     if (!getVideoData || getVideoData.length === 0) {
-      FirebaseAPI.fetchDataFromPath("VideoData").then((data) => setVideoData(data as Video[]));
+      fetchDataFromPath("VideoData").then((data) => setVideoData(data as Video[]));
     }
   }, []);
 

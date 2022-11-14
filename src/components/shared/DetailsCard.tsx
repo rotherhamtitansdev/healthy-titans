@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
 import { useGlobalMenuOpenContext } from "../app_header/AppHeaderContext";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import { fetchImages } from "../../api/FirebaseAPI";
 
 /*
  * This component represents a details card
@@ -12,7 +12,7 @@ const DetailsCard = (props: DetailsCardProps) => {
   const [checkmarkImgUrl, setCheckmarkImgUrl] = useState<string>("");
 
   useEffect(() => {
-    FirebaseAPI.fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
+    fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
   }, []);
 
   return (

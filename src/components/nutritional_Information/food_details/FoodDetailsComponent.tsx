@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import NutritionBreakdownChart from "./nutrition_breakdown_chart/NutritionBreakdownChart";
 import DetailsCard from "../../shared/DetailsCard";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import {
+  fetchFoodDetailsSeeNext,
+  fetchImages,
+  fetchDataFromSubpath,
+} from "../../../api/FirebaseAPI";
 import { FoodDetailsProps } from "../../../models/FoodDetailsProps";
 import DetailsComponent from "../../shared/DetailsComponent";
 import { MenuCardProps } from "../../../models/MenuCardProps";
@@ -24,11 +28,11 @@ const FoodDetailsComponent = () => {
   const location = useLocation();
 
   const fetchSeeNext = async (res: FoodDetailsProps) => {
-    const docs = await FirebaseAPI.fetchFoodDetailsSeeNext(res.category, res.name);
+    const docs = await fetchFoodDetailsSeeNext(res.category, res.name);
 
     return Promise.all(
       docs.cardData.map(async (doc, index) => {
-        const URI = await FirebaseAPI.fetchImages(doc.firebaseName);
+        const URI = await fetchImages(doc.firebaseName);
         let path = "";
         if (foodName) {
           // Replaces the foodName at the end of the path, instead of the first occurrence
@@ -44,14 +48,14 @@ const FoodDetailsComponent = () => {
     setAdditionalStyling("bg-white mb-10");
     setSeeNext(undefined);
     if (foodName) {
-      FirebaseAPI.fetchDataFromSubpath("FYPData", foodName).then((res) => {
+      fetchDataFromSubpath("FYPData", foodName).then((res) => {
         if (res !== undefined) {
           fetchSeeNext(res as FoodDetailsProps).then((r) => {
             setSeeNext(r);
           });
 
           if (res.firebaseName) {
-            FirebaseAPI.fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
+            fetchImages(res.firebaseName).then((URI) => setImageURL(URI));
             setFoodDetailsComponentData(res as FoodDetailsProps);
           }
         } else {

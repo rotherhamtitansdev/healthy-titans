@@ -20,105 +20,104 @@ interface SeeNextProps {
   img: string;
 }
 
-class FirebaseAPI {
-  static fetchImages = async (firebaseName: string): Promise<string> => {
-    const storage = getStorage();
-    const starsRef = ref(storage, firebaseName);
-    return getDownloadURL(starsRef);
+export const fetchImages = async (firebaseName: string): Promise<string> => {
+  const storage = getStorage();
+  const starsRef = ref(storage, firebaseName);
+  return getDownloadURL(starsRef);
+};
+
+export const fetchAllImages = async (firebaseNames: string[]) =>
+  Promise.all(firebaseNames.map((firebaseName) => fetchImages(firebaseName)));
+
+export const fetchDataFromPath = async (path: string) => {
+  const querySnapshot = await getDocs(collection(fStore, path));
+
+  if (!querySnapshot) return undefined;
+  return querySnapshot.docs.map((each) => each.data());
+};
+
+export const fetchDataFromSubpath = async (path: string, subpath: string) => {
+  const docRef = doc(fStore, path, subpath);
+  const dataDoc = await getDoc(docRef);
+
+  if (dataDoc.exists()) {
+    return dataDoc.data();
+  }
+  return undefined;
+};
+
+export const addFoodDetailsComponentsData = async () => {
+  await Promise.all(
+    Object.entries(fetchDataFromPath("FYPData")).map(async (each) => {
+      await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
+    })
+  );
+};
+
+export const fetchFoodDetailsSeeNext = async (
+  category: string,
+  currentName: string
+): Promise<{ cardData: FoodDetailsProps[]; paths: string[] }> => {
+  const q = query(
+    collection(fStore, "FYPData"),
+    where("category", "==", category),
+    where("name", "!=", currentName)
+  );
+  const docSnap = await getDocs(q);
+  const docs = docSnap.docs.map((data) => {
+    const newDoc = data.data();
+    newDoc.path = data.id;
+    return newDoc;
+  });
+
+  const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+  return {
+    cardData: shuffled.map((value) => ({
+      name: value.name,
+      description: value.description,
+      firebaseName: value.firebaseName,
+      category: value.category,
+      score: value.score,
+      facts: value.facts,
+    })),
+    paths: shuffled.map((value) => value.path),
   };
+};
 
-  static fetchAllImages = async (firebaseNames: string[]) =>
-    Promise.all(firebaseNames.map((firebaseName) => FirebaseAPI.fetchImages(firebaseName)));
+export const fetchNutritionData = async (
+  name: string
+): Promise<NutritionalDetailsFirebaseProps> => {
+  const querySnapshot = await getDocs(collection(fStore, "NutritionData", name, "Content"));
 
-  static fetchDataFromPath = async (path: string) => {
-    const querySnapshot = await getDocs(collection(fStore, path));
-
-    if (!querySnapshot) return undefined;
-    return querySnapshot.docs.map((each) => each.data());
-  };
-
-  static fetchDataFromSubpath = async (path: string, subpath: string) => {
-    const docRef = doc(fStore, path, subpath);
-    const dataDoc = await getDoc(docRef);
-
-    if (dataDoc.exists()) {
-      return dataDoc.data();
+  const sorted = querySnapshot.docs.sort((a, b) => {
+    if (a.data().order > b.data().order) {
+      return 1;
     }
-    return undefined;
-  };
+    if (b.data().order > a.data().order) {
+      return -1;
+    }
+    return 0;
+  });
 
-  static addFoodDetailsComponentsData = async () => {
-    await Promise.all(
-      Object.entries(this.fetchDataFromPath("FYPData")).map(async (each) => {
-        await setDoc(doc(fStore, "FYPData", each[0]), each[1]);
-      })
-    );
-  };
+  return sorted.map((doc2) => {
+    const data = doc2.data();
+    return Object.entries(data).map(([key, value]) => ({ key, value }));
+  });
+};
 
-  static fetchFoodDetailsSeeNext = async (
-    category: string,
-    currentName: string
-  ): Promise<{ cardData: FoodDetailsProps[]; paths: string[] }> => {
-    const q = query(
-      collection(fStore, "FYPData"),
-      where("category", "==", category),
-      where("name", "!=", currentName)
-    );
-    const docSnap = await getDocs(q);
-    const docs = docSnap.docs.map((data) => {
-      const newDoc = data.data();
-      newDoc.path = data.id;
-      return newDoc;
-    });
+export const fetchNutritionSeeNext = async (currentName: string): Promise<SeeNextProps[]> => {
+  const q = query(collection(fStore, "NutritionData"), where(documentId(), "!=", currentName));
+  const querySnapshot = await getDocs(q);
 
-    const shuffled = docs.sort(() => 0.5 - Math.random()).slice(0, 3);
+  const docs = querySnapshot.docs.sort(() => 0.5 - Math.random()).slice(0, 3);
 
-    return {
-      cardData: shuffled.map((value) => ({
-        name: value.name,
-        description: value.description,
-        firebaseName: value.firebaseName,
-        category: value.category,
-        score: value.score,
-        facts: value.facts,
-      })),
-      paths: shuffled.map((value) => value.path),
-    };
-  };
+  return Promise.all(
+    docs.map(async (sortedDoc, index) => {
+      const dataDoc = await getDoc(doc(fStore, "NutritionData", sortedDoc.id, "Content", "Main"));
+      const URI = await fetchImages(dataDoc.data()?.firebaseName);
 
-  static fetchNutritionData = async (name: string): Promise<NutritionalDetailsFirebaseProps> => {
-    const querySnapshot = await getDocs(collection(fStore, "NutritionData", name, "Content"));
-
-    const sorted = querySnapshot.docs.sort((a, b) => {
-      if (a.data().order > b.data().order) {
-        return 1;
-      }
-      if (b.data().order > a.data().order) {
-        return -1;
-      }
-      return 0;
-    });
-
-    return sorted.map((doc2) => {
-      const data = doc2.data();
-      return Object.entries(data).map(([key, value]) => ({ key, value }));
-    });
-  };
-
-  static fetchNutritionSeeNext = async (currentName: string): Promise<SeeNextProps[]> => {
-    const q = query(collection(fStore, "NutritionData"), where(documentId(), "!=", currentName));
-    const querySnapshot = await getDocs(q);
-
-    const docs = querySnapshot.docs.sort(() => 0.5 - Math.random()).slice(0, 3);
-
-    return Promise.all(
-      docs.map(async (sortedDoc, index) => {
-        const dataDoc = await getDoc(doc(fStore, "NutritionData", sortedDoc.id, "Content", "Main"));
-        const URI = await FirebaseAPI.fetchImages(dataDoc.data()?.firebaseName);
-
-        return { key: index, name: dataDoc.data()?.name, path: docs[index].id, img: URI };
-      })
-    );
-  };
-}
-export default FirebaseAPI;
+      return { key: index, name: dataDoc.data()?.name, path: docs[index].id, img: URI };
+    })
+  );
+};

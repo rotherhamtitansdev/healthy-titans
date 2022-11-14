@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../api/FirebaseAPI";
 import ChallengesMenu from "./ChallengesMenu";
 import { MenuCardProps } from "../../models/MenuCardProps";
 

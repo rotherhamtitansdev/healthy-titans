@@ -1,6 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import { fetchDataFromSubpath, fetchAllImages } from "../../api/FirebaseAPI";
 import { AboutUsProps } from "../../models/AboutUs/AboutUsProps";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
@@ -22,13 +22,13 @@ const AboutUs = () => {
   const aboutUsImages = ["AboutUs/speechmark.svg", "AboutUs/People.png", "AboutUs/Hearts.png"];
 
   useEffect(() => {
-    FirebaseAPI.fetchDataFromSubpath("AboutUs", "Data").then((res) => {
+    fetchDataFromSubpath("AboutUs", "Data").then((res) => {
       if (res) {
         setAboutUsData(res as DocumentData as AboutUsProps);
       }
     });
 
-    FirebaseAPI.fetchAllImages(aboutUsImages).then((value) => {
+    fetchAllImages(aboutUsImages).then((value) => {
       setImages(value);
     });
   }, []);

@@ -3,7 +3,7 @@ import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
 import { chartSizing, ChartColours, ChartData } from "../../../../models/AnalyticsChartConfig";
 import "../../../../App.css";
-import FirebaseAPI from "../../../../api/FirebaseAPI";
+import { fetchDataFromSubpath } from "../../../../api/FirebaseAPI";
 import ProcessNutritionData from "../../../../functions/ProcessNutritionData";
 import FirstRender from "../../../../functions/FirstRender";
 
@@ -24,7 +24,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
 
   // fetch data on page load and set state for Nutrition Data and the chart label names
   useEffect(() => {
-    FirebaseAPI.fetchDataFromSubpath("NutritionChart", name).then((data) => {
+    fetchDataFromSubpath("NutritionChart", name).then((data) => {
       if (data !== undefined) {
         setNutritionData(data as ChartData);
         setChartAmountLabels([
@@ -41,7 +41,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
   // when NutritionData is updated, set the colours of the bars, but not on first render(page load)
   useEffect(() => {
     if (!isFirstRender && getNutritionData !== undefined) {
-        setChartColours(
+      setChartColours(
         ProcessNutritionData([
           getNutritionData.Fat,
           getNutritionData.Saturates,

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchImages } from "../../../api/FirebaseAPI";
 import { useGlobalMenuOpenContext } from "../AppHeaderContext";
 
 const HomePageHeaderImagesNames = [
@@ -17,8 +17,8 @@ const HomePageHeaderImages = () => {
   const { isMenuOpen } = useGlobalMenuOpenContext();
 
   useEffect(() => {
-    Promise.all(HomePageHeaderImagesNames.map((value) => FirebaseAPI.fetchImages(value))).then(
-      (value) => setImageURLs(value)
+    Promise.all(HomePageHeaderImagesNames.map((value) => fetchImages(value))).then((value) =>
+      setImageURLs(value)
     );
   }, []);
 

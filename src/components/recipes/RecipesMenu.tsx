@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import openInNewTab from "../../functions/Navigate";
 import { MenuCardProps } from "../../models/MenuCardProps";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import { fetchDataFromPath } from "../../api/FirebaseAPI";
 import Card from "../shared/Card";
 import Menu from "../shared/Menu";
 
@@ -10,9 +10,7 @@ const Recipes = () => {
 
   useEffect(() => {
     if (!getRecipesData || getRecipesData.length === 0) {
-      FirebaseAPI.fetchDataFromPath("RecipesData").then((data) =>
-        setRecipesData(data as MenuCardProps[])
-      );
+      fetchDataFromPath("RecipesData").then((data) => setRecipesData(data as MenuCardProps[]));
     }
   }, []);
 

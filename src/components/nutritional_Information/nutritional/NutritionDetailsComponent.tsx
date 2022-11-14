@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchNutritionSeeNext, fetchNutritionData, fetchImages } from "../../../api/FirebaseAPI";
 import {
   NutritionalDetailsFirebaseProps,
   NutritionDetailProcessed,
@@ -28,7 +28,7 @@ const NutritionDetailsComponent = () => {
     if (nutritionName) {
       setSeeNext(undefined);
 
-      FirebaseAPI.fetchNutritionSeeNext(nutritionName).then((res) => {
+      fetchNutritionSeeNext(nutritionName).then((res) => {
         setSeeNext(
           res.map((element) => {
             const newElement = { ...element };
@@ -41,11 +41,11 @@ const NutritionDetailsComponent = () => {
       });
 
       setAdditionalStyling("bg-white mb-10");
-      FirebaseAPI.fetchNutritionData(nutritionName).then((res) => {
+      fetchNutritionData(nutritionName).then((res) => {
         const firebaseName = res[0].find((value) => value.key === "firebaseName");
 
         if (firebaseName) {
-          FirebaseAPI.fetchImages(firebaseName.value).then((r) => setImageURL(r));
+          fetchImages(firebaseName.value).then((r) => setImageURL(r));
         }
 
         setNutritionData(res);

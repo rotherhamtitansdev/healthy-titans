@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchAllImages, fetchImages } from "../../../api/FirebaseAPI";
 import TableHeaderImagesLinks, {
   imageSize,
   PlateItemPositions,
@@ -112,7 +112,7 @@ const BuildYourPlateGameScreen = () => {
   useEffect(() => {
     BuildYourPlateProcessor.fetchAllUrls().then(async (res) => {
       if (!res) return;
-      FirebaseAPI.fetchAllImages(TableHeaderImagesLinks).then((headers) => {
+      fetchAllImages(TableHeaderImagesLinks).then((headers) => {
         const BYPItems: BYPItem[] = res.map((item) => ({
           icon: <BuildYourPlateIcon URL={item.URL} id={item.id} alt={item.name} />,
           family: item.icon,
@@ -123,8 +123,8 @@ const BuildYourPlateGameScreen = () => {
         }));
         setBYPTableHeaders(headers);
         setBYPTableData(BuildYourPlateProcessor.processRows(BYPItems));
-        FirebaseAPI.fetchImages("Games/BigPlate.png").then((BPres) => setPlateImage(BPres));
-        FirebaseAPI.fetchImages("Games/tick.png").then((Tickres) => {
+        fetchImages("Games/BigPlate.png").then((BPres) => setPlateImage(BPres));
+        fetchImages("Games/tick.png").then((Tickres) => {
           setTickImage(<img src={Tickres} alt="Tick" />);
         });
       });
