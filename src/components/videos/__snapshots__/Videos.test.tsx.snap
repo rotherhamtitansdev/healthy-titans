@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
-        class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+        class="bg-white table align-middle rounded-3xl shadow-lg xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
         data-testid="video title"
         role="button"
         tabindex="0"
@@ -34,7 +34,7 @@ Object {
   </body>,
   "container": <div>
     <div
-      class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+      class="bg-white table align-middle rounded-3xl shadow-lg xs:w-[22.5rem] sm:w-[30rem] md:w-[37.5rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
       data-testid="video title"
       role="button"
       tabindex="0"

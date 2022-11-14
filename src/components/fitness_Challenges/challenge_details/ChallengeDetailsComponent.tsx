@@ -49,10 +49,10 @@ const ChallengeDetailsComponent = () => {
           />
           <div className="md:basis-1/2 ">
             <div className="pr-[2rem] md:pr-[3rem] lg:pr-[5rem] pt-[2rem]">
-              <div className="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] font-quicksand text-homepageHeaderSubTitle font-semibold pb-[2rem]">
+              <div className="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] text-homepageHeaderSubTitle font-semibold pb-[2rem]">
                 How to play
               </div>
-              <div className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
+              <div className="pl-4 block mt-1 text-lg leading-tight font-medium">
                 <ul className="list-decimal">
                   {getChallengeDetailsComponentData.howToPlay?.map((howToPlay) => (
                     <li className="pb-6" key={howToPlay}>
@@ -63,10 +63,10 @@ const ChallengeDetailsComponent = () => {
               </div>
               {getChallengeDetailsComponentData.rules.length >= 1 && (
                 <>
-                  <div className="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold">
+                  <div className="pt-4 pb-3 tracking-wide text-2xl text-homepageHeaderSubTitle font-semibold">
                     Rules
                   </div>
-                  <div className="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand">
+                  <div className="pl-4 block mt-1 text-lg leading-tight font-medium">
                     <ul className="list-disc">
                       {getChallengeDetailsComponentData.rules.map((rule) => (
                         <li className="pb-6" key={rule}>
