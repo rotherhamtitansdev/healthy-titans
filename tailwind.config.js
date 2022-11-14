@@ -33,7 +33,7 @@ module.exports = {
         titansDarkGrey: "#545454",
       },
       fontFamily: {
-        quicksand: ["Quicksand", "sans-serif"],
+        quicksand: ["Quicksand", "comic sans ms", "sans-serif"],
       },
       backgroundImage: {
         wave: "url('/src/img/wave.png')",

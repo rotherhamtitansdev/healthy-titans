@@ -132,7 +132,7 @@ exports[`Food Details Component component renders both correct data and image fr
             style="flex-basis: auto; position: relative; width: 467px;"
           >
             <div
-              class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+              class="bg-white table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
               data-testid="mock1"
               role="button"
               tabindex="0"
@@ -163,7 +163,7 @@ exports[`Food Details Component component renders both correct data and image fr
             style="flex-basis: auto; position: relative; width: 467px;"
           >
             <div
-              class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+              class="bg-white table align-middle rounded-3xl shadow-lg w-60 h-60 sm:w-64 sm:h-64 xl:w-72 xl:h-72 2xl:w-80 2xl:h-80 3xl:w-96 3xl:h-96 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
               data-testid="mock2"
               role="button"
               tabindex="0"

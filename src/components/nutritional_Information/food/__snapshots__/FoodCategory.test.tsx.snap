@@ -80,7 +80,7 @@ exports[`Food Category Component renders with no category 1`] = `
           data-testid="menu-styling"
         >
           <div
-            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+            class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
             data-testid="Dairy and Eggs"
             role="button"
             tabindex="0"
@@ -104,7 +104,7 @@ exports[`Food Category Component renders with no category 1`] = `
             </div>
           </div>
           <div
-            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+            class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
             data-testid="Fast Food"
             role="button"
             tabindex="0"
@@ -128,7 +128,7 @@ exports[`Food Category Component renders with no category 1`] = `
             </div>
           </div>
           <div
-            class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+            class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
             data-testid="Fish"
             role="button"
             tabindex="0"

@@ -48,7 +48,7 @@ exports[`Menu Component if component renders header, card, title, and children (
         data-testid="menu-styling"
       >
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 1"
           role="button"
           tabindex="0"
@@ -72,7 +72,7 @@ exports[`Menu Component if component renders header, card, title, and children (
           </div>
         </div>
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 2"
           role="button"
           tabindex="0"
@@ -96,7 +96,7 @@ exports[`Menu Component if component renders header, card, title, and children (
           </div>
         </div>
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 3"
           role="button"
           tabindex="0"
@@ -180,7 +180,7 @@ exports[`Menu Component if component renders header, card, title, but not childr
         data-testid="menu-styling"
       >
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 1"
           role="button"
           tabindex="0"
@@ -220,7 +220,7 @@ exports[`Menu Component if component renders only cards, no header or title 1`] 
         data-testid="menu-styling"
       >
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 1"
           role="button"
           tabindex="0"
@@ -244,7 +244,7 @@ exports[`Menu Component if component renders only cards, no header or title 1`] 
           </div>
         </div>
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 2"
           role="button"
           tabindex="0"
@@ -268,7 +268,7 @@ exports[`Menu Component if component renders only cards, no header or title 1`] 
           </div>
         </div>
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 3"
           role="button"
           tabindex="0"
@@ -348,7 +348,7 @@ exports[`Menu Component if conditional styling is applied, 3+ cards 1`] = `
         data-testid="menu-styling"
       >
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 1"
           role="button"
           tabindex="0"
@@ -372,7 +372,7 @@ exports[`Menu Component if conditional styling is applied, 3+ cards 1`] = `
           </div>
         </div>
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 2"
           role="button"
           tabindex="0"
@@ -396,7 +396,7 @@ exports[`Menu Component if conditional styling is applied, 3+ cards 1`] = `
           </div>
         </div>
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg lg:w-[17rem] xl:w-[21rem] xl:h-[21rem] 2xl:w-[25rem] 2xl:h-[25rem] col-span-2 mx-[25%] lg:col-span-1 lg:mx-0 hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 3"
           role="button"
           tabindex="0"
@@ -480,7 +480,7 @@ exports[`Menu Component if conditional styling is applied, less than 3 cards 1`]
         data-testid="menu-styling"
       >
         <div
-          class="bg-white font-quicksand table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
+          class="bg-white table align-middle rounded-3xl shadow-lg  hover:cursor-grab hover:-translate-y-0.5 hover:scale-105 duration-300"
           data-testid="Test Card Name 1"
           role="button"
           tabindex="0"

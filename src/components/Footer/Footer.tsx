@@ -8,7 +8,7 @@ import ANDLogo from "../../img/AND-icon.png";
 import Logo from "../../img/Logo.svg";
 
 const Footer = () => (
-  <footer className="text-left lg:text-center bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 lg:bg-footerwave lg:pt-0 text-[#243A73] font-quicksand font-medium">
+  <footer className="text-left lg:text-center bg-mbfooterwave bg-no-repeat bg-span md:bg-tbfooterwave md:pt-10 lg:bg-footerwave lg:pt-0 text-[#243A73] font-medium">
     <div className="flex justify-center pt-2 md:pt-14 lg:pt-14 ">
       <Link to="/">
         <img src={Logo} className="w-32 md:w-44" alt="Cookie's Khaw" />
