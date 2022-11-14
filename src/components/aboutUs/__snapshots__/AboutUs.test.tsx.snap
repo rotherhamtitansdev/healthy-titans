@@ -167,13 +167,13 @@ exports[`About Us component renders with sections and image 1`] = `
         <h2
           class="font-semibold text-titansDarkBlue text-xl md:text-2xl lg:text-4xl py-5"
         >
-          section 4 header
+          section 5 header
         </h2>
         <p>
-          section 4 body
+          section 5 body
         </p>
         <p>
-          section 4 body 2
+          section 5 body 2
         </p>
       </div>
       <div
