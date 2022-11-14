@@ -89,12 +89,12 @@ exports[`ChallengeDetailsComponent component does not render rules if empty arra
             class="pr-[2rem] md:pr-[3rem] lg:pr-[5rem] pt-[2rem]"
           >
             <div
-              class="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] font-quicksand text-homepageHeaderSubTitle font-semibold pb-[2rem]"
+              class="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] text-homepageHeaderSubTitle font-semibold pb-[2rem]"
             >
               How to play
             </div>
             <div
-              class="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand"
+              class="pl-4 block mt-1 text-lg leading-tight font-medium"
             >
               <ul
                 class="list-decimal"
@@ -208,12 +208,12 @@ exports[`ChallengeDetailsComponent component renders rules if in data 1`] = `
             class="pr-[2rem] md:pr-[3rem] lg:pr-[5rem] pt-[2rem]"
           >
             <div
-              class="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] font-quicksand text-homepageHeaderSubTitle font-semibold pb-[2rem]"
+              class="lg:pt-4 pb-3 lg:pl-0 pl-5 tracking-wide text-[20px] lg:text-[24px] text-homepageHeaderSubTitle font-semibold pb-[2rem]"
             >
               How to play
             </div>
             <div
-              class="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand"
+              class="pl-4 block mt-1 text-lg leading-tight font-medium"
             >
               <ul
                 class="list-decimal"
@@ -231,12 +231,12 @@ exports[`ChallengeDetailsComponent component renders rules if in data 1`] = `
               </ul>
             </div>
             <div
-              class="pt-4 pb-3 tracking-wide text-2xl font-quicksand text-homepageHeaderSubTitle font-semibold"
+              class="pt-4 pb-3 tracking-wide text-2xl text-homepageHeaderSubTitle font-semibold"
             >
               Rules
             </div>
             <div
-              class="pl-4 block mt-1 text-lg leading-tight font-medium font-quicksand"
+              class="pl-4 block mt-1 text-lg leading-tight font-medium"
             >
               <ul
                 class="list-disc"

@@ -146,7 +146,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                       return -70;
                     }}
                     style={{
-                      fontFamily: "Quicksand",
+                      fontFamily: "Quicksand, comic sans ms, sans-serif",
                       fontSize: 14,
                       textAlign: "center",
                       // type comes from chart package
@@ -208,7 +208,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                   ticks: { stroke: "transparent" },
                 }}
                 tickLabelComponent={
-                  <VictoryLabel style={{ fontFamily: "Quicksand", fontSize: "14px" }} />
+                  <VictoryLabel style={{ fontFamily: "Quicksand, comic sans ms, sans-serif", fontSize: "14px" }} />
                 }
               />
             </VictoryChart>

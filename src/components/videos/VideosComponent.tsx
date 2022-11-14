@@ -79,7 +79,7 @@ const VideosComponent = () => {
             }}
           >
             <div className="text-center py-[4.5rem] xs:px-[5rem] xs:py-[5.75rem] xs:px-[7.25rem] sm:py-[9.35rem] sm:px-[5rem] md:py-[9rem] md:px-[10rem] lg:py-[11.5rem] lg:px-[10rem]">
-              <div className="font-semibold text-4xl font-quicksand text-homepageHeaderText">
+              <div className="font-semibold text-4xl text-homepageHeaderText">
                 More videos coming soon!
               </div>
             </div>

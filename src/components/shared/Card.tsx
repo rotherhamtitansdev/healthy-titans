@@ -14,7 +14,7 @@ const Card = (props: { card: CardProps; children: React.ReactNode }) => {
   }
 
   function getClassName(): string {
-    const baseStyling = "bg-white font-quicksand table align-middle rounded-3xl shadow-lg ";
+    const baseStyling = "bg-white table align-middle rounded-3xl shadow-lg ";
     return (
       baseStyling + (props.card.additionalStyling || "") + getHoverStyling(!!props.card.onClick)
     );
