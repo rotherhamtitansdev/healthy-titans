@@ -31,7 +31,7 @@ describe("Food & Nutrition", () => {
     cy.get('[data-testid="Fast Food"]').click();
     cy.get('[data-testid="Fried Chicken"]').click();
     cy.url().should("eq", "http://localhost:3000/FoodAndNutrition/FastFood/FriedChicken");
-
+    cy.wait(500)
     cy.get('[data-testid="details-title"]').should("have.text", foodNutrition.friedChicken.title);
     cy.get('[data-testid="details-description"]').should(
       "have.text",
@@ -49,6 +49,7 @@ describe("Food & Nutrition", () => {
     cy.get('[data-testid="Fast Food"]').click();
     cy.get('[data-testid="Fried Chicken"]').click();
     cy.url().should("eq", "http://localhost:3000/FoodAndNutrition/FastFood/FriedChicken");
+    cy.wait(500)
 
     cy.get('[data-testid="details-title"]').should("have.text", foodNutrition.friedChicken.title);
     cy.get('[data-testid="details-description"]').should(

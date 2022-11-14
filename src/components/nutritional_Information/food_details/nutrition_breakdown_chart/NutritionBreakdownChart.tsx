@@ -1,55 +1,59 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { VictoryChart, VictoryBar, VictoryLabel, VictoryAxis } from "victory";
 import ClipLoader from "react-spinners/ClipLoader";
-import { NHSNutritionalDataModelChart } from "../../../../models/NHSNutritionalDataModel";
-import { chartSizing } from "../../../../models/AnalyticsChartConfig";
-import { ChartDataProcessor } from "../../../../functions/ChartDataProcessor";
-import NutritionalBreakdownChartData from "../../../../data/NutritionBreakdownChart";
-import { NutritionDetailsAPIModel } from "../../../../models/NutritionDetailsAPIModel";
+import { chartSizing, ChartColours, ChartData } from "../../../../models/AnalyticsChartConfig";
 import "../../../../App.css";
+import FirebaseAPI from "../../../../api/FirebaseAPI";
+import ProcessNutritionData from "../../../../functions/ProcessNutritionData";
+import FirstRender from "../../../../functions/FirstRender";
 
 const NutritionBreakdownChart = (props: { name: string }) => {
+  const isFirstRender = FirstRender();
   const { name } = props;
-
+  const chartNameLabels = [
+    "Protein\n\n\n\n",
+    "Fat\n\n\n\n",
+    "Saturates\n\n\n\n",
+    "Sugars\n\n\n\n",
+    "Salt\n\n\n\n",
+  ];
   const [getLoading, setLoading] = useState(true);
-
   const [getChartAmountLabels, setChartAmountLabels] = useState<string[]>();
-  const [getChartNameLabels, setChartNameLabels] = useState<string[]>();
+  const [getNutritionData, setNutritionData] = useState<ChartData>();
+  const [getChartColours, setChartColours] = useState<ChartColours[]>([]);
 
-  const [getChartData, setChartData] = useState<NHSNutritionalDataModelChart[]>([]);
+  // fetch data on page load and set state for Nutrition Data and the chart label names
+  useEffect(() => {
+    FirebaseAPI.fetchDataFromSubpath("NutritionChart", name).then((data) => {
+      if (data !== undefined) {
+        setNutritionData(data as ChartData);
+        setChartAmountLabels([
+          `${data.Protein}g`,
+          `${data.Fat}g`,
+          `${data.Saturates}g`,
+          `${data.Sugars}g`,
+          `${data.Salt}g`,
+        ]);
+      }
+    });
+  }, [name]);
 
-  const [getCalories, setCalories] = useState<string>();
-
-  const processChart = useCallback((unparsed: NutritionDetailsAPIModel) => {
-    const parsed = ChartDataProcessor.parseAPINutritionalData(unparsed);
-    const chartValues = ChartDataProcessor.calculateNutritionalBoundariesAll(parsed);
-
-    setCalories(chartValues.calories.label);
-    setChartNameLabels(chartValues.chartData.names);
-
-    setTimeout(() => {
-      setChartAmountLabels(chartValues.chartData.labels);
-    }, 1000);
-
-    setChartData(chartValues.chartData.data);
-    setLoading(false);
-  }, []);
+  // when NutritionData is updated, set the colours of the bars, but not on first render(page load)
+  useEffect(() => {
+    if (!isFirstRender && getNutritionData !== undefined) {
+        setChartColours(
+        ProcessNutritionData([
+          getNutritionData.Fat,
+          getNutritionData.Saturates,
+          getNutritionData.Sugars,
+          getNutritionData.Salt,
+        ])
+      );
+      setLoading(false);
+    }
+  }, [getNutritionData]);
 
   const chartCircleRadius = useMemo(() => chartSizing.barWidth / 2, []);
-  let ChartData:
-    | {
-        name: string;
-        data: NutritionDetailsAPIModel;
-      }
-    | undefined;
-
-  useEffect(() => {
-    ChartData = NutritionalBreakdownChartData.find((object) => object.name === name);
-
-    if (ChartData !== undefined) {
-      processChart(ChartData.data);
-    }
-  });
 
   return (
     <div className="md:basis-1/2">
@@ -63,7 +67,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 Nutrition Information
               </p>
               <p className="text-[14px] md:text-[16px] lg:text-[20px] text-primaryGrey font-medium">
-                *Based on serving of 100 g
+                * Based on serving of 100 g
               </p>
             </div>
             <div className="lg:mx-12 mx-8 my-8">
@@ -72,11 +76,12 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 data-testid="calorie-count"
                 className="text-[36px] text-titansDarkBlue font-semibold"
               >
-                {getCalories}
+                {getNutritionData?.Calories}
               </p>
               <p className="text-[20px] text-titansDarkBlue">Kcal</p>
             </div>
             <VictoryChart title="Nutrition Information Chart" height={chartSizing.chartHeight}>
+              {/* 5 bars in secondary colour */}
               <VictoryBar
                 data={[
                   {
@@ -105,17 +110,17 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 horizontal
                 style={{
                   data: {
-                    fill: ({ datum }) => getChartData[datum.x - 1].deluminatedColor,
+                    fill: ({ datum }) => getChartColours[datum.x - 1].secondary,
                   },
                 }}
                 barWidth={chartSizing.barWidth}
                 cornerRadius={chartSizing.smallerRounded}
               />
-
+              {/* bar in primary colour, with text labels */}
               <VictoryBar
-                data={getChartData}
-                x="x"
-                y="y"
+                data={getChartColours}
+                x="position"
+                y="status"
                 horizontal
                 animate={{
                   duration: 2000,
@@ -123,7 +128,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 }}
                 style={{
                   data: {
-                    fill: ({ datum }) => datum.color,
+                    fill: ({ datum }) => datum.primary,
                   },
                 }}
                 barWidth={chartSizing.barWidth}
@@ -132,13 +137,13 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                   <VictoryLabel
                     className="fade-in-text"
                     dx={({ datum }) => {
-                      if (datum.y > 2) {
-                        return -195;
+                      if (datum.status > 2) {
+                        return -190;
                       }
-                      if (datum.y <= 2 && datum.y > 1) {
-                        return -135;
+                      if (datum.status <= 2 && datum.status > 1) {
+                        return -130;
                       }
-                      return -75;
+                      return -70;
                     }}
                     style={{
                       fontFamily: "Quicksand",
@@ -147,7 +152,9 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                       // type comes from chart package
                       // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       fill: ({ datum }: any) => {
-                        if (datum.y <= 2 || datum.x === 1) return "black";
+                        if (datum.status <= 2 || datum.position === 1) {
+                          return "black";
+                        }
                         return "white";
                       },
                     }}
@@ -155,42 +162,47 @@ const NutritionBreakdownChart = (props: { name: string }) => {
                 }
                 labels={getChartAmountLabels}
               />
-
-              {getChartData !== undefined && (
+              {/* coloured circles in primary colour for left edge of bar */}
+              {getChartColours !== undefined && (
                 <>
-                  <circle cx={50} cy={chartSizing.CStartPos} r={chartCircleRadius} fill="#ACCDF6" />
+                  <circle
+                    cx={50}
+                    cy={chartSizing.CStartPos}
+                    r={chartCircleRadius}
+                    fill={getChartColours[0].primary}
+                  />
                   <circle
                     cx={50}
                     cy={chartSizing.CStartPos + chartSizing.circleYDif}
                     r={chartCircleRadius}
-                    fill={getChartData[1].color}
+                    fill={getChartColours[1].primary}
                   />
                   <circle
                     cx={50}
                     cy={chartSizing.CStartPos + chartSizing.circleYDif * 2}
                     r={chartCircleRadius}
-                    fill={getChartData[2].color}
+                    fill={getChartColours[2].primary}
                   />
                   <circle
                     cx={50}
                     cy={chartSizing.CStartPos + chartSizing.circleYDif * 3}
                     r={chartCircleRadius}
-                    fill={getChartData[3].color}
+                    fill={getChartColours[3].primary}
                   />
                   <circle
                     cx={50}
                     cy={chartSizing.CStartPos + chartSizing.circleYDif * 4}
                     r={chartCircleRadius}
-                    fill={getChartData[4].color}
+                    fill={getChartColours[4].primary}
                   />
                 </>
               )}
-
+              {/* name labels for each bar (protein, fat etc.) */}
               <VictoryAxis
                 invertAxis
                 orientation="right"
                 offsetX={420}
-                tickValues={getChartNameLabels}
+                tickValues={chartNameLabels}
                 style={{
                   axis: { stroke: "transparent" },
                   ticks: { stroke: "transparent" },
