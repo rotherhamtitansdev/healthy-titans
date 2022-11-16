@@ -36,17 +36,19 @@ const Menu = (props: MenuProps) => {
     return "grid grid-cols-2 xs:p-4 lg:grid-cols-auto lg:px-14 xl:px-20 2xl:px-30 3xl:px-36 lg:py-10 gap-[0.5rem] md:gap-y-[1rem] lg:gap-y-[3rem]";
   }
 
-  const cardList = props.cards.map((item, index) => (
-    <MenuCard
-      key={item.key}
-      name={item.name}
-      img={item.img}
-      path={item.path}
-      externalPath={item.externalPath}
-      additionalStyling={getStylingForCard(index)}
-      firebaseName={item.firebaseName}
-    />
-  ));
+  const cardList = props.cards
+    .sort((n1, n2) => n1.key - n2.key)
+    .map((item, index) => (
+      <MenuCard
+        key={item.key}
+        name={item.name}
+        img={item.img}
+        path={item.path}
+        externalPath={item.externalPath}
+        additionalStyling={getStylingForCard(index)}
+        firebaseName={item.firebaseName}
+      />
+    ));
 
   return (
     <div className={props.containerStyles}>
