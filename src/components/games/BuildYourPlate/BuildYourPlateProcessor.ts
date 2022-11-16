@@ -1,6 +1,6 @@
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
 
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromPath, fetchImages } from "../../../api/FirebaseAPI";
 
 class BuildYourPlateProcessor {
   static processRows = (BYPItems: BYPItem[]) => {
@@ -29,14 +29,14 @@ class BuildYourPlateProcessor {
   };
 
   static fetchAllUrls = async () => {
-    const data = await FirebaseAPI.fetchFoodDetailsComponentsData();
+    const data = await fetchDataFromPath("FYPData");
     if (!data) return undefined;
     return Promise.all(
-      Object.values(data).map(async (item) => ({
+      data.map(async (item) => ({
         icon: item.category,
         name: item.name,
-        URL: await FirebaseAPI.fetchImages(item.firebaseName),
-        key: item.name,
+        URL: await fetchImages(item.firebaseName),
+        id: item.name,
         score: item.score,
       }))
     );
@@ -47,7 +47,7 @@ class BuildYourPlateProcessor {
   static constructScoreModalText = (score: number): string => {
     if (score >= 45) return "Fantastic!";
     if (score >= 40 && score < 45) return "Great!";
-    if (score >= 30 && score < 50) return "Very good!";
+    if (score >= 30 && score < 40) return "Very good!";
     if (score >= 20 && score < 30) return "Good!";
     if (score >= 10 && score < 20) return "Could be better!";
     return "Needs improvement!";

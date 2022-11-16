@@ -1,9 +1,9 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../../api/FirebaseAPI";
+import { FoodDetailsProps } from "../../../models/FoodDetailsProps";
 import FoodDetailsComponent from "./FoodDetailsComponent";
-import { FoodDetailsProps } from "../../../data/nutritional_information/FoodDetailsComponentData";
 
 const mockContent = {
   cardData: [
@@ -48,7 +48,7 @@ describe("Food Details Component", () => {
     const mockFetchFoodSingle = jest.fn().mockResolvedValueOnce(mockContent.cardData[2]);
 
     jest.spyOn(FirebaseAPI, "fetchFoodDetailsSeeNext").mockImplementationOnce(mockFetchSeeNext);
-    jest.spyOn(FirebaseAPI, "fetchFoodDetailsSingle").mockImplementationOnce(mockFetchFoodSingle);
+    jest.spyOn(FirebaseAPI, "fetchDataFromSubpath").mockImplementationOnce(mockFetchFoodSingle);
     jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue("mock/Image3.svg");
 
     // define width for carousel to appear & prevent buttons from loading
@@ -67,30 +67,35 @@ describe("Food Details Component", () => {
     // Using memoryrouter to mock Route as path to the component is required for the contents
     const { asFragment } = render(
       <MemoryRouter
-        initialEntries={[{ pathname: "/NutritionalInformation/mockCategory/mock3" }]}
+        initialEntries={[{ pathname: "/FoodAndNutrition/mockCategory/mock3" }]}
         initialIndex={0}
       >
         <Routes>
           <Route
-            path="/NutritionalInformation/mockCategory/:foodName"
+            path="/FoodAndNutrition/mockCategory/:foodName"
             element={<FoodDetailsComponent />}
           />
         </Routes>
       </MemoryRouter>
     );
 
-    expect(await screen.findByText("mock3")).toBeVisible();
-    expect(screen.getByText("mockFact23")).toBeVisible();
-    expect(screen.getByRole("img", { name: "mock3" })).toHaveAttribute("src", "mock/Image3.svg");
-    expect(screen.getAllByRole("button")).toHaveLength(2);
-    expect(screen.getByRole("button", { name: "mock1" })).toBeVisible();
-    expect(screen.queryByRole("button", { name: "mock3" })).not.toBeInTheDocument();
+    const detailsCard = await screen.findByTestId("mock3-details");
 
-    expect(mockFetchFoodSingle).toHaveBeenCalledWith("mock3");
+    expect(within(detailsCard).getByText("mock3")).toBeVisible();
+    expect(within(detailsCard).getByText("mockFact23")).toBeVisible();
+    expect(within(detailsCard).getByRole("img", { name: "" })).toHaveAttribute(
+      "src",
+      "mock/Image3.svg"
+    );
+
+    expect(mockFetchFoodSingle).toHaveBeenCalledWith("FYPData", "mock3");
     expect(mockFetchSeeNext).toHaveBeenCalledWith("mockCategory", "mock3");
 
-    expect(await screen.findByRole("img", { name: "mock1" })).toBeVisible();
-    expect(await screen.findByRole("img", { name: "mock2" })).toBeVisible();
+    expect(screen.getAllByRole("button")).toHaveLength(2);
+    expect(screen.getByRole("button", { name: "mock1" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "mock2" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: "mock3" })).not.toBeInTheDocument();
+
     expect(asFragment()).toMatchSnapshot();
   });
 });

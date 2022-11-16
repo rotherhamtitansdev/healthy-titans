@@ -5,7 +5,7 @@ import { ClipLoader } from "react-spinners";
 import { MenuCardProps } from "../../models/MenuCardProps";
 import Card from "./Card";
 import Image from "./Image";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import { fetchImages } from "../../api/FirebaseAPI";
 import openInNewTab from "../../functions/Navigate";
 
 /*
@@ -19,11 +19,9 @@ const MenuCard = (props: MenuCardProps) => {
 
   useEffect(() => {
     if (props.firebaseName !== undefined) {
-      FirebaseAPI.fetchImages(props.firebaseName).then((URI) =>
-        setImage(<Image img={URI} alt={props.name} />)
-      );
+      fetchImages(props.firebaseName).then((URI) => setImage(<Image img={URI} alt="" />));
     } else if (props.img !== undefined) {
-      setImage(<Image img={props.img} alt={props.name} />);
+      setImage(<Image img={props.img} alt="" />);
     }
   }, []);
 
@@ -39,7 +37,7 @@ const MenuCard = (props: MenuCardProps) => {
       card={{
         name: props.name,
         additionalStyling: `${props.additionalStyling}`,
-        onClick: handleOnClick()
+        onClick: handleOnClick(),
       }}
     >
       <div className="py-[1.75rem] md:py-[3.625rem] w-full h-full flex-col flex">

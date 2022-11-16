@@ -1,11 +1,20 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Route } from "react-router";
+import * as FirebaseAPI from "../../api/FirebaseAPI";
 import { Video } from "../../models/Video";
 import RoutingTestWrapper from "../../tests/RoutingTestWrapper";
 import VideoCard from "./VideoCard";
 import VideosComponent from "./VideosComponent";
+
+const mockVideoData = [
+  {
+    description: "VIDEO",
+    firebaseName: "VIDEO.mp4",
+    title: "VIDEO",
+  },
+];
 
 afterEach(() => {
   cleanup();
@@ -13,6 +22,7 @@ afterEach(() => {
 
 test("navigate to videos page", () => {
   const videosRoute = "/Videos";
+  jest.spyOn(FirebaseAPI, "fetchDataFromPath").mockResolvedValue(mockVideoData);
 
   const snapshot = render(
     <RoutingTestWrapper path={videosRoute}>
@@ -20,7 +30,9 @@ test("navigate to videos page", () => {
     </RoutingTestWrapper>
   );
 
-  expect(snapshot).toMatchSnapshot();
+  waitFor(() => {
+    expect(snapshot).toMatchSnapshot();
+  });
 });
 
 describe("Videos page: Render", () => {
@@ -30,6 +42,7 @@ describe("Videos page: Render", () => {
   }));
 
   jest.spyOn(React, "useEffect").mockImplementation((f) => f());
+  jest.spyOn(FirebaseAPI, "fetchImages").mockResolvedValue(mockVideoData[0].firebaseName);
 
   const VideoProps: Video = {
     firebaseName: "firebase url",
@@ -47,6 +60,7 @@ describe("Videos page: Render", () => {
     );
     expect(snapshot).toMatchSnapshot();
   });
+
   it("should unhide video player when video clicked", async () => {
     const user = userEvent.setup();
     const setHiddenMock = jest.fn();

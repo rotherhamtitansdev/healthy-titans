@@ -12,7 +12,7 @@ const GameStartScreen = (props: { name: string; background: string }) => {
     <div
       className="bg-white h-full rounded-xl shadow-lg my-10 p-11 sm:p-0 pointer-events-auto sm:pointer-events-none"
       onClick={toggleGameStarted}
-      onKeyPress={toggleGameStarted}
+      onKeyDown={toggleGameStarted}
       role="button"
       tabIndex={0}
     >

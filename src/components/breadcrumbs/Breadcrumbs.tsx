@@ -9,11 +9,10 @@ interface BreadcrumbsProps {
 const Breadcrumbs = (props: BreadcrumbsProps) => {
   const routes = [
     { path: "/", breadcrumb: null },
-    { path: "NutritionalInformation", breadcrumb: "Food & Nutrition" },
+    { path: "FoodAndNutrition/Nutrition", breadcrumb: null },
   ];
 
   const breadcrumbs = useBreadcrumbs(routes);
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function getBreadcrumbName(breadcrumb: any) {
     const path = breadcrumb.props.children;

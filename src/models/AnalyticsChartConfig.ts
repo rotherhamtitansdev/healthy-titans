@@ -1,13 +1,3 @@
-import { NHSNutritionalDataModel } from "./NHSNutritionalDataModel";
-
-// This is the numerical instance of the NHS Nutritional guidelines model
-export const NHSNutritionalBoundaries: NHSNutritionalDataModel[] = [
-  { name: "Fat", low: 3, high: 17.5 },
-  { name: "Saturates", low: 1.5, high: 5 },
-  { name: "Sugars", low: 5, high: 22.5 },
-  { name: "Salt", low: 0.1, high: 0.6 },
-];
-
 // These are the config parameters for the chart styling and sizing
 export const chartSizing = {
   chartHeight: 500,
@@ -18,17 +8,26 @@ export const chartSizing = {
   smallerRounded: 15,
 };
 
-export enum ChartLabel {
-  Calories = "ENERC_KCAL",
-  Protein = "PROCNT",
-  Fat = "FAT",
-  Saturates = "FASAT",
-  Sugars = "SUGAR",
-  Salt = "NA",
+export interface ChartColours {
+  name: string;
+  primary: string;
+  secondary: string;
+  status: number;
+  position: number;
 }
 
-export enum Colour {
-  Green = 1,
-  Yellow = 2,
-  Red = 3,
+export interface ChartData {
+  Calories: number;
+  Protein: number;
+  Fat: number;
+  Saturates: number;
+  Sugars: number;
+  Salt: number;
 }
+
+export const NHSBoundaries = {
+  Fat: { low: 3, high: 17.5 },
+  Saturates: { low: 1.5, high: 5 },
+  Sugars: { low: 5, high: 22.5 },
+  Salt: { low: 0.1, high: 0.6 },
+};

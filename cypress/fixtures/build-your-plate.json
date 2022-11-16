@@ -1,1 +1,9 @@
-{}
+{
+    "meats": { "Beef": 9, "Chicken": 9, "Cooked Meats": 8, "Lamb": 9, "Pork": 8, "Turkey": 9 },
+    "fish": {"Cod": 7, "Salmon": 10, "Tuna": 9},
+    "fruit": {"Apples": 7, "Avocado": 8, "Bananas": 9, "Blueberries": 7, "Grapes": 7, "Oranges": 7, "Pears": 7, "Strawberries": 7, "Tomato": 8},
+    "vegetables": {"Asparagus": 9, "Bell Peppers": 9, "Broccoli": 9, "Carrots": 7, "Cauliflower": 9, "Kale": 9, "Mushrooms": 7, "Peas": 8, "Potato": 7, "Spinach": 8, "Sweet Potato": 7, "Sweetcorn": 8},
+    "dairy": {"Butter": 7, "Cheese": 8, "Eggs": 9, "Milk": 9, "Chocolate Milkshakes": 2, "Yoghurt": 9},
+    "fastFood": {"Hamburger": 3, "French Fries": 3, "Fizzy Drinks (Coke)": 2, "Fried Chicken": 2, "Hotdogs": 2, "Pizza": 2},
+    "sweets": {"Chocolate": 2, "Jelly Sweets": 2, "Cupcakes": 2, "Biscuits": 2, "Donuts": 2, "Ice Cream": 2}
+}

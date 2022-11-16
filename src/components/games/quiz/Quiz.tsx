@@ -1,7 +1,6 @@
-/* eslint-disable no-nested-ternary */
 import { DocumentData } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import FirebaseAPI from "../../../api/FirebaseAPI";
+import { fetchDataFromSubpath } from "../../../api/FirebaseAPI";
 import { QuizProps } from "../../../models/Quiz/QuizProps";
 import AppHeader from "../../app_header/AppHeader";
 import MenuHeader from "../../app_header/header/MenuHeader";
@@ -15,7 +14,7 @@ const Quiz = () => {
   const [quizData, setQuizData] = useState<QuizProps | undefined>();
 
   useEffect(() => {
-    FirebaseAPI.fetchQuizData().then((res) => {
+    fetchDataFromSubpath("QuizData", "Quiz").then((res) => {
       if (res) {
         setQuizData(res as DocumentData as QuizProps);
       }
@@ -34,7 +33,7 @@ const Quiz = () => {
       </AppHeader>
       <div className="mx-7 xs:mx-8 sm:mx-12 md:mx-14">
         <MenuTitle title="Quiz" />
-        {getIsGameStarted ? (
+        {getIsGameStarted && quizData ? (
           <QuizGameScreen quizData={quizData} />
         ) : (
           <GameStartScreen

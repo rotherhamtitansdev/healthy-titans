@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import React from "react";
 import CarouselMenu from "./CarouselMenu";
 import { HomePageCarouselResponsiveConfig } from "../../config/CarouselConfig";
-import FirebaseAPI from "../../api/FirebaseAPI";
+import * as FirebaseAPI from "../../api/FirebaseAPI";
 import { MenuCardProps } from "../../models/MenuCardProps";
 
 const MockMenuCards = [
@@ -60,28 +60,9 @@ describe("Carousel Menu", () => {
       { wrapper: MemoryRouter }
     );
 
-    expect(
-      await screen.findByRole("img", {
-        name: "Mock Card 1",
-      })
-    ).toBeVisible();
+    const carouselCard = screen.getByRole("button", { name: "Mock Card 1" });
 
-    // check if the div with the test id is in the document
-    expect(screen.getByTestId("Mock Card 1")).toBeVisible();
-
-    // check image source is the same as our mock
-    expect(
-      screen.getByRole("img", {
-        name: "Mock Card 1",
-      })
-    ).toHaveAttribute("src", "fruit.jpg");
-
-    expect(
-      await screen.findByRole("img", {
-        name: "Mock Card 1",
-      })
-    ).toHaveAttribute("alt", "Mock Card 1");
-
+    expect(await within(carouselCard).findByRole("img")).toHaveAttribute("src", "fruit.jpg");
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -95,11 +76,7 @@ describe("Carousel Menu", () => {
       { wrapper: MemoryRouter }
     );
 
-    expect(
-      screen.queryByRole("img", {
-        name: "Mock Card 1",
-      })
-    ).not.toBeInTheDocument();
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
 
   test("component renders with both arrows", async () => {
@@ -111,6 +88,10 @@ describe("Carousel Menu", () => {
       />,
       { wrapper: MemoryRouter }
     );
+
+    await waitFor(() => {
+      expect(screen.getAllByRole("button", { hidden: true })).toHaveLength(7);
+    });
 
     expect(
       screen.getByRole("button", {
@@ -134,6 +115,10 @@ describe("Carousel Menu", () => {
       />,
       { wrapper: MemoryRouter }
     );
+
+    await waitFor(() => {
+      expect(screen.getAllByRole("button", { hidden: true })).toHaveLength(6);
+    });
 
     expect(
       screen.queryByRole("button", {
