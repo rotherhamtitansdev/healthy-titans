@@ -34,6 +34,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
           `${data.Sugars}g`,
           `${data.Salt}g`,
         ]);
+        setLoading(true);
       }
     });
   }, [name]);
