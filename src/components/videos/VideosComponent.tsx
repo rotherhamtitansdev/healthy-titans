@@ -96,7 +96,7 @@ const VideosComponent = () => {
       <AppHeader>
         <MenuHeader
           title="Videos"
-          body="Here you can watch a few short videos and hear from the Titans as you continue to learn and get to know even more about how to be strong and healthy."
+          body="Watch a few short videos on the fitness challenges and have fun cooking and trying our recipe ideas shown here."
         />
       </AppHeader>
       {modalClickedVideoData && (
