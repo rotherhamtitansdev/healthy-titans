@@ -201,8 +201,12 @@ const BuildYourPlateGameScreen = () => {
                             onClick={() => {
                               toggleItemToPlate(cell);
                             }}
+                            className="relative text-center group"
                           >
                             {cell.icon}
+                            <span className="text-[8px] bg-white bg-opacity-70 absolute rounded top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 invisible sm:text-xs group-hover:visible">
+                              {cell.name}
+                            </span>
                           </button>
                         </td>
                       ))}
