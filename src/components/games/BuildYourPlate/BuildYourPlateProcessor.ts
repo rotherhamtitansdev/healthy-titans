@@ -12,6 +12,9 @@ class BuildYourPlateProcessor {
       { family: "Dairy & Eggs", items: [] },
       { family: "Fast Food", items: [] },
       { family: "Sweets", items: [] },
+      { family: "NutsAndSeeds", items: [] },
+      { family: "Grains", items: [] },
+      { family: "Cereals", items: [] },
     ];
 
     BYPItems.forEach((item) => {
