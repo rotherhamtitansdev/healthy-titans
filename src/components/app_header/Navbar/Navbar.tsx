@@ -14,6 +14,8 @@ const Navbar = () => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
   }, [isMenuOpen]);
 
+  const YoutubeLink = "https://www.youtube.com/@TitansCommunityFoundation";
+
   return (
     <nav>
       <div>
@@ -45,7 +47,7 @@ const Navbar = () => {
                     Games
                   </Link>
                   <a
-                    href="https://www.youtube.com/@TitansCommunityFoundation"
+                    href={YoutubeLink}
                     target="_blank"
                     rel="noreferrer noopener"
                     className="hover:text-[#D14267]"
