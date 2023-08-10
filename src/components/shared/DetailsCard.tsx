@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
 import { useGlobalMenuOpenContext } from "../app_header/AppHeaderContext";
-import { fetchImages } from "../../api/FirebaseAPI";
+import { fetchImages, fetchDataFromPath } from "../../api/FirebaseAPI";
+import VideoCard from "../videos/VideoCard";
+import { Video } from "../../models/Video";
 
 /*
  * This component represents a details card
@@ -10,9 +12,15 @@ import { fetchImages } from "../../api/FirebaseAPI";
 const DetailsCard = (props: DetailsCardProps) => {
   const { isMenuOpen } = useGlobalMenuOpenContext();
   const [checkmarkImgUrl, setCheckmarkImgUrl] = useState<string>("");
+  const [getHidden, setHidden] = useState(false);
+  const [modalClickedVideoData, setModalClickedVideoData] = useState<Video | undefined>();
+  const [getVideoData, setVideoData] = useState<Video[]>([]);
 
   useEffect(() => {
     fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
+    if (!getVideoData || getVideoData.length === 0) {
+      fetchDataFromPath("VideoData").then((data) => { setVideoData(data as Video[])});
+    }
   }, []);
 
   return (
@@ -52,6 +60,15 @@ const DetailsCard = (props: DetailsCardProps) => {
                 </li>
               ))}
             </ul>
+            
+            {getVideoData.map((item) => (
+              <h1 key={item.firebaseName}>{item.firebaseName}</h1>
+            ))}
+            <VideoCard
+              Actions={{ setHidden, setModalClickedVideoData }}
+              video={getVideoData[0]}
+              disableOnClick={false}
+            />
           </div>
         )}
       </div>

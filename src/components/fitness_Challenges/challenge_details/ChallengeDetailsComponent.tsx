@@ -46,6 +46,7 @@ const ChallengeDetailsComponent = () => {
                 items: getChallengeDetailsComponentData.equipment,
               }
             }
+            
           />
           <div className="md:basis-1/2 ">
             <div className="pr-[2rem] md:pr-[3rem] lg:pr-[5rem] pt-[2rem]">
