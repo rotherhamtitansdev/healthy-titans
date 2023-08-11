@@ -14,9 +14,11 @@ const DetailsCard = (props: DetailsCardProps) => {
   const [videoUrl, setVideoUrl] = useState<string>("");
 
   useEffect(() => {
-    fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));  
+    fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
     if (props.firebaseVideoName !== undefined) {
-      fetchVideos(props.firebaseVideoName).then((res) => { setVideoUrl(res)});
+      fetchVideos(props.firebaseVideoName).then((res) => {
+        setVideoUrl(res);
+      });
     }
   }, []);
 
@@ -57,9 +59,7 @@ const DetailsCard = (props: DetailsCardProps) => {
                 </li>
               ))}
             </ul>
-            <div className="p-4">
-              {videoUrl !== "" && <VideoPlayer videoUrl={videoUrl} />}
-            </div>
+            <div className="p-4">{videoUrl !== "" && <VideoPlayer videoUrl={videoUrl} />}</div>
           </div>
         )}
       </div>
