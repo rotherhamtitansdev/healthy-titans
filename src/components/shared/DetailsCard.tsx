@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
 import { useGlobalMenuOpenContext } from "../app_header/AppHeaderContext";
-import { fetchImages, fetchDataFromPath } from "../../api/FirebaseAPI";
-import VideoCard from "../videos/VideoCard";
-import { Video } from "../../models/Video";
+import { fetchImages, fetchVideos } from "../../api/FirebaseAPI";
+import VideoPlayer from "../videos/VideoPlayer";
 
 /*
  * This component represents a details card
@@ -12,14 +11,12 @@ import { Video } from "../../models/Video";
 const DetailsCard = (props: DetailsCardProps) => {
   const { isMenuOpen } = useGlobalMenuOpenContext();
   const [checkmarkImgUrl, setCheckmarkImgUrl] = useState<string>("");
-  const [getHidden, setHidden] = useState(false);
-  const [modalClickedVideoData, setModalClickedVideoData] = useState<Video | undefined>();
-  const [getVideoData, setVideoData] = useState<Video[]>([]);
+  const [videoUrl, setVideoUrl] = useState<string>("");
 
   useEffect(() => {
-    fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
-    if (!getVideoData || getVideoData.length === 0) {
-      fetchDataFromPath("VideoData").then((data) => { setVideoData(data as Video[])});
+    fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));  
+    if (props.firebaseVideoName !== undefined) {
+      fetchVideos(props.firebaseVideoName).then((res) => { setVideoUrl(res)});
     }
   }, []);
 
@@ -32,7 +29,7 @@ const DetailsCard = (props: DetailsCardProps) => {
           alt=""
         />
       )}
-      <div className="pl-2 pr-4 pt-[5rem]">
+      <div className="pl-2 pr-4 pb-4 pt-[5rem]">
         {!props.hideTitle ? (
           <div
             data-testid="details-title"
@@ -60,15 +57,9 @@ const DetailsCard = (props: DetailsCardProps) => {
                 </li>
               ))}
             </ul>
-            
-            {getVideoData.map((item) => (
-              <h1 key={item.firebaseName}>{item.firebaseName}</h1>
-            ))}
-            <VideoCard
-              Actions={{ setHidden, setModalClickedVideoData }}
-              video={getVideoData[0]}
-              disableOnClick={false}
-            />
+            <div className="p-4">
+              {videoUrl !== "" && <VideoPlayer videoUrl={videoUrl} />}
+            </div>
           </div>
         )}
       </div>
