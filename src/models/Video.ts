@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface Video {
-  firebaseName: string;
+  firebaseName?: string;
   title: string;
   description?: string;
   url?: string;

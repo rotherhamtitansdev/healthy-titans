@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 import { DetailsCardProps } from "../../models/DetailsCardProps";
 import { useGlobalMenuOpenContext } from "../app_header/AppHeaderContext";
-import { fetchImages } from "../../api/FirebaseAPI";
+import { fetchImages, fetchVideos } from "../../api/FirebaseAPI";
+import VideoPlayer from "../videos/VideoPlayer";
 
 /*
  * This component represents a details card
@@ -10,9 +11,15 @@ import { fetchImages } from "../../api/FirebaseAPI";
 const DetailsCard = (props: DetailsCardProps) => {
   const { isMenuOpen } = useGlobalMenuOpenContext();
   const [checkmarkImgUrl, setCheckmarkImgUrl] = useState<string>("");
+  const [videoUrl, setVideoUrl] = useState<string>("");
 
   useEffect(() => {
     fetchImages("BYPImages/CheckMarkButton.svg").then((res) => setCheckmarkImgUrl(res));
+    if (props.firebaseVideoName !== undefined) {
+      fetchVideos(props.firebaseVideoName).then((res) => {
+        setVideoUrl(res);
+      });
+    }
   }, []);
 
   return (
@@ -24,7 +31,7 @@ const DetailsCard = (props: DetailsCardProps) => {
           alt=""
         />
       )}
-      <div className="pl-2 pr-4 pt-[5rem]">
+      <div className="pl-2 pr-4 pb-4 pt-[5rem]">
         {!props.hideTitle ? (
           <div
             data-testid="details-title"
@@ -52,6 +59,7 @@ const DetailsCard = (props: DetailsCardProps) => {
                 </li>
               ))}
             </ul>
+            <div className="p-4">{videoUrl !== "" && <VideoPlayer videoUrl={videoUrl} />}</div>
           </div>
         )}
       </div>

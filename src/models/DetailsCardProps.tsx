@@ -10,4 +10,5 @@ export interface DetailsCardProps {
   hideTitle?: boolean;
   additionalStyling?: string;
   firebaseName?: string;
+  firebaseVideoName?: string;
 }

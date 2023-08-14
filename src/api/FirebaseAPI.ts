@@ -26,6 +26,12 @@ export const fetchImages = async (firebaseName: string): Promise<string> => {
   return getDownloadURL(starsRef);
 };
 
+export const fetchVideos = async (firebaseVideoName: string): Promise<string> => {
+  const storage = getStorage();
+  const starsRef = ref(storage, firebaseVideoName);
+  return getDownloadURL(starsRef);
+};
+
 export const fetchAllImages = async (firebaseNames: string[]) =>
   Promise.all(firebaseNames.map((firebaseName) => fetchImages(firebaseName)));
 

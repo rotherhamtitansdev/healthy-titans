@@ -34,7 +34,7 @@ const VideoModal = (props: VideoModalProps) => (
                 </button>
               </div>
 
-              <VideoPlayer video={props.video} />
+              {props.video.url && <VideoPlayer videoUrl={props.video.url} />}
 
               <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b mx-auto">
                 <button
