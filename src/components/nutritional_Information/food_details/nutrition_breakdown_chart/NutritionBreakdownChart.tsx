@@ -72,7 +72,7 @@ const NutritionBreakdownChart = (props: { name: string }) => {
               </p>
             </div>
             <div className="lg:mx-12 mx-8 my-8">
-              <p className="text-[16px] text-primaryGrey font-medium">Calories</p>
+              <p className="text-[16px] text-primaryGrey font-medium">Energy</p>
               <p
                 data-testid="calorie-count"
                 className="text-[36px] text-titansDarkBlue font-semibold"
