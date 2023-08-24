@@ -110,7 +110,9 @@ const Navbar = () => {
                 <a href="/Games">Games</a>
               </li>
               <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
-                <a href="/Videos">Videos</a>
+                <a href={YoutubeLink} target="_blank" rel="noreferrer noopener">
+                  Videos
+                </a>
               </li>
               <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/Recipes" data-testid="recipes-mobile-link">
