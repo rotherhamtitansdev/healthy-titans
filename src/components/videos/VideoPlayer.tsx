@@ -17,6 +17,7 @@ const VideoPlayer = (props: VideoPlayerProps) => (
       url={props.videoUrl}
       controls
       onError={props.onError}
+      config={{ file: { attributes: { preload: "auto" } } }}
     />
   </div>
 );

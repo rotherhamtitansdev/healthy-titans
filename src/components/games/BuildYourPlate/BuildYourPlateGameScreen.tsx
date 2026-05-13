@@ -126,17 +126,14 @@ const BuildYourPlateGameScreen = (props: { mealTitle: string }) => {
 
       const processed = BuildYourPlateProcessor.processRows(BYPItems, families);
       newBYPTableData = processed;
+
+      // Load tick image before revealing food categories so it is ready when items are selected
+      const tickUrl = await fetchImages("Games/tick.png").catch(() => "");
+      setTickImage(<img src={tickUrl} alt="Tick" />);
+
       setBYPTableHeaders(headers);
       setBYPTableData(processed);
       setActiveFamilyIndex(0);
-
-      fetchImages("Games/tick.png")
-        .then((tickUrl: string) => {
-          setTickImage(<img src={tickUrl} alt="Tick" />);
-        })
-        .catch(() => {
-          setTickImage(<img src="" alt="Tick" />);
-        });
     });
   }, []);
 

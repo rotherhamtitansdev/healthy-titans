@@ -7,14 +7,22 @@ import { MenuCardProps } from "../models/MenuCardProps";
 import { HomePageCarouselResponsiveConfig } from "../config/CarouselConfig";
 import { fetchDataFromPath } from "../api/FirebaseAPI";
 
+const fallbackHomePageData: MenuCardProps[] = [
+  { key: 0, name: "Food & Nutrition", path: "/FoodAndNutrition" },
+  { key: 1, name: "Games", path: "/Games" },
+  { key: 2, name: "Recipes", path: "/Recipes" },
+  { key: 3, name: "Videos", path: "/Videos" },
+  { key: 4, name: "Fitness Challenges", path: "/FitnessChallenges" },
+];
+
 const HomePageComponents = () => {
   const [getHomePageData, setHomePageData] = useState<MenuCardProps[]>([]);
 
   useEffect(() => {
     if (!getHomePageData || getHomePageData.length === 0) {
-      fetchDataFromPath("HomePageComponentsData").then((homeData) =>
-        setHomePageData(homeData as MenuCardProps[])
-      );
+      fetchDataFromPath("HomePageComponentsData")
+        .then((homeData) => setHomePageData(homeData as MenuCardProps[]))
+        .catch(() => setHomePageData(fallbackHomePageData));
     }
   }, []);
 
