@@ -21,7 +21,10 @@ const HomePageComponents = () => {
   useEffect(() => {
     if (!getHomePageData || getHomePageData.length === 0) {
       fetchDataFromPath("HomePageComponentsData")
-        .then((homeData) => setHomePageData(homeData as MenuCardProps[]))
+        .then((homeData) => {
+          const data = (homeData || []) as MenuCardProps[];
+          setHomePageData(data.length > 0 ? data : fallbackHomePageData);
+        })
         .catch(() => setHomePageData(fallbackHomePageData));
     }
   }, []);

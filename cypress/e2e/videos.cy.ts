@@ -3,6 +3,7 @@ import terminalLog from "../support/terminal-log";
 describe("Videos", () => {
   beforeEach(() => {
     cy.intercept({ hostname: "firestore.googleapis.com" }, { statusCode: 503 });
+    cy.intercept("GET", "**/*.mp4", { fixture: "test-video.mp4", headers: { "Content-Type": "video/mp4" } });
     cy.visit("http://localhost:3000/Videos");
   });
 

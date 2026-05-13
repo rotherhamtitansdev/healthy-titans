@@ -68,7 +68,10 @@ const Recipes = () => {
   useEffect(() => {
     if (!getRecipesData || getRecipesData.length === 0) {
       fetchRecipes()
-        .then((data) => setRecipesData(normalizeRecipeData((data || []) as unknown[])))
+        .then((data) => {
+          const normalized = normalizeRecipeData((data || []) as unknown[]);
+          setRecipesData(normalized.length > 0 ? normalized : fallbackRecipes);
+        })
         .catch(() => setRecipesData(fallbackRecipes));
     }
   }, []);

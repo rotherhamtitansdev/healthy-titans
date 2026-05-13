@@ -13,7 +13,7 @@ const fallbackVideos: Video[] = [
   {
     title: "Rotherham Titans - Rugby Game",
     description: "Watch the Rotherham Titans in action on the rugby field.",
-    url: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    url: "https://www.w3schools.com/html/movie.mp4",
   },
 ];
 

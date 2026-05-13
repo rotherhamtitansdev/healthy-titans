@@ -8,7 +8,7 @@ const BuildYourPlatePlatePreviewScreen = (props: {
   getBYPPlateData: BYPItem[];
   removeFromPlate: (item: BYPItem[]) => void;
 }) => {
-  const { setMobilePreviewScreenFlag, setModal, setModalContent } = useGameStartedContext();
+  const { setMobilePreviewScreenFlag, setModal, setModalContent, setIsGameStarted } = useGameStartedContext();
   const platePreviewItems = props.getBYPPlateData.slice(0, 6);
 
   return (
@@ -61,7 +61,7 @@ const BuildYourPlatePlatePreviewScreen = (props: {
             setModal(true);
             setModalContent({
               buttonFunc: () => {
-                setModal(false);
+                setIsGameStarted(false);
                 props.removeFromPlate(props.getBYPPlateData);
               },
               buttonText: "Play again",
