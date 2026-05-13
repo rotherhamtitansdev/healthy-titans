@@ -45,14 +45,14 @@ jobs:
 
       - name: Save results folder
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: results
           if-no-files-found: error
           path: results
 
       - name: Save build folder
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build
           if-no-files-found: error
@@ -86,7 +86,7 @@ jobs:
 
       - name: Save results folder
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: results
           if-no-files-found: error
@@ -105,7 +105,7 @@ jobs:
         run: npm i -D nyc junit-report-merger
 
       - name: Download test results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: results
           path: results
