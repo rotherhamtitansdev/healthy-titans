@@ -77,9 +77,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Generate Cypress video fixture
-        run: ffmpeg -f lavfi -i "color=c=blue:s=320x240" -t 2 -r 1 -vcodec libx264 -pix_fmt yuv420p -y cypress/fixtures/test-video.mp4 2>/dev/null || true
-
       - name: Start and Test
         run: npm run ci:e2e
 
