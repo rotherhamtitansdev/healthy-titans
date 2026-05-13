@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchAllImages, fetchImages } from "../../../api/FirebaseAPI";
-import TableHeaderImagesLinks, {
-  imageSize,
-  PlateItemPositions,
-} from "../../../data/BYPData/BYPData";
+import { fetchImages } from "../../../api/FirebaseAPI";
 import useWindowDimensions from "../../../functions/ScreenWidth";
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
 import { useGameStartedContext } from "../GameContext";
@@ -11,18 +7,12 @@ import GameModalScreen from "../GameModalScreen";
 import BuildYourPlateIcon from "./BuildYourPlateIcon";
 import BuildYourPlatePlatePreviewScreen from "./BuildYourPlatePlatePreviewScreen";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
+import BuildYourPlateVisualPlate from "./BuildYourPlateVisualPlate";
+import trackAnalyticsEvent from "../../../config/analytics";
 
-let newBYPTableData: BYPTableRowFamily[] = [
-  { family: "Meat", items: [] },
-  { family: "Fish", items: [] },
-  { family: "Fruit", items: [] },
-  { family: "Veg", items: [] },
-  { family: "Dairy & Eggs", items: [] },
-  { family: "Fast Food", items: [] },
-  { family: "Sweets", items: [] },
-];
+let newBYPTableData: BYPTableRowFamily[] = [];
 
-const BuildYourPlateGameScreen = () => {
+const BuildYourPlateGameScreen = (props: { mealTitle: string }) => {
   const {
     setModalContent,
     setModal,
@@ -32,13 +22,14 @@ const BuildYourPlateGameScreen = () => {
   } = useGameStartedContext();
   const [getBYPTableData, setBYPTableData] = useState<BYPTableRowFamily[]>(newBYPTableData);
   const [getBYPPlateData, setBYPPlateData] = useState<BYPItem[]>([]);
-  const [getTableDataVisibility, setTableDataVisibility] = useState<boolean[]>(
-    Array(7).fill(false)
-  );
-  const [getBYPTableHeaders, setBYPTableHeaders] = useState<string[]>();
-  const [getPlateImage, setPlateImage] = useState<string>();
+  const [getBYPTableHeaders, setBYPTableHeaders] = useState<{ family: string }[] | undefined>();
+  const [activeFamilyIndex, setActiveFamilyIndex] = useState<number>(0);
   const [getTickImage, setTickImage] = useState<React.ReactNode>();
   const [getButtonColor, setButtonColor] = useState<string>();
+  const mealLabel = props.mealTitle.toLowerCase();
+  const minimumItemsToScore = 3;
+  const maximumItemsAllowed = 6;
+  const platePreviewItems = getBYPPlateData.slice(0, maximumItemsAllowed);
 
   const { width } = useWindowDimensions();
 
@@ -76,7 +67,9 @@ const BuildYourPlateGameScreen = () => {
     );
 
     if (!newBYPTableData[categoryIndex].items[tableIndex].selected) {
-      if (getBYPPlateData.length === 5) return;
+      if (newBYPPlateData.length >= maximumItemsAllowed) {
+        return;
+      }
 
       newBYPTableData[categoryIndex].items[tableIndex].selected = true;
 
@@ -97,6 +90,12 @@ const BuildYourPlateGameScreen = () => {
 
   const setScoreModal = () => {
     const score = BuildYourPlateProcessor.calculateScore(getBYPPlateData);
+    const percentage = BuildYourPlateProcessor.calculatePercentage(score, getBYPPlateData.length);
+    trackAnalyticsEvent("build_your_plate_scored", {
+      meal_type: props.mealTitle.toLowerCase(),
+      item_count: getBYPPlateData.length,
+      percentage_score: percentage,
+    });
     setModal(true);
     setModalContent({
       buttonFunc: () => {
@@ -104,54 +103,63 @@ const BuildYourPlateGameScreen = () => {
         removeFromPlate(getBYPPlateData);
       },
       buttonText: "Play again",
-      text: BuildYourPlateProcessor.constructScoreModalText(score),
-      title: BuildYourPlateProcessor.constructScoreModalTitle(score),
+      text: BuildYourPlateProcessor.constructScoreModalText(getBYPPlateData),
+      title: BuildYourPlateProcessor.constructScoreModalTitle(score, getBYPPlateData.length),
     });
   };
 
   useEffect(() => {
     BuildYourPlateProcessor.fetchAllUrls().then(async (res) => {
       if (!res) return;
-      fetchAllImages(TableHeaderImagesLinks).then((headers) => {
-        const BYPItems: BYPItem[] = res.map((item) => ({
-          icon: <BuildYourPlateIcon URL={item.URL} id={item.id} alt={item.name} />,
-          family: item.icon,
-          id: item.id,
-          name: item.name,
-          selected: false,
-          score: item.score,
-        }));
-        setBYPTableHeaders(headers);
-        setBYPTableData(BuildYourPlateProcessor.processRows(BYPItems));
-        fetchImages("Games/BigPlate.png").then((BPres) => setPlateImage(BPres));
-        fetchImages("Games/tick.png").then((Tickres) => {
-          setTickImage(<img src={Tickres} alt="Tick" />);
-        });
-      });
+
+      const families = Array.from(new Set(res.map((item) => item.icon)));
+      const headers = families.map((family) => ({ family }));
+
+      const BYPItems: BYPItem[] = res.map((item) => ({
+        icon: <BuildYourPlateIcon URL={item.URL} id={item.id} alt={item.name} />,
+        family: item.icon,
+        id: item.id,
+        name: item.name,
+        selected: false,
+        score: item.score,
+      }));
+
+      const processed = BuildYourPlateProcessor.processRows(BYPItems, families);
+      newBYPTableData = processed;
+
+      // Load tick image before revealing food categories so it is ready when items are selected
+      const tickUrl = await fetchImages("Games/tick.png").catch(() => "");
+      setTickImage(<img src={tickUrl} alt="Tick" />);
+
+      setBYPTableHeaders(headers);
+      setBYPTableData(processed);
+      setActiveFamilyIndex(0);
     });
   }, []);
 
   useEffect(() => {
-    if (getBYPPlateData.length !== 5) {
+    if (getBYPPlateData.length < minimumItemsToScore) {
       setButtonColor("bg-titansDarkGrey");
     } else setButtonColor("bg-titansBrightPink");
-  }, [getBYPPlateData]);
+  }, [getBYPPlateData, minimumItemsToScore]);
 
   useEffect(() => {
     setModalContent({
       buttonText: "Play",
       title: "How to play",
-      text: "Open a food category and select a food. You must select 5 foods to score your plate. The aim of the game is to build a healthy plate.",
+      text: `Build a healthy ${mealLabel} plate. Open a food category and choose up to ${maximumItemsAllowed} foods for your plate. Pick at least ${minimumItemsToScore} foods before scoring. Fruit/veg, wholegrains and lean proteins score highest; fast food and sweets lower your score. Swap items to try to balance your plate.`,
     });
     setModal(true);
-  }, []);
+  }, [maximumItemsAllowed, mealLabel, minimumItemsToScore, setModal, setModalContent]);
+
+  const activeFamily = getBYPTableHeaders?.[activeFamilyIndex];
+  const activeItems = getBYPTableData[activeFamilyIndex]?.items || [];
 
   return (
     <div className="bg-white h-full rounded-xl shadow-lg my-10 px-5 pt-5 pb-2 1.5xl:pb-10">
-      {getMobilePreviewScreenFlag && getBYPPlateData.length === 5 ? (
+      {getMobilePreviewScreenFlag && getBYPPlateData.length > 0 ? (
         <div>
           <BuildYourPlatePlatePreviewScreen
-            getPlateImage={getPlateImage}
             getBYPPlateData={getBYPPlateData}
             removeFromPlate={removeFromPlate}
           />
@@ -159,100 +167,137 @@ const BuildYourPlateGameScreen = () => {
       ) : (
         <div>
           <GameModalScreen />
-          <p className="font-bold text-[22px] pb-4 text-titansDarkBlue">Food Families</p>
-          <div className="flex flex-wrap 1.5xl:flex-nowrap w-full">
-            <table className="flex">
-              <tbody className="overflow-x-hidden">
+          <div className="pb-4">
+            <p className="uppercase tracking-[0.2em] text-xs font-bold text-[#2464A5]">
+              {props.mealTitle}
+            </p>
+            <p className="font-bold text-[22px] text-titansDarkBlue">Food Families</p>
+          </div>
+          <div className="flex flex-col gap-5 w-full">
+            <div className="rounded-3xl border border-slate-200 bg-[#F8FAFF] p-4 sm:p-5">
+              <p className="uppercase tracking-[0.2em] text-xs font-bold text-[#2464A5] mb-3">
+                Choose a family
+              </p>
+              <div className="flex gap-3 overflow-x-auto pb-2">
                 {getBYPTableHeaders &&
-                  getBYPTableHeaders.map((URL, index) => (
-                    <tr key={URL}>
-                      <th className="pr-0 py-0">
-                        <div className="py-0 md:py-1 pr-3 bg-white z-10 relative border-r border-titansDarkBlue">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setTableDataVisibility((newTableDataVisibility) =>
-                                newTableDataVisibility.map((item, idx) =>
-                                  idx === index ? !item : item
-                                )
-                              );
-                            }}
-                          >
-                            <img
-                              src={URL}
-                              alt={newBYPTableData[index].family}
-                              className={imageSize}
-                            />
-                          </button>
-                        </div>
-                      </th>
-                      <td className="bg-white z-10 relative pr-3" />
-                      {getBYPTableData[index].items.map((cell) => (
-                        <td
-                          key={cell.name}
-                          className={
-                            getTableDataVisibility[index]
-                              ? "slide-in-row visible py-0 md:py-1"
-                              : "invisible py-0"
-                          }
-                        >
-                          <button
-                            type="button"
-                            onClick={() => {
-                              toggleItemToPlate(cell);
-                            }}
-                            className="relative text-center group"
-                          >
-                            {cell.icon}
-                            <span className="text-[8px] bg-white bg-opacity-70 absolute rounded top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 invisible sm:text-xs lg:group-hover:visible"> 
-                              {cell.name}
-                            </span>
-                          </button>
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+                  getBYPTableHeaders.map(({ family }, index) => {
+                    const isActive = index === activeFamilyIndex;
 
-            <div className="flex flex-col items-start 1.5xl:items-center basis-full 1.5xl:basis-auto 1.5xl:ml-auto 1.5xl:-mt-16">
-              <div className="hidden 1.5xl:block w-full h-full relative">
-                <img src={getPlateImage} alt="plate" />
-                <div>
-                  {getBYPPlateData.map((plateItem, index) => (
+                    return (
+                      <button
+                        key={family || index}
+                        type="button"
+                        onClick={() => {
+                          setActiveFamilyIndex(index);
+                        }}
+                        className={`shrink-0 rounded-2xl border-2 p-2 min-w-[5.5rem] sm:min-w-[6.5rem] flex items-center justify-center transition ${
+                          isActive
+                            ? "border-[#D14267] bg-[#FFF4F8] shadow-md"
+                            : "border-slate-200 bg-white hover:border-[#D14267]"
+                        }`}
+                      >
+                        <div className="w-[70px] h-[70px] sm:w-[80px] sm:h-[80px] lg:w-[90px] lg:h-[90px] rounded-xl bg-slate-100 text-titansDarkBlue text-[10px] sm:text-xs font-semibold flex items-center justify-center px-2 text-center">
+                          {family || "Food"}
+                        </div>
+                      </button>
+                    );
+                  })}
+              </div>
+            </div>
+
+            <div className="flex flex-col 1.5xl:flex-row gap-8 w-full">
+              <div className="flex-1 rounded-3xl border border-slate-200 bg-[#F8FAFF] p-5 sm:p-6 min-h-[22rem]">
+                <div className="mb-5">
+                  <p className="uppercase tracking-[0.2em] text-xs font-bold text-[#D14267]">
+                    Pick foods
+                  </p>
+                  <h3 className="text-titansDarkBlue text-2xl font-semibold">
+                    {activeFamily?.family || "Choose a family"}
+                  </h3>
+                  <p className="text-homepageHeaderText text-sm sm:text-base font-medium">
+                    Tap foods to add or remove them from your plate. Maximum{" "}
+                    {maximumItemsAllowed} items.
+                  </p>
+                </div>
+                <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4">
+                  {activeItems.map((cell) => (
                     <button
-                      className={`absolute ${PlateItemPositions[index]}`}
+                      key={cell.name}
                       type="button"
                       onClick={() => {
-                        removeFromPlate([plateItem]);
+                        toggleItemToPlate(cell);
                       }}
-                      key={plateItem.id}
+                      disabled={!cell.selected && getBYPPlateData.length >= maximumItemsAllowed}
+                      className={`relative text-center group rounded-2xl bg-white p-3 shadow-sm border border-transparent transition ${
+                        !cell.selected && getBYPPlateData.length >= maximumItemsAllowed
+                          ? "opacity-50 cursor-not-allowed"
+                          : "hover:border-[#D14267]"
+                      }`}
                     >
-                      {plateItem.icon}
+                      <div className="flex justify-center">{cell.icon}</div>
+                      <span className="mt-2 block text-[10px] sm:text-xs font-medium text-homepageHeaderText leading-tight">
+                        {cell.name}
+                      </span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="text-titansDarkBlue text-center mt-10 1.5xl:-mt-10 flex w-full justify-between 1.5xl:block align-middle">
-                <div>
-                  <p className="font-bold text-[16px] 1.5xl:text-[39px]">
-                    {`${getBYPPlateData.length} / 5`}
-                  </p>
-                  <p className="font-semibold text-[12px] 1.5xl:text-[16px] mb-4">Items</p>
+              <div className="flex flex-col items-start 1.5xl:items-center w-full 1.5xl:w-[24rem] shrink-0">
+                <div className="hidden 1.5xl:block w-full">
+                  <BuildYourPlateVisualPlate
+                    items={platePreviewItems}
+                    onRemoveItem={(plateItem) => {
+                      removeFromPlate([plateItem]);
+                    }}
+                    sizeClassName="w-80 h-80"
+                  />
                 </div>
-                <button
-                  type="button"
-                  className={`text-[12px] text-white font-bold w-44 h-11 rounded-full ${getButtonColor}`}
-                  disabled={getBYPPlateData.length !== 5}
-                  onClick={() => {
-                    if (width >= 1450) {
-                      setScoreModal();
-                    } else setMobilePreviewScreenFlag(true);
-                  }}
-                >
-                  Score my plate
-                </button>
+
+                <div className="text-titansDarkBlue text-center mt-6 1.5xl:-mt-2 flex w-full justify-between 1.5xl:block align-middle">
+                  <div>
+                    <p className="font-bold text-[16px] 1.5xl:text-[39px]">
+                      {getBYPPlateData.length} / {maximumItemsAllowed}
+                    </p>
+                    <p className="font-semibold text-[12px] 1.5xl:text-[16px] mb-4">Selected</p>
+                    <p className="text-[11px] 1.5xl:text-[14px] text-homepageHeaderText font-medium">
+                      Pick {minimumItemsToScore}-{maximumItemsAllowed}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    className={`text-[12px] text-white font-bold w-44 h-11 rounded-full ${getButtonColor}`}
+                    disabled={getBYPPlateData.length < minimumItemsToScore}
+                    onClick={() => {
+                      if (width >= 1450) {
+                        setScoreModal();
+                      } else setMobilePreviewScreenFlag(true);
+                    }}
+                  >
+                    Score my plate
+                  </button>
+                </div>
+                {getBYPPlateData.length > 0 && (
+                  <div className="mt-5 w-full rounded-2xl bg-[#F5F7FF] p-4">
+                    <p className="text-titansDarkBlue font-semibold text-base mb-2">
+                      Selected foods
+                    </p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {getBYPPlateData.map((plateItem) => (
+                        <button
+                          key={plateItem.id}
+                          type="button"
+                          className="bg-white rounded-xl px-3 py-2 text-xs font-medium text-homepageHeaderText shadow-sm"
+                          onClick={() => {
+                            removeFromPlate([plateItem]);
+                          }}
+                        >
+                          {plateItem.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

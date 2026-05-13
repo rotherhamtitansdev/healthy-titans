@@ -31,7 +31,7 @@ const HomepageHeader = () => {
               </li>
               <li className="">
                 <span className="mr-3 text-titansBrightPink">✓</span>
-                Play games and compete with your friends
+                Play games and exercise with your friends
               </li>
               <li className="">
                 <span className="mr-3 text-titansBrightPink">✓</span>

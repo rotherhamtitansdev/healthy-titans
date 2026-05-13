@@ -6,6 +6,9 @@ const TableHeaderImagesLinks: string[] = [
   "Games/FoodCategories/DairyAndEggsWithText.svg",
   "Games/FoodCategories/FastFoodWithText.svg",
   "Games/FoodCategories/SweetsWithText.svg",
+  "Games/FoodCategories/GrainsWithText.svg",
+  "Games/FoodCategories/CerealsWithText.svg",
+  "Games/FoodCategories/NutsAndSeedsWithText.svg",
 ];
 
 export const PlateItemPositions: string[] = [

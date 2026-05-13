@@ -5,6 +5,7 @@ import { useGameStartedContext } from "../GameContext";
 import GameModalScreen from "../GameModalScreen";
 import AnswerCard from "./AnswerCard";
 import { useQuizContext } from "./QuizContext";
+import trackAnalyticsEvent from "../../../config/analytics";
 
 const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
   const { setModal, setModalContent, setIsGameStarted, getScore } = useGameStartedContext();
@@ -18,7 +19,14 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
   useEffect(() => {
     setCurrentQuestion(quizData?.questions[questionNumber]);
     setSelectedAnswer(undefined);
-  }, [questionNumber]);
+  }, [questionNumber, quizData]);
+
+  useEffect(() => {
+    setQuestionNumber(0);
+    setQuizFinished(false);
+    setCurrentQuestion(quizData?.questions[0]);
+    setSelectedAnswer(undefined);
+  }, [quizData]);
 
   const getScoreFeedback = () => {
     if (getScore <= 3) {
@@ -35,6 +43,12 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
       if (questionNumber < quizData.questions.length - 1) {
         setQuestionNumber(questionNumber + 1);
       } else {
+        trackAnalyticsEvent("quiz_completed", {
+          quiz_id: quizData.id,
+          quiz_name: quizData.title || quizData.name,
+          score: getScore,
+          question_count: quizData.questions.length,
+        });
         setQuizFinished(true);
         setModal(true);
         setModalContent({
@@ -54,10 +68,13 @@ const QuizGameScreen = (props: { quizData: QuizProps | undefined }) => {
       {quizFinished && <GameModalScreen />}
       {quizData && currentQuestion && (
         <Card
-          card={{ name: quizData.name, additionalStyling: "h-[30rem] lg:h-[40rem] w-full mb-10" }}
+          card={{
+            name: quizData.title || quizData.name,
+            additionalStyling: "h-[30rem] lg:h-[40rem] w-full mb-10",
+          }}
         >
           <div className="hidden font-bold sm:flex flex-row pt-5 pb-8 px-10">
-            <div className="text-lg lg:text-2xl">{quizData.name}</div>
+            <div className="text-lg lg:text-2xl">{quizData.title || quizData.name}</div>
             <div className="ml-auto">
               {questionNumber + 1} out of {quizData.questions.length}
             </div>

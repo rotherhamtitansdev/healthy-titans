@@ -7,7 +7,7 @@ const MenuHeader = (props: HeaderProps) => (
       <h1 data-testid="header-title" className="text-titansDarkBlue font-bold text-center sm:mt-[1rem] text-3xl sm:text-5xl lg:text-6xl mt-8 pb-4">
         {props.title}
       </h1>
-      <div className="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto">
+      <div className="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line">
         {props.body}
       </div>
     </div>

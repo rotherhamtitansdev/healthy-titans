@@ -19,7 +19,7 @@ exports[`Menu Card component renders with image 1`] = `
         >
           <img
             alt=""
-            class="mx-auto undefined"
+            class="mx-auto "
             draggable="false"
             src="fruit.jpg"
           />

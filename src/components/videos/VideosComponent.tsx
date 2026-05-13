@@ -9,6 +9,14 @@ import MenuTitle from "../shared/MenuTitle";
 import VideoCard from "./VideoCard";
 import VideoModal from "./VideoModal";
 
+const fallbackVideos: Video[] = [
+  {
+    title: "Rotherham Titans - Rugby Game",
+    description: "Watch the Rotherham Titans in action on the rugby field.",
+    url: "/test-video.mp4",
+  },
+];
+
 const VideosComponent = () => {
   const [getHidden, setHidden] = useState(true);
   const [modalClickedVideoData, setModalClickedVideoData] = useState<Video | undefined>();
@@ -17,7 +25,14 @@ const VideosComponent = () => {
 
   useEffect(() => {
     if (!getVideoData || getVideoData.length === 0) {
-      fetchDataFromPath("VideoData").then((data) => setVideoData(data as Video[]));
+      fetchDataFromPath("VideoData")
+        .then((data) => {
+          const videos = data as Video[];
+          setVideoData(videos && videos.length > 0 ? videos : fallbackVideos);
+        })
+        .catch(() => {
+          setVideoData(fallbackVideos);
+        });
     }
   }, []);
 

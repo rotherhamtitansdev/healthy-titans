@@ -2,6 +2,7 @@ import terminalLog from "../support/terminal-log";
 
 describe("Recipes", () => {
   beforeEach(() => {
+    cy.intercept({ hostname: "firestore.googleapis.com" }, { statusCode: 503 });
     cy.visit("http://localhost:3000/recipes");
   });
 
@@ -10,12 +11,11 @@ describe("Recipes", () => {
     cy.checkA11y(null, null, terminalLog, true);
   });
 
-  it("Can view recipe in new tab", () => {
-    cy.window().then((win) => {
-      cy.stub(win, "open").as("open");
-    });
-    cy.get("[data-testid='Chicken Satay Stir Fry']").click();
-    cy.get("@open").should("have.been.calledOnce");
+  it("Can view recipe details", () => {
+    // Wait for recipe cards to appear beyond just the "More recipes" card
+    cy.get('div[role="button"]', { timeout: 10000 }).should("have.length.gt", 1);
+    cy.get('div[role="button"]').not('[data-testid="More recipes"]').first().click();
+    cy.url().should("include", "/Recipes/");
   });
 
   it("Can click more recipes button", () => {

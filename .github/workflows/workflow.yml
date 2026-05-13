@@ -45,16 +45,16 @@ jobs:
 
       - name: Save results folder
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: results
+          name: results-unit
           if-no-files-found: error
           path: results
 
       - name: Save build folder
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: build
+          name: build-app
           if-no-files-found: error
           path: build
 
@@ -86,9 +86,9 @@ jobs:
 
       - name: Save results folder
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: results
+          name: results-e2e
           if-no-files-found: error
           path: results
 
@@ -105,9 +105,10 @@ jobs:
         run: npm i -D nyc junit-report-merger
 
       - name: Download test results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: results
+          pattern: results-*
+          merge-multiple: true
           path: results
 
       - name: Unit Test Results
@@ -131,7 +132,10 @@ jobs:
       - name: Combine coverage results
         run: |
           npm run reports:prepare
-          npm run coverage:copy
+          cp results/unit/unit-test-coverage/coverage-final.json results/coverage_merge/junit-coverage.json
+          if [ -f results/e2e/e2e-test-coverage/coverage-final.json ]; then
+            cp results/e2e/e2e-test-coverage/coverage-final.json results/coverage_merge/cypress-coverage.json
+          fi
           npm run coverage:merge
           npm run coverage:generatereport
 
@@ -151,7 +155,7 @@ jobs:
 
       - name: Add Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' && always() }}
+        if: ${{ github.event_name == 'pull_request' && always() && hashFiles('code-coverage-results.md') != '' }}
         with:
           recreate: true
           path: code-coverage-results.md

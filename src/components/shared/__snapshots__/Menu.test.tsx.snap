@@ -19,7 +19,7 @@ exports[`Menu Component if component renders header, card, title, and children (
             Test First Title
           </h1>
           <div
-            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
           >
             Test Body Title
           </div>
@@ -151,7 +151,7 @@ exports[`Menu Component if component renders header, card, title, but not childr
             Test First Title
           </h1>
           <div
-            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
           >
             Test Body Title
           </div>
@@ -319,7 +319,7 @@ exports[`Menu Component if conditional styling is applied, 3+ cards 1`] = `
             Test First Title
           </h1>
           <div
-            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
           >
             Test Body Title
           </div>
@@ -451,7 +451,7 @@ exports[`Menu Component if conditional styling is applied, less than 3 cards 1`]
             Test First Title
           </h1>
           <div
-            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
           >
             Test Body Title
           </div>

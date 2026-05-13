@@ -14,11 +14,18 @@ import HomePageComponents from "./HomePageComponents";
 import FoodCategoryComponent from "./nutritional_Information/food/FoodCategory";
 import FoodDetailsComponent from "./nutritional_Information/food_details/FoodDetailsComponent";
 import Recipes from "./recipes/RecipesMenu";
+import RecipeDetails from "./recipes/RecipeDetails";
 import NutritionDetailsComponent from "./nutritional_Information/nutritional/NutritionDetailsComponent";
+import NutrientActivityPage from "./nutritional_Information/nutritional/NutrientActivityPage";
 import NutritionalInformation from "./nutritional_Information/NutritionalInformation";
 import VideosComponent from "./videos/VideosComponent";
 import AboutUs from "./aboutUs/AboutUs";
 import ExternalGames from "./games/ExternalGames/ExternalGamesMenu";
+import MentalHealth from "./mental_Health/MentalHealth";
+import MentalHealthCaseStudy from "./mental_Health/MentalHealthCaseStudy";
+import Blog from "./blog/Blog";
+import BlogArticle from "./blog/BlogArticle";
+import GetInvolved from "./get_Involved/GetInvolved";
 
 const App: React.FC = () => (
   <div className="layout-container">
@@ -31,8 +38,11 @@ const App: React.FC = () => (
           <Route index element={<NutritionalInformation showFood />} />
 
           <Route path="Nutrition">
-            <Route index element={<NutritionalInformation showFood />} />
-            <Route path=":nutritionName" element={<NutritionDetailsComponent />} />
+            <Route index element={<NutritionalInformation showFood={false} />} />
+            <Route path=":nutritionName">
+              <Route index element={<NutritionDetailsComponent />} />
+              <Route path=":nutrientName" element={<NutrientActivityPage />} />
+            </Route>
           </Route>
 
           <Route path=":foodCategory">
@@ -57,9 +67,21 @@ const App: React.FC = () => (
         </Route>
         <Route path="Recipes">
           <Route index element={<Recipes />} />
+          <Route path=":recipeId" element={<RecipeDetails />} />
         </Route>
         <Route path="AboutUs">
           <Route index element={<AboutUs />} />
+        </Route>
+        <Route path="MentalHealth">
+          <Route index element={<MentalHealth />} />
+          <Route path=":caseStudyId" element={<MentalHealthCaseStudy />} />
+        </Route>
+        <Route path="Blog">
+          <Route index element={<Blog />} />
+          <Route path=":articleId" element={<BlogArticle />} />
+        </Route>
+        <Route path="GetInvolved">
+          <Route index element={<GetInvolved />} />
         </Route>
         <Route path="Games">
           <Route index element={<Games />} />

@@ -134,7 +134,7 @@ Object {
               Videos
             </h1>
             <div
-              class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+              class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
             >
               Watch a few short videos on the fitness challenges and have fun cooking and trying our recipe ideas shown here.
             </div>
@@ -188,7 +188,7 @@ Object {
             Videos
           </h1>
           <div
-            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
           >
             Watch a few short videos on the fitness challenges and have fun cooking and trying our recipe ideas shown here.
           </div>

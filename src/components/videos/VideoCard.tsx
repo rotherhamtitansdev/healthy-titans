@@ -5,6 +5,7 @@ import { fetchImages } from "../../api/FirebaseAPI";
 import "../../App.css";
 import { DrilledVideoProps, Video } from "../../models/Video";
 import Card from "../shared/Card";
+import trackAnalyticsEvent from "../../config/analytics";
 
 // This displays the video and its details
 const VideoCard = (props: {
@@ -17,6 +18,8 @@ const VideoCard = (props: {
   React.useEffect(() => {
     if (props.video.firebaseName !== undefined) {
       fetchImages(props.video.firebaseName).then((URI) => setVideoURL(URI));
+    } else if (props.video.url !== undefined) {
+      setVideoURL(props.video.url);
     }
   }, []);
 
@@ -27,9 +30,12 @@ const VideoCard = (props: {
       url: getVideoURL,
     } as Video;
 
+    trackAnalyticsEvent("video_opened", {
+      video_title: props.video.title,
+    });
     props.Actions.setHidden(false);
     props.Actions.setModalClickedVideoData(video);
-  }, [getVideoURL]);
+  }, [getVideoURL, props.Actions, props.video.description, props.video.title]);
 
   return (
     <Card

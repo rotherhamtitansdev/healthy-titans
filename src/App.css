@@ -99,3 +99,121 @@ body {
 img.align-center {
   align-self: center;
 }
+
+.recipe-stage {
+  position: relative;
+  overflow: hidden;
+}
+
+.recipe-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(1px);
+  opacity: 0.35;
+  animation: recipeDrift 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.recipe-blob.one {
+  width: 12rem;
+  height: 12rem;
+  background: #ffd7e4;
+  top: 1rem;
+  left: -3rem;
+}
+
+.recipe-blob.two {
+  width: 9rem;
+  height: 9rem;
+  background: #d9f2ff;
+  top: 15rem;
+  right: -2rem;
+  animation-delay: 1s;
+}
+
+.recipe-blob.three {
+  width: 7rem;
+  height: 7rem;
+  background: #ffecc2;
+  bottom: 6rem;
+  left: 10%;
+  animation-delay: 2.2s;
+}
+
+.recipe-card-enter {
+  animation: recipeFadeUp 0.5s ease;
+}
+
+.recipe-popup {
+  animation: recipePop 0.2s ease-out;
+}
+
+.recipe-filter-toast {
+  animation: recipeToastInOut 2.2s ease-in-out;
+}
+
+.recipe-wheel-spin {
+  animation: recipeWheelSpin 0.8s linear infinite;
+}
+
+@keyframes recipeDrift {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-12px) translateX(8px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes recipeFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes recipePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes recipeToastInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes recipeWheelSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

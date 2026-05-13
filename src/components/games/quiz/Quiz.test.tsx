@@ -12,6 +12,9 @@ import Quiz from "./Quiz";
 import QuizContext from "./QuizContext";
 
 const mockContent = {
+  id: "test-quiz",
+  title: "Test quiz",
+  description: "Test description",
   name: "Test quiz",
   questions: [
     {
@@ -201,8 +204,8 @@ describe("Quiz", () => {
   describe("Quiz functionality", () => {
     beforeEach(async () => {
       jest
-        .spyOn(FirebaseAPI, "fetchDataFromSubpath")
-        .mockImplementation(() => Promise.resolve(mockContent));
+        .spyOn(FirebaseAPI, "fetchQuizzes")
+        .mockImplementation(() => Promise.resolve([mockContent]));
     });
 
     test("should alert whether answer was correct", async () => {
@@ -217,7 +220,9 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: "BEGIN" }));
+      expect(await screen.findByText(/choose a quiz set/i)).toBeVisible();
+      expect(await screen.findByText(/test description/i)).toBeVisible();
+      await user.click(screen.getByTestId("game-begin"));
       expect(screen.getByText(/first question/i)).toBeVisible();
       expect(screen.getByText(/1 out of 10/)).toBeVisible();
 
@@ -237,7 +242,9 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: "BEGIN" }));
+      expect(await screen.findByText(/choose a quiz set/i)).toBeVisible();
+      expect(await screen.findByText(/test description/i)).toBeVisible();
+      await user.click(screen.getByTestId("game-begin"));
       expect(screen.getByText(/first question/i)).toBeVisible();
       expect(screen.getByText(/1 out of 10/)).toBeVisible();
 
@@ -257,7 +264,9 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: "BEGIN" }));
+      expect(await screen.findByText(/choose a quiz set/i)).toBeVisible();
+      expect(await screen.findByText(/test description/i)).toBeVisible();
+      await user.click(screen.getByTestId("game-begin"));
       await user.click(screen.getByRole("button", { name: /^a wrong answer/i }));
       expect(screen.getByText(/^better luck next time/i)).toBeVisible();
 
@@ -281,7 +290,9 @@ describe("Quiz", () => {
         { wrapper: MemoryRouter }
       );
 
-      await user.click(screen.getByRole("button", { name: "BEGIN" }));
+      expect(await screen.findByText(/choose a quiz set/i)).toBeVisible();
+      expect(await screen.findByText(/test description/i)).toBeVisible();
+      await user.click(screen.getByTestId("game-begin"));
 
       for (let question = 1; question <= mockContent.questions.length; question++) {
         if (question <= score) {

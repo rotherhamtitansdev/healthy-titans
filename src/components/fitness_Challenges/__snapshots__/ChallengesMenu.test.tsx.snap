@@ -19,9 +19,11 @@ exports[`ChallengesMenu component renders with list of challenges 1`] = `
             Fitness Challenges
           </h1>
           <div
-            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+            class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
           >
-            Being active and moving your body is really important to remain strong and healthy. Exercise can be in the form of playing a sport, walking the dog or taking part in competetive games with friends!
+            Being active and moving your body is really important to remain strong and healthy. Exercise can be in the form of playing a sport, going for a run or taking part in competitive games with friends!
+
+Physical activity refers to all movements of activities we do every day. For example, this could be activities like household chores, walking the dog or any physical activity which isn’t planned exercise.
           </div>
         </div>
       </div>

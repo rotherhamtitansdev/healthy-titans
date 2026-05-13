@@ -13,7 +13,9 @@ const Challenges = () => {
 
   const headerData: HeaderProps = {
     title: "Fitness Challenges",
-    body: "Being active and moving your body is really important to remain strong and healthy. Exercise can be in the form of playing a sport, walking the dog or taking part in competetive games with friends!",
+    body: `Being active and moving your body is really important to remain strong and healthy. Exercise can be in the form of playing a sport, going for a run or taking part in competitive games with friends!
+
+Physical activity refers to all movements of activities we do every day. For example, this could be activities like household chores, walking the dog or any physical activity which isn’t planned exercise.`,
   };
 
   return (

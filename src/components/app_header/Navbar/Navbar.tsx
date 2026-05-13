@@ -34,7 +34,7 @@ const Navbar = () => {
               </div>
               <div className="flex justify-end xl:justify-center w-full">
                 <div
-                  className="hidden xl:flex justify-evenly w-7/12 font-navigation-items font-bold text-titansDarkBlue text-[16px]"
+                  className="hidden xl:flex flex-wrap justify-center gap-x-6 gap-y-2 max-w-[70rem] font-navigation-items font-bold text-titansDarkBlue text-[15px]"
                   data-testid="desktop-navbar-links"
                 >
                   <Link to="/FoodAndNutrition" className="hover:text-[#D14267]">
@@ -59,6 +59,15 @@ const Navbar = () => {
                   </Link>
                   <Link to="/AboutUs" className="hover:text-[#D14267]">
                     About us
+                  </Link>
+                  <Link to="/MentalHealth" className="hover:text-[#D14267]">
+                    Mental Health
+                  </Link>
+                  <Link to="/Blog" className="hover:text-[#D14267]">
+                    Blog
+                  </Link>
+                  <Link to="/GetInvolved" className="hover:text-[#D14267]">
+                    Get Involved
                   </Link>
                 </div>
 
@@ -121,6 +130,15 @@ const Navbar = () => {
               </li>
               <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
                 <a href="/AboutUs">About us</a>
+              </li>
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
+                <a href="/MentalHealth">Mental Health</a>
+              </li>
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
+                <a href="/Blog">Blog</a>
+              </li>
+              <li className="border-gray-400 my-2 md:my-4 text-sm font-bold text-titansDarkBlue hover:text-[#D14267]">
+                <a href="/GetInvolved">Get Involved</a>
               </li>
               <li className="border-gray-400 my-4">
                 <img src={MenuLine} alt="MenuLine" />

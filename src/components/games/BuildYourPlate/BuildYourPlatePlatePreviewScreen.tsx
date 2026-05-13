@@ -2,34 +2,50 @@ import React from "react";
 import { BYPItem } from "../../../models/BYP/BYP";
 import { useGameStartedContext } from "../GameContext";
 import BuildYourPlateProcessor from "./BuildYourPlateProcessor";
+import BuildYourPlateVisualPlate from "./BuildYourPlateVisualPlate";
 
 const BuildYourPlatePlatePreviewScreen = (props: {
-  getPlateImage: string | undefined;
   getBYPPlateData: BYPItem[];
   removeFromPlate: (item: BYPItem[]) => void;
 }) => {
-  const { setMobilePreviewScreenFlag, setModal, setModalContent } = useGameStartedContext();
+  const {
+    setMobilePreviewScreenFlag,
+    setModal,
+    setModalContent,
+    setIsGameStarted,
+  } = useGameStartedContext();
+  const platePreviewItems = props.getBYPPlateData.slice(0, 6);
 
   return (
     <div className="w-full h-full">
-      <div className="w-72 h-72 sm:w-96 sm:h-96 md:w-fit md:h-fit mx-auto relative">
-        <img src={props.getPlateImage} alt="plate" />
-        <div className="absolute top-1/2 left-1/2 -mt-[50px] -ml-[14px] sm:-mt-[70px] sm:-ml-[19px] md:-mt-[85px] md:-ml-[24px]">
-          {props.getBYPPlateData[0].icon}
+      <BuildYourPlateVisualPlate
+        items={platePreviewItems}
+        onRemoveItem={(plateItem) => {
+          props.removeFromPlate([plateItem]);
+        }}
+        sizeClassName="w-80 h-80 sm:w-[26rem] sm:h-[26rem]"
+      />
+      {props.getBYPPlateData.length > 0 && (
+        <div className="mt-4 mb-5 rounded-2xl bg-[#F5F7FF] p-4 max-w-xl mx-auto">
+          <p className="text-titansDarkBlue font-semibold text-base mb-2 text-center">
+            Selected foods
+          </p>
+          <div className="flex flex-wrap gap-2 justify-center">
+            {props.getBYPPlateData.map((plateItem) => (
+              <button
+                key={plateItem.id}
+                type="button"
+                className="bg-white rounded-xl px-3 py-2 text-xs font-medium text-homepageHeaderText shadow-sm"
+                onClick={() => {
+                  props.removeFromPlate([plateItem]);
+                }}
+              >
+                {plateItem.name}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="absolute top-1/2 left-1/2 -mt-[25px] ml-[19px] sm:-mt-[35px] sm:ml-[28px] md:-mt-[38px] md:ml-[30px]">
-          {props.getBYPPlateData[1].icon}
-        </div>
-        <div className="absolute top-1/2 left-1/2 mt-[16px] ml-[8px] sm:mt-[21px] sm:ml-[10px] md:mt-[32px] md:ml-[14px]">
-          {props.getBYPPlateData[2].icon}
-        </div>
-        <div className="absolute top-1/2 left-1/2 mt-[16px] -ml-[34px] sm:mt-[21px] sm:-ml-[50px] md:mt-[32px] md:-ml-[60px]">
-          {props.getBYPPlateData[3].icon}
-        </div>
-        <div className="absolute top-1/2 left-1/2 -mt-[25px] -ml-[46px] sm:-mt-[35px] sm:-ml-[66px] md:-mt-[38px] md:-ml-[80px]">
-          {props.getBYPPlateData[4].icon}
-        </div>
-      </div>
+      )}
       <div className="flex justify-center space-x-10">
         <button
           type="button"
@@ -50,12 +66,15 @@ const BuildYourPlatePlatePreviewScreen = (props: {
             setModal(true);
             setModalContent({
               buttonFunc: () => {
-                setModal(false);
+                setIsGameStarted(false);
                 props.removeFromPlate(props.getBYPPlateData);
               },
               buttonText: "Play again",
-              text: BuildYourPlateProcessor.constructScoreModalText(score),
-              title: BuildYourPlateProcessor.constructScoreModalTitle(score),
+              text: BuildYourPlateProcessor.constructScoreModalText(props.getBYPPlateData),
+              title: BuildYourPlateProcessor.constructScoreModalTitle(
+                score,
+                props.getBYPPlateData.length
+              ),
             });
           }}
         >

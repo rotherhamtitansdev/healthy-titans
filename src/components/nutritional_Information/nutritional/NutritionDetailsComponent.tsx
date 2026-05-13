@@ -12,6 +12,8 @@ import { MenuCardProps } from "../../../models/MenuCardProps";
 import { FoodDetailsCarouselResponsiveConfig } from "../../../config/CarouselConfig";
 import CarouselMenu from "../../shared/CarouselMenu";
 import useWindowDimensions from "../../../functions/ScreenWidth";
+import HydrationUrineScale from "./HydrationUrineScale";
+import MicronutrientTable from "./MicronutrientTable";
 
 const NutritionDetailsComponent = () => {
   const [getNutritionData, setNutritionData] = useState<
@@ -104,6 +106,10 @@ const NutritionDetailsComponent = () => {
     return newArr.map((item) => <li key={item[0].value}>{processHeader(item, headerStyle)}</li>);
   };
 
+  const lowerName = nutritionName?.toLowerCase() || "";
+  const showHydrationScale = lowerName.includes("hydration") || lowerName.includes("water");
+  const showMicronutrientTable = lowerName.includes("macroandmicro");
+
   return (
     <div>
       {getNutritionData && (
@@ -118,9 +124,15 @@ const NutritionDetailsComponent = () => {
                   "text-[16px] pt-4 block lg:text-[20px] font-medium font-semibold"
                 )}
               </ul>
+              {showHydrationScale && <HydrationUrineScale />}
             </div>
           </div>
         </DetailsComponent>
+      )}
+      {showMicronutrientTable && (
+        <div className="w-full lg:container mx-auto px-2 sm:px-6 lg:px-6 pb-10">
+          <MicronutrientTable />
+        </div>
       )}
       {getSeeNext && (
         <div className="-mt-10 w-full lg:container mx-auto px-2 sm:px-6 lg:px-6 pb-20">
