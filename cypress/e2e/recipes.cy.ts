@@ -10,12 +10,10 @@ describe("Recipes", () => {
     cy.checkA11y(null, null, terminalLog, true);
   });
 
-  it("Can view recipe in new tab", () => {
-    cy.window().then((win) => {
-      cy.stub(win, "open").as("open");
-    });
-    cy.get("[data-testid='Chicken Satay Stir Fry']").click();
-    cy.get("@open").should("have.been.calledOnce");
+  it("Can view recipe details", () => {
+    // Wait for at least one recipe card to load, then click it
+    cy.get('div[role="button"]').not('[data-testid="More recipes"]').first().click();
+    cy.url().should("include", "/Recipes/");
   });
 
   it("Can click more recipes button", () => {

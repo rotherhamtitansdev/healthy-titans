@@ -1,11 +1,11 @@
 {
   "carbs": {
     "title": "Carbohydrates",
-    "description": "Carbohydrates are an important nutrient for us as it’s our main source of energy. Carbohydrates from food are broken down into a sugar called glucose which our brain and central nervous system utilise as their primary energy source so it’s important we have a continued supply!Glucose is also a great fuel for our muscles so it’s key for exercise and sports you participate in. Fibre is found in all types of plant-based foods. These include fruit, vegetables, pulses, grains, nuts and seeds. Fibre is important to include in your diet as not only are the foods that contain fibre mostly nutritious but it’s also very good for your digestive health and can help prevent constipation."
+    "description": "Carbohydrates are an important nutrient as they supply our main source of energy.  Carbohydrates from food are broken down into a sugar in our blood called glucose. Our brain and central nervous system utilise glucose as a primary energy source so it's important we have a continued supply!  Glucose is also a great fuel for our muscles and is needed for exercise and sports. There are three main types of carbohydrates:Sugars - Find out more about sugar by clicking on the salt & sugar tile.StarchStarchy foods are our main source of carbohydrate. It is important to include them in our diets as they provide us with energy, and they can help improve our gut health. Many starchy foods are nutritious as they are good sources of vitamins, minerals and fibre.Some starchy foods include:FibreFoods that contain fibre are highly nutritious as they contain many important vitamins and minerals. Fibre is very good for your digestive system and health as it helps food travel through the gut and gives a sense of fullness.Fibre can be found in foods such as:"
   },
   "friedChicken": {
     "title": "Fried Chicken",
-    "description": "It's okay to have these in moderation - little and not frequent.",
+    "description": "Deep-fried chicken is typically high in TRANS FATS which have been proven to increase the risk of heart disease, stroke, diabetes and mortality!",
     "calories": "271"
   }
 }

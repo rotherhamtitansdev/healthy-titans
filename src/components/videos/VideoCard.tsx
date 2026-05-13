@@ -18,6 +18,8 @@ const VideoCard = (props: {
   React.useEffect(() => {
     if (props.video.firebaseName !== undefined) {
       fetchImages(props.video.firebaseName).then((URI) => setVideoURL(URI));
+    } else if (props.video.url !== undefined) {
+      setVideoURL(props.video.url);
     }
   }, []);
 
