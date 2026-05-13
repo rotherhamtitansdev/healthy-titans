@@ -3,7 +3,12 @@ import ReactPlayer from "react-player";
 import "../../App.css";
 import "./VideoPlayer.css";
 
-const VideoPlayer = (props: { videoUrl: string}) => (
+type VideoPlayerProps = {
+  videoUrl: string;
+  onError?: () => void;
+};
+
+const VideoPlayer = (props: VideoPlayerProps) => (
   <div className="player-wrapper">
     <ReactPlayer
       width="100%"
@@ -11,8 +16,13 @@ const VideoPlayer = (props: { videoUrl: string}) => (
       className="react-player"
       url={props.videoUrl}
       controls
+      onError={props.onError}
     />
   </div>
 );
+
+VideoPlayer.defaultProps = {
+  onError: () => undefined,
+};
 
 export default VideoPlayer;

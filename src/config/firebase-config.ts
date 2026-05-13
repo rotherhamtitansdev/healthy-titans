@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAnalytics, isSupported } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
@@ -22,3 +23,6 @@ export const firebaseAuth = getAuth(firebaseApp);
 export const fbDatabase = getDatabase(firebaseApp);
 export const fStore = getFirestore(firebaseApp);
 export const fStorage = getStorage(firebaseApp);
+export const firebaseAnalytics = isSupported()
+  .then((supported) => (supported ? getAnalytics(firebaseApp) : undefined))
+  .catch(() => undefined);

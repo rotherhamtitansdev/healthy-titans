@@ -15,7 +15,10 @@ const MenuCard = (props: MenuCardProps) => {
   const [getImage, setImage] = useState<React.ReactNode | undefined>();
 
   const navigate = useNavigate();
-  const navigateToPath = useCallback(() => navigate(props.path, { replace: false }), [navigate]);
+  const navigateToPath = useCallback(
+    () => navigate(props.path, { replace: false }),
+    [navigate, props.path]
+  );
 
   useEffect(() => {
     if (props.firebaseName !== undefined) {
@@ -23,7 +26,7 @@ const MenuCard = (props: MenuCardProps) => {
     } else if (props.img !== undefined) {
       setImage(<Image img={props.img} alt="" />);
     }
-  }, []);
+  }, [props.firebaseName, props.img]);
 
   const handleOnClick = () => {
     if (!props.disableOnClick) {
