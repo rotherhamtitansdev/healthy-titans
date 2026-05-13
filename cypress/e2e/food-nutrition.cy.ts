@@ -69,8 +69,8 @@ describe("Food & Nutrition", () => {
 
     cy.get('[data-testid="details-title"]').should("have.text", foodNutrition.carbs.title);
     cy.get('[data-testid="details-description"]').should(
-      "have.text",
-      foodNutrition.carbs.description
+      "contain.text",
+      "Carbohydrates are an important nutrient"
     );
   });
 

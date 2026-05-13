@@ -130,9 +130,13 @@ const BuildYourPlateGameScreen = (props: { mealTitle: string }) => {
       setBYPTableData(processed);
       setActiveFamilyIndex(0);
 
-      fetchImages("Games/tick.png").then((tickUrl: string) => {
-        setTickImage(<img src={tickUrl} alt="Tick" />);
-      });
+      fetchImages("Games/tick.png")
+        .then((tickUrl: string) => {
+          setTickImage(<img src={tickUrl} alt="Tick" />);
+        })
+        .catch(() => {
+          setTickImage(<img src="" alt="Tick" />);
+        });
     });
   }, []);
 

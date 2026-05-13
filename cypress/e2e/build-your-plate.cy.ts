@@ -3,6 +3,7 @@ import foodList from "../fixtures/build-your-plate.json";
 
 describe("Build Your Plate", () => {
   beforeEach(() => {
+    cy.intercept({ hostname: "firestore.googleapis.com" }, { statusCode: 503 });
     cy.visit("http://localhost:3000/Games/BuildYourPlate");
   });
 

@@ -2,9 +2,8 @@ import terminalLog from "../support/terminal-log";
 
 describe("Quiz", () => {
   beforeEach(() => {
-    // Stub Firestore calls so the app falls back to the built-in quiz data
-    cy.intercept("POST", "**/documents:runQuery**", { statusCode: 503, body: "" });
-    cy.intercept("GET", "**/documents/QuizData/**", { statusCode: 503, body: "" });
+    // Stub all Firestore calls so the app falls back to the built-in quiz data
+    cy.intercept({ hostname: "firestore.googleapis.com" }, { statusCode: 503 });
     cy.visit("http://localhost:3000/Games/Quiz");
     cy.contains("Choose a quiz set").should("be.visible");
     cy.contains("Healthy Habits").click();

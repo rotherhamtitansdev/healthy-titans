@@ -25,10 +25,14 @@ const VideosComponent = () => {
 
   useEffect(() => {
     if (!getVideoData || getVideoData.length === 0) {
-      fetchDataFromPath("VideoData").then((data) => {
-        const videos = data as Video[];
-        setVideoData(videos && videos.length > 0 ? videos : fallbackVideos);
-      });
+      fetchDataFromPath("VideoData")
+        .then((data) => {
+          const videos = data as Video[];
+          setVideoData(videos && videos.length > 0 ? videos : fallbackVideos);
+        })
+        .catch(() => {
+          setVideoData(fallbackVideos);
+        });
     }
   }, []);
 

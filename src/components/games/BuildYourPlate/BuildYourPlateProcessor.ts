@@ -43,20 +43,44 @@ class BuildYourPlateProcessor {
     });
   };
 
-  static fetchAllUrls = async () => {
-    const data = await fetchBuildYourPlateFoods();
-    if (!data) return undefined;
-    const mapped = await Promise.all(
-      data.map(async (item) => ({
-        icon: BuildYourPlateProcessor.normalizeFamily(item.category, item.name),
-        name: item.name,
-        URL: await fetchImages(item.firebaseName).catch(() => ""),
-        id: item.name,
-        score: item.score,
-      }))
-    );
+  static readonly fallbackFoods = [
+    { icon: "Meat", name: "Chicken", URL: "", id: "Chicken", score: 9 },
+    { icon: "Meat", name: "Beef", URL: "", id: "Beef", score: 9 },
+    { icon: "Meat", name: "Turkey", URL: "", id: "Turkey", score: 9 },
+    { icon: "Meat", name: "Lamb", URL: "", id: "Lamb", score: 9 },
+    { icon: "Meat", name: "Pork", URL: "", id: "Pork", score: 8 },
+    { icon: "Meat", name: "Cooked Meats", URL: "", id: "Cooked Meats", score: 8 },
+    { icon: "Fish", name: "Salmon", URL: "", id: "Salmon", score: 10 },
+    { icon: "Fish", name: "Tuna", URL: "", id: "Tuna", score: 9 },
+    { icon: "Fish", name: "Cod", URL: "", id: "Cod", score: 7 },
+    { icon: "Fruit", name: "Apples", URL: "", id: "Apples", score: 7 },
+    { icon: "Fruit", name: "Bananas", URL: "", id: "Bananas", score: 9 },
+    { icon: "Fruit", name: "Oranges", URL: "", id: "Oranges", score: 7 },
+    { icon: "Sweets", name: "Chocolate", URL: "", id: "Chocolate", score: 2 },
+    { icon: "Sweets", name: "Jelly Sweets", URL: "", id: "Jelly Sweets", score: 2 },
+    { icon: "Sweets", name: "Cupcakes", URL: "", id: "Cupcakes", score: 2 },
+    { icon: "Sweets", name: "Biscuits", URL: "", id: "Biscuits", score: 2 },
+    { icon: "Sweets", name: "Donuts", URL: "", id: "Donuts", score: 2 },
+    { icon: "Sweets", name: "Ice Cream", URL: "", id: "Ice Cream", score: 2 },
+  ];
 
-    return mapped;
+  static fetchAllUrls = async () => {
+    try {
+      const data = await fetchBuildYourPlateFoods();
+      if (!data || data.length === 0) return BuildYourPlateProcessor.fallbackFoods;
+      const mapped = await Promise.all(
+        data.map(async (item) => ({
+          icon: BuildYourPlateProcessor.normalizeFamily(item.category, item.name),
+          name: item.name,
+          URL: await fetchImages(item.firebaseName).catch(() => ""),
+          id: item.name,
+          score: item.score,
+        }))
+      );
+      return mapped.length > 0 ? mapped : BuildYourPlateProcessor.fallbackFoods;
+    } catch {
+      return BuildYourPlateProcessor.fallbackFoods;
+    }
   };
 
   static calculateScore = (items: BYPItem[]) =>

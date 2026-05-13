@@ -9,6 +9,12 @@ import MenuCard from "../shared/MenuCard";
 import MenuTitle from "../shared/MenuTitle";
 import { normalizeRecipeData, RecipeItem, RecipeMealType } from "../../models/Recipe";
 
+const fallbackRecipes: RecipeItem[] = normalizeRecipeData([
+  { name: "Chicken Salad", mealType: "Lunch", description: "A fresh and healthy chicken salad with mixed leaves." },
+  { name: "Overnight Oats", mealType: "Breakfast", description: "Easy overnight oats with banana and berries." },
+  { name: "Veggie Pasta", mealType: "Dinner", description: "Colourful vegetable pasta with tomato sauce." },
+]);
+
 const mealTypeFilters: Array<"All" | RecipeMealType> = [
   "All",
   "Breakfast",
@@ -61,9 +67,9 @@ const Recipes = () => {
 
   useEffect(() => {
     if (!getRecipesData || getRecipesData.length === 0) {
-      fetchRecipes().then((data) =>
-        setRecipesData(normalizeRecipeData((data || []) as unknown[]))
-      );
+      fetchRecipes()
+        .then((data) => setRecipesData(normalizeRecipeData((data || []) as unknown[])))
+        .catch(() => setRecipesData(fallbackRecipes));
     }
   }, []);
 
