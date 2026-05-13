@@ -18,7 +18,7 @@ exports[`About Us component renders with sections and image 1`] = `
           About Us
         </h1>
         <div
-          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto"
+          class="font-medium text-homepageHeaderSubTitle text-sm md:text-base lg:text-xl text-center w-2/3 lg:w-[45rem] mx-auto whitespace-pre-line"
         >
           Here's a bit about this app, who we are and why we've done it.
         </div>
