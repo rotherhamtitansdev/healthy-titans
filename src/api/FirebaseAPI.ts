@@ -38,16 +38,26 @@ const asBoolean = (value: unknown): boolean | undefined => {
   return undefined;
 };
 
+const downloadUrlCache = new Map<string, string>();
+
 export const fetchImages = async (firebaseName: string): Promise<string> => {
+  const cached = downloadUrlCache.get(firebaseName);
+  if (cached) return cached;
   const storage = getStorage();
   const starsRef = ref(storage, firebaseName);
-  return getDownloadURL(starsRef);
+  const url = await getDownloadURL(starsRef);
+  downloadUrlCache.set(firebaseName, url);
+  return url;
 };
 
 export const fetchVideos = async (firebaseVideoName: string): Promise<string> => {
+  const cached = downloadUrlCache.get(firebaseVideoName);
+  if (cached) return cached;
   const storage = getStorage();
   const starsRef = ref(storage, firebaseVideoName);
-  return getDownloadURL(starsRef);
+  const url = await getDownloadURL(starsRef);
+  downloadUrlCache.set(firebaseVideoName, url);
+  return url;
 };
 
 export const fetchAllImages = async (firebaseNames: string[]) =>

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
-import { fetchImages, fetchRecipes } from "../../api/FirebaseAPI";
+import { fetchImages, fetchRecipes, fetchVideos } from "../../api/FirebaseAPI";
 import { normalizeRecipeData, RecipeItem } from "../../models/Recipe";
 import VideoPlayer from "../videos/VideoPlayer";
 import DefaultLogo from "../../img/Logo.svg";
@@ -59,7 +59,14 @@ const RecipeDetails = () => {
   }, [recipe]);
 
   useEffect(() => {
-    setDisplayVideoUrl(recipe?.videoUrl || dummyRecipeVideo);
+    if (!recipe) return;
+    if (recipe.firebaseVideoName) {
+      fetchVideos(recipe.firebaseVideoName)
+        .then((url) => setDisplayVideoUrl(url))
+        .catch(() => setDisplayVideoUrl(dummyRecipeVideo));
+    } else {
+      setDisplayVideoUrl(dummyRecipeVideo);
+    }
   }, [recipe]);
 
   useEffect(() => {
