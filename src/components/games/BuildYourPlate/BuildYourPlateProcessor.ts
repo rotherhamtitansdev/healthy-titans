@@ -1,6 +1,6 @@
 import { BYPItem, BYPTableRowFamily } from "../../../models/BYP/BYP";
 
-import { fetchBuildYourPlateFoods, fetchImages } from "../../../api/FirebaseAPI";
+import { fetchBuildYourPlateFoods } from "../../../api/FirebaseAPI";
 
 class BuildYourPlateProcessor {
   static readonly maxScorePerItem = 10;
@@ -68,15 +68,13 @@ class BuildYourPlateProcessor {
     try {
       const data = await fetchBuildYourPlateFoods();
       if (!data || data.length === 0) return BuildYourPlateProcessor.fallbackFoods;
-      const mapped = await Promise.all(
-        data.map(async (item) => ({
-          icon: BuildYourPlateProcessor.normalizeFamily(item.category, item.name),
-          name: item.name,
-          URL: await fetchImages(item.firebaseName).catch(() => ""),
-          id: item.name,
-          score: item.score,
-        }))
-      );
+      const mapped = data.map((item) => ({
+        icon: BuildYourPlateProcessor.normalizeFamily(item.category, item.name),
+        name: item.name,
+        URL: item.firebaseName,
+        id: item.name,
+        score: item.score,
+      }));
       return mapped.length > 0 ? mapped : BuildYourPlateProcessor.fallbackFoods;
     } catch {
       return BuildYourPlateProcessor.fallbackFoods;

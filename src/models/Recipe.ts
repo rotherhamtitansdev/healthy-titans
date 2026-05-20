@@ -8,7 +8,7 @@ export interface RecipeItem {
   description: string;
   tags?: string[];
   firebaseName?: string;
-  videoUrl?: string;
+  firebaseVideoName?: string;
   calories?: string;
   ingredients: string[];
   method: string[];
@@ -40,17 +40,6 @@ const asBoolean = (value: unknown): boolean | undefined => {
 
 const isHttpUrl = (value: string): boolean => /^https?:\/\//i.test(value);
 
-const normalizeYouTubeUrl = (value: string): string => {
-  const trimmed = value.trim();
-  const shortsMatch = trimmed.match(
-    /^https?:\/\/(?:www\.)?youtube\.com\/shorts\/([a-zA-Z0-9_-]+)/i
-  );
-
-  if (shortsMatch) return `https://www.youtube.com/watch?v=${shortsMatch[1]}`;
-
-  return trimmed;
-};
-
 const slugify = (value: string): string =>
   value
     .toLowerCase()
@@ -72,23 +61,6 @@ const toTextList = (value: unknown): string[] => {
   return [];
 };
 
-const getVideoUrl = (item: UnknownRecord): string | undefined => {
-  const directVideo =
-    asString(item.videoUrl) ||
-    asString(item.youtubeUrl) ||
-    asString(item.youtubeURL) ||
-    asString(item.youtubeLink) ||
-    asString(item.videoLink) ||
-    asString(item.video) ||
-    undefined;
-  if (directVideo && isHttpUrl(directVideo)) return normalizeYouTubeUrl(directVideo);
-
-  const legacyPath = asString(item.path);
-  if (legacyPath && isHttpUrl(legacyPath)) return normalizeYouTubeUrl(legacyPath);
-
-  return undefined;
-};
-
 const getRecipeId = (item: UnknownRecord, name: string, index: number): string => {
   const explicitId = asString(item.id) || asString(item.slug);
   if (explicitId) return slugify(explicitId);
@@ -104,15 +76,6 @@ const getRecipeId = (item: UnknownRecord, name: string, index: number): string =
 
   return `recipe-${index + 1}`;
 };
-
-const fallbackVideos = [
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscape.mp4",
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-  "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-];
-
-const getFallbackVideo = (index: number): string => fallbackVideos[index % fallbackVideos.length];
 
 const getFallbackIngredients = (name: string): string[] => [
   `2 cups base ingredient for ${name.toLowerCase()}`,
@@ -233,7 +196,7 @@ export const normalizeRecipeData = (data: unknown[]): RecipeItem[] =>
       description: normalizedDescription,
       tags,
       firebaseName: asString(item.firebaseName),
-      videoUrl: getVideoUrl(item) || getFallbackVideo(index),
+      firebaseVideoName: asString(item.firebaseVideoName),
       calories: asString(item.calories) || asString(item.kcal) || getFallbackCalories(index),
       ingredients: ingredients.length > 0 ? ingredients : getFallbackIngredients(name),
       method: method.length > 0 ? method : getFallbackMethod(name),
