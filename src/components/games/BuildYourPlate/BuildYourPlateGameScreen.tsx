@@ -111,7 +111,7 @@ const BuildYourPlateGameScreen = (props: { mealTitle: string }) => {
   useEffect(() => {
     fetchImages("Games/tick.png")
       .then((tickUrl) => setTickImage(<img src={tickUrl} alt="Tick" />))
-      .catch((_err) => setTickImage(null));
+      .catch(() => setTickImage(null));
 
     BuildYourPlateProcessor.fetchAllUrls().then((res) => {
       if (!res) return;

@@ -13,7 +13,7 @@ const BuildYourPlateIcon = (props: { URL: string; id: string; alt: string }) => 
       setResolvedUrl(props.URL);
       return;
     }
-    fetchImages(props.URL).then(setResolvedUrl).catch((_err) => setResolvedUrl(""));
+    fetchImages(props.URL).then(setResolvedUrl).catch(() => setResolvedUrl(""));
   }, [props.URL]);
 
   return (
