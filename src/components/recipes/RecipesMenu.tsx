@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import openInNewTab from "../../functions/Navigate";
-import { fetchRecipes } from "../../api/FirebaseAPI";
+import { fetchRecipes, fetchAllImages } from "../../api/FirebaseAPI";
 import Card from "../shared/Card";
 import AppHeader from "../app_header/AppHeader";
 import MenuHeader from "../app_header/header/MenuHeader";
@@ -70,7 +70,12 @@ const Recipes = () => {
       fetchRecipes()
         .then((data) => {
           const normalized = normalizeRecipeData((data || []) as unknown[]);
-          setRecipesData(normalized.length > 0 ? normalized : fallbackRecipes);
+          const finalData = normalized.length > 0 ? normalized : fallbackRecipes;
+          setRecipesData(finalData);
+          const names = finalData
+            .map((r) => r.firebaseName)
+            .filter((n): n is string => Boolean(n));
+          if (names.length > 0) fetchAllImages(names).catch(() => undefined);
         })
         .catch(() => setRecipesData(fallbackRecipes));
     }
@@ -233,7 +238,7 @@ Yum!
             {paginatedRecipes.map((item, index) => (
               <div
                 key={item.key}
-                className="recipe-card-enter"
+                className="recipe-card-enter recipe-card-circular"
                 style={{ animationDelay: `${index * 0.06}s` }}
               >
                 <div className="relative">

@@ -13,6 +13,8 @@ const Image = (props: {
       src={props.img}
       alt={props.alt}
       draggable={false}
+      loading="lazy"
+      decoding="async"
     />
   </div>
 );
