@@ -144,6 +144,22 @@ img.align-center {
   animation: recipeFadeUp 0.5s ease;
 }
 
+.recipe-card-circular img {
+  width: 160px;
+  height: 160px;
+  border-radius: 9999px;
+  object-fit: cover;
+  background: #f8fafc;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+}
+
+@media (min-width: 768px) {
+  .recipe-card-circular img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
 .recipe-popup {
   animation: recipePop 0.2s ease-out;
 }
